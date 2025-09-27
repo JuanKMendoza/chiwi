@@ -1,0 +1,34 @@
+---
+const phoneNumber = "573102278592"; // Número de WhatsApp con código de país sin +
+const message = encodeURIComponent("¡Hola! Estoy interesado en hacer un pedido!");
+const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+---
+
+
+<div class="fixed bottom-6 right-6 z-50 group">
+  <!-- Tooltip -->
+  <div 
+    class="absolute right-16 bottom-1 bg-gray-800 text-white text-sm px-3 py-2 rounded-lg shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+  >
+    Escríbenos por WhatsApp
+  </div>
+
+  <!-- Botón con badge -->
+  <a 
+    href={whatsappLink} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    aria-label="WhatsApp"
+    class="relative bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-transform hover:scale-110 flex items-center justify-center"
+  >
+    <!-- Icono -->
+    <ion-icon name="logo-whatsapp" class="text-3xl"></ion-icon>
+
+    <!-- Badge -->
+    <span 
+      class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow"
+    >
+      2
+    </span>
+  </a>
+</div>

@@ -1,0 +1,169 @@
+---
+import Image from "astro/components/Image.astro";
+import LogoFooter from "../assets/images/Logo_variante_horizontal.webp";
+
+const redes = [
+  {
+    name: "Tiktok",
+    href: "https://www.tiktok.com/@chiwi_co",
+    icon: "tiktok",
+  },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/chiwicolombia",
+    icon: "facebook",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/chiwi_co/",
+    icon: "instagram",
+  },
+  {
+    name: "Whatsapp",
+    href: "https://wa.me/573102278592", // ⚠️ cambia por tu número real de WhatsApp
+    icon: "whatsapp",
+  },
+];
+---
+
+<footer class="bg-white border-t border-gray-100">
+  <div
+    class="max-w-7xl mx-auto px-6 py-12 flex flex-col items-center text-center gap-8"
+  >
+    <!-- Logo -->
+    <div class="flex-shrink-0">
+      <a href="/" class="flex items-center justify-center">
+        <Image
+  src={LogoFooter}
+  alt="Logo Chiwi Colombia"
+  class="object-contain h-20 sm:h-24 md:h-28 lg:h-32 w-auto"
+  width={200}
+  height={200}
+/>
+      </a>
+    </div>
+
+    <!-- Frase -->
+    <p class="text-gray-700 max-w-xl text-base md:text-lg">
+      Cada luz que encendemos guarda un pedacito de amor y compañía.
+    </p>
+
+    <!-- Navegación -->
+    <nav
+      class="flex flex-col sm:flex-row gap-4 sm:gap-8 font-medium text-gray-600"
+    >
+      <a href="/" class="hover:text-[#FF8F8F] transition-colors">Home</a>
+      <a href="/velas" class="hover:text-[#FF8F8F] transition-colors">Velas</a>
+      <a href="/paquetes" class="hover:text-[#FF8F8F] transition-colors"
+        >Paquetes</a
+      >
+      <a href="/ofertas" class="hover:text-[#FF8F8F] transition-colors"
+        >Ofertas</a
+      >
+      <a href="/blog" class="hover:text-[#FF8F8F] transition-colors">Blog</a>
+      <a href="/contacto" class="hover:text-[#FF8F8F] transition-colors"
+        >Contacto</a
+      >
+    </nav>
+
+    <!-- Redes sociales -->
+    <div class="flex items-center gap-5">
+      {
+        redes.map((red) => (
+          <a
+            href={red.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={red.name}
+            class="text-[#FF8F8F] hover:text-[#E1814C] transition-colors hover:scale-110"
+          >
+            {red.icon === "tiktok" && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icon-tabler-brand-tiktok"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M21 7.917v4.034a9.948 9.948 0 0 1 -5 -1.951v4.5a6.5 6.5 0 1 1 -8 -6.326v4.326a2.5 2.5 0 1 0 4 2v-11.5h4.083a6.005 6.005 0 0 0 4.917 4.917z" />
+              </svg>
+            )}
+            {red.icon === "facebook" && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icon-tabler-brand-facebook"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+              </svg>
+            )}
+            {red.icon === "instagram" && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icon-tabler-brand-instagram"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                <path d="M16.5 7.5v.01" />
+              </svg>
+            )}
+            {red.icon === "whatsapp" && (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icon-tabler-brand-whatsapp"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                <path d="M9 10a.5.5 0 0 0 1 0v-1a.5.5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0 -1h-1a.5.5 0 0 0 0 1" />
+              </svg>
+            )}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Línea divisoria -->
+  <div class="border-t border-[#FF8F8F] max-w-6xl mx-auto"></div>
+
+  <!-- Copyright -->
+  <div
+    class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600 gap-3"
+  >
+    <a href="/privacidad" class="hover:text-[#FF8F8F] transition-colors"
+      >Política de privacidad</a
+    >
+    <p>© 2025 Chiwicolombia. Todos los derechos reservados.</p>
+  </div>
+</footer>

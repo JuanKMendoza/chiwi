@@ -1,16 +1,416 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import heroImg from "../assets/images/Hero_1_gatos.png";
+import Image from "astro/components/Image.astro";
+import IndexGrid1 from "../assets/images/Perro_vela.jpg";
+import IndexGrid2 from "../assets/images/grupo_ositos.jpg";
+import IndexGrid3 from "../assets/images/capibara_beige_acostado.jpg";
+import IndexGrid4 from "../assets/images/capibara_cafe.jpg";
+import IndexGrid5 from "../assets/images/Pack_gatito_1.jpg";
+import IndexGrid6 from "../assets/images/Pack_gatito_2.jpg";
+import IndexGrid7 from "../assets/images/vela_gatito_personalizada_2.jpg";
+import Indexmemoriales from "../assets/images/Memorial_personalizado, foto.png";
+import Indexrecordatorios from "../assets/images/capibara_cafe.jpg";
 
+// Import Swiper estilos
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <!-- Hero Section -->
+  <section
+    class="relative min-h-[70vh] flex flex-col items-center justify-center text-white text-center"
+  >
+    <!-- Imagen de fondo -->
+    <div
+      class="absolute inset-0 bg-cover bg-center"
+      style={`background-image: url(${heroImg.src});`}
+    ></div>
+
+    <!-- Gradiente -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-gray-950 to-zinc-950/10"
+    ></div>
+
+    <!-- Contenido -->
+    <div class="relative z-10 w-full max-w-7xl px-4 space-y-6">
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase leading-tight"
+      >
+        Velitas que cuentan una historia
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl lg:text-2xl">
+        Descubre velas personalizadas y memoriales hechas con amor
+      </p>
+
+      <!-- Botón Hero -->
+      <div class="flex justify-center">
+        <a
+          href="/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 bg-white rounded-full text-black font-bold px-6 py-3 shadow-md hover:scale-105 transition-transform"
+        >
+          Explora y conoce más
+          <ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Populares -->
+  <section class="w-full min-h-[60vh] py-12 flex items-center">
+  <div class="w-full max-w-7xl mx-auto px-4">
+    <h1
+      class="text-3xl font-bold text-center sm:text-left mb-8 text-Naranja-principal"
+    >
+      Productos Populares
+    </h1>
+
+    <!-- Grid: visible en sm y arriba -->
+    <div class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Producto 1 -->
+      <div class="flex flex-col">
+        <a href="/" class="block w-full">
+          <Image
+            src={IndexGrid1}
+            alt="Producto Destacado 1"
+            class="w-full h-64 object-cover rounded-xl"
+            width={800}
+            height={600}
+          />
+        </a>
+        <div class="mt-2 text-center sm:text-left">
+          <p class="font-bold text-lg">Perrito Cocker</p>
+          <p class="font-light text-gray-600">$14.900</p>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="flex flex-col lg:col-span-2">
+        <a href="/" class="block w-full">
+          <Image
+            src={IndexGrid2}
+            alt="Producto Destacado 2"
+            class="w-full h-64 object-cover rounded-xl"
+            width={800}
+            height={600}
+          />
+        </a>
+        <div class="mt-2 text-center sm:text-left">
+          <p class="font-bold text-lg">Familia de Ositos</p>
+          <p class="font-light text-gray-600">$19.900</p>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="flex flex-col">
+        <a href="/" class="block w-full">
+          <Image
+            src={IndexGrid3}
+            alt="Producto Destacado 3"
+            class="w-full h-64 object-cover rounded-xl"
+            width={800}
+            height={600}
+          />
+        </a>
+        <div class="mt-2 text-center sm:text-left">
+          <p class="font-bold text-lg">Capibara Acostado Beige</p>
+          <p class="font-light text-gray-600">$15.900</p>
+        </div>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="flex flex-col">
+        <a href="/" class="block w-full">
+          <Image
+            src={IndexGrid4}
+            alt="Producto Destacado 4"
+            class="w-full h-64 object-cover rounded-xl"
+            width={800}
+            height={600}
+          />
+        </a>
+        <div class="mt-2 text-center sm:text-left">
+          <p class="font-bold text-lg">Capibara Café</p>
+          <p class="font-light text-gray-600">$15.900</p>
+        </div>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="flex flex-col">
+        <a href="/" class="block w-full">
+          <Image
+            src={IndexGrid5}
+            alt="Producto Destacado 5"
+            class="w-full h-64 object-cover rounded-xl"
+            width={800}
+            height={600}
+          />
+        </a>
+        <div class="mt-2 text-center sm:text-left">
+          <p class="font-bold text-lg">Cajita Recuerdo</p>
+          <p class="font-light text-gray-600">$29.900</p>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="flex flex-col">
+        <a href="/" class="block w-full">
+          <Image
+            src={IndexGrid6}
+            alt="Producto Destacado 6"
+            class="w-full h-64 object-cover rounded-xl"
+            width={800}
+            height={600}
+          />
+        </a>
+        <div class="mt-2 text-center sm:text-left">
+          <p class="font-bold text-lg">Cajita Recuerdo</p>
+          <p class="font-light text-gray-600">$29.900</p>
+        </div>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="flex flex-col">
+        <a href="/" class="block w-full">
+          <Image
+            src={IndexGrid7}
+            alt="Producto Destacado 7"
+            class="w-full h-64 object-cover rounded-xl"
+            width={800}
+            height={600}
+          />
+        </a>
+        <div class="mt-2 text-center sm:text-left">
+          <p class="font-bold text-lg">Gatito personalizado</p>
+          <p class="font-light text-gray-600">$19.900</p>
+        </div>
+      </div>
+    </div>
+
+    
+   <!-- Carrusel: solo visible en móviles -->
+<div class="block sm:hidden">
+  <swiper-container
+    slides-per-view="1"
+    space-between="10"
+    pagination="true"
+    navigation="false"
+    loop="true"
+    class="w-full"
+  >
+    <!-- Producto 1 -->
+    <swiper-slide class="flex flex-col items-center pb-8">
+      <img src={IndexGrid1.src} alt="Producto 1" class="rounded-xl w-full h-64 object-cover" />
+      <div class="mt-2 text-center">
+        <p class="font-bold text-lg">Perrito Cocker</p>
+        <p class="font-light text-gray-600">$14.900</p>
+      </div>
+    </swiper-slide>
+
+    <!-- Producto 2 -->
+    <swiper-slide class="flex flex-col items-center pb-8">
+      <img src={IndexGrid2.src} alt="Producto 2" class="rounded-xl w-full h-64 object-cover" />
+      <div class="mt-2 text-center">
+        <p class="font-bold text-lg">Familia de Ositos</p>
+        <p class="font-light text-gray-600">$19.900</p>
+      </div>
+    </swiper-slide>
+
+    <!-- Producto 3 -->
+    <swiper-slide class="flex flex-col items-center pb-8">
+      <img src={IndexGrid3.src} alt="Producto 3" class="rounded-xl w-full h-64 object-cover" />
+      <div class="mt-2 text-center">
+        <p class="font-bold text-lg">Capibara Acostado Beige</p>
+        <p class="font-light text-gray-600">$15.900</p>
+      </div>
+    </swiper-slide>
+
+    <!-- Producto 4 -->
+    <swiper-slide class="flex flex-col items-center pb-8">
+      <img src={IndexGrid4.src} alt="Producto 4" class="rounded-xl w-full h-64 object-cover" />
+      <div class="mt-2 text-center">
+        <p class="font-bold text-lg">Capibara Café</p>
+        <p class="font-light text-gray-600">$15.900</p>
+      </div>
+    </swiper-slide>
+
+    <!-- Producto 5 -->
+    <swiper-slide class="flex flex-col items-center pb-8">
+      <img src={IndexGrid5.src} alt="Producto 5" class="rounded-xl w-full h-64 object-cover" />
+      <div class="mt-2 text-center">
+        <p class="font-bold text-lg">Cajita Recuerdo</p>
+        <p class="font-light text-gray-600">$29.900</p>
+      </div>
+    </swiper-slide>
+
+    <!-- Producto 6 -->
+    <swiper-slide class="flex flex-col items-center pb-8">
+      <img src={IndexGrid6.src} alt="Producto 6" class="rounded-xl w-full h-64 object-cover" />
+      <div class="mt-2 text-center">
+        <p class="font-bold text-lg">Cajita Recuerdo</p>
+        <p class="font-light text-gray-600">$29.900</p>
+      </div>
+    </swiper-slide>
+
+    <!-- Producto 7 -->
+    <swiper-slide class="flex flex-col items-center pb-8">
+      <img src={IndexGrid7.src} alt="Producto 7" class="rounded-xl w-full h-64 object-cover" />
+      <div class="mt-2 text-center">
+        <p class="font-bold text-lg">Gatito personalizado</p>
+        <p class="font-light text-gray-600">$19.900</p>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <script>
+    import { register } from "swiper/element/bundle";
+    register();
+  </script>
+</div>
+
+    <!-- Botón grid -->
+    <div class="mt-10 flex justify-center">
+      <a
+        href="/productos"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 bg-white border border-gray-300 rounded-full text-black font-bold px-6 py-3 shadow-md hover:scale-105 transition-transform"
+      >
+        Ver más
+        <ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Seccion memoriales -->
+<section class="w-full py-12">
+  <div class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Título (solo visible en móvil) -->
+    <div class="flex justify-center md:hidden order-1">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#FF8F8F]">Memoriales</h2>
+    </div>
+
+    <!-- Columna izquierda: título (desktop), texto y botón -->
+    <div class="flex flex-col items-center text-center gap-6 order-4 md:order-1">
+      <!-- Título (solo visible en desktop) -->
+      <h2 class="hidden md:block text-2xl md:text-3xl font-bold text-[#FF8F8F]">Memoriales</h2>
+
+      <!-- Texto -->
+      <p class="text-gray-700 leading-relaxed text-lg max-w-lg order-3 md:order-2">
+        Celebra la vida y el vínculo con tu compañero peludo con una vela única,
+        hecha para honrar su lugar en tu corazón.
+      </p>
+
+      <!-- Botón -->
+      <a
+        href="/"
+        class="flex items-center gap-2 bg-[#FF8F8F] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform order-4 md:order-3"
+      >
+        <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
+        Quiero mi recuerdo especial
+      </a>
+    </div>
+
+    <!-- Columna derecha: imagen -->
+    <div class="flex justify-center md:justify-end order-2 md:order-2">
+      <Image 
+        src={Indexmemoriales} 
+        alt="Vela conmemorativa"
+        class="rounded-xl w-full object-cover"
+        width={1000}
+        height={800}
+      />
+    </div>
+
+  </div>
+</section>
+
+<!-- Seccion Recordatorios -->
+<section class="w-full py-12">
+  <div class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    
+    <!-- Título (solo visible en móvil) -->
+    <div class="flex justify-center md:hidden order-1">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#A9D3B3]">Recordatorios</h2>
+    </div>
+    
+    <!-- Columna izquierda: imagen -->
+    <div class="flex justify-center md:justify-start order-2 md:order-1">
+      <Image 
+        src={Indexrecordatorios} 
+        alt="Velas personalizadas para celebraciones"
+        class="rounded-xl w-full object-cover"
+        width={1000}
+        height={800}
+      />
+    </div>
+
+    <!-- Columna derecha: título (desktop), texto y botón -->
+    <div class="flex flex-col items-center text-center gap-6 order-4 md:order-2">
+      <!-- Título (solo visible en desktop) -->
+      <h2 class="hidden md:block text-2xl md:text-3xl font-bold text-[#A9D3B3]">Recordatorios</h2>
+
+      <!-- Texto -->
+      <p class="text-gray-700 leading-relaxed text-lg max-w-lg">
+        Convierte cada celebración en un recuerdo inolvidable. Nuestras velas personalizadas 
+        llenan de luz y magia cumpleaños, baby showers, bodas y mucho más.
+      </p>
+
+      <!-- Botón -->
+      <a
+        href="/"
+        class="flex items-center gap-2 bg-[#A9D3B3] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+      >
+        <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
+        Crear recuerdos brillantes
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Sección Newsletter -->
+<section class="w-full bg-[#F4B08A] py-12 px-4">
+  <div class="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
+    
+    <!-- Título -->
+    <h2 class="text-2xl md:text-3xl font-bold text-white">Newsletter</h2>
+    
+    <!-- Párrafo -->
+    <p class="text-white leading-relaxed text-lg">
+      Sé el primero en conocer nuestras ediciones especiales. 
+      Suscríbete y recibe descuentos, lanzamientos y tips para que tus velitas cuenten aún más historias.
+    </p>
+
+    <!-- Formulario -->
+    <form class="w-full flex flex-col md:flex-row items-center gap-4">
+      <!-- Input -->
+      <input 
+        type="email" 
+        placeholder="Tu correo electrónico" 
+        class="w-full md:flex-1 px-4 py-3 rounded-full border border-[#E1814C] bg-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E1814C] font-bold"
+      />
+      
+      <!-- Botón -->
+      <button 
+        type="submit"
+        class="flex items-center justify-center gap-2 bg-[#E1814C] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+      >
+        <ion-icon name="paper-plane-outline" class="text-xl text-white"></ion-icon>
+        Suscríbete
+      </button>
+    </form>
+  </div>
+</section>
+
+
+
+</Layout>
+

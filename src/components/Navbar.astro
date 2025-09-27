@@ -1,0 +1,250 @@
+---
+import Image from "astro/components/Image.astro";
+import Logo from "../assets/images/Logo_png.webp";
+
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { name: "Home", href: "/" },
+  { name: "Velitas", href: "/velitas" },
+  { name: "Paquetes", href: "/paquetes" },
+  { name: "Ofertas", href: "/ofertas" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contacto", href: "/contacto" },
+];
+---
+
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
+    <div class="flex justify-between items-center h-20">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center">
+          <Image 
+            src={Logo} 
+            alt="Logo Chiwi Colombia" 
+            class="h-16 w-16 object-contain"
+            width={64}
+            height={64}
+          />
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          {navItems.map((item) => (
+            <a 
+              href={item.href}
+              class="text-gray-700 hover:text-orange-500 px-3 py-2 text-sm font-medium transition-colors duration-200 hover:font-semibold"
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Desktop Icons & Mobile Menu Button -->
+      <div class="flex items-center space-x-4">
+        
+        <!-- Search Icon -->
+        <button 
+          id="search-btn"
+          class="text-gray-600 hover:text-orange-500 transition-colors duration-200"
+          aria-label="Buscar"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Shopping Cart Icon -->
+        <button 
+          id="cart-btn"
+          class="text-gray-600 hover:text-orange-500 transition-colors duration-200 relative"
+          aria-label="Carrito de compras"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 7a2 2 0 01-2 2H8a2 2 0 01-2-2L5 9z"
+            ></path>
+          </svg>
+          <!-- Badge para cantidad de items (opcional) -->
+          <span class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center hidden" id="cart-badge">0</span>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-gray-600 hover:text-orange-500 transition-colors duration-200"
+          aria-label="Abrir menú"
+        >
+          <svg
+            id="menu-icon"
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+          <svg
+            id="close-icon"
+            class="w-6 h-6 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div 
+      id="mobile-menu" 
+      class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0"
+    >
+      <div class="px-2 pt-2 pb-3 space-y-1 border-t border-gray-200">
+        {navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-gray-700 hover:text-orange-500 hover:bg-gray-50 block px-3 py-2 text-base font-medium transition-colors duration-200"
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile menu functionality
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  // Early exit if essential elements are missing
+  if (!mobileMenuBtn || !mobileMenu || !menuIcon || !closeIcon) {
+    console.warn('Mobile menu elements not found - skipping initialization');
+  } else {
+    let isMenuOpen = false;
+
+    function toggleMobileMenu() {
+      isMenuOpen = !isMenuOpen;
+      
+      if (isMenuOpen) {
+        // Open menu
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        menuIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+        mobileMenuBtn.setAttribute('aria-label', 'Cerrar menú');
+      } else {
+        // Close menu
+        mobileMenu.style.maxHeight = '0px';
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-label', 'Abrir menú');
+      }
+    }
+
+    // Event listeners
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu when clicking on a navigation link
+    const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isMenuOpen) {
+          toggleMobileMenu();
+        }
+      });
+    });
+
+    // Handle window resize - close mobile menu on desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        toggleMobileMenu();
+      }
+    });
+  }
+
+  // Search functionality (placeholder)
+  const searchBtn = document.getElementById('search-btn');
+  searchBtn?.addEventListener('click', () => {
+    // Implementar funcionalidad de búsqueda
+    console.log('Abrir búsqueda');
+  });
+
+  // Cart functionality (placeholder)
+  const cartBtn = document.getElementById('cart-btn');
+  cartBtn?.addEventListener('click', () => {
+    // Implementar funcionalidad del carrito
+    console.log('Abrir carrito');
+  });
+</script>
+
+<style>
+  /* Smooth scroll for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom color for orange theme */
+  .text-orange-500 {
+    color: #f97316;
+  }
+
+  .hover\:text-orange-500:hover {
+    color: #f97316;
+  }
+
+  .bg-orange-500 {
+    background-color: #f97316;
+  }
+
+  /* Ensure proper stacking context */
+  nav {
+    position: relative;
+    z-index: 50;
+  }
+</style>  

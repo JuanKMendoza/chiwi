@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/navigation";
+
+@font-face {
+  font-family: Quicksand;
+  src: url('../assets/fonts/Quicksand-VariableFont_wght.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-Rosa-titulos: #FF8F8F;
+  --color-Rosa-titulos: #FF8F8F;
+  --color-Naranja-principal: #F4B08A;
+  --color-Naranja-botones: #FF8F8F;
+  --color-Naranja-hover: #f97316;
+  --color-Gris-textos: #737070;
+  
+  --font-Quicksand: Quicksand;
+}

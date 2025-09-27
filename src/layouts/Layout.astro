@@ -1,0 +1,33 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Topbar from "../components/Topbar.astro";
+import WhatsAppButton from "../components/WhatsAppButton.astro";
+import Footer from "../components/Footer.astro";
+
+
+
+
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Chiwi Velitas hechas con amor</title>
+  </head>
+  <body class="font-Quicksand">
+    <Topbar />
+    <Navbar />
+    <WhatsAppButton/>
+  
+    <slot />
+    <Footer/>
+  </body>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</html>
+<!-- flex flex-col items-center font-Quicksand bg-amber-600 -->
