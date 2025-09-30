@@ -1,0 +1,275 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import velaGatito from "../../assets/images/vela_gatito_personalizada_1.jpg";
+import velasCreativas from "../../assets/images/vela_gatito_personalizada_2.jpg";
+import velasAromaHero from "../../assets/images/grupo_ositos.jpg";
+
+const posts = [
+  {
+    title: "Por qué los regalos personalizados son la tendencia número uno en 2025",
+    description:
+      "Descubre por qué los regalos personalizados como las velitas Chiwi son la tendencia más fuerte del 2025 en Colombia.",
+    href: "/blog/regalos-personalizados",
+    cover: velaGatito,
+    date: "2025-09-29T12:00:00",
+    category: "Tendencias",
+    readTime: "6 min",
+  },
+  {
+    title: "Velas creativas: la nueva forma de decorar y regalar en 2025",
+    description:
+      "Las velas creativas y personalizadas son tendencia en decoración y regalos para 2025. Descubre cómo Chiwi transforma cada vela en un recuerdo.",
+    href: "/blog/velas-creativas",
+    cover: velasCreativas,
+    date: "2025-09-29T12:00:00",
+    category: "Decoración",
+    readTime: "5 min",
+  },
+  {
+    title: "El Poder de las Velas Aromáticas: Un Regalo que Transforma Espacios y Corazone",
+    description:
+      "Descubre cómo las velas aromáticas personalizadas de Chiwi transforman tu hogar, despiertan emociones y transmiten bienestar. Guía completa sobre aromaterapia y velas artesanales en Colombia 2025.",
+    href: "/blog/velas-aromaticas",
+    cover: velasAromaHero,
+    date: "2025-09-29T12:00:00",
+    category: "Decoración",
+    readTime: "5 min",
+  },
+  
+];
+---
+
+<Layout 
+  title="Blog Chiwi: Ideas, Tendencias y Consejos sobre Velas Personalizadas | Colombia 2025" 
+  description="Descubre ideas, inspiración y consejos sobre velitas personalizadas, regalos creativos, decoración kawaii y tendencias 2025 en el blog de Chiwi Colombia."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 py-16 md:py-20">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <!-- Decoración -->
+      <div class="mb-6">
+        <span class="text-4xl md:text-5xl">✨</span>
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+        Nuestro Blog
+      </h1>
+      
+      <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-6">
+        Ideas, inspiración y consejos del mundo de las velas artesanales personalizadas
+      </p>
+
+      <!-- Breadcrumbs -->
+      <nav class="text-sm text-gray-500 mt-4" aria-label="Breadcrumb">
+        <ol class="flex items-center justify-center gap-2">
+          <li><a href="/" class="hover:text-Naranja-principal transition-colors">Inicio</a></li>
+          <li>›</li>
+          <li class="text-gray-700">Blog</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Categorías/Filtros (preparado para futuro) -->
+  <section class="max-w-6xl mx-auto px-4 py-6">
+    <div class="flex flex-wrap gap-3 justify-center">
+      <button class="px-4 py-2 bg-Naranja-principal text-white rounded-full text-sm font-medium hover:bg-orange-500 transition-colors">
+        Todos
+      </button>
+      <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors">
+        Tendencias
+      </button>
+      <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors">
+        Decoración
+      </button>
+      <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors">
+        Guías
+      </button>
+    </div>
+  </section>
+
+  <!-- Grid de artículos -->
+  <section class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+    
+    <!-- Destacado: Primer artículo más grande -->
+    {posts.length > 0 && (
+      <article class="mb-12">
+        <a
+          href={posts[0].href}
+          class="group block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+        >
+          <div class="grid md:grid-cols-2 gap-0">
+            <!-- Imagen -->
+            <div class="relative overflow-hidden h-64 md:h-full">
+              <Image
+                src={posts[0].cover}
+                alt={posts[0].title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                width={800}
+                height={600}
+              />
+              <div class="absolute top-4 left-4">
+                <span class="bg-Naranja-principal text-white px-3 py-1 rounded-full text-xs font-semibold">
+                  Destacado
+                </span>
+              </div>
+            </div>
+            
+            <!-- Contenido -->
+            <div class="p-6 md:p-8 flex flex-col justify-center">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="text-xs font-semibold text-Naranja-principal bg-orange-50 px-3 py-1 rounded-full">
+                  {posts[0].category}
+                </span>
+                <span class="text-xs text-gray-500">{posts[0].readTime} de lectura</span>
+              </div>
+              
+              <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 group-hover:text-Naranja-principal transition-colors">
+                {posts[0].title}
+              </h2>
+              
+              <p class="text-gray-600 mb-4 line-clamp-3">
+                {posts[0].description}
+              </p>
+              
+              <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                <time class="text-sm text-gray-500">
+                  {new Date(posts[0].date).toLocaleDateString("es-ES", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+                <span class="text-Naranja-principal font-semibold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                  Leer más
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </article>
+    )}
+
+    <!-- Grid de artículos restantes -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {posts.slice(1).map((post) => (
+        <article>
+          <a
+            href={post.href}
+            class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col"
+          >
+            <!-- Imagen con overlay en hover -->
+            <div class="relative overflow-hidden">
+              <Image
+                src={post.cover}
+                alt={post.title}
+                class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                width={800}
+                height={400}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div class="absolute top-3 right-3">
+                <span class="bg-white/90 backdrop-blur-sm text-gray-900 px-3 py-1 rounded-full text-xs font-semibold">
+                  {post.category}
+                </span>
+              </div>
+            </div>
+            
+            <!-- Contenido -->
+            <div class="p-5 flex flex-col flex-grow">
+              <div class="flex items-center gap-2 mb-3">
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-xs text-gray-500">{post.readTime} de lectura</span>
+              </div>
+              
+              <h2 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-Naranja-principal transition-colors line-clamp-2">
+                {post.title}
+              </h2>
+              
+              <p class="text-gray-600 text-sm line-clamp-3 mb-4 flex-grow">
+                {post.description}
+              </p>
+              
+              <div class="flex items-center justify-between pt-3 border-t border-gray-100 mt-auto">
+                <time class="text-xs text-gray-500">
+                  {new Date(post.date).toLocaleDateString("es-ES", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </time>
+                <span class="text-Naranja-principal font-semibold text-sm flex items-center gap-1">
+                  Leer
+                  <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <!-- Estado vacío (para cuando no hay más posts) -->
+    {posts.length === 0 && (
+      <div class="text-center py-16">
+        <div class="text-6xl mb-4">📝</div>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">Próximamente más contenido</h3>
+        <p class="text-gray-600">Estamos trabajando en nuevos artículos para ti</p>
+      </div>
+    )}
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="max-w-6xl mx-auto px-4 py-12 mb-12">
+    <div class="bg-gradient-to-r from-Naranja-principal to-pink-400 rounded-2xl p-8 md:p-12 text-center text-white shadow-xl">
+      <h2 class="text-2xl md:text-3xl font-bold mb-4">
+        ¿Quieres más contenido como este?
+      </h2>
+      <p class="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+        Suscríbete para recibir nuestros últimos artículos, tips exclusivos y descuentos especiales
+      </p>
+      <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+        <input 
+          type="email" 
+          placeholder="tu@email.com" 
+          class="flex-1 px-5 py-3 border border-white rounded-full text-gray-1000 focus:outline-none focus:ring-2 focus:ring-white"
+          required
+        />
+        <button 
+          type="submit"
+          class="bg-white text-Naranja-principal font-bold px-8 py-3 rounded-full hover:bg-gray-100 transition-colors shadow-md"
+        >
+          Suscribirme
+        </button>
+      </form>
+      <p class="text-xs mt-3 opacity-75">Sin spam. Cancela cuando quieras.</p>
+    </div>
+  </section>
+
+  <!-- Schema markup para SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog Chiwi",
+      "description": "Ideas, inspiración y consejos sobre velas personalizadas y regalos creativos",
+      "url": "https://chiwicolombia.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Chiwi",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://chiwicolombia.com/logo.png"
+        }
+      }
+    }
+  </script>
+</Layout>

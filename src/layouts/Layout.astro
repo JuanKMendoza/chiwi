@@ -17,6 +17,8 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Chiwi Velitas hechas con amor</title>
+    <title>{Astro.props.title}</title>
+  <meta name="description" content={Astro.props.description} />
   </head>
   <body class="font-Quicksand">
     <Topbar />
