@@ -51,7 +51,7 @@ const navItems: NavItem[] = [
       <!-- Desktop Icons & Mobile Menu Button -->
       <div class="flex items-center space-x-4">
         
-        <!-- Search Icon -->
+        <!-- Search Icon -- Utilizar cuando hayan varios productos
         <button 
           id="search-btn"
           class="text-gray-600 hover:text-orange-500 transition-colors duration-200"
@@ -154,32 +154,82 @@ const navItems: NavItem[] = [
       </div>
     </div>
   </div>
+
+<div 
+  id="search-overlay" 
+  class="fixed inset-0 bg-white bg-opacity-95 hidden flex-col items-center justify-center z-[100]"
+>
+  <div class="w-full max-w-2xl px-4">
+    <form id="search-form" class="relative">
+      <input
+        id="search-input-modal"
+        type="search"
+        placeholder="Escribe el nombre del producto que buscas..."
+        class="w-full pl-16 pr-16 py-4 text-xl border-b-2 border-gray-300 focus:outline-none focus:border-orange-500 transition-colors duration-300"
+        autocomplete="off"
+        autofocus
+      />
+      <svg
+        class="w-8 h-8 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        ></path>
+      </svg>
+    </form>
+  </div>
+
+  <button
+    id="close-search-btn"
+    class="absolute top-6 right-6 text-gray-700 hover:text-orange-500 transition-colors duration-200"
+    aria-label="Cerrar búsqueda"
+  >
+    <svg
+      class="w-8 h-8"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
+    </svg>
+  </button>
+</div>
+</nav>
+
 </nav>
 
 <script>
-  // Mobile menu functionality
+  // Mobile menu functionality (manteniendo tu lógica)
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuIcon = document.getElementById('menu-icon');
   const closeIcon = document.getElementById('close-icon');
 
-  // Early exit if essential elements are missing
-  if (!mobileMenuBtn || !mobileMenu || !menuIcon || !closeIcon) {
-    console.warn('Mobile menu elements not found - skipping initialization');
-  } else {
+  if (mobileMenuBtn && mobileMenu && menuIcon && closeIcon) {
     let isMenuOpen = false;
 
     function toggleMobileMenu() {
       isMenuOpen = !isMenuOpen;
       
       if (isMenuOpen) {
-        // Open menu
         mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
         menuIcon.classList.add('hidden');
         closeIcon.classList.remove('hidden');
         mobileMenuBtn.setAttribute('aria-label', 'Cerrar menú');
       } else {
-        // Close menu
         mobileMenu.style.maxHeight = '0px';
         menuIcon.classList.remove('hidden');
         closeIcon.classList.add('hidden');
@@ -187,10 +237,8 @@ const navItems: NavItem[] = [
       }
     }
 
-    // Event listeners
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
-    // Close mobile menu when clicking on a navigation link
     const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', () => {
@@ -200,7 +248,6 @@ const navItems: NavItem[] = [
       });
     });
 
-    // Handle window resize - close mobile menu on desktop
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 768 && isMenuOpen) {
         toggleMobileMenu();
@@ -208,12 +255,46 @@ const navItems: NavItem[] = [
     });
   }
 
-  // Search functionality (placeholder)
+  // 🔎 FUNCIONALIDAD DE BÚSQUEDA (Nueva Lógica)
   const searchBtn = document.getElementById('search-btn');
-  searchBtn?.addEventListener('click', () => {
-    // Implementar funcionalidad de búsqueda
-    console.log('Abrir búsqueda');
+  const searchOverlay = document.getElementById('search-overlay');
+  const closeSearchBtn = document.getElementById('close-search-btn');
+  const searchForm = document.getElementById('search-form');
+  const searchInputModal = document.getElementById('search-input-modal');
+
+  function openSearch() {
+    searchOverlay.classList.remove('hidden');
+    searchOverlay.classList.add('flex'); // Mostrar el overlay
+    searchInputModal.focus(); // Poner el foco en el campo de texto
+    document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+  }
+
+  function closeSearch() {
+    searchOverlay.classList.add('hidden');
+    searchOverlay.classList.remove('flex');
+    document.body.style.overflow = ''; // Restaurar scroll
+  }
+
+  // 1. Abrir búsqueda al hacer clic en la lupa del Navbar
+  searchBtn?.addEventListener('click', openSearch);
+
+  // 2. Cerrar búsqueda al hacer clic en el botón X
+  closeSearchBtn?.addEventListener('click', closeSearch);
+
+  // 3. Manejar el envío del formulario
+  searchForm?.addEventListener('submit', (e) => {
+    e.preventDefault(); // Evitar el envío normal del formulario
+    const termino = searchInputModal.value.trim();
+
+    if (termino.length > 0) {
+      // Redirigir a la página principal con el parámetro 'search'
+      window.location.href = `/?search=${encodeURIComponent(termino)}`;
+    } else {
+      // Si está vacío, simplemente cerrar el modal o mostrar un error
+      closeSearch();
+    }
   });
+
 
   // Cart functionality (placeholder)
   const cartBtn = document.getElementById('cart-btn');

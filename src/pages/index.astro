@@ -27,12 +27,12 @@ import "swiper/css/navigation";
     <div
       class="absolute inset-0 bg-cover bg-center"
       style={`background-image: url(${heroImg.src});`}
-    ></div>
+    >
+    </div>
 
     <!-- Gradiente -->
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-gray-950 to-zinc-950/10"
-    ></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-gray-950 to-zinc-950/10">
+    </div>
 
     <!-- Contenido -->
     <div class="relative z-10 w-full max-w-7xl px-4 space-y-6">
@@ -62,559 +62,605 @@ import "swiper/css/navigation";
 
   <!-- Sección Populares -->
   <!-- Sección Populares -->
-<section class="w-full min-h-[60vh] py-12 flex items-center">
-  <div class="w-full max-w-7xl mx-auto px-4">
-    <h1
-      class="text-3xl font-bold text-center sm:text-left mb-8 text-Naranja-principal"
-    >
-      Productos Populares
-    </h1>
+  <section class="w-full min-h-[60vh] py-12 flex items-center">
+    <div class="w-full max-w-7xl mx-auto px-4">
+      <h1
+        class="text-3xl font-bold text-center sm:text-left mb-8 text-Naranja-principal"
+      >
+        Productos Populares
+      </h1>
 
-    <!-- Grid: visible en sm y arriba -->
-    <div class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <!-- Producto 1 -->
-      <div class="flex flex-col">
-        <a 
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900)"
-          target="_blank"
-          class="block w-full relative group"
-        >
-          <Image
-            src={IndexGrid1}
-            alt="Perrito Cocker - Vela personalizada"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <p class="font-bold text-lg">Perrito Cocker</p>
-          <p class="font-semibold text-gray-800">$14.900</p>
-        </div>
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900).%20¿Está%20disponible?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
-        >
-          <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-          <span class="text-sm">Consultar</span>
-        </a>
-      </div>
-
-      <!-- Producto 2 -->
-      <div class="flex flex-col lg:col-span-2">
-        <a 
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900)"
-          target="_blank"
-          class="block w-full relative group"
-        >
-          <Image
-            src={IndexGrid2}
-            alt="Familia de Ositos - Velas decorativas"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <p class="font-bold text-lg">Familia de Ositos</p>
-          <p class="font-semibold text-gray-800">$19.900</p>
-        </div>
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900).%20¿Está%20disponible?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
-        >
-          <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-          <span class="text-sm">Consultar</span>
-        </a>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="flex flex-col">
-        <a 
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900)"
-          target="_blank"
-          class="block w-full relative group"
-        >
-          <Image
-            src={IndexGrid3}
-            alt="Capibara Acostado Beige - Vela kawaii"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <p class="font-bold text-lg">Capibara Acostado Beige</p>
-          <p class="font-semibold text-gray-800">$15.900</p>
-        </div>
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900).%20¿Está%20disponible?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
-        >
-          <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-          <span class="text-sm">Consultar</span>
-        </a>
-      </div>
-
-      <!-- Producto 4 -->
-      <div class="flex flex-col">
-        <a 
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900)"
-          target="_blank"
-          class="block w-full relative group"
-        >
-          <Image
-            src={IndexGrid4}
-            alt="Capibara Café - Vela artesanal"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <p class="font-bold text-lg">Capibara Café</p>
-          <p class="font-semibold text-gray-800">$15.900</p>
-        </div>
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900).%20¿Está%20disponible?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
-        >
-          <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-          <span class="text-sm">Consultar</span>
-        </a>
-      </div>
-
-      <!-- Producto 5 -->
-      <div class="flex flex-col">
-        <a 
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
-          target="_blank"
-          class="block w-full relative group"
-        >
-          <Image
-            src={IndexGrid5}
-            alt="Cajita Recuerdo - Kit completo con vela"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <p class="font-bold text-lg">Cajita Recuerdo</p>
-          <p class="font-semibold text-gray-800">$29.900</p>
-        </div>
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
-        >
-          <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-          <span class="text-sm">Consultar</span>
-        </a>
-      </div>
-
-      <!-- Producto 6 -->
-      <div class="flex flex-col">
-        <a 
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
-          target="_blank"
-          class="block w-full relative group"
-        >
-          <Image
-            src={IndexGrid6}
-            alt="Cajita Recuerdo - Regalo especial"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <p class="font-bold text-lg">Cajita Recuerdo</p>
-          <p class="font-semibold text-gray-800">$29.900</p>
-        </div>
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
-        >
-          <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-          <span class="text-sm">Consultar</span>
-        </a>
-      </div>
-
-      <!-- Producto 7 -->
-      <div class="flex flex-col">
-        <a 
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900)"
-          target="_blank"
-          class="block w-full relative group"
-        >
-          <Image
-            src={IndexGrid7}
-            alt="Gatito personalizado - Vela hecha a mano"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <p class="font-bold text-lg">Gatito personalizado</p>
-          <p class="font-semibold text-gray-800">$19.900</p>
-        </div>
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900).%20¿Está%20disponible?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
-        >
-          <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-          <span class="text-sm">Consultar</span>
-        </a>
-      </div>
-
-    </div>
-
-    
-    <!-- Carrusel: solo visible en móviles -->
-    <div class="block sm:hidden">
-      <swiper-container
-        slides-per-view="1"
-        space-between="20"
-        pagination="true"
-        navigation="false"
-        loop="true"
-        class="w-full"
+      <!-- Grid: visible en sm y arriba -->
+      <div
+        class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
       >
         <!-- Producto 1 -->
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a 
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900)"
-              target="_blank"
-            >
-              <img src={IndexGrid1.src} alt="Perrito Cocker" class="rounded-xl w-full h-64 object-cover" />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
+        <div class="flex flex-col">
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900)"
+            target="_blank"
+            class="block w-full relative group"
+          >
+            <Image
+              src={IndexGrid1}
+              alt="Perrito Cocker - Vela personalizada"
+              class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+              width={800}
+              height={600}
+            />
+          </a>
+          <div class="mt-3 space-y-1">
             <p class="font-bold text-lg">Perrito Cocker</p>
             <p class="font-semibold text-gray-800">$14.900</p>
-            <a
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900).%20¿Está%20disponible?"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-            >
-              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-              <span class="text-sm">Consultar disponibilidad</span>
-            </a>
           </div>
-        </swiper-slide>
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900).%20¿Está%20disponible?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span class="text-sm">Consultar</span>
+          </a>
+        </div>
 
         <!-- Producto 2 -->
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a 
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900)"
-              target="_blank"
-            >
-              <img src={IndexGrid2.src} alt="Familia de Ositos" class="rounded-xl w-full h-64 object-cover" />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
+        <div class="flex flex-col lg:col-span-2">
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900)"
+            target="_blank"
+            class="block w-full relative group"
+          >
+            <Image
+              src={IndexGrid2}
+              alt="Familia de Ositos - Velas decorativas"
+              class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+              width={800}
+              height={600}
+            />
+          </a>
+          <div class="mt-3 space-y-1">
             <p class="font-bold text-lg">Familia de Ositos</p>
             <p class="font-semibold text-gray-800">$19.900</p>
-            <a
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900).%20¿Está%20disponible?"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-            >
-              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-              <span class="text-sm">Consultar disponibilidad</span>
-            </a>
           </div>
-        </swiper-slide>
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900).%20¿Está%20disponible?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span class="text-sm">Consultar</span>
+          </a>
+        </div>
 
         <!-- Producto 3 -->
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a 
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900)"
-              target="_blank"
-            >
-              <img src={IndexGrid3.src} alt="Capibara Acostado Beige" class="rounded-xl w-full h-64 object-cover" />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
+        <div class="flex flex-col">
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900)"
+            target="_blank"
+            class="block w-full relative group"
+          >
+            <Image
+              src={IndexGrid3}
+              alt="Capibara Acostado Beige - Vela kawaii"
+              class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+              width={800}
+              height={600}
+            />
+          </a>
+          <div class="mt-3 space-y-1">
             <p class="font-bold text-lg">Capibara Acostado Beige</p>
             <p class="font-semibold text-gray-800">$15.900</p>
-            <a
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900).%20¿Está%20disponible?"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-            >
-              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-              <span class="text-sm">Consultar disponibilidad</span>
-            </a>
           </div>
-        </swiper-slide>
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900).%20¿Está%20disponible?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span class="text-sm">Consultar</span>
+          </a>
+        </div>
 
         <!-- Producto 4 -->
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a 
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900)"
-              target="_blank"
-            >
-              <img src={IndexGrid4.src} alt="Capibara Café" class="rounded-xl w-full h-64 object-cover" />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
+        <div class="flex flex-col">
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900)"
+            target="_blank"
+            class="block w-full relative group"
+          >
+            <Image
+              src={IndexGrid4}
+              alt="Capibara Café - Vela artesanal"
+              class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+              width={800}
+              height={600}
+            />
+          </a>
+          <div class="mt-3 space-y-1">
             <p class="font-bold text-lg">Capibara Café</p>
             <p class="font-semibold text-gray-800">$15.900</p>
-            <a
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900).%20¿Está%20disponible?"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-            >
-              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-              <span class="text-sm">Consultar disponibilidad</span>
-            </a>
           </div>
-        </swiper-slide>
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900).%20¿Está%20disponible?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span class="text-sm">Consultar</span>
+          </a>
+        </div>
 
         <!-- Producto 5 -->
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a 
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
-              target="_blank"
-            >
-              <img src={IndexGrid5.src} alt="Cajita Recuerdo" class="rounded-xl w-full h-64 object-cover" />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
+        <div class="flex flex-col">
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
+            target="_blank"
+            class="block w-full relative group"
+          >
+            <Image
+              src={IndexGrid5}
+              alt="Cajita Recuerdo - Kit completo con vela"
+              class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+              width={800}
+              height={600}
+            />
+          </a>
+          <div class="mt-3 space-y-1">
             <p class="font-bold text-lg">Cajita Recuerdo</p>
             <p class="font-semibold text-gray-800">$29.900</p>
-            <a
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-            >
-              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-              <span class="text-sm">Consultar disponibilidad</span>
-            </a>
           </div>
-        </swiper-slide>
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span class="text-sm">Consultar</span>
+          </a>
+        </div>
 
         <!-- Producto 6 -->
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a 
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
-              target="_blank"
-            >
-              <img src={IndexGrid6.src} alt="Cajita Recuerdo" class="rounded-xl w-full h-64 object-cover" />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
+        <div class="flex flex-col">
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
+            target="_blank"
+            class="block w-full relative group"
+          >
+            <Image
+              src={IndexGrid6}
+              alt="Cajita Recuerdo - Regalo especial"
+              class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+              width={800}
+              height={600}
+            />
+          </a>
+          <div class="mt-3 space-y-1">
             <p class="font-bold text-lg">Cajita Recuerdo</p>
             <p class="font-semibold text-gray-800">$29.900</p>
-            <a
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-            >
-              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-              <span class="text-sm">Consultar disponibilidad</span>
-            </a>
           </div>
-        </swiper-slide>
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span class="text-sm">Consultar</span>
+          </a>
+        </div>
 
         <!-- Producto 7 -->
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a 
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900)"
-              target="_blank"
-            >
-              <img src={IndexGrid7.src} alt="Gatito personalizado" class="rounded-xl w-full h-64 object-cover" />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
+        <div class="flex flex-col">
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900)"
+            target="_blank"
+            class="block w-full relative group"
+          >
+            <Image
+              src={IndexGrid7}
+              alt="Gatito personalizado - Vela hecha a mano"
+              class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+              width={800}
+              height={600}
+            />
+          </a>
+          <div class="mt-3 space-y-1">
             <p class="font-bold text-lg">Gatito personalizado</p>
             <p class="font-semibold text-gray-800">$19.900</p>
-            <a
-              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900).%20¿Está%20disponible?"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-            >
-              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-              <span class="text-sm">Consultar disponibilidad</span>
-            </a>
           </div>
-        </swiper-slide>
-      </swiper-container>
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900).%20¿Está%20disponible?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <span class="text-sm">Consultar</span>
+          </a>
+        </div>
+      </div>
 
-      <script>
-        import { register } from "swiper/element/bundle";
-        register();
-      </script>
+      <!-- Carrusel: solo visible en móviles -->
+      <div class="block sm:hidden">
+        <swiper-container
+          slides-per-view="1"
+          space-between="20"
+          pagination="true"
+          navigation="false"
+          loop="true"
+          class="w-full"
+        >
+          <!-- Producto 1 -->
+          <swiper-slide class="flex flex-col items-center pb-12">
+            <div class="w-full px-4">
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900)"
+                target="_blank"
+              >
+                <img
+                  src={IndexGrid1.src}
+                  alt="Perrito Cocker"
+                  class="rounded-xl w-full h-64 object-cover"
+                />
+              </a>
+            </div>
+            <div class="mt-3 text-center w-full px-4 space-y-2">
+              <p class="font-bold text-lg">Perrito Cocker</p>
+              <p class="font-semibold text-gray-800">$14.900</p>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900).%20¿Está%20disponible?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              >
+                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <span class="text-sm">Consultar disponibilidad</span>
+              </a>
+            </div>
+          </swiper-slide>
+
+          <!-- Producto 2 -->
+          <swiper-slide class="flex flex-col items-center pb-12">
+            <div class="w-full px-4">
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900)"
+                target="_blank"
+              >
+                <img
+                  src={IndexGrid2.src}
+                  alt="Familia de Ositos"
+                  class="rounded-xl w-full h-64 object-cover"
+                />
+              </a>
+            </div>
+            <div class="mt-3 text-center w-full px-4 space-y-2">
+              <p class="font-bold text-lg">Familia de Ositos</p>
+              <p class="font-semibold text-gray-800">$19.900</p>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900).%20¿Está%20disponible?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              >
+                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <span class="text-sm">Consultar disponibilidad</span>
+              </a>
+            </div>
+          </swiper-slide>
+
+          <!-- Producto 3 -->
+          <swiper-slide class="flex flex-col items-center pb-12">
+            <div class="w-full px-4">
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900)"
+                target="_blank"
+              >
+                <img
+                  src={IndexGrid3.src}
+                  alt="Capibara Acostado Beige"
+                  class="rounded-xl w-full h-64 object-cover"
+                />
+              </a>
+            </div>
+            <div class="mt-3 text-center w-full px-4 space-y-2">
+              <p class="font-bold text-lg">Capibara Acostado Beige</p>
+              <p class="font-semibold text-gray-800">$15.900</p>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900).%20¿Está%20disponible?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              >
+                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <span class="text-sm">Consultar disponibilidad</span>
+              </a>
+            </div>
+          </swiper-slide>
+
+          <!-- Producto 4 -->
+          <swiper-slide class="flex flex-col items-center pb-12">
+            <div class="w-full px-4">
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900)"
+                target="_blank"
+              >
+                <img
+                  src={IndexGrid4.src}
+                  alt="Capibara Café"
+                  class="rounded-xl w-full h-64 object-cover"
+                />
+              </a>
+            </div>
+            <div class="mt-3 text-center w-full px-4 space-y-2">
+              <p class="font-bold text-lg">Capibara Café</p>
+              <p class="font-semibold text-gray-800">$15.900</p>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900).%20¿Está%20disponible?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              >
+                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <span class="text-sm">Consultar disponibilidad</span>
+              </a>
+            </div>
+          </swiper-slide>
+
+          <!-- Producto 5 -->
+          <swiper-slide class="flex flex-col items-center pb-12">
+            <div class="w-full px-4">
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
+                target="_blank"
+              >
+                <img
+                  src={IndexGrid5.src}
+                  alt="Cajita Recuerdo"
+                  class="rounded-xl w-full h-64 object-cover"
+                />
+              </a>
+            </div>
+            <div class="mt-3 text-center w-full px-4 space-y-2">
+              <p class="font-bold text-lg">Cajita Recuerdo</p>
+              <p class="font-semibold text-gray-800">$29.900</p>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              >
+                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <span class="text-sm">Consultar disponibilidad</span>
+              </a>
+            </div>
+          </swiper-slide>
+
+          <!-- Producto 6 -->
+          <swiper-slide class="flex flex-col items-center pb-12">
+            <div class="w-full px-4">
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
+                target="_blank"
+              >
+                <img
+                  src={IndexGrid6.src}
+                  alt="Cajita Recuerdo"
+                  class="rounded-xl w-full h-64 object-cover"
+                />
+              </a>
+            </div>
+            <div class="mt-3 text-center w-full px-4 space-y-2">
+              <p class="font-bold text-lg">Cajita Recuerdo</p>
+              <p class="font-semibold text-gray-800">$29.900</p>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              >
+                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <span class="text-sm">Consultar disponibilidad</span>
+              </a>
+            </div>
+          </swiper-slide>
+
+          <!-- Producto 7 -->
+          <swiper-slide class="flex flex-col items-center pb-12">
+            <div class="w-full px-4">
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900)"
+                target="_blank"
+              >
+                <img
+                  src={IndexGrid7.src}
+                  alt="Gatito personalizado"
+                  class="rounded-xl w-full h-64 object-cover"
+                />
+              </a>
+            </div>
+            <div class="mt-3 text-center w-full px-4 space-y-2">
+              <p class="font-bold text-lg">Gatito personalizado</p>
+              <p class="font-semibold text-gray-800">$19.900</p>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900).%20¿Está%20disponible?"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              >
+                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <span class="text-sm">Consultar disponibilidad</span>
+              </a>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+
+        <script>
+          import { register } from "swiper/element/bundle";
+          register();
+        </script>
+      </div>
+
+      <!-- Botón Ver más -->
+      <div class="mt-10 flex justify-center">
+        <a
+          href="/productos"
+          class="flex items-center gap-2 bg-white border border-gray-300 rounded-full text-black font-bold px-6 py-3 shadow-md hover:scale-105 transition-transform"
+        >
+          Ver más productos
+          <ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- Botón Ver más -->
-    <div class="mt-10 flex justify-center">
-      <a
-        href="/productos"
-        class="flex items-center gap-2 bg-white border border-gray-300 rounded-full text-black font-bold px-6 py-3 shadow-md hover:scale-105 transition-transform"
+  <!-- Seccion memoriales -->
+  <section class="w-full py-12">
+    <div
+      class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
+      <!-- Título (solo visible en móvil) -->
+      <div class="flex justify-center md:hidden order-1">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#FF8F8F]">
+          Memoriales
+        </h2>
+      </div>
+
+      <!-- Columna izquierda: título (desktop), texto y botón -->
+      <div
+        class="flex flex-col items-center text-center gap-6 order-4 md:order-1"
       >
-        Ver más productos
-        <ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
-      </a>
+        <!-- Título (solo visible en desktop) -->
+        <h2
+          class="hidden md:block text-2xl md:text-3xl font-bold text-[#FF8F8F]"
+        >
+          Memoriales
+        </h2>
+
+        <!-- Texto -->
+        <p
+          class="text-gray-700 leading-relaxed text-lg max-w-lg order-3 md:order-2"
+        >
+          Celebra la vida y el vínculo con tu compañero peludo con una vela
+          única, hecha para honrar su lugar en tu corazón.
+        </p>
+
+        <!-- Botón -->
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20¿Que%20opciones%20tienes?"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 bg-[#FF8F8F] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform order-4 md:order-3"
+        >
+          <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
+          Quiero mi recuerdo especial
+        </a>
+      </div>
+
+      <!-- Columna derecha: imagen -->
+      <div class="flex justify-center md:justify-end order-2 md:order-2">
+        <Image
+          src={Indexmemoriales}
+          alt="Vela conmemorativa"
+          class="rounded-xl w-full object-cover"
+          width={1000}
+          height={800}
+        />
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- Seccion Recordatorios -->
+  <section class="w-full py-12">
+    <div
+      class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+    >
+      <!-- Título (solo visible en móvil) -->
+      <div class="flex justify-center md:hidden order-1">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#A9D3B3]">
+          Recordatorios
+        </h2>
+      </div>
 
-<!-- Seccion memoriales -->
-<section class="w-full py-12">
-  <div class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-    
-    <!-- Título (solo visible en móvil) -->
-    <div class="flex justify-center md:hidden order-1">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#FF8F8F]">Memoriales</h2>
+      <!-- Columna izquierda: imagen -->
+      <div class="flex justify-center md:justify-start order-2 md:order-1">
+        <Image
+          src={Indexrecordatorios}
+          alt="Velas personalizadas para celebraciones"
+          class="rounded-xl w-full object-cover"
+          width={1000}
+          height={800}
+        />
+      </div>
+
+      <!-- Columna derecha: título (desktop), texto y botón -->
+      <div
+        class="flex flex-col items-center text-center gap-6 order-4 md:order-2"
+      >
+        <!-- Título (solo visible en desktop) -->
+        <h2
+          class="hidden md:block text-2xl md:text-3xl font-bold text-[#A9D3B3]"
+        >
+          Recordatorios
+        </h2>
+
+        <!-- Texto -->
+        <p class="text-gray-700 leading-relaxed text-lg max-w-lg">
+          Convierte cada celebración en un recuerdo inolvidable. Nuestras velas
+          personalizadas llenan de luz y magia cumpleaños, baby showers, bodas y
+          mucho más.
+        </p>
+
+        <!-- Botón -->
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20¿Que%20opciones%20tienes?"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 bg-[#A9D3B3] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+        >
+          <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
+          Crear recuerdos brillantes
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- Columna izquierda: título (desktop), texto y botón -->
-    <div class="flex flex-col items-center text-center gap-6 order-4 md:order-1">
-      <!-- Título (solo visible en desktop) -->
-      <h2 class="hidden md:block text-2xl md:text-3xl font-bold text-[#FF8F8F]">Memoriales</h2>
+  <!-- Sección Newsletter -->
+  <section class="w-full bg-[#F4B08A] py-12 px-4">
+    <div class="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
+      <!-- Título -->
+      <h2 class="text-2xl md:text-3xl font-bold text-white">Newsletter</h2>
 
-      <!-- Texto -->
-      <p class="text-gray-700 leading-relaxed text-lg max-w-lg order-3 md:order-2">
-        Celebra la vida y el vínculo con tu compañero peludo con una vela única,
-        hecha para honrar su lugar en tu corazón.
+      <!-- Párrafo -->
+      <p class="text-white leading-relaxed text-lg">
+        Sé el primero en conocer nuestras ediciones especiales. Suscríbete y
+        recibe descuentos, lanzamientos y tips para que tus velitas cuenten aún
+        más historias.
       </p>
 
-      <!-- Botón -->
-      <a
-        href="/"
-        class="flex items-center gap-2 bg-[#FF8F8F] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform order-4 md:order-3"
-      >
-        <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
-        Quiero mi recuerdo especial
-      </a>
+      <!-- Formulario -->
+      <form class="w-full flex flex-col md:flex-row items-center gap-4">
+        <!-- Input -->
+        <input
+          type="email"
+          placeholder="Tu correo electrónico"
+          class="w-full md:flex-1 px-4 py-3 rounded-full border border-[#E1814C] bg-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E1814C] font-bold"
+        />
+
+        <!-- Botón -->
+        <button
+          type="submit"
+          class="flex items-center justify-center gap-2 bg-[#E1814C] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+        >
+          <ion-icon name="paper-plane-outline" class="text-xl text-white"
+          ></ion-icon>
+          Suscríbete
+        </button>
+      </form>
     </div>
-
-    <!-- Columna derecha: imagen -->
-    <div class="flex justify-center md:justify-end order-2 md:order-2">
-      <Image 
-        src={Indexmemoriales} 
-        alt="Vela conmemorativa"
-        class="rounded-xl w-full object-cover"
-        width={1000}
-        height={800}
-      />
-    </div>
-
-  </div>
-</section>
-
-<!-- Seccion Recordatorios -->
-<section class="w-full py-12">
-  <div class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-    
-    <!-- Título (solo visible en móvil) -->
-    <div class="flex justify-center md:hidden order-1">
-      <h2 class="text-2xl md:text-3xl font-bold text-[#A9D3B3]">Recordatorios</h2>
-    </div>
-    
-    <!-- Columna izquierda: imagen -->
-    <div class="flex justify-center md:justify-start order-2 md:order-1">
-      <Image 
-        src={Indexrecordatorios} 
-        alt="Velas personalizadas para celebraciones"
-        class="rounded-xl w-full object-cover"
-        width={1000}
-        height={800}
-      />
-    </div>
-
-    <!-- Columna derecha: título (desktop), texto y botón -->
-    <div class="flex flex-col items-center text-center gap-6 order-4 md:order-2">
-      <!-- Título (solo visible en desktop) -->
-      <h2 class="hidden md:block text-2xl md:text-3xl font-bold text-[#A9D3B3]">Recordatorios</h2>
-
-      <!-- Texto -->
-      <p class="text-gray-700 leading-relaxed text-lg max-w-lg">
-        Convierte cada celebración en un recuerdo inolvidable. Nuestras velas personalizadas 
-        llenan de luz y magia cumpleaños, baby showers, bodas y mucho más.
-      </p>
-
-      <!-- Botón -->
-      <a
-        href="/"
-        class="flex items-center gap-2 bg-[#A9D3B3] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
-      >
-        <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
-        Crear recuerdos brillantes
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- Sección Newsletter -->
-<section class="w-full bg-[#F4B08A] py-12 px-4">
-  <div class="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
-    
-    <!-- Título -->
-    <h2 class="text-2xl md:text-3xl font-bold text-white">Newsletter</h2>
-    
-    <!-- Párrafo -->
-    <p class="text-white leading-relaxed text-lg">
-      Sé el primero en conocer nuestras ediciones especiales. 
-      Suscríbete y recibe descuentos, lanzamientos y tips para que tus velitas cuenten aún más historias.
-    </p>
-
-    <!-- Formulario -->
-    <form class="w-full flex flex-col md:flex-row items-center gap-4">
-      <!-- Input -->
-      <input 
-        type="email" 
-        placeholder="Tu correo electrónico" 
-        class="w-full md:flex-1 px-4 py-3 rounded-full border border-[#E1814C] bg-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E1814C] font-bold"
-      />
-      
-      <!-- Botón -->
-      <button 
-        type="submit"
-        class="flex items-center justify-center gap-2 bg-[#E1814C] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
-      >
-        <ion-icon name="paper-plane-outline" class="text-xl text-white"></ion-icon>
-        Suscríbete
-      </button>
-    </form>
-  </div>
-</section>
-
-
-
+  </section>
 </Layout>
-
