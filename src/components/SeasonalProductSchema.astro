@@ -1,0 +1,28 @@
+---
+// Schema Markup para productos de temporada
+const { products } = Astro.props;
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": products.map((product: any, index: number) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
+      "name": product.name,
+      "description": product.description,
+      "image": product.image,
+      "offers": {
+        "@type": "Offer",
+        "price": product.price,
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/LimitedAvailability",
+        "priceValidUntil": product.validUntil
+      }
+    }
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
