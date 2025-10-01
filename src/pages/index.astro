@@ -12,69 +12,222 @@ import IndexGrid7 from "../assets/images/vela_gatito_personalizada_2.jpg";
 import Indexmemoriales from "../assets/images/Memorial_personalizado, foto.png";
 import Indexrecordatorios from "../assets/images/capibara_cafe.jpg";
 
-// Import Swiper estilos
+// Importa las imágenes de Halloween
+import fantasmasChiwi from "../assets/images/fantasma_chiwi.jpg";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 ---
 
-<Layout>
+<Layout
+  title="Chiwi - Velas Personalizadas Kawaii | Memoriales y Regalos Únicos Colombia 2025"
+  description="Descubre las velas artesanales más kawaii de Colombia. Memoriales para mascotas, regalos personalizados y velas que brillan en la oscuridad. Hechas a mano con amor en cada detalle."
+>
   <!-- Hero Section -->
   <section
-    class="relative min-h-[70vh] flex flex-col items-center justify-center text-white text-center"
+    class="relative min-h-[80vh] flex flex-col items-center justify-center text-white text-center overflow-hidden"
   >
-    <!-- Imagen de fondo -->
+    <!-- Imagen de fondo fija -->
     <div
       class="absolute inset-0 bg-cover bg-center"
       style={`background-image: url(${heroImg.src});`}
     >
     </div>
 
-    <!-- Gradiente -->
-    <div class="absolute inset-0 bg-gradient-to-t from-gray-950 to-zinc-950/10">
+    <!-- Gradiente mejorado -->
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/50 to-gray-950/20"
+    >
     </div>
 
-    <!-- Contenido -->
-    <div class="relative z-10 w-full max-w-7xl px-4 space-y-6">
-      <h1
-        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold uppercase leading-tight"
+    <!-- Elementos decorativos flotantes -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div
+        class="floating-element"
+        style="top: 20%; left: 10%; animation-delay: 0s;"
       >
-        Velitas que cuentan una historia
+        ✨
+      </div>
+      <div
+        class="floating-element"
+        style="top: 60%; right: 15%; animation-delay: 1s;"
+      >
+        💖
+      </div>
+      <div
+        class="floating-element"
+        style="bottom: 30%; left: 20%; animation-delay: 2s;"
+      >
+        🕯️
+      </div>
+      <div
+        class="floating-element"
+        style="top: 40%; right: 25%; animation-delay: 3s;"
+      >
+        🌟
+      </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="relative z-10 w-full max-w-7xl px-4 space-y-8">
+      <!-- Badge superior -->
+      <div class="animate-fade-in-down">
+        <span
+          class="inline-block bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-2 text-sm font-medium text-white/90"
+        >
+          🎨 Hecho a mano con amor en Colombia
+        </span>
+      </div>
+
+      <!-- Título principal con animación -->
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight animate-fade-in-up"
+      >
+        <span class="block">Velitas que</span>
+        <span
+          class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-pink-300 animate-gradient"
+        >
+          cuentan una historia
+        </span>
       </h1>
-      <p class="text-base sm:text-lg md:text-xl lg:text-2xl">
-        Descubre velas personalizadas y memoriales hechas con amor
+
+      <!-- Subtítulo -->
+      <p
+        class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed animate-fade-in-up animation-delay-500"
+      >
+        Velas personalizadas kawaii, memoriales únicos y regalos que despiertan
+        sonrisas.
+        <span class="text-orange-300 font-semibold"
+          >Cada vela cuenta tu historia.</span
+        >
       </p>
 
-      <!-- Botón Hero -->
-      <div class="flex justify-center">
+      <!-- Características destacadas -->
+      <div
+        class="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-1000"
+      >
+        <span
+          class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
+        >
+          🌙 Brillan en la oscuridad
+        </span>
+        <span
+          class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
+        >
+          🎨 100% Personalizables
+        </span>
+        <span
+          class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
+        >
+          💚 Cera de soja natural
+        </span>
+      </div>
+
+      <!-- Botones CTA -->
+      <div
+        class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-1500"
+      >
         <a
-          href="/"
+          href="https://wa.me/573102278592?text=Hola!%20Quiero%20conocer%20sus%20velas%20personalizadas"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 bg-white rounded-full text-black font-bold px-6 py-3 shadow-md hover:scale-105 transition-transform"
+          class="group flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full text-white font-bold px-8 py-4 shadow-2xl hover:scale-110 hover:shadow-orange-500/25 transition-all duration-300"
         >
-          Explora y conoce más
-          <ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
+          <ion-icon
+            name="logo-whatsapp"
+            class="text-2xl group-hover:animate-bounce"></ion-icon>
+          Crear mi vela personalizada
+          <ion-icon
+            name="arrow-forward-outline"
+            class="text-xl group-hover:translate-x-1 transition-transform"
+          ></ion-icon>
         </a>
+
+        <a
+          href="#productos"
+          class="group flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold px-6 py-3 hover:bg-white/20 transition-all duration-300"
+        >
+          Ver catálogo
+          <ion-icon
+            name="chevron-down-outline"
+            class="text-lg group-hover:animate-bounce"></ion-icon>
+        </a>
+      </div>
+    </div>
+
+    <!-- Flecha scroll -->
+    <div
+      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+    >
+      <a
+        href="#productos"
+        class="text-white/60 hover:text-white transition-colors"
+      >
+        <ion-icon name="chevron-down-outline" class="text-3xl"></ion-icon>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sección de Confianza --
+  <section class="bg-gradient-to-r from-orange-50 to-pink-50 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-2">
+          <div
+            class="text-3xl md:text-4xl font-bold text-gray-900 counter"
+            data-target="500"
+          >
+            0
+          </div>
+          <p class="text-gray-600 text-sm md:text-base">Velas creadas</p>
+        </div>
+        <div class="space-y-2">
+          <div
+            class="text-3xl md:text-4xl font-bold text-gray-900 counter"
+            data-target="200"
+          >
+            0
+          </div>
+          <p class="text-gray-600 text-sm md:text-base">Clientes felices</p>
+        </div>
+        <div class="space-y-2">
+          <div
+            class="text-3xl md:text-4xl font-bold text-gray-900 counter"
+            data-target="15"
+          >
+            0
+          </div>
+          <p class="text-gray-600 text-sm md:text-base">Diseños únicos</p>
+        </div>
+        <div class="space-y-2">
+          <div class="text-3xl md:text-4xl font-bold text-gray-900">
+            100<span class="text-orange-500">%</span>
+          </div>
+          <p class="text-gray-600 text-sm md:text-base">Hechas a mano</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Sección Populares -->
-  <!-- Sección Populares -->
-  <section class="w-full min-h-[60vh] py-12 flex items-center">
+  <!-- Sección Productos Populares -->
+  <section id="productos" class="w-full min-h-[60vh] py-16 flex items-center">
     <div class="w-full max-w-7xl mx-auto px-4">
-      <h1
-        class="text-3xl font-bold text-center sm:text-left mb-8 text-Naranja-principal"
-      >
-        Productos Populares
-      </h1>
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Productos <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"
+            >Populares</span
+          >
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Descubre nuestras velas más amadas por clientes de toda Colombia
+        </p>
+      </div>
 
-      <!-- Grid: visible en sm y arriba -->
       <div
         class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
       >
-        <!-- Producto 1 -->
         <div class="flex flex-col">
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900)"
@@ -104,7 +257,6 @@ import "swiper/css/navigation";
           </a>
         </div>
 
-        <!-- Producto 2 -->
         <div class="flex flex-col lg:col-span-2">
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900)"
@@ -134,7 +286,6 @@ import "swiper/css/navigation";
           </a>
         </div>
 
-        <!-- Producto 3 -->
         <div class="flex flex-col">
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900)"
@@ -164,7 +315,6 @@ import "swiper/css/navigation";
           </a>
         </div>
 
-        <!-- Producto 4 -->
         <div class="flex flex-col">
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900)"
@@ -194,7 +344,6 @@ import "swiper/css/navigation";
           </a>
         </div>
 
-        <!-- Producto 5 -->
         <div class="flex flex-col">
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
@@ -224,7 +373,6 @@ import "swiper/css/navigation";
           </a>
         </div>
 
-        <!-- Producto 6 -->
         <div class="flex flex-col">
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
@@ -254,7 +402,6 @@ import "swiper/css/navigation";
           </a>
         </div>
 
-        <!-- Producto 7 -->
         <div class="flex flex-col">
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900)"
@@ -285,7 +432,7 @@ import "swiper/css/navigation";
         </div>
       </div>
 
-      <!-- Carrusel: solo visible en móviles -->
+      <!-- Carrusel móvil -->
       <div class="block sm:hidden">
         <swiper-container
           slides-per-view="1"
@@ -295,7 +442,6 @@ import "swiper/css/navigation";
           loop="true"
           class="w-full"
         >
-          <!-- Producto 1 -->
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -324,7 +470,6 @@ import "swiper/css/navigation";
             </div>
           </swiper-slide>
 
-          <!-- Producto 2 -->
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -353,7 +498,6 @@ import "swiper/css/navigation";
             </div>
           </swiper-slide>
 
-          <!-- Producto 3 -->
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -382,7 +526,6 @@ import "swiper/css/navigation";
             </div>
           </swiper-slide>
 
-          <!-- Producto 4 -->
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -411,7 +554,6 @@ import "swiper/css/navigation";
             </div>
           </swiper-slide>
 
-          <!-- Producto 5 -->
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -440,7 +582,6 @@ import "swiper/css/navigation";
             </div>
           </swiper-slide>
 
-          <!-- Producto 6 -->
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -469,7 +610,6 @@ import "swiper/css/navigation";
             </div>
           </swiper-slide>
 
-          <!-- Producto 7 -->
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -505,162 +645,998 @@ import "swiper/css/navigation";
         </script>
       </div>
 
-      <!-- Botón Ver más -->
-      <div class="mt-10 flex justify-center">
+      <div class="mt-16 flex justify-center">
         <a
           href="/productos"
-          class="flex items-center gap-2 bg-white border border-gray-300 rounded-full text-black font-bold px-6 py-3 shadow-md hover:scale-105 transition-transform"
+          class="group flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:shadow-orange-500/25 transition-all duration-300"
         >
           Ver más productos
+          <ion-icon
+            name="arrow-forward-outline"
+            class="text-xl group-hover:translate-x-1 transition-transform"
+          ></ion-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Productos de Temporada - HALLOWEEN -->
+  <section
+    class="relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900"
+  >
+    <!-- Fondo animado con estrellas -->
+    <div class="absolute inset-0 stars-background"></div>
+
+    <!-- Elementos decorativos flotantes temáticos -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+      <div
+        class="seasonal-float"
+        style="top: 10%; left: 5%; animation-delay: 0s;"
+      >
+        👻
+      </div>
+      <div
+        class="seasonal-float"
+        style="top: 70%; right: 10%; animation-delay: 1s;"
+      >
+        🎃
+      </div>
+      <div
+        class="seasonal-float"
+        style="bottom: 20%; left: 15%; animation-delay: 2s;"
+      >
+        🦇
+      </div>
+      <div
+        class="seasonal-float"
+        style="top: 30%; right: 20%; animation-delay: 3s;"
+      >
+        🌙
+      </div>
+      <div
+        class="seasonal-float"
+        style="bottom: 60%; left: 25%; animation-delay: 1.5s;"
+      >
+        ✨
+      </div>
+      <div
+        class="seasonal-float"
+        style="top: 50%; right: 5%; animation-delay: 2.5s;"
+      >
+        🕯️
+      </div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4">
+<!-- Header de la sección -->
+<div class="text-center mb-16 relative">
+  <!-- Badge de temporada -->
+  <div class="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-sm border-2 border-orange-400 rounded-full px-6 py-2 mb-10 animate-pulse-subtle">
+    <span class="text-2xl">🎃</span>
+    <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">
+      Edición Limitada - Octubre 2025
+    </span>
+    <span class="text-2xl">👻</span>
+  </div>
+
+  <!-- Espacio adicional -->
+  <div class="h-6"></div>
+
+  <!-- Título principal con efecto de brillo -->
+  <h2 class="text-5xl md:text-7xl font-black text-white mb-6 relative inline-block">
+    <span class="relative z-10">
+      Especial
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-purple-400 to-pink-400 animate-gradient-flow">
+        Halloween
+      </span>
+    </span>
+    <div class="absolute -inset-2 bg-gradient-to-r from-orange-500/30 to-purple-500/30 blur-2xl animate-glow"></div>
+  </h2>
+
+  <!-- Subtítulo -->
+  <p class="text-xl md:text-2xl text-purple-200 max-w-3xl mx-auto leading-relaxed">
+    Fantasmas adorables que <span class="text-orange-300 font-bold">brillan en la oscuridad</span>. 
+    Perfectos para decorar tu Halloween con magia kawaii.
+  </p>  
+
+        <!-- Contador regresivo -->
+        <div
+          class="mt-8 inline-flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-orange-500/30"
+        >
+          <ion-icon name="time-outline" class="text-2xl text-orange-400"
+          ></ion-icon>
+          <span class="text-orange-300 font-semibold"
+            >Disponible solo en octubre</span
+          >
+          <div class="flex gap-2">
+            <div class="bg-orange-500/20 rounded px-2 py-1">
+              <span class="text-white font-bold text-sm countdown-days">00</span
+              >
+            </div>
+            <span class="text-white">:</span>
+            <div class="bg-orange-500/20 rounded px-2 py-1">
+              <span class="text-white font-bold text-sm countdown-hours"
+                >00</span
+              >
+            </div>
+            <span class="text-white">:</span>
+            <div class="bg-orange-500/20 rounded px-2 py-1">
+              <span class="text-white font-bold text-sm countdown-minutes"
+                >00</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de productos de temporada -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <!-- Producto 1: Fantasma Gatito -->
+        <div class="group relative seasonal-card">
+          <!-- Badge "NUEVO" -->
+          <div
+            class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+          >
+            NUEVO
+          </div>
+
+          <!-- Badge "Brilla" -->
+          <div
+            class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400"
+          >
+            <ion-icon name="moon-outline" class="text-sm"></ion-icon>
+            Brilla en la oscuridad
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
+          >
+            <!-- Aquí iría la imagen del producto -->
+            <div
+              class="aspect-square bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-9xl group-hover:scale-110 transition-transform duration-500"
+            >
+            <Image 
+      src={fantasmasChiwi} 
+      alt="Fantasma Gatito - Vela Halloween fotoluminiscente"
+      class="w-full aspect-square object-cover group-hover:scale-110 transition-transform duration-500"
+      width={800}
+      height={800}
+    />
+            </div>
+
+            <!-- Efecto de brillo al hover -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"
+            >
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-3">
+            <h3 class="text-2xl font-bold text-white">Fantasma Gatito</h3>
+            <p class="text-purple-200 text-sm">
+              Adorable gatito fantasma con pintura fotoluminiscente. Perfecto
+              para amantes de los gatos.
+            </p>
+
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-3xl font-bold text-orange-400">$18.900</span>
+                <span class="text-gray-400 line-through text-sm ml-2"
+                  >$22.900</span
+                >
+              </div>
+              <span
+                class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded"
+                >-17%</span
+              >
+            </div>
+
+            <a
+              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Fantasma%20Gatito%20Halloween*%20($18.900)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full bg-gradient-to-r from-orange-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+              Pedir ahora
+            </a>
+          </div>
+        </div>
+
+        <!-- Producto 2: Fantasma Perrito -->
+        <div class="group relative seasonal-card">
+          <div
+            class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+          >
+            NUEVO
+          </div>
+
+          <div
+            class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400"
+          >
+            <ion-icon name="moon-outline" class="text-sm"></ion-icon>
+            Brilla en la oscuridad
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
+          >
+            <div
+              class="aspect-square bg-gradient-to-br from-purple-600 to-orange-600 flex items-center justify-center text-9xl group-hover:scale-110 transition-transform duration-500"
+            >
+              👻🐕
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"
+            >
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-3">
+            <h3 class="text-2xl font-bold text-white">Fantasma Perrito</h3>
+            <p class="text-purple-200 text-sm">
+              Tierno perrito fantasma que ilumina tus noches. Para los fanáticos
+              de los perros.
+            </p>
+
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-3xl font-bold text-orange-400">$18.900</span>
+                <span class="text-gray-400 line-through text-sm ml-2"
+                  >$22.900</span
+                >
+              </div>
+              <span
+                class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded"
+                >-17%</span
+              >
+            </div>
+
+            <a
+              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Fantasma%20Perrito%20Halloween*%20($18.900)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full bg-gradient-to-r from-orange-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+              Pedir ahora
+            </a>
+          </div>
+        </div>
+
+        <!-- Producto 3: Pack Dúo Fantasmas -->
+        <div class="group relative seasonal-card md:col-span-2 lg:col-span-1">
+          <div
+            class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+          >
+            PACK ESPECIAL
+          </div>
+
+          <div
+            class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400"
+          >
+            <ion-icon name="moon-outline" class="text-sm"></ion-icon>
+            Brillan en la oscuridad
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-orange-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
+          >
+            <div
+              class="aspect-square bg-gradient-to-br from-pink-600 to-purple-600 flex items-center justify-center text-7xl group-hover:scale-110 transition-transform duration-500"
+            >
+              👻🐱 👻🐕
+            </div>
+
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"
+            >
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-3">
+            <h3 class="text-2xl font-bold text-white">Pack Dúo Fantasmas</h3>
+            <p class="text-purple-200 text-sm">
+              Los dos fantasmas juntos. Ahorra más con este pack especial de
+              Halloween.
+            </p>
+
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-3xl font-bold text-orange-400">$32.900</span>
+                <span class="text-gray-400 line-through text-sm ml-2"
+                  >$45.800</span
+                >
+              </div>
+              <span
+                class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded"
+                >-28%</span
+              >
+            </div>
+
+            <a
+              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20Dúo%20Fantasmas%20Halloween*%20($32.900)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+            >
+              <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+              Pedir pack especial
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Características especiales -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div
+          class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20 text-center"
+        >
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <ion-icon name="moon-outline" class="text-3xl text-white"
+            ></ion-icon>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-2">
+            Brillan en la Oscuridad
+          </h4>
+          <p class="text-purple-200 text-sm">
+            Pintura fotoluminiscente que carga con luz y brilla toda la noche
+          </p>
+        </div>
+
+        <div
+          class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-orange-500/20 text-center"
+        >
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <ion-icon name="calendar-outline" class="text-3xl text-white"
+            ></ion-icon>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-2">Edición Limitada</h4>
+          <p class="text-orange-200 text-sm">
+            Solo disponibles en octubre. ¡No te quedes sin el tuyo!
+          </p>
+        </div>
+
+        <div
+          class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-pink-500/20 text-center"
+        >
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <ion-icon name="heart-outline" class="text-3xl text-white"
+            ></ion-icon>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-2">Diseño Kawaii</h4>
+          <p class="text-pink-200 text-sm">
+            Adorables fantasmas que combinan lo tierno con lo espeluznante
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA Final -->
+      <div class="mt-16 text-center">
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Quiero%20ver%20todos%20los%20diseños%20de%20Halloween"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 via-purple-500 to-pink-500 text-white font-bold px-10 py-5 rounded-full text-lg hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300"
+        >
+          <ion-icon name="logo-whatsapp" class="text-2xl animate-pulse"
+          ></ion-icon>
+          Ver más diseños de Halloween
           <ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Seccion memoriales -->
-  <section class="w-full py-12">
-    <div
-      class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
-    >
-      <!-- Título (solo visible en móvil) -->
-      <div class="flex justify-center md:hidden order-1">
-        <h2 class="text-2xl md:text-3xl font-bold text-[#FF8F8F]">
-          Memoriales
+  <!-- Sección Por qué elegir Chiwi -->
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          ¿Por qué elegir <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"
+            >Chiwi?</span
+          >
         </h2>
-      </div>
-
-      <!-- Columna izquierda: título (desktop), texto y botón -->
-      <div
-        class="flex flex-col items-center text-center gap-6 order-4 md:order-1"
-      >
-        <!-- Título (solo visible en desktop) -->
-        <h2
-          class="hidden md:block text-2xl md:text-3xl font-bold text-[#FF8F8F]"
-        >
-          Memoriales
-        </h2>
-
-        <!-- Texto -->
-        <p
-          class="text-gray-700 leading-relaxed text-lg max-w-lg order-3 md:order-2"
-        >
-          Celebra la vida y el vínculo con tu compañero peludo con una vela
-          única, hecha para honrar su lugar en tu corazón.
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Más que velas, creamos recuerdos que perduran para siempre
         </p>
-
-        <!-- Botón -->
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20¿Que%20opciones%20tienes?"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 bg-[#FF8F8F] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform order-4 md:order-3"
-        >
-          <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
-          Quiero mi recuerdo especial
-        </a>
       </div>
 
-      <!-- Columna derecha: imagen -->
-      <div class="flex justify-center md:justify-end order-2 md:order-2">
-        <Image
-          src={Indexmemoriales}
-          alt="Vela conmemorativa"
-          class="rounded-xl w-full object-cover"
-          width={1000}
-          height={800}
-        />
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center group">
+          <div
+            class="w-20 h-20 bg-gradient-to-r from-orange-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
+          >
+            <ion-icon name="brush-outline" class="text-3xl text-orange-500"
+            ></ion-icon>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">
+            100% Personalizable
+          </h3>
+          <p class="text-gray-600">
+            Cada vela se diseña según tu mascota o idea. No hay dos velas Chiwi
+            iguales en el mundo.
+          </p>
+        </div>
+
+        <div class="text-center group">
+          <div
+            class="w-20 h-20 bg-gradient-to-r from-green-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
+          >
+            <ion-icon name="leaf-outline" class="text-3xl text-green-500"
+            ></ion-icon>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">
+            Materiales Naturales
+          </h3>
+          <p class="text-gray-600">
+            Cera de soja biodegradable y pinturas no tóxicas. Cuidamos tu salud
+            y la del planeta.
+          </p>
+        </div>
+
+        <div class="text-center group">
+          <div
+            class="w-20 h-20 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
+          >
+            <ion-icon name="heart-outline" class="text-3xl text-purple-500"
+            ></ion-icon>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">Hecho con Amor</h3>
+          <p class="text-gray-600">
+            Cada vela es pintada a mano con cariño y dedicación. Se nota en cada
+            detalle.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Seccion Recordatorios -->
-  <section class="w-full py-12">
+  <!-- Sección Memoriales Mejorada -->
+  <section class="relative py-20 overflow-hidden">
     <div
-      class="w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+      class="absolute inset-0 bg-gradient-to-br from-pink-50 via-red-50 to-orange-50"
     >
-      <!-- Título (solo visible en móvil) -->
-      <div class="flex justify-center md:hidden order-1">
-        <h2 class="text-2xl md:text-3xl font-bold text-[#A9D3B3]">
-          Recordatorios
-        </h2>
-      </div>
+    </div>
+    <div
+      class="absolute inset-0 opacity-5"
+      style="background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(0,0,0,.05) 35px, rgba(0,0,0,.05) 70px);"
+    >
+    </div>
 
-      <!-- Columna izquierda: imagen -->
-      <div class="flex justify-center md:justify-start order-2 md:order-1">
-        <Image
-          src={Indexrecordatorios}
-          alt="Velas personalizadas para celebraciones"
-          class="rounded-xl w-full object-cover"
-          width={1000}
-          height={800}
-        />
-      </div>
-
-      <!-- Columna derecha: título (desktop), texto y botón -->
+    <div
+      class="relative w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+    >
       <div
-        class="flex flex-col items-center text-center gap-6 order-4 md:order-2"
+        class="flex flex-col items-center md:items-start text-center md:text-left space-y-6 order-2 md:order-1"
       >
-        <!-- Título (solo visible en desktop) -->
-        <h2
-          class="hidden md:block text-2xl md:text-3xl font-bold text-[#A9D3B3]"
+        <span
+          class="inline-block bg-red-100 text-red-600 px-4 py-2 rounded-full text-sm font-semibold"
         >
-          Recordatorios
+          Con todo nuestro cariño
+        </span>
+
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+          <span class="text-[#FF8F8F]">Memoriales</span> únicos
         </h2>
 
-        <!-- Texto -->
-        <p class="text-gray-700 leading-relaxed text-lg max-w-lg">
+        <p class="text-xl text-gray-700 leading-relaxed max-w-lg">
+          Celebra la vida y el vínculo eterno con tu compañero peludo. Cada
+          memorial es una vela única, hecha para honrar su lugar especial en tu
+          corazón y mantener vivos los mejores recuerdos.
+        </p>
+
+        <div class="space-y-3 w-full">
+          <div class="flex items-start gap-3">
+            <div
+              class="w-6 h-6 bg-[#FF8F8F] rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+            >
+              <ion-icon name="checkmark-outline" class="text-white text-sm"
+              ></ion-icon>
+            </div>
+            <p class="text-gray-700">
+              Diseño personalizado con la foto de tu mascota
+            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div
+              class="w-6 h-6 bg-[#FF8F8F] rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+            >
+              <ion-icon name="checkmark-outline" class="text-white text-sm"
+              ></ion-icon>
+            </div>
+            <p class="text-gray-700">
+              Velas que brillan en la oscuridad como su recuerdo
+            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div
+              class="w-6 h-6 bg-[#FF8F8F] rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+            >
+              <ion-icon name="checkmark-outline" class="text-white text-sm"
+              ></ion-icon>
+            </div>
+            <p class="text-gray-700">Empaque especial con mensaje dedicado</p>
+          </div>
+        </div>
+
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20crear%20un%20memorial%20para%20mi%20mascota"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex items-center gap-3 bg-[#FF8F8F] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
+        >
+          <ion-icon
+            name="paw-outline"
+            class="text-xl text-white group-hover:animate-bounce"></ion-icon>
+          Quiero mi recuerdo especial
+          <ion-icon
+            name="arrow-forward-outline"
+            class="text-lg group-hover:translate-x-1 transition-transform"
+          ></ion-icon>
+        </a>
+      </div>
+
+      <div class="flex justify-center md:justify-end order-1 md:order-2">
+        <div class="relative group">
+          <div
+            class="absolute -inset-4 bg-gradient-to-r from-pink-300 to-orange-300 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"
+          >
+          </div>
+          <Image
+            src={Indexmemoriales}
+            alt="Memorial personalizado para mascotas - Vela conmemorativa"
+            class="relative rounded-2xl w-full object-cover shadow-2xl"
+            width={1000}
+            height={800}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Recordatorios Mejorada -->
+  <section class="relative py-20 overflow-hidden bg-white">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-green-50 via-teal-50 to-blue-50 opacity-50"
+    >
+    </div>
+
+    <div
+      class="relative w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+    >
+      <div class="flex justify-center md:justify-start order-1">
+        <div class="relative group">
+          <div
+            class="absolute -inset-4 bg-gradient-to-r from-green-300 to-blue-300 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"
+          >
+          </div>
+          <Image
+            src={Indexrecordatorios}
+            alt="Velas personalizadas para celebraciones - Recordatorios únicos"
+            class="relative rounded-2xl w-full object-cover shadow-2xl"
+            width={1000}
+            height={800}
+          />
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col items-center md:items-start text-center md:text-left space-y-6 order-2"
+      >
+        <span
+          class="inline-block bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold"
+        >
+          Para tus celebraciones especiales
+        </span>
+
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900">
+          <span class="text-[#A9D3B3]">Recordatorios</span> mágicos
+        </h2>
+
+        <p class="text-xl text-gray-700 leading-relaxed max-w-lg">
           Convierte cada celebración en un recuerdo inolvidable. Nuestras velas
           personalizadas llenan de luz y magia cumpleaños, baby showers, bodas y
           mucho más.
         </p>
 
-        <!-- Botón -->
+        <div class="space-y-3 w-full">
+          <div class="flex items-start gap-3">
+            <div
+              class="w-6 h-6 bg-[#A9D3B3] rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+            >
+              <ion-icon name="checkmark-outline" class="text-white text-sm"
+              ></ion-icon>
+            </div>
+            <p class="text-gray-700">
+              Perfectas para cumpleaños, baby showers y bodas
+            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div
+              class="w-6 h-6 bg-[#A9D3B3] rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+            >
+              <ion-icon name="checkmark-outline" class="text-white text-sm"
+              ></ion-icon>
+            </div>
+            <p class="text-gray-700">
+              Diseños kawaii que alegran cualquier evento
+            </p>
+          </div>
+          <div class="flex items-start gap-3">
+            <div
+              class="w-6 h-6 bg-[#A9D3B3] rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+            >
+              <ion-icon name="checkmark-outline" class="text-white text-sm"
+              ></ion-icon>
+            </div>
+            <p class="text-gray-700">Regalos únicos que todos recordarán</p>
+          </div>
+        </div>
+
         <a
-          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20¿Que%20opciones%20tienes?"
+          href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20crear%20recordatorios%20personalizados"
           target="_blank"
           rel="noopener noreferrer"
-          class="flex items-center gap-2 bg-[#A9D3B3] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+          class="group flex items-center gap-3 bg-[#A9D3B3] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
         >
-          <ion-icon name="paw-outline" class="text-xl text-white"></ion-icon>
+          <ion-icon
+            name="gift-outline"
+            class="text-xl text-white group-hover:animate-bounce"></ion-icon>
           Crear recuerdos brillantes
+          <ion-icon
+            name="arrow-forward-outline"
+            class="text-lg group-hover:translate-x-1 transition-transform"
+          ></ion-icon>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Sección Newsletter -->
-  <section class="w-full bg-[#F4B08A] py-12 px-4">
-    <div class="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
-      <!-- Título -->
-      <h2 class="text-2xl md:text-3xl font-bold text-white">Newsletter</h2>
+  <!-- Sección Newsletter Mejorada -->
+  <section class="relative w-full py-20 px-4 overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-[#F4B08A] via-[#F49C6E] to-[#E1814C]"
+    >
+    </div>
+    <div
+      class="absolute inset-0 opacity-10"
+      style="background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 20px 20px;"
+    >
+    </div>
 
-      <!-- Párrafo -->
-      <p class="text-white leading-relaxed text-lg">
-        Sé el primero en conocer nuestras ediciones especiales. Suscríbete y
-        recibe descuentos, lanzamientos y tips para que tus velitas cuenten aún
-        más historias.
+    <div
+      class="relative max-w-3xl mx-auto flex flex-col items-center text-center gap-8"
+    >
+      <div class="space-y-4">
+        <span
+          class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white"
+        >
+          Únete a la familia Chiwi
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">
+          No te pierdas nuestras ediciones especiales
+        </h2>
+      </div>
+
+      <p class="text-white/90 leading-relaxed text-lg max-w-2xl">
+        Sé el primero en conocer nuestros nuevos diseños. Suscríbete y recibe
+        descuentos exclusivos, lanzamientos anticipados y tips para que tus
+        velitas cuenten aún más historias.
       </p>
 
-      <!-- Formulario -->
       <form class="w-full flex flex-col md:flex-row items-center gap-4">
-        <!-- Input -->
         <input
           type="email"
-          placeholder="Tu correo electrónico"
-          class="w-full md:flex-1 px-4 py-3 rounded-full border border-[#E1814C] bg-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-[#E1814C] font-bold"
+          placeholder="tu@correo.com"
+          required
+          class="w-full md:flex-1 px-6 py-4 rounded-full border-2 border-white/30 bg-white/90 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:bg-white font-medium text-gray-900"
         />
 
-        <!-- Botón -->
         <button
           type="submit"
-          class="flex items-center justify-center gap-2 bg-[#E1814C] text-white font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+          class="group flex items-center justify-center gap-3 bg-white text-[#E1814C] font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300 w-full md:w-auto"
         >
-          <ion-icon name="paper-plane-outline" class="text-xl text-white"
+          <ion-icon
+            name="paper-plane-outline"
+            class="text-xl group-hover:translate-x-1 transition-transform"
           ></ion-icon>
-          Suscríbete
+          Suscribirme
         </button>
       </form>
+
+      <p class="text-white/70 text-sm">
+        Respetamos tu privacidad. Sin spam, solo amor y velas kawaii.
+      </p>
     </div>
   </section>
 </Layout>
+
+<style>
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes gradient {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-fade-in-down {
+    animation: fadeInDown 1s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-1500 {
+    animation-delay: 1.5s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+    animation-fill-mode: both;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  .floating-element {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  /* Fondo de estrellas animadas */
+  .stars-background {
+    background-image: radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 60%, white, transparent);
+    background-size: 200% 200%;
+    animation: twinkle 5s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  /* Elementos flotantes de temporada */
+  .seasonal-float {
+    position: absolute;
+    font-size: 3rem;
+    animation: float-seasonal 4s ease-in-out infinite;
+    opacity: 0.4;
+    filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.5));
+  }
+
+  @keyframes float-seasonal {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-30px) rotate(10deg);
+    }
+  }
+
+  /* Pulso sutil */
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+
+  /* Bounce sutil */
+  @keyframes bounce-subtle {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 2s ease-in-out infinite;
+  }
+
+  /* Gradiente fluido */
+  @keyframes gradient-flow {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-flow {
+    background-size: 200% 200%;
+    animation: gradient-flow 3s ease infinite;
+  }
+
+  /* Efecto de brillo */
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  /* Tarjeta de temporada */
+  .seasonal-card {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .seasonal-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .seasonal-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .seasonal-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+</style>
+
+<script>
+  // Counter animation
+  const counters = document.querySelectorAll(".counter");
+  const observerOptions = {
+    threshold: 0.5,
+    rootMargin: "0px",
+  };
+
+  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const counter = entry.target as HTMLElement;
+        const target = parseInt(counter.getAttribute("data-target") || "0");
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+
+        const updateCounter = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current).toString();
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target.toString();
+          }
+        };
+
+        updateCounter();
+        observer.unobserve(counter);
+      }
+    });
+  };
+
+  const observer = new IntersectionObserver(observerCallback, observerOptions);
+  counters.forEach((counter) => observer.observe(counter));
+
+  // Contador regresivo hasta fin de octubre
+  function updateCountdown() {
+    const now = new Date();
+    const endOfOctober = new Date(now.getFullYear(), 10, 1, 0, 0, 0); // Nov 1, 00:00:00
+
+    if (now.getMonth() !== 9) {
+      // Si no es octubre
+      // Mostrar "00:00:00"
+      document
+        .querySelectorAll(
+          ".countdown-days, .countdown-hours, .countdown-minutes"
+        )
+        .forEach((el) => {
+          el.textContent = "00";
+        });
+      return;
+    }
+
+    const diff = endOfOctober.getTime() - now.getTime();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    const daysEl = document.querySelector(".countdown-days");
+    const hoursEl = document.querySelector(".countdown-hours");
+    const minutesEl = document.querySelector(".countdown-minutes");
+
+    if (daysEl) daysEl.textContent = days.toString().padStart(2, "0");
+    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, "0");
+    if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, "0");
+  }
+
+  // Actualizar cada minuto
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
