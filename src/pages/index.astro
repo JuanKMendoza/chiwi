@@ -902,135 +902,162 @@ import "swiper/css/navigation";
 
   <!-- Schema Markup Productos Populares -->
   <!-- Schema Markup Productos Populares CORREGIDO -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Productos Populares Chiwi",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "item": {
-        "@type": "Product",
-        "name": "Perrito Cocker",
-        "description": "Vela personalizada con diseño kawaii de perrito Cocker hecha a mano en Colombia con cera de soja natural",
-        "image": new URL(IndexGrid1.src, Astro.site || 'https://chiwicolombia.com').href,
-        "brand": { 
-          "@type": "Brand", 
-          "name": "Chiwi" 
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Productos Populares Chiwi",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          item: {
+            "@type": "Product",
+            name: "Perrito Cocker",
+            description:
+              "Vela personalizada con diseño kawaii de perrito Cocker hecha a mano en Colombia con cera de soja natural",
+            image: new URL(
+              IndexGrid1.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: {
+              "@type": "Brand",
+              name: "Chiwi",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "14900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+              url: "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*",
+            },
+          },
         },
-        "offers": {
-          "@type": "Offer",
-          "price": "14900",
-          "priceCurrency": "COP",
-          "availability": "https://schema.org/InStock",
-          "url": "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "item": {
-        "@type": "Product",
-        "name": "Familia de Ositos",
-        "description": "Velas decorativas kawaii con diseño de familia de ositos hechas a mano en Colombia",
-        "image": new URL(IndexGrid2.src, Astro.site || 'https://chiwicolombia.com').href,
-        "brand": { 
-          "@type": "Brand", 
-          "name": "Chiwi" 
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: {
+            "@type": "Product",
+            name: "Familia de Ositos",
+            description:
+              "Velas decorativas kawaii con diseño de familia de ositos hechas a mano en Colombia",
+            image: new URL(
+              IndexGrid2.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: {
+              "@type": "Brand",
+              name: "Chiwi",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "19900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+              url: "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*",
+            },
+          },
         },
-        "offers": {
-          "@type": "Offer",
-          "price": "19900",
-          "priceCurrency": "COP",
-          "availability": "https://schema.org/InStock",
-          "url": "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "item": {
-        "@type": "Product",
-        "name": "Capibara Acostado Beige",
-        "description": "Vela kawaii artesanal con diseño de capibara acostado color beige hecha en Colombia",
-        "image": new URL(IndexGrid3.src, Astro.site || 'https://chiwicolombia.com').href,
-        "brand": { 
-          "@type": "Brand", 
-          "name": "Chiwi" 
+        {
+          "@type": "ListItem",
+          position: 3,
+          item: {
+            "@type": "Product",
+            name: "Capibara Acostado Beige",
+            description:
+              "Vela kawaii artesanal con diseño de capibara acostado color beige hecha en Colombia",
+            image: new URL(
+              IndexGrid3.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: {
+              "@type": "Brand",
+              name: "Chiwi",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "15900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
         },
-        "offers": {
-          "@type": "Offer",
-          "price": "15900",
-          "priceCurrency": "COP",
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "item": {
-        "@type": "Product",
-        "name": "Capibara Café",
-        "description": "Vela artesanal kawaii con diseño de capibara color café hecha a mano en Colombia",
-        "image": new URL(IndexGrid4.src, Astro.site || 'https://chiwicolombia.com').href,
-        "brand": { 
-          "@type": "Brand", 
-          "name": "Chiwi" 
+        {
+          "@type": "ListItem",
+          position: 4,
+          item: {
+            "@type": "Product",
+            name: "Capibara Café",
+            description:
+              "Vela artesanal kawaii con diseño de capibara color café hecha a mano en Colombia",
+            image: new URL(
+              IndexGrid4.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: {
+              "@type": "Brand",
+              name: "Chiwi",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "15900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
         },
-        "offers": {
-          "@type": "Offer",
-          "price": "15900",
-          "priceCurrency": "COP",
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "item": {
-        "@type": "Product",
-        "name": "Cajita Recuerdo",
-        "description": "Kit completo con vela personalizada y empaque especial para ocasiones especiales hecho en Colombia",
-        "image": new URL(IndexGrid5.src, Astro.site || 'https://chiwicolombia.com').href,
-        "brand": { 
-          "@type": "Brand", 
-          "name": "Chiwi" 
+        {
+          "@type": "ListItem",
+          position: 5,
+          item: {
+            "@type": "Product",
+            name: "Cajita Recuerdo",
+            description:
+              "Kit completo con vela personalizada y empaque especial para ocasiones especiales hecho en Colombia",
+            image: new URL(
+              IndexGrid5.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: {
+              "@type": "Brand",
+              name: "Chiwi",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "29900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
         },
-        "offers": {
-          "@type": "Offer",
-          "price": "29900",
-          "priceCurrency": "COP",
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    },
-    {
-      "@type": "ListItem",
-      "position": 6,
-      "item": {
-        "@type": "Product",
-        "name": "Gatito Personalizado",
-        "description": "Vela kawaii hecha a mano con diseño personalizado de gatito en Colombia",
-        "image": new URL(IndexGrid7.src, Astro.site || 'https://chiwicolombia.com').href,
-        "brand": { 
-          "@type": "Brand", 
-          "name": "Chiwi" 
+        {
+          "@type": "ListItem",
+          position: 6,
+          item: {
+            "@type": "Product",
+            name: "Gatito Personalizado",
+            description:
+              "Vela kawaii hecha a mano con diseño personalizado de gatito en Colombia",
+            image: new URL(
+              IndexGrid7.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: {
+              "@type": "Brand",
+              name: "Chiwi",
+            },
+            offers: {
+              "@type": "Offer",
+              price: "19900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
         },
-        "offers": {
-          "@type": "Offer",
-          "price": "19900",
-          "priceCurrency": "COP",
-          "availability": "https://schema.org/InStock"
-        }
-      }
-    }
-  ]
-})} />
+      ],
+    })}
+  />
 
   <!-- Sección Productos de Temporada - HALLOWEEN -->
   <!-- Sección Productos de Temporada - HALLOWEEN OPTIMIZADO -->
