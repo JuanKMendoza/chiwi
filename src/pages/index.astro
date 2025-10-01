@@ -17,9 +17,8 @@ import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
 import SeasonalProductSchema from "../components/SeasonalProductSchema.astro";
 
 // Obtener URLs públicas para el Schema
-const baseUrl = Astro.site?.href || 'https://chiwicolombia.com';
+const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
 const fantasmasChiwiUrl = new URL(fantasmasChiwiImg.src, baseUrl).href;
-
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -32,7 +31,7 @@ import "swiper/css/navigation";
 >
   <!-- Hero Section -->
   <section
-    class="relative min-h-[80vh] flex flex-col items-center justify-center text-white text-center overflow-hidden"
+    class="relative min-h-[90vh] flex flex-col items-center justify-center text-white text-center overflow-hidden"
   >
     <!-- Imagen de fondo fija -->
     <div
@@ -217,10 +216,18 @@ import "swiper/css/navigation";
   </section>
 
   <!-- Sección Productos Populares -->
-  <section id="productos" class="w-full min-h-[60vh] py-16 flex items-center">
+  <!-- Sección Productos Populares OPTIMIZADA -->
+  <section
+    id="productos"
+    class="w-full min-h-[60vh] py-16 flex items-center"
+    aria-labelledby="productos-heading"
+  >
     <div class="w-full max-w-7xl mx-auto px-4">
       <div class="text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h2
+          id="productos-heading"
+          class="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+        >
           Productos <span
             class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"
             >Populares</span
@@ -231,214 +238,394 @@ import "swiper/css/navigation";
         </p>
       </div>
 
+      <!-- Grid Desktop -->
       <div
         class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
       >
-        <div class="flex flex-col">
+        <!-- Producto 1: Perrito Cocker -->
+        <article
+          class="flex flex-col"
+          itemscope
+          itemtype="https://schema.org/Product"
+        >
+          <meta itemprop="name" content="Perrito Cocker" />
+          <meta itemprop="price" content="14900" />
+          <meta itemprop="priceCurrency" content="COP" />
+
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900)"
             target="_blank"
             class="block w-full relative group"
+            itemprop="url"
           >
             <Image
               src={IndexGrid1}
-              alt="Perrito Cocker - Vela personalizada"
+              alt="Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia"
               class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
               width={800}
               height={600}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+              itemprop="image"
             />
           </a>
           <div class="mt-3 space-y-1">
-            <p class="font-bold text-lg">Perrito Cocker</p>
-            <p class="font-semibold text-gray-800">$14.900</p>
+            <h3 class="font-bold text-lg" itemprop="name">Perrito Cocker</h3>
+            <p
+              class="font-semibold text-gray-800"
+              itemprop="offers"
+              itemscope
+              itemtype="https://schema.org/Offer"
+            >
+              <span itemprop="price">$14.900</span>
+              <meta itemprop="priceCurrency" content="COP" />
+            </p>
           </div>
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*%20($14.900).%20¿Está%20disponible?"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+            aria-label="Consultar disponibilidad de Perrito Cocker por WhatsApp"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
             <span class="text-sm">Consultar</span>
           </a>
-        </div>
+        </article>
 
-        <div class="flex flex-col lg:col-span-2">
+        <!-- Producto 2: Familia de Ositos -->
+        <article
+          class="flex flex-col lg:col-span-2"
+          itemscope
+          itemtype="https://schema.org/Product"
+        >
+          <meta itemprop="name" content="Familia de Ositos" />
+          <meta itemprop="price" content="19900" />
+          <meta itemprop="priceCurrency" content="COP" />
+
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900)"
             target="_blank"
             class="block w-full relative group"
+            itemprop="url"
           >
             <Image
               src={IndexGrid2}
-              alt="Familia de Ositos - Velas decorativas"
+              alt="Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia"
               class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
               width={800}
               height={600}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+              itemprop="image"
             />
           </a>
           <div class="mt-3 space-y-1">
-            <p class="font-bold text-lg">Familia de Ositos</p>
-            <p class="font-semibold text-gray-800">$19.900</p>
+            <h3 class="font-bold text-lg" itemprop="name">Familia de Ositos</h3>
+            <p
+              class="font-semibold text-gray-800"
+              itemprop="offers"
+              itemscope
+              itemtype="https://schema.org/Offer"
+            >
+              <span itemprop="price">$19.900</span>
+              <meta itemprop="priceCurrency" content="COP" />
+            </p>
           </div>
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*%20($19.900).%20¿Está%20disponible?"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+            aria-label="Consultar disponibilidad de Familia de Ositos por WhatsApp"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
             <span class="text-sm">Consultar</span>
           </a>
-        </div>
+        </article>
 
-        <div class="flex flex-col">
+        <!-- Producto 3: Capibara Acostado Beige -->
+        <article
+          class="flex flex-col"
+          itemscope
+          itemtype="https://schema.org/Product"
+        >
+          <meta itemprop="name" content="Capibara Acostado Beige" />
+          <meta itemprop="price" content="15900" />
+          <meta itemprop="priceCurrency" content="COP" />
+
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900)"
             target="_blank"
             class="block w-full relative group"
+            itemprop="url"
           >
             <Image
               src={IndexGrid3}
-              alt="Capibara Acostado Beige - Vela kawaii"
+              alt="Capibara Acostado Beige - Vela kawaii artesanal hecha en Colombia"
               class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
               width={800}
               height={600}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+              itemprop="image"
             />
           </a>
           <div class="mt-3 space-y-1">
-            <p class="font-bold text-lg">Capibara Acostado Beige</p>
-            <p class="font-semibold text-gray-800">$15.900</p>
+            <h3 class="font-bold text-lg" itemprop="name">
+              Capibara Acostado Beige
+            </h3>
+            <p
+              class="font-semibold text-gray-800"
+              itemprop="offers"
+              itemscope
+              itemtype="https://schema.org/Offer"
+            >
+              <span itemprop="price">$15.900</span>
+              <meta itemprop="priceCurrency" content="COP" />
+            </p>
           </div>
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Acostado%20Beige*%20($15.900).%20¿Está%20disponible?"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+            aria-label="Consultar disponibilidad de Capibara Acostado Beige por WhatsApp"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
             <span class="text-sm">Consultar</span>
           </a>
-        </div>
+        </article>
 
-        <div class="flex flex-col">
+        <!-- Producto 4: Capibara Café -->
+        <article
+          class="flex flex-col"
+          itemscope
+          itemtype="https://schema.org/Product"
+        >
+          <meta itemprop="name" content="Capibara Café" />
+          <meta itemprop="price" content="15900" />
+          <meta itemprop="priceCurrency" content="COP" />
+
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900)"
             target="_blank"
             class="block w-full relative group"
+            itemprop="url"
           >
             <Image
               src={IndexGrid4}
-              alt="Capibara Café - Vela artesanal"
+              alt="Capibara Café - Vela artesanal kawaii hecha a mano en Colombia"
               class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
               width={800}
               height={600}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+              itemprop="image"
             />
           </a>
           <div class="mt-3 space-y-1">
-            <p class="font-bold text-lg">Capibara Café</p>
-            <p class="font-semibold text-gray-800">$15.900</p>
+            <h3 class="font-bold text-lg" itemprop="name">Capibara Café</h3>
+            <p
+              class="font-semibold text-gray-800"
+              itemprop="offers"
+              itemscope
+              itemtype="https://schema.org/Offer"
+            >
+              <span itemprop="price">$15.900</span>
+              <meta itemprop="priceCurrency" content="COP" />
+            </p>
           </div>
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Capibara%20Café*%20($15.900).%20¿Está%20disponible?"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+            aria-label="Consultar disponibilidad de Capibara Café por WhatsApp"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
             <span class="text-sm">Consultar</span>
           </a>
-        </div>
+        </article>
 
-        <div class="flex flex-col">
+        <!-- Producto 5: Cajita Recuerdo -->
+        <article
+          class="flex flex-col"
+          itemscope
+          itemtype="https://schema.org/Product"
+        >
+          <meta itemprop="name" content="Cajita Recuerdo" />
+          <meta itemprop="price" content="29900" />
+          <meta itemprop="priceCurrency" content="COP" />
+
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
             target="_blank"
             class="block w-full relative group"
+            itemprop="url"
           >
             <Image
               src={IndexGrid5}
-              alt="Cajita Recuerdo - Kit completo con vela"
+              alt="Cajita Recuerdo - Kit completo con vela personalizada hecha a mano"
               class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
               width={800}
               height={600}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+              itemprop="image"
             />
           </a>
           <div class="mt-3 space-y-1">
-            <p class="font-bold text-lg">Cajita Recuerdo</p>
-            <p class="font-semibold text-gray-800">$29.900</p>
+            <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdo</h3>
+            <p
+              class="font-semibold text-gray-800"
+              itemprop="offers"
+              itemscope
+              itemtype="https://schema.org/Offer"
+            >
+              <span itemprop="price">$29.900</span>
+              <meta itemprop="priceCurrency" content="COP" />
+            </p>
           </div>
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+            aria-label="Consultar disponibilidad de Cajita Recuerdo por WhatsApp"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
             <span class="text-sm">Consultar</span>
           </a>
-        </div>
+        </article>
 
-        <div class="flex flex-col">
+        <!-- Producto 6: Cajita Recuerdo (variante 2) -->
+        <article
+          class="flex flex-col"
+          itemscope
+          itemtype="https://schema.org/Product"
+        >
+          <meta itemprop="name" content="Cajita Recuerdo" />
+          <meta itemprop="price" content="29900" />
+          <meta itemprop="priceCurrency" content="COP" />
+
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900)"
             target="_blank"
             class="block w-full relative group"
+            itemprop="url"
           >
             <Image
               src={IndexGrid6}
-              alt="Cajita Recuerdo - Regalo especial"
+              alt="Cajita Recuerdo - Regalo especial con vela personalizada"
               class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
               width={800}
               height={600}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+              itemprop="image"
             />
           </a>
           <div class="mt-3 space-y-1">
-            <p class="font-bold text-lg">Cajita Recuerdo</p>
-            <p class="font-semibold text-gray-800">$29.900</p>
+            <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdo</h3>
+            <p
+              class="font-semibold text-gray-800"
+              itemprop="offers"
+              itemscope
+              itemtype="https://schema.org/Offer"
+            >
+              <span itemprop="price">$29.900</span>
+              <meta itemprop="priceCurrency" content="COP" />
+            </p>
           </div>
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Cajita%20Recuerdo*%20($29.900).%20¿Está%20disponible?"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+            aria-label="Consultar disponibilidad de Cajita Recuerdo por WhatsApp"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
             <span class="text-sm">Consultar</span>
           </a>
-        </div>
+        </article>
 
-        <div class="flex flex-col">
+        <!-- Producto 7: Gatito Personalizado -->
+        <article
+          class="flex flex-col"
+          itemscope
+          itemtype="https://schema.org/Product"
+        >
+          <meta itemprop="name" content="Gatito Personalizado" />
+          <meta itemprop="price" content="19900" />
+          <meta itemprop="priceCurrency" content="COP" />
+
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900)"
             target="_blank"
             class="block w-full relative group"
+            itemprop="url"
           >
             <Image
               src={IndexGrid7}
-              alt="Gatito personalizado - Vela hecha a mano"
+              alt="Gatito Personalizado - Vela kawaii hecha a mano en Colombia"
               class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
               width={800}
               height={600}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+              itemprop="image"
             />
           </a>
           <div class="mt-3 space-y-1">
-            <p class="font-bold text-lg">Gatito personalizado</p>
-            <p class="font-semibold text-gray-800">$19.900</p>
+            <h3 class="font-bold text-lg" itemprop="name">
+              Gatito Personalizado
+            </h3>
+            <p
+              class="font-semibold text-gray-800"
+              itemprop="offers"
+              itemscope
+              itemtype="https://schema.org/Offer"
+            >
+              <span itemprop="price">$19.900</span>
+              <meta itemprop="priceCurrency" content="COP" />
+            </p>
           </div>
           <a
             href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900).%20¿Está%20disponible?"
             target="_blank"
             rel="noopener noreferrer"
             class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:bg-[#20BA5A] transition-all"
+            aria-label="Consultar disponibilidad de Gatito Personalizado por WhatsApp"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
             <span class="text-sm">Consultar</span>
           </a>
-        </div>
+        </article>
       </div>
 
-      <!-- Carrusel móvil -->
+      <!-- Carrusel móvil - MANTIENE img tags porque Swiper requiere HTML estándar -->
       <div class="block sm:hidden">
         <swiper-container
           slides-per-view="1"
@@ -448,6 +635,9 @@ import "swiper/css/navigation";
           loop="true"
           class="w-full"
         >
+          <!-- Los swiper-slides se mantienen con <img> porque Swiper Web Components requiere HTML estándar -->
+          <!-- No se puede usar el componente Image de Astro dentro de swiper-container -->
+
           <swiper-slide class="flex flex-col items-center pb-12">
             <div class="w-full px-4">
               <a
@@ -456,8 +646,10 @@ import "swiper/css/navigation";
               >
                 <img
                   src={IndexGrid1.src}
-                  alt="Perrito Cocker"
+                  alt="Perrito Cocker - Vela personalizada kawaii"
                   class="rounded-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -469,8 +661,12 @@ import "swiper/css/navigation";
                 target="_blank"
                 rel="noopener noreferrer"
                 class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                aria-label="Consultar disponibilidad de Perrito Cocker"
               >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <ion-icon
+                  name="logo-whatsapp"
+                  class="text-xl"
+                  aria-hidden="true"></ion-icon>
                 <span class="text-sm">Consultar disponibilidad</span>
               </a>
             </div>
@@ -484,8 +680,10 @@ import "swiper/css/navigation";
               >
                 <img
                   src={IndexGrid2.src}
-                  alt="Familia de Ositos"
+                  alt="Familia de Ositos - Velas decorativas kawaii"
                   class="rounded-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -497,8 +695,12 @@ import "swiper/css/navigation";
                 target="_blank"
                 rel="noopener noreferrer"
                 class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                aria-label="Consultar disponibilidad de Familia de Ositos"
               >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <ion-icon
+                  name="logo-whatsapp"
+                  class="text-xl"
+                  aria-hidden="true"></ion-icon>
                 <span class="text-sm">Consultar disponibilidad</span>
               </a>
             </div>
@@ -512,8 +714,10 @@ import "swiper/css/navigation";
               >
                 <img
                   src={IndexGrid3.src}
-                  alt="Capibara Acostado Beige"
+                  alt="Capibara Acostado Beige - Vela kawaii"
                   class="rounded-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -525,8 +729,12 @@ import "swiper/css/navigation";
                 target="_blank"
                 rel="noopener noreferrer"
                 class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                aria-label="Consultar disponibilidad de Capibara Acostado Beige"
               >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <ion-icon
+                  name="logo-whatsapp"
+                  class="text-xl"
+                  aria-hidden="true"></ion-icon>
                 <span class="text-sm">Consultar disponibilidad</span>
               </a>
             </div>
@@ -540,8 +748,10 @@ import "swiper/css/navigation";
               >
                 <img
                   src={IndexGrid4.src}
-                  alt="Capibara Café"
+                  alt="Capibara Café - Vela artesanal kawaii"
                   class="rounded-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -553,8 +763,12 @@ import "swiper/css/navigation";
                 target="_blank"
                 rel="noopener noreferrer"
                 class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                aria-label="Consultar disponibilidad de Capibara Café"
               >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <ion-icon
+                  name="logo-whatsapp"
+                  class="text-xl"
+                  aria-hidden="true"></ion-icon>
                 <span class="text-sm">Consultar disponibilidad</span>
               </a>
             </div>
@@ -568,8 +782,10 @@ import "swiper/css/navigation";
               >
                 <img
                   src={IndexGrid5.src}
-                  alt="Cajita Recuerdo"
+                  alt="Cajita Recuerdo - Kit completo"
                   class="rounded-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -581,8 +797,12 @@ import "swiper/css/navigation";
                 target="_blank"
                 rel="noopener noreferrer"
                 class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                aria-label="Consultar disponibilidad de Cajita Recuerdo"
               >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <ion-icon
+                  name="logo-whatsapp"
+                  class="text-xl"
+                  aria-hidden="true"></ion-icon>
                 <span class="text-sm">Consultar disponibilidad</span>
               </a>
             </div>
@@ -596,8 +816,10 @@ import "swiper/css/navigation";
               >
                 <img
                   src={IndexGrid6.src}
-                  alt="Cajita Recuerdo"
+                  alt="Cajita Recuerdo - Regalo especial"
                   class="rounded-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
@@ -609,8 +831,12 @@ import "swiper/css/navigation";
                 target="_blank"
                 rel="noopener noreferrer"
                 class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                aria-label="Consultar disponibilidad de Cajita Recuerdo"
               >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <ion-icon
+                  name="logo-whatsapp"
+                  class="text-xl"
+                  aria-hidden="true"></ion-icon>
                 <span class="text-sm">Consultar disponibilidad</span>
               </a>
             </div>
@@ -624,21 +850,27 @@ import "swiper/css/navigation";
               >
                 <img
                   src={IndexGrid7.src}
-                  alt="Gatito personalizado"
+                  alt="Gatito Personalizado - Vela kawaii hecha a mano"
                   class="rounded-xl w-full h-64 object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </a>
             </div>
             <div class="mt-3 text-center w-full px-4 space-y-2">
-              <p class="font-bold text-lg">Gatito personalizado</p>
+              <p class="font-bold text-lg">Gatito Personalizado</p>
               <p class="font-semibold text-gray-800">$19.900</p>
               <a
                 href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Gatito%20personalizado*%20($19.900).%20¿Está%20disponible?"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="mt-3 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                aria-label="Consultar disponibilidad de Gatito Personalizado"
               >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
+                <ion-icon
+                  name="logo-whatsapp"
+                  class="text-xl"
+                  aria-hidden="true"></ion-icon>
                 <span class="text-sm">Consultar disponibilidad</span>
               </a>
             </div>
@@ -651,520 +883,826 @@ import "swiper/css/navigation";
         </script>
       </div>
 
+      <!-- Botón Ver más -->
       <div class="mt-16 flex justify-center">
         <a
           href="/productos"
           class="group flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:shadow-orange-500/25 transition-all duration-300"
+          aria-label="Ver más productos de Chiwi"
         >
           Ver más productos
           <ion-icon
             name="arrow-forward-outline"
             class="text-xl group-hover:translate-x-1 transition-transform"
-          ></ion-icon>
+            aria-hidden="true"></ion-icon>
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Schema Markup Productos Populares -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Productos Populares Chiwi",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          item: {
+            "@type": "Product",
+            name: "Perrito Cocker",
+            description:
+              "Vela personalizada con diseño kawaii de perrito Cocker hecha a mano",
+            image: new URL(
+              IndexGrid1.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: { "@type": "Brand", name: "Chiwi" },
+            offers: {
+              "@type": "Offer",
+              price: "14900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+              url: "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*",
+            },
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: {
+            "@type": "Product",
+            name: "Familia de Ositos",
+            description:
+              "Velas decorativas kawaii con diseño de familia de ositos hechas a mano",
+            image: new URL(
+              IndexGrid2.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: { "@type": "Brand", name: "Chiwi" },
+            offers: {
+              "@type": "Offer",
+              price: "19900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+              url: "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*",
+            },
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          item: {
+            "@type": "Product",
+            name: "Capibara Acostado Beige",
+            description:
+              "Vela kawaii artesanal con diseño de capibara acostado color beige",
+            image: new URL(
+              IndexGrid3.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: { "@type": "Brand", name: "Chiwi" },
+            offers: {
+              "@type": "Offer",
+              price: "15900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          item: {
+            "@type": "Product",
+            name: "Capibara Café",
+            description:
+              "Vela artesanal kawaii con diseño de capibara color café hecha a mano",
+            image: new URL(
+              IndexGrid4.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: { "@type": "Brand", name: "Chiwi" },
+            offers: {
+              "@type": "Offer",
+              price: "15900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
+          item: {
+            "@type": "Product",
+            name: "Cajita Recuerdo",
+            description:
+              "Kit completo con vela personalizada y empaque especial para ocasiones especiales",
+            image: new URL(
+              IndexGrid5.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: { "@type": "Brand", name: "Chiwi" },
+            offers: {
+              "@type": "Offer",
+              price: "29900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 6,
+          item: {
+            "@type": "Product",
+            name: "Gatito Personalizado",
+            description:
+              "Vela kawaii hecha a mano con diseño personalizado de gatito",
+            image: new URL(
+              IndexGrid7.src,
+              Astro.site || "https://chiwicolombia.com"
+            ).href,
+            brand: { "@type": "Brand", name: "Chiwi" },
+            offers: {
+              "@type": "Offer",
+              price: "19900",
+              priceCurrency: "COP",
+              availability: "https://schema.org/InStock",
+            },
+          },
+        },
+      ],
+    })}
+  />
+
   <!-- Sección Productos de Temporada - HALLOWEEN -->
   <!-- Sección Productos de Temporada - HALLOWEEN OPTIMIZADO -->
-<section class="seasonal-section relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900">
-  <!-- Fondo simplificado con estrellas -->
-  <div class="absolute inset-0 stars-background"></div>
-  
-  <!-- Elementos decorativos flotantes REDUCIDOS (solo 3) -->
-  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-    <div class="seasonal-float" style="top: 15%; left: 8%; animation-delay: 0s;">👻</div>
-    <div class="seasonal-float" style="top: 70%; right: 12%; animation-delay: 1.5s;">🎃</div>
-    <div class="seasonal-float" style="bottom: 25%; left: 18%; animation-delay: 3s;">🌙</div>
-  </div>
+  <section
+    class="seasonal-section relative py-24 overflow-hidden bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900"
+  >
+    <!-- Fondo simplificado con estrellas -->
+    <div class="absolute inset-0 stars-background"></div>
 
-  <div class="relative max-w-7xl mx-auto px-4">
-    
-    <!-- Header de la sección -->
-    <div class="text-center mb-16 relative">
-      <!-- Badge de temporada -->
-      <div class="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-sm border-2 border-orange-400 rounded-full px-6 py-2 mb-10 animate-pulse-subtle">
-        <span class="text-2xl" aria-hidden="true">🎃</span>
-        <span class="text-orange-300 font-bold text-sm uppercase tracking-wider">
-          Edición Limitada - Octubre 2025
-        </span>
-        <span class="text-2xl" aria-hidden="true">👻</span>
-      </div>
-
-      <!-- Espacio adicional -->
-      <div class="h-6"></div>
-
-      <!-- Título principal con efecto de brillo -->
-      <h2 class="text-5xl md:text-7xl font-black text-white mb-6 relative inline-block">
-        <span class="relative z-10">
-          Especial
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-purple-400 to-pink-400 animate-gradient-flow">
-            Halloween
-          </span>
-        </span>
-        <div class="absolute -inset-2 bg-gradient-to-r from-orange-500/30 to-purple-500/30 blur-2xl animate-glow"></div>
-      </h2>
-
-      <!-- Subtítulo -->
-      <p class="text-xl md:text-2xl text-purple-200 max-w-3xl mx-auto leading-relaxed">
-        Fantasmas adorables que <span class="text-orange-300 font-bold">brillan en la oscuridad</span>. 
-        Perfectos para decorar tu Halloween con magia kawaii.
-      </p>
-
-      <!-- Contador regresivo -->
-      <div class="mt-8 inline-flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-orange-500/30">
-        <ion-icon name="time-outline" class="text-2xl text-orange-400" aria-hidden="true"></ion-icon>
-        <span class="text-orange-300 font-semibold">Disponible solo en octubre</span>
-        <div class="flex gap-2" role="timer" aria-live="polite">
-          <div class="bg-orange-500/20 rounded px-2 py-1">
-            <span class="text-white font-bold text-sm countdown-days" aria-label="días">00</span>
-          </div>
-          <span class="text-white" aria-hidden="true">:</span>
-          <div class="bg-orange-500/20 rounded px-2 py-1">
-            <span class="text-white font-bold text-sm countdown-hours" aria-label="horas">00</span>
-          </div>
-          <span class="text-white" aria-hidden="true">:</span>
-          <div class="bg-orange-500/20 rounded px-2 py-1">
-            <span class="text-white font-bold text-sm countdown-minutes" aria-label="minutos">00</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Grid de productos de temporada -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      
-      <!-- Producto 1: Fantasma Gatito -->
-      <article class="group relative seasonal-card">
-        <!-- Badge "NUEVO" -->
-        <div class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle">
-          NUEVO
-        </div>
-        
-        <!-- Badge "Brilla" -->
-        <div class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400">
-          <ion-icon name="moon-outline" class="text-sm" aria-hidden="true"></ion-icon>
-          Brilla en la oscuridad
-        </div>
-
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300">
-          
-          <!-- Imagen del producto -->
-          <Image 
-  src={fantasmasChiwiImg} 
-  alt="Fantasma Chiwi"
-  class="..."
-  width={800}
-  height={800}
-  loading="lazy"
-  decoding="async"
-  format="webp"
-  quality={85}
-/>
-          
-          <!-- Efecto de brillo al hover -->
-          <div class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"></div>
-        </div>
-
-        <div class="mt-4 space-y-3">
-          <h3 class="text-2xl font-bold text-white">Fantasma Gatito</h3>
-          <p class="text-purple-200 text-sm">Adorable gatito fantasma con pintura fotoluminiscente. Perfecto para amantes de los gatos.</p>
-          
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-3xl font-bold text-orange-400">$18.900</span>
-              <span class="text-gray-400 line-through text-sm ml-2">$22.900</span>
-            </div>
-            <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded" aria-label="descuento">-17%</span>
-          </div>
-
-          <a 
-            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Fantasma%20Gatito%20Halloween*%20($18.900)" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="block w-full bg-gradient-to-r from-orange-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-            aria-label="Pedir Fantasma Gatito por WhatsApp"
-          >
-            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"></ion-icon>
-            Pedir ahora
-          </a>
-        </div>
-      </article>
-
-      <!-- Producto 2: Fantasma Perrito -->
-      <article class="group relative seasonal-card">
-        <div class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle">
-          NUEVO
-        </div>
-        
-        <div class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400">
-          <ion-icon name="moon-outline" class="text-sm" aria-hidden="true"></ion-icon>
-          Brilla en la oscuridad
-        </div>
-
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300">
-          
-          <Image 
-  src={fantasmasChiwiImg} 
-  alt="Fantasma Chiwi"
-  class="..."
-  width={800}
-  height={800}
-  loading="lazy"
-  decoding="async"
-  format="webp"
-  quality={85}
-/>
-          
-          <div class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"></div>
-        </div>
-
-        <div class="mt-4 space-y-3">
-          <h3 class="text-2xl font-bold text-white">Fantasma Perrito</h3>
-          <p class="text-purple-200 text-sm">Tierno perrito fantasma que ilumina tus noches. Para los fanáticos de los perros.</p>
-          
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-3xl font-bold text-orange-400">$18.900</span>
-              <span class="text-gray-400 line-through text-sm ml-2">$22.900</span>
-            </div>
-            <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded" aria-label="descuento">-17%</span>
-          </div>
-
-          <a 
-            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Fantasma%20Perrito%20Halloween*%20($18.900)" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="block w-full bg-gradient-to-r from-orange-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-            aria-label="Pedir Fantasma Perrito por WhatsApp"
-          >
-            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"></ion-icon>
-            Pedir ahora
-          </a>
-        </div>
-      </article>
-
-      <!-- Producto 3: Pack Dúo Fantasmas -->
-      <article class="group relative seasonal-card md:col-span-2 lg:col-span-1">
-        <div class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle">
-          PACK ESPECIAL
-        </div>
-        
-        <div class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400">
-          <ion-icon name="moon-outline" class="text-sm" aria-hidden="true"></ion-icon>
-          Brillan en la oscuridad
-        </div>
-
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-orange-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300">
-          
-          <Image 
-  src={fantasmasChiwiImg} 
-  alt="Fantasma Chiwi"
-  class="..."
-  width={800}
-  height={800}
-  loading="lazy"
-  decoding="async"
-  format="webp"
-  quality={85}
-/>
-          
-          <div class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"></div>
-        </div>
-
-        <div class="mt-4 space-y-3">
-          <h3 class="text-2xl font-bold text-white">Pack Dúo Fantasmas</h3>
-          <p class="text-purple-200 text-sm">Los dos fantasmas juntos. Ahorra más con este pack especial de Halloween.</p>
-          
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-3xl font-bold text-orange-400">$32.900</span>
-              <span class="text-gray-400 line-through text-sm ml-2">$45.800</span>
-            </div>
-            <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded" aria-label="descuento">-28%</span>
-          </div>
-
-          <a 
-            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20Dúo%20Fantasmas%20Halloween*%20($32.900)" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="block w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-            aria-label="Pedir Pack Dúo Fantasmas por WhatsApp"
-          >
-            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"></ion-icon>
-            Pedir pack especial
-          </a>
-        </div>
-      </article>
-    </div>
-
-    <!-- Características especiales -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-      <div class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20 text-center">
-        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <ion-icon name="moon-outline" class="text-3xl text-white" aria-hidden="true"></ion-icon>
-        </div>
-        <h4 class="text-white font-bold text-lg mb-2">Brillan en la Oscuridad</h4>
-        <p class="text-purple-200 text-sm">Pintura fotoluminiscente que carga con luz y brilla toda la noche</p>
-      </div>
-
-      <div class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-orange-500/20 text-center">
-        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <ion-icon name="calendar-outline" class="text-3xl text-white" aria-hidden="true"></ion-icon>
-        </div>
-        <h4 class="text-white font-bold text-lg mb-2">Edición Limitada</h4>
-        <p class="text-orange-200 text-sm">Solo disponibles en octubre. ¡No te quedes sin el tuyo!</p>
-      </div>
-
-      <div class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-pink-500/20 text-center">
-        <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-          <ion-icon name="heart-outline" class="text-3xl text-white" aria-hidden="true"></ion-icon>
-        </div>
-        <h4 class="text-white font-bold text-lg mb-2">Diseño Kawaii</h4>
-        <p class="text-pink-200 text-sm">Adorables fantasmas que combinan lo tierno con lo espeluznante</p>
-      </div>
-    </div>
-
-    <!-- CTA Final -->
-    <div class="mt-16 text-center">
-      <a 
-        href="https://wa.me/573102278592?text=Hola!%20Quiero%20ver%20todos%20los%20diseños%20de%20Halloween" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 via-purple-500 to-pink-500 text-white font-bold px-10 py-5 rounded-full text-lg hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300"
-        aria-label="Ver más diseños de Halloween por WhatsApp"
+    <!-- Elementos decorativos flotantes REDUCIDOS (solo 3) -->
+    <div
+      class="absolute inset-0 pointer-events-none overflow-hidden"
+      aria-hidden="true"
+    >
+      <div
+        class="seasonal-float"
+        style="top: 15%; left: 8%; animation-delay: 0s;"
       >
-        <ion-icon name="logo-whatsapp" class="text-2xl animate-pulse" aria-hidden="true"></ion-icon>
-        Ver más diseños de Halloween
-        <ion-icon name="arrow-forward-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      </a>
+        👻
+      </div>
+      <div
+        class="seasonal-float"
+        style="top: 70%; right: 12%; animation-delay: 1.5s;"
+      >
+        🎃
+      </div>
+      <div
+        class="seasonal-float"
+        style="bottom: 25%; left: 18%; animation-delay: 3s;"
+      >
+        🌙
+      </div>
     </div>
-  </div>
-</section>
 
-<!-- Schema Markup -->
-<SeasonalProductSchema 
-  products={[
-    {
-      name: "Fantasma Gatito Halloween",
-      description: "Vela fotoluminiscente con diseño kawaii de gatito fantasma",
-      image: fantasmasChiwiUrl,
-      price: "18900",
-      validUntil: "2025-10-31"
-    },
-    {
-      name: "Fantasma Perrito Halloween",
-      description: "Vela fotoluminiscente con diseño kawaii de perrito fantasma",
-      image: fantasmasChiwiUrl,
-      price: "18900",
-      validUntil: "2025-10-31"
-    },
-    {
-      name: "Pack Dúo Fantasmas Halloween",
-      description: "Pack de dos velas fotoluminiscentes con diseños kawaii",
-      image: fantasmasChiwiUrl,
-      price: "32900",
-      validUntil: "2025-10-31"
-    }
-  ]}
-/>
+    <div class="relative max-w-7xl mx-auto px-4">
+      <!-- Header de la sección -->
+      <div class="text-center mb-16 relative">
+        <!-- Badge de temporada -->
+        <div
+          class="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-sm border-2 border-orange-400 rounded-full px-6 py-2 mb-10 animate-pulse-subtle"
+        >
+          <span class="text-2xl" aria-hidden="true">🎃</span>
+          <span
+            class="text-orange-300 font-bold text-sm uppercase tracking-wider"
+          >
+            Edición Limitada - Octubre 2025
+          </span>
+          <span class="text-2xl" aria-hidden="true">👻</span>
+        </div>
 
-<style>
-  /* Fondo de estrellas SIMPLIFICADO (solo 3 gradientes) */
-  .stars-background {
-    background-image: 
-      radial-gradient(2px 2px at 25% 35%, white, transparent),
-      radial-gradient(1px 1px at 75% 15%, white, transparent),
-      radial-gradient(1px 1px at 50% 70%, white, transparent);
-    background-size: 200% 200%;
-    animation: twinkle 8s ease-in-out infinite;
-    opacity: 0.4;
-  }
+        <!-- Espacio adicional -->
+        <div class="h-6"></div>
 
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.6; }
-  }
+        <!-- Título principal con efecto de brillo -->
+        <h2
+          class="text-5xl md:text-7xl font-black text-white mb-6 relative inline-block"
+        >
+          <span class="relative z-10">
+            Especial
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-purple-400 to-pink-400 animate-gradient-flow"
+            >
+              Halloween
+            </span>
+          </span>
+          <div
+            class="absolute -inset-2 bg-gradient-to-r from-orange-500/30 to-purple-500/30 blur-2xl animate-glow"
+          >
+          </div>
+        </h2>
 
-  /* Elementos flotantes de temporada OPTIMIZADOS */
-  .seasonal-float {
-    position: absolute;
-    font-size: 3rem;
-    animation: float-seasonal 6s ease-in-out infinite;
-    opacity: 0.3;
-    filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.4));
-  }
+        <!-- Subtítulo -->
+        <p
+          class="text-xl md:text-2xl text-purple-200 max-w-3xl mx-auto leading-relaxed"
+        >
+          Fantasmas adorables que <span class="text-orange-300 font-bold"
+            >brillan en la oscuridad</span
+          >. Perfectos para decorar tu Halloween con magia kawaii.
+        </p>
 
-  @keyframes float-seasonal {
-    0%, 100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-25px) rotate(8deg);
-    }
-  }
+        <!-- Contador regresivo -->
+        <div
+          class="mt-8 inline-flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-orange-500/30"
+        >
+          <ion-icon
+            name="time-outline"
+            class="text-2xl text-orange-400"
+            aria-hidden="true"></ion-icon>
+          <span class="text-orange-300 font-semibold"
+            >Disponible solo en octubre</span
+          >
+          <div class="flex gap-2" role="timer" aria-live="polite">
+            <div class="bg-orange-500/20 rounded px-2 py-1">
+              <span
+                class="text-white font-bold text-sm countdown-days"
+                aria-label="días">00</span
+              >
+            </div>
+            <span class="text-white" aria-hidden="true">:</span>
+            <div class="bg-orange-500/20 rounded px-2 py-1">
+              <span
+                class="text-white font-bold text-sm countdown-hours"
+                aria-label="horas">00</span
+              >
+            </div>
+            <span class="text-white" aria-hidden="true">:</span>
+            <div class="bg-orange-500/20 rounded px-2 py-1">
+              <span
+                class="text-white font-bold text-sm countdown-minutes"
+                aria-label="minutos">00</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-  /* Pulso sutil OPTIMIZADO */
-  @keyframes pulse-subtle {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.85;
-      transform: scale(1.03);
-    }
-  }
+      <!-- Grid de productos de temporada -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <!-- Producto 1: Fantasma Gatito -->
+        <article class="group relative seasonal-card">
+          <!-- Badge "NUEVO" -->
+          <div
+            class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+          >
+            NUEVO
+          </div>
 
-  .animate-pulse-subtle {
-    animation: pulse-subtle 4s ease-in-out infinite;
-  }
+          <!-- Badge "Brilla" -->
+          <div
+            class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400"
+          >
+            <ion-icon name="moon-outline" class="text-sm" aria-hidden="true"
+            ></ion-icon>
+            Brilla en la oscuridad
+          </div>
 
-  /* Bounce sutil OPTIMIZADO */
-  @keyframes bounce-subtle {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-4px);
-    }
-  }
+          <div
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
+          >
+            <!-- Imagen del producto -->
+            <Image
+              src={fantasmasChiwiImg}
+              alt="Fantasma Chiwi"
+              class="..."
+              width={800}
+              height={800}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+            />
 
-  .animate-bounce-subtle {
-    animation: bounce-subtle 3s ease-in-out infinite;
-  }
+            <!-- Efecto de brillo al hover -->
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"
+            >
+            </div>
+          </div>
 
-  /* Gradiente fluido */
-  @keyframes gradient-flow {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
+          <div class="mt-4 space-y-3">
+            <h3 class="text-2xl font-bold text-white">Fantasma Gatito</h3>
+            <p class="text-purple-200 text-sm">
+              Adorable gatito fantasma con pintura fotoluminiscente. Perfecto
+              para amantes de los gatos.
+            </p>
 
-  .animate-gradient-flow {
-    background-size: 200% 200%;
-    animation: gradient-flow 4s ease infinite;
-  }
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-3xl font-bold text-orange-400">$18.900</span>
+                <span class="text-gray-400 line-through text-sm ml-2"
+                  >$22.900</span
+                >
+              </div>
+              <span
+                class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded"
+                aria-label="descuento">-17%</span
+              >
+            </div>
 
-  /* Efecto de brillo OPTIMIZADO */
-  @keyframes glow {
-    0%, 100% {
+            <a
+              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Fantasma%20Gatito%20Halloween*%20($18.900)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full bg-gradient-to-r from-orange-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+              aria-label="Pedir Fantasma Gatito por WhatsApp"
+            >
+              <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+              ></ion-icon>
+              Pedir ahora
+            </a>
+          </div>
+        </article>
+
+        <!-- Producto 2: Fantasma Perrito -->
+        <article class="group relative seasonal-card">
+          <div
+            class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+          >
+            NUEVO
+          </div>
+
+          <div
+            class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400"
+          >
+            <ion-icon name="moon-outline" class="text-sm" aria-hidden="true"
+            ></ion-icon>
+            Brilla en la oscuridad
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
+          >
+            <Image
+              src={fantasmasChiwiImg}
+              alt="Fantasma Chiwi"
+              class="..."
+              width={800}
+              height={800}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+            />
+
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"
+            >
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-3">
+            <h3 class="text-2xl font-bold text-white">Fantasma Perrito</h3>
+            <p class="text-purple-200 text-sm">
+              Tierno perrito fantasma que ilumina tus noches. Para los fanáticos
+              de los perros.
+            </p>
+
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-3xl font-bold text-orange-400">$18.900</span>
+                <span class="text-gray-400 line-through text-sm ml-2"
+                  >$22.900</span
+                >
+              </div>
+              <span
+                class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded"
+                aria-label="descuento">-17%</span
+              >
+            </div>
+
+            <a
+              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Fantasma%20Perrito%20Halloween*%20($18.900)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full bg-gradient-to-r from-orange-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+              aria-label="Pedir Fantasma Perrito por WhatsApp"
+            >
+              <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+              ></ion-icon>
+              Pedir ahora
+            </a>
+          </div>
+        </article>
+
+        <!-- Producto 3: Pack Dúo Fantasmas -->
+        <article
+          class="group relative seasonal-card md:col-span-2 lg:col-span-1"
+        >
+          <div
+            class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+          >
+            PACK ESPECIAL
+          </div>
+
+          <div
+            class="absolute top-4 left-4 z-20 bg-purple-900/90 backdrop-blur-sm text-purple-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-purple-400"
+          >
+            <ion-icon name="moon-outline" class="text-sm" aria-hidden="true"
+            ></ion-icon>
+            Brillan en la oscuridad
+          </div>
+
+          <div
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-orange-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
+          >
+            <Image
+              src={fantasmasChiwiImg}
+              alt="Fantasma Chiwi"
+              class="..."
+              width={800}
+              height={800}
+              loading="lazy"
+              decoding="async"
+              format="webp"
+              quality={85}
+            />
+
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-orange-500/0 via-transparent to-purple-500/0 group-hover:from-orange-500/20 group-hover:to-purple-500/20 transition-all duration-300"
+            >
+            </div>
+          </div>
+
+          <div class="mt-4 space-y-3">
+            <h3 class="text-2xl font-bold text-white">Pack Dúo Fantasmas</h3>
+            <p class="text-purple-200 text-sm">
+              Los dos fantasmas juntos. Ahorra más con este pack especial de
+              Halloween.
+            </p>
+
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-3xl font-bold text-orange-400">$32.900</span>
+                <span class="text-gray-400 line-through text-sm ml-2"
+                  >$45.800</span
+                >
+              </div>
+              <span
+                class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded"
+                aria-label="descuento">-28%</span
+              >
+            </div>
+
+            <a
+              href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20Dúo%20Fantasmas%20Halloween*%20($32.900)"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+              aria-label="Pedir Pack Dúo Fantasmas por WhatsApp"
+            >
+              <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+              ></ion-icon>
+              Pedir pack especial
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Características especiales -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div
+          class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-purple-500/20 text-center"
+        >
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <ion-icon
+              name="moon-outline"
+              class="text-3xl text-white"
+              aria-hidden="true"></ion-icon>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-2">
+            Brillan en la Oscuridad
+          </h4>
+          <p class="text-purple-200 text-sm">
+            Pintura fotoluminiscente que carga con luz y brilla toda la noche
+          </p>
+        </div>
+
+        <div
+          class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-orange-500/20 text-center"
+        >
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <ion-icon
+              name="calendar-outline"
+              class="text-3xl text-white"
+              aria-hidden="true"></ion-icon>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-2">Edición Limitada</h4>
+          <p class="text-orange-200 text-sm">
+            Solo disponibles en octubre. ¡No te quedes sin el tuyo!
+          </p>
+        </div>
+
+        <div
+          class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-pink-500/20 text-center"
+        >
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4"
+          >
+            <ion-icon
+              name="heart-outline"
+              class="text-3xl text-white"
+              aria-hidden="true"></ion-icon>
+          </div>
+          <h4 class="text-white font-bold text-lg mb-2">Diseño Kawaii</h4>
+          <p class="text-pink-200 text-sm">
+            Adorables fantasmas que combinan lo tierno con lo espeluznante
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA Final -->
+      <div class="mt-16 text-center">
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Quiero%20ver%20todos%20los%20diseños%20de%20Halloween"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 via-purple-500 to-pink-500 text-white font-bold px-10 py-5 rounded-full text-lg hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300"
+          aria-label="Ver más diseños de Halloween por WhatsApp"
+        >
+          <ion-icon
+            name="logo-whatsapp"
+            class="text-2xl animate-pulse"
+            aria-hidden="true"></ion-icon>
+          Ver más diseños de Halloween
+          <ion-icon
+            name="arrow-forward-outline"
+            class="text-xl"
+            aria-hidden="true"></ion-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schema Markup -->
+  <SeasonalProductSchema
+    products={[
+      {
+        name: "Fantasma Gatito Halloween",
+        description:
+          "Vela fotoluminiscente con diseño kawaii de gatito fantasma",
+        image: fantasmasChiwiUrl,
+        price: "18900",
+        validUntil: "2025-10-31",
+      },
+      {
+        name: "Fantasma Perrito Halloween",
+        description:
+          "Vela fotoluminiscente con diseño kawaii de perrito fantasma",
+        image: fantasmasChiwiUrl,
+        price: "18900",
+        validUntil: "2025-10-31",
+      },
+      {
+        name: "Pack Dúo Fantasmas Halloween",
+        description: "Pack de dos velas fotoluminiscentes con diseños kawaii",
+        image: fantasmasChiwiUrl,
+        price: "32900",
+        validUntil: "2025-10-31",
+      },
+    ]}
+  />
+
+  <style>
+    /* Fondo de estrellas SIMPLIFICADO (solo 3 gradientes) */
+    .stars-background {
+      background-image: radial-gradient(2px 2px at 25% 35%, white, transparent),
+        radial-gradient(1px 1px at 75% 15%, white, transparent),
+        radial-gradient(1px 1px at 50% 70%, white, transparent);
+      background-size: 200% 200%;
+      animation: twinkle 8s ease-in-out infinite;
       opacity: 0.4;
     }
-    50% {
-      opacity: 0.8;
+
+    @keyframes twinkle {
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 0.6;
+      }
     }
-  }
 
-  .animate-glow {
-    animation: glow 3s ease-in-out infinite;
-  }
+    /* Elementos flotantes de temporada OPTIMIZADOS */
+    .seasonal-float {
+      position: absolute;
+      font-size: 3rem;
+      animation: float-seasonal 6s ease-in-out infinite;
+      opacity: 0.3;
+      filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.4));
+    }
 
-  /* Tarjeta de temporada */
-  .seasonal-card {
-    animation: fadeInUp 0.8s ease-out;
-    animation-fill-mode: both;
-  }
+    @keyframes float-seasonal {
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-25px) rotate(8deg);
+      }
+    }
 
-  .seasonal-card:nth-child(1) {
-    animation-delay: 0.1s;
-  }
+    /* Pulso sutil OPTIMIZADO */
+    @keyframes pulse-subtle {
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 0.85;
+        transform: scale(1.03);
+      }
+    }
 
-  .seasonal-card:nth-child(2) {
-    animation-delay: 0.2s;
-  }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 4s ease-in-out infinite;
+    }
 
-  .seasonal-card:nth-child(3) {
-    animation-delay: 0.3s;
-  }
+    /* Bounce sutil OPTIMIZADO */
+    @keyframes bounce-subtle {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
 
-  /* Optimización para usuarios con prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    .seasonal-float,
-    .animate-pulse-subtle,
-    .animate-bounce-subtle,
-    .animate-gradient-flow,
+    .animate-bounce-subtle {
+      animation: bounce-subtle 3s ease-in-out infinite;
+    }
+
+    /* Gradiente fluido */
+    @keyframes gradient-flow {
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    .animate-gradient-flow {
+      background-size: 200% 200%;
+      animation: gradient-flow 4s ease infinite;
+    }
+
+    /* Efecto de brillo OPTIMIZADO */
+    @keyframes glow {
+      0%,
+      100% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+
     .animate-glow {
-      animation: none !important;
+      animation: glow 3s ease-in-out infinite;
     }
-    
+
+    /* Tarjeta de temporada */
     .seasonal-card {
-      animation: none !important;
-      opacity: 1 !important;
+      animation: fadeInUp 0.8s ease-out;
+      animation-fill-mode: both;
     }
-    
-    .stars-background {
-      animation: none !important;
-      opacity: 0.3 !important;
+
+    .seasonal-card:nth-child(1) {
+      animation-delay: 0.1s;
     }
-  }
 
-  /* Optimización de rendimiento: solo aplicar will-change en hover */
-  .group:hover .group-hover\:scale-110 {
-    will-change: transform;
-  }
-</style>
+    .seasonal-card:nth-child(2) {
+      animation-delay: 0.2s;
+    }
 
-<script>
-  // Contador regresivo con lazy loading
-  const seasonalSection = document.querySelector('.seasonal-section');
-  
-  if (seasonalSection) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          initCountdown();
-          observer.disconnect();
+    .seasonal-card:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    /* Optimización para usuarios con prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .seasonal-float,
+      .animate-pulse-subtle,
+      .animate-bounce-subtle,
+      .animate-gradient-flow,
+      .animate-glow {
+        animation: none !important;
+      }
+
+      .seasonal-card {
+        animation: none !important;
+        opacity: 1 !important;
+      }
+
+      .stars-background {
+        animation: none !important;
+        opacity: 0.3 !important;
+      }
+    }
+
+    /* Optimización de rendimiento: solo aplicar will-change en hover */
+    .group:hover .group-hover\:scale-110 {
+      will-change: transform;
+    }
+  </style>
+
+  <script>
+    // Contador regresivo con lazy loading
+    const seasonalSection = document.querySelector(".seasonal-section");
+
+    if (seasonalSection) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              initCountdown();
+              observer.disconnect();
+            }
+          });
+        },
+        {
+          rootMargin: "50px",
         }
-      });
-    }, {
-      rootMargin: '50px'
-    });
-    
-    observer.observe(seasonalSection);
-  }
+      );
 
-  function initCountdown() {
-    updateCountdown();
-    setInterval(updateCountdown, 60000); // Actualizar cada minuto
-  }
-
-  function updateCountdown() {
-    const now = new Date();
-    const endOfOctober = new Date(now.getFullYear(), 10, 1, 0, 0, 0); // Nov 1, 00:00:00
-    
-    if (now.getMonth() !== 9) { // Si no es octubre
-      document.querySelectorAll('.countdown-days, .countdown-hours, .countdown-minutes').forEach(el => {
-        if (el) el.textContent = '00';
-      });
-      return;
+      observer.observe(seasonalSection);
     }
 
-    const diff = endOfOctober.getTime() - now.getTime();
-    
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    function initCountdown() {
+      updateCountdown();
+      setInterval(updateCountdown, 60000); // Actualizar cada minuto
+    }
 
-    const daysEl = document.querySelector('.countdown-days');
-    const hoursEl = document.querySelector('.countdown-hours');
-    const minutesEl = document.querySelector('.countdown-minutes');
+    function updateCountdown() {
+      const now = new Date();
+      const endOfOctober = new Date(now.getFullYear(), 10, 1, 0, 0, 0); // Nov 1, 00:00:00
 
-    if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
-    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
-    if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
-  }
-</script>
+      if (now.getMonth() !== 9) {
+        // Si no es octubre
+        document
+          .querySelectorAll(
+            ".countdown-days, .countdown-hours, .countdown-minutes"
+          )
+          .forEach((el) => {
+            if (el) el.textContent = "00";
+          });
+        return;
+      }
+
+      const diff = endOfOctober.getTime() - now.getTime();
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(
+        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+      const daysEl = document.querySelector(".countdown-days");
+      const hoursEl = document.querySelector(".countdown-hours");
+      const minutesEl = document.querySelector(".countdown-minutes");
+
+      if (daysEl) daysEl.textContent = days.toString().padStart(2, "0");
+      if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, "0");
+      if (minutesEl)
+        minutesEl.textContent = minutes.toString().padStart(2, "0");
+    }
+  </script>
 
   <!-- Sección Por qué elegir Chiwi -->
-  <section class="bg-white py-20">
+  <section class="bg-white py-20" aria-labelledby="why-choose-heading">
     <div class="max-w-7xl mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <h2
+          id="why-choose-heading"
+          class="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+        >
           ¿Por qué elegir <span
             class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"
             >Chiwi?</span
@@ -1322,6 +1860,10 @@ import "swiper/css/navigation";
             class="relative rounded-2xl w-full object-cover shadow-2xl"
             width={1000}
             height={800}
+            loading="lazy"
+            decoding="async"
+            format="webp"
+            quality={85}
           />
         </div>
       </div>
@@ -1350,6 +1892,10 @@ import "swiper/css/navigation";
             class="relative rounded-2xl w-full object-cover shadow-2xl"
             width={1000}
             height={800}
+            loading="lazy"
+            decoding="async"
+            format="webp"
+            quality={85}
           />
         </div>
       </div>
@@ -1463,11 +2009,13 @@ import "swiper/css/navigation";
           type="email"
           placeholder="tu@correo.com"
           required
+          aria-label="Correo electrónico"
           class="w-full md:flex-1 px-6 py-4 rounded-full border-2 border-white/30 bg-white/90 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:bg-white font-medium text-gray-900"
         />
 
         <button
           type="submit"
+          aria-label="Suscribirse al newsletter"
           class="group flex items-center justify-center gap-3 bg-white text-[#E1814C] font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300 w-full md:w-auto"
         >
           <ion-icon
