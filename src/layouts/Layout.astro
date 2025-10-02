@@ -4,61 +4,78 @@ import Topbar from "../components/Topbar.astro";
 import WhatsAppButton from "../components/WhatsAppButton.astro";
 import Footer from "../components/Footer.astro";
 
-
-
-
 import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Chiwi Velitas hechas con amor</title>
     <title>{Astro.props.title}</title>
-  <meta name="description" content={Astro.props.description} />
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ1ZSKVDEL"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TZ1ZSKVDEL');
-</script>
+    <meta name="description" content={Astro.props.description} />
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ1ZSKVDEL"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TZ1ZSKVDEL');
+    </script>
 
-
-<!-- Rastrear clics en WhatsApp -->
-<script is:inline>
-  if (typeof window !== 'undefined') {
-    window.addEventListener('load', function() {
-      document.addEventListener('click', function(e) {
-        var link = e.target.closest('a[href*="wa.me"]');
-        if (link && typeof gtag === 'function') {
-          var productName = link.getAttribute('aria-label') || 'Producto desconocido';
-          gtag('event', 'whatsapp_click', {
-            event_category: 'engagement',
-            event_label: productName,
-            product_name: productName
+    <!-- Rastrear clics en WhatsApp -->
+    <script is:inline>
+      if (typeof window !== 'undefined') {
+        window.addEventListener('load', function() {
+          document.addEventListener('click', function(e) {
+            var link = e.target.closest('a[href*="wa.me"]');
+            if (link && typeof gtag === 'function') {
+              var productName = link.getAttribute('aria-label') || 'Producto desconocido';
+              gtag('event', 'whatsapp_click', {
+                event_category: 'engagement',
+                event_label: productName,
+                product_name: productName
+              });
+            }
           });
-        }
-      });
-    });
-  }
-</script>
+        });
+      }
+    </script>
 
+    <!-- Schema de Organización con Logo -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Chiwi Colombia",
+      "alternateName": "Chiwi",
+      "url": "https://chiwicolombia.com",
+      "logo": "https://chiwicolombia.com/favicon.svg",
+      "image": "https://chiwicolombia.com/favicon.svg",
+      "description": "Velas artesanales personalizadas kawaii. Memoriales para mascotas, regalos únicos y velas que brillan en la oscuridad. Hechas a mano con amor en Colombia.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CO",
+        "addressLocality": "Colombia"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+57-310-227-8592",
+        "contactType": "Customer Service",
+        "availableLanguage": ["Spanish", "es"]
+      }
+    })} />
   </head>
+  
   <body class="font-Quicksand">
     <Topbar />
     <Navbar />
     <WhatsAppButton/>
-  
     <slot />
     <Footer/>
   </body>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
-<!-- flex flex-col items-center font-Quicksand bg-amber-600 -->
