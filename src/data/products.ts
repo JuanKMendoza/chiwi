@@ -10,6 +10,12 @@ import IndexGrid6 from "../assets/images/Pack_gatito_2.jpg";
 import IndexGrid7 from "../assets/images/vela_gatito_personalizada_2.jpg";
 import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
 
+//Fotos Productos
+//Cocker Negro
+import CockerBFront from "../assets/images/perrito_cocker_negro_frente.webp"
+import CockerBSide from "../assets/images/perrito_cocker_negro_lado.webp"
+import CockerBBack from "../assets/images/perrito_cocker_negro_atras.webp"
+
 export interface Product {
   id: number;
   slug: string;
@@ -38,7 +44,7 @@ export const products: Product[] = [
     price: 14900,
     category: "kawaii",
     image: IndexGrid1,
-    images: [IndexGrid1], // Por ahora solo 1, luego agregas más
+    images: [CockerBFront, CockerBSide, CockerBBack], // Por ahora solo 3, luego agregas más
     alt: "Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia",
     featured: true,
     description: "Adorable vela con diseño de perrito Cocker, perfecta para amantes de los perros",
