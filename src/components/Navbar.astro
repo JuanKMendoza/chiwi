@@ -8,10 +8,8 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: "Home", href: "/" },
-  { name: "Velitas", href: "/velitas" },
-  { name: "Paquetes", href: "/paquetes" },
-  { name: "Ofertas", href: "/ofertas" },
+  { name: "Inicio", href: "/" },
+  { name: "Productos", href: "/productos" },
   { name: "Blog", href: "/blog" },
   { name: "Contacto", href: "/contacto" },
 ];
@@ -51,7 +49,7 @@ const navItems: NavItem[] = [
       <!-- Desktop Icons & Mobile Menu Button -->
       <div class="flex items-center space-x-4">
         
-        <!-- Search Icon -- Utilizar cuando hayan varios productos
+        <!-- Search Icon -- Utilizar cuando hayan varios productos>
         <button 
           id="search-btn"
           class="text-gray-600 hover:text-orange-500 transition-colors duration-200"
@@ -209,8 +207,6 @@ const navItems: NavItem[] = [
 </div>
 </nav>
 
-</nav>
-
 <script>
   // Mobile menu functionality (manteniendo tu lógica)
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -328,4 +324,4 @@ const navItems: NavItem[] = [
     position: relative;
     z-index: 50;
   }
-</style>  
+</style>
