@@ -1,114 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
+import { products } from "../../data/products";
 
-// Importar imágenes de productos
-import IndexGrid1 from "../../assets/images/Perro_vela.jpg";
-import IndexGrid2 from "../../assets/images/grupo_ositos.jpg";
-import IndexGrid3 from "../../assets/images/capibara_beige_acostado.jpg";
-import IndexGrid4 from "../../assets/images/capibara_cafe.jpg";
-import IndexGrid5 from "../../assets/images/Pack_gatito_1.jpg";
-import IndexGrid6 from "../../assets/images/Pack_gatito_2.jpg";
-import IndexGrid7 from "../../assets/images/vela_gatito_personalizada_2.jpg";
-import fantasmasChiwiImg from "../../assets/images/fantasma_chiwi.jpg";
-
-// Array de productos
-const products = [
-  {
-    id: 1,
-    name: "Perrito Cocker",
-    price: 14900,
-    category: "kawaii",
-    image: IndexGrid1,
-    alt: "Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia",
-    featured: true,
-    description: "Adorable vela con diseño de perrito Cocker, perfecta para amantes de los perros",
-  },
-  {
-    id: 2,
-    name: "Familia de Ositos",
-    price: 19900,
-    category: "kawaii",
-    image: IndexGrid2,
-    alt: "Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia",
-    featured: true,
-    description: "Set de velas con diseño de familia de ositos, ideal para regalar",
-  },
-  {
-    id: 3,
-    name: "Capibara Acostado Beige",
-    price: 15900,
-    category: "kawaii",
-    image: IndexGrid3,
-    alt: "Capibara Acostado Beige - Vela kawaii artesanal hecha en Colombia",
-    featured: true,
-    description: "Tierna vela de capibara en posición relajada, color beige natural",
-  },
-  {
-    id: 4,
-    name: "Capibara Café",
-    price: 15900,
-    category: "kawaii",
-    image: IndexGrid4,
-    alt: "Capibara Café - Vela artesanal kawaii hecha a mano en Colombia",
-    featured: true,
-    description: "Vela capibara en tono café, diseño minimalista y kawaii",
-  },
-  {
-    id: 5,
-    name: "Cajita Recuerdo",
-    price: 29900,
-    category: "recordatorios",
-    image: IndexGrid5,
-    alt: "Cajita Recuerdo - Kit completo con vela personalizada hecha a mano",
-    featured: true,
-    description: "Pack completo con vela personalizada y empaque especial para ocasiones únicas",
-  },
-  {
-    id: 6,
-    name: "Cajita Recuerdo Premium",
-    price: 29900,
-    category: "recordatorios",
-    image: IndexGrid6,
-    alt: "Cajita Recuerdo Premium - Regalo especial con vela personalizada",
-    featured: false,
-    description: "Versión premium de nuestro pack de recuerdo con detalles exclusivos",
-  },
-  {
-    id: 7,
-    name: "Gatito Personalizado",
-    price: 19900,
-    category: "kawaii",
-    image: IndexGrid7,
-    alt: "Gatito Personalizado - Vela kawaii hecha a mano en Colombia",
-    featured: true,
-    description: "Vela con diseño personalizable de gatito, ideal para amantes de los gatos",
-  },
-  {
-    id: 8,
-    name: "Fantasma Gatito Halloween",
-    price: 18900,
-    category: "temporada",
-    image: fantasmasChiwiImg,
-    alt: "Fantasma Gatito - Vela Halloween que brilla en la oscuridad",
-    featured: true,
-    description: "Edición especial Halloween: gatito fantasma con pintura fotoluminiscente",
-    badge: "Edición Limitada",
-  },
-  {
-    id: 9,
-    name: "Fantasma Perrito Halloween",
-    price: 18900,
-    category: "temporada",
-    image: fantasmasChiwiImg,
-    alt: "Fantasma Perrito - Vela Halloween que brilla en la oscuridad",
-    featured: true,
-    description: "Edición especial Halloween: perrito fantasma que brilla en la noche",
-    badge: "Edición Limitada",
-  },
-];
-
-// Categorías para filtros
+// Categorías para filtros (SOLO UNA VEZ)
 const categories = [
   { id: "all", name: "Todos los productos", icon: "apps-outline" },
   { id: "temporada", name: "Temporada", icon: "star-outline" },
@@ -116,6 +11,113 @@ const categories = [
   { id: "mascotas", name: "Para tu Peludo", icon: "paw-outline" },
   { id: "recordatorios", name: "Recordatorios", icon: "gift-outline" },
 ];
+
+// // Importar imágenes de productos
+// import IndexGrid1 from "../../assets/images/Perro_vela.jpg";
+// import IndexGrid2 from "../../assets/images/grupo_ositos.jpg";
+// import IndexGrid3 from "../../assets/images/capibara_beige_acostado.jpg";
+// import IndexGrid4 from "../../assets/images/capibara_cafe.jpg";
+// import IndexGrid5 from "../../assets/images/Pack_gatito_1.jpg";
+// import IndexGrid6 from "../../assets/images/Pack_gatito_2.jpg";
+// import IndexGrid7 from "../../assets/images/vela_gatito_personalizada_2.jpg";
+// import fantasmasChiwiImg from "../../assets/images/fantasma_chiwi.jpg";
+
+// Array de productos
+// const products = [
+//   {
+//     id: 1,
+//     name: "Perrito Cocker",
+//     price: 14900,
+//     category: "kawaii",
+//     image: IndexGrid1,
+//     alt: "Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia",
+//     featured: true,
+//     description: "Adorable vela con diseño de perrito Cocker, perfecta para amantes de los perros",
+//   },
+//   {
+//     id: 2,
+//     name: "Familia de Ositos",
+//     price: 19900,
+//     category: "kawaii",
+//     image: IndexGrid2,
+//     alt: "Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia",
+//     featured: true,
+//     description: "Set de velas con diseño de familia de ositos, ideal para regalar",
+//   },
+//   {
+//     id: 3,
+//     name: "Capibara Acostado Beige",
+//     price: 15900,
+//     category: "kawaii",
+//     image: IndexGrid3,
+//     alt: "Capibara Acostado Beige - Vela kawaii artesanal hecha en Colombia",
+//     featured: true,
+//     description: "Tierna vela de capibara en posición relajada, color beige natural",
+//   },
+//   {
+//     id: 4,
+//     name: "Capibara Café",
+//     price: 15900,
+//     category: "kawaii",
+//     image: IndexGrid4,
+//     alt: "Capibara Café - Vela artesanal kawaii hecha a mano en Colombia",
+//     featured: true,
+//     description: "Vela capibara en tono café, diseño minimalista y kawaii",
+//   },
+//   {
+//     id: 5,
+//     name: "Cajita Recuerdo",
+//     price: 29900,
+//     category: "recordatorios",
+//     image: IndexGrid5,
+//     alt: "Cajita Recuerdo - Kit completo con vela personalizada hecha a mano",
+//     featured: true,
+//     description: "Pack completo con vela personalizada y empaque especial para ocasiones únicas",
+//   },
+//   {
+//     id: 6,
+//     name: "Cajita Recuerdo Premium",
+//     price: 29900,
+//     category: "recordatorios",
+//     image: IndexGrid6,
+//     alt: "Cajita Recuerdo Premium - Regalo especial con vela personalizada",
+//     featured: false,
+//     description: "Versión premium de nuestro pack de recuerdo con detalles exclusivos",
+//   },
+//   {
+//     id: 7,
+//     name: "Gatito Personalizado",
+//     price: 19900,
+//     category: "kawaii",
+//     image: IndexGrid7,
+//     alt: "Gatito Personalizado - Vela kawaii hecha a mano en Colombia",
+//     featured: true,
+//     description: "Vela con diseño personalizable de gatito, ideal para amantes de los gatos",
+//   },
+//   {
+//     id: 8,
+//     name: "Fantasma Gatito Halloween",
+//     price: 18900,
+//     category: "temporada",
+//     image: fantasmasChiwiImg,
+//     alt: "Fantasma Gatito - Vela Halloween que brilla en la oscuridad",
+//     featured: true,
+//     description: "Edición especial Halloween: gatito fantasma con pintura fotoluminiscente",
+//     badge: "Edición Limitada",
+//   },
+//   {
+//     id: 9,
+//     name: "Fantasma Perrito Halloween",
+//     price: 18900,
+//     category: "temporada",
+//     image: fantasmasChiwiImg,
+//     alt: "Fantasma Perrito - Vela Halloween que brilla en la oscuridad",
+//     featured: true,
+//     description: "Edición especial Halloween: perrito fantasma que brilla en la noche",
+//     badge: "Edición Limitada",
+//   },
+// ];
+
 ---
 
 <Layout
@@ -226,103 +228,99 @@ const categories = [
       </div>
 
       <!-- Grid -->
-      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {products.map((product) => (
-          <article
-            class="product-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-            data-category={product.category}
-            itemscope
-            itemtype="https://schema.org/Product"
-          >
-            <!-- Badge si existe -->
-            {product.badge && (
-              <div class="absolute top-4 left-4 z-10 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-subtle">
-                {product.badge}
-              </div>
-            )}
+<div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+  {products.map((product) => (
+    <article
+      class="product-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+      data-category={product.category}
+      itemscope
+      itemtype="https://schema.org/Product"
+    >
+      <!-- Badge si existe -->
+      {product.badge && (
+        <div class="absolute top-4 left-4 z-10 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-subtle">
+          {product.badge}
+        </div>
+      )}
 
-            <!-- Badge destacado -->
-            {product.featured && (
-              <div class="absolute top-4 right-4 z-10 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                <ion-icon name="star" class="text-sm"></ion-icon>
-                Popular
-              </div>
-            )}
+      <!-- Badge destacado -->
+      {product.featured && (
+        <div class="absolute top-4 right-4 z-10 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+          <ion-icon name="star" class="text-sm"></ion-icon>
+          Popular
+        </div>
+      )}
 
-            <!-- Imagen -->
-            <div class="relative overflow-hidden aspect-square">
-              <a
-                href={`https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*${product.name}*%20($${product.price.toLocaleString('es-CO')})`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block w-full h-full"
-              >
-                <Image
-                  src={product.image}
-                  alt={product.alt}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  width={800}
-                  height={800}
-                  loading="lazy"
-                  decoding="async"
-                  format="webp"
-                  quality={85}
-                  itemprop="image"
-                />
-              </a>
+      <!-- Imagen -->
+      <div class="relative overflow-hidden aspect-square">
+        <a
+          href={`/productos/${product.slug}`}
+          class="block w-full h-full"
+        >
+          <Image
+            src={product.image}
+            alt={product.alt}
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            width={800}
+            height={800}
+            loading="lazy"
+            decoding="async"
+            format="webp"
+            quality={85}
+            itemprop="image"
+          />
+        </a>
 
-              <!-- Overlay con info rápida -->
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <p class="text-white text-sm leading-relaxed">
-                  {product.description}
-                </p>
-              </div>
-            </div>
-
-            <!-- Información del producto -->
-            <div class="p-6 space-y-4">
-              <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2" itemprop="name">
-                  {product.name}
-                </h3>
-                
-                <p
-                  class="text-2xl font-bold text-orange-500"
-                  itemprop="offers"
-                  itemscope
-                  itemtype="https://schema.org/Offer"
-                >
-                  ${product.price.toLocaleString('es-CO')}
-                  <meta itemprop="price" content={product.price.toString()} />
-                  <meta itemprop="priceCurrency" content="COP" />
-                </p>
-              </div>
-
-              <!-- Características rápidas -->
-              <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">
-                  Cera de soja
-                </span>
-                <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">
-                  Hecho a mano
-                </span>
-              </div>
-
-              <!-- Botón de acción -->
-              <a
-                href={`https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*${product.name}*%20($${product.price.toLocaleString('es-CO')})%20¿Está%20disponible?`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2"
-                aria-label={`Consultar disponibilidad de ${product.name}`}
-              >
-                <ion-icon name="logo-whatsapp" class="text-xl"></ion-icon>
-                Consultar disponibilidad
-              </a>
-            </div>
-          </article>
-        ))}
+        <!-- Overlay con info rápida -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+          <p class="text-white text-sm leading-relaxed">
+            {product.description}
+          </p>
+        </div>
       </div>
+
+      <!-- Información del producto -->
+      <div class="p-6 space-y-4">
+        <div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2" itemprop="name">
+            {product.name}
+          </h3>
+          
+          <p
+            class="text-2xl font-bold text-orange-500"
+            itemprop="offers"
+            itemscope
+            itemtype="https://schema.org/Offer"
+          >
+            ${product.price.toLocaleString('es-CO')}
+            <meta itemprop="price" content={product.price.toString()} />
+            <meta itemprop="priceCurrency" content="COP" />
+          </p>
+        </div>
+
+        <!-- Características rápidas -->
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">
+            Cera de soja
+          </span>
+          <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">
+            Hecho a mano
+          </span>
+        </div>
+
+        <!-- Botón de acción -->
+        <a
+          href={`/productos/${product.slug}`}
+          class="block w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2"
+          aria-label={`Ver detalles de ${product.name}`}
+        >
+          <ion-icon name="eye-outline" class="text-xl"></ion-icon>
+          Ver detalles
+        </a>
+      </div>
+    </article>
+  ))}
+</div>
 
       <!-- Mensaje cuando no hay resultados -->
       <div id="no-results" class="hidden text-center py-20">

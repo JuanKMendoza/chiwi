@@ -1,7 +1,206 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout>
-	<h1 class="text-3xl">Contacto</h1>
+<Layout
+  title="Contacto | Chiwi - Velas Personalizadas Kawaii Colombia"
+  description="Contáctanos para crear tu vela personalizada. WhatsApp, redes sociales y más información sobre Chiwi velas artesanales en Colombia."
+>
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 py-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        Hablemos de tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">proyecto</span>
+      </h1>
+      <p class="text-xl text-gray-600">
+        Estamos listos para crear la vela perfecta para ti
+      </p>
+    </div>
+  </section>
+
+  <!-- Opciones de Contacto -->
+  <section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <!-- WhatsApp -->
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Quiero%20información%20sobre%20sus%20velas"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-2xl hover:shadow-xl transition-all text-center"
+        >
+          <div class="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <ion-icon name="logo-whatsapp" class="text-3xl text-white"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">WhatsApp</h3>
+          <p class="text-sm text-gray-600 mb-3">Respuesta inmediata</p>
+          <p class="text-[#25D366] font-semibold text-sm">+57 310 227 8592</p>
+        </a>
+
+        <!-- Instagram -->
+        <a
+          href="https://www.instagram.com/chiwi_co/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-gradient-to-br from-pink-50 to-purple-100 p-6 rounded-2xl hover:shadow-xl transition-all text-center"
+        >
+          <div class="w-14 h-14 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <ion-icon name="logo-instagram" class="text-3xl text-white"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Instagram</h3>
+          <p class="text-sm text-gray-600 mb-3">Síguenos para inspiración</p>
+          <p class="text-purple-600 font-semibold text-sm">@chiwi_co</p>
+        </a>
+
+        <!-- Facebook -->
+        <a
+          href="https://www.facebook.com/chiwicolombia"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-2xl hover:shadow-xl transition-all text-center"
+        >
+          <div class="w-14 h-14 bg-[#1877F2] rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <ion-icon name="logo-facebook" class="text-3xl text-white"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">Facebook</h3>
+          <p class="text-sm text-gray-600 mb-3">Únete a la comunidad</p>
+          <p class="text-[#1877F2] font-semibold text-sm">@chiwicolombia</p>
+        </a>
+
+        <!-- TikTok -->
+        <a
+          href="https://www.tiktok.com/@chiwi_co"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-2xl hover:shadow-xl transition-all text-center"
+        >
+          <div class="w-14 h-14 bg-gray-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+            <ion-icon name="logo-tiktok" class="text-3xl text-white"></ion-icon>
+          </div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2">TikTok</h3>
+          <p class="text-sm text-gray-600 mb-3">Videos detrás de cámaras</p>
+          <p class="text-gray-900 font-semibold text-sm">@chiwi_co</p>
+        </a>
+      </div>
+
+      <!-- Información Adicional -->
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Horarios -->
+        <div class="bg-orange-50 p-8 rounded-2xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <ion-icon name="time-outline" class="text-3xl text-orange-500"></ion-icon>
+            Horarios de Atención
+          </h3>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-center gap-3">
+              <ion-icon name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+              <span>Lunes a Viernes: 9:00 AM - 6:00 PM</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <ion-icon name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+              <span>Sábados y Domingos: 10:00 AM - 2:00 PM</span>
+            </li>
+            <!-- <li class="flex items-center gap-3">
+              <ion-icon name="close-circle" class="text-xl text-gray-400"></ion-icon>
+              <span>Domingos: Cerrado</span>
+            </li> -->
+          </ul>
+        </div>
+
+        <!-- Envíos -->
+        <div class="bg-pink-50 p-8 rounded-2xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <ion-icon name="location-outline" class="text-3xl text-pink-500"></ion-icon>
+            Envíos
+          </h3>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-center gap-3">
+              <ion-icon name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+              <span>Envíos a toda Colombia</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <ion-icon name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+              <span>Tiempo de elaboración: 2-5 días</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <ion-icon name="checkmark-circle" class="text-xl text-green-500"></ion-icon>
+              <span>Pago contra entrega disponible</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-gradient-to-b from-white to-orange-50/30">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+        Preguntas Frecuentes
+      </h2>
+
+      <div class="space-y-4">
+        <details class="group bg-white p-6 rounded-xl shadow-md">
+          <summary class="font-bold text-lg cursor-pointer flex items-center justify-between">
+            ¿Cuánto tiempo tarda en elaborarse mi vela?
+            <ion-icon name="chevron-down-outline" class="text-xl group-open:rotate-180 transition-transform"></ion-icon>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            El tiempo de elaboración es de 2 a 5 días hábiles dependiendo del diseño. Las velas personalizadas pueden tomar un poco más de tiempo.
+          </p>
+        </details>
+
+        <details class="group bg-white p-6 rounded-xl shadow-md">
+          <summary class="font-bold text-lg cursor-pointer flex items-center justify-between">
+            ¿Puedo personalizar completamente mi vela?
+            <ion-icon name="chevron-down-outline" class="text-xl group-open:rotate-180 transition-transform"></ion-icon>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            Sí, puedes personalizar colores, tamaño, agregar nombres, fechas o incluso enviarnos una foto de tu mascota para recrearla en vela.
+          </p>
+        </details>
+
+        <details class="group bg-white p-6 rounded-xl shadow-md">
+          <summary class="font-bold text-lg cursor-pointer flex items-center justify-between">
+            ¿Hacen envíos fuera de Colombia?
+            <ion-icon name="chevron-down-outline" class="text-xl group-open:rotate-180 transition-transform"></ion-icon>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            Por el momento solo hacemos envíos dentro de Colombia. Contáctanos por WhatsApp si necesitas un envío internacional y evaluaremos tu caso.
+          </p>
+        </details>
+
+        <details class="group bg-white p-6 rounded-xl shadow-md">
+          <summary class="font-bold text-lg cursor-pointer flex items-center justify-between">
+            ¿Qué materiales utilizan?
+            <ion-icon name="chevron-down-outline" class="text-xl group-open:rotate-180 transition-transform"></ion-icon>
+          </summary>
+          <p class="mt-4 text-gray-600">
+            Utilizamos cera de soja 100% natural y biodegradable, pinturas no tóxicas y mechas de algodón sin plomo.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-16 bg-gradient-to-r from-orange-500 to-pink-500 text-white">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        ¿Listo para crear tu vela?
+      </h2>
+      <p class="text-xl mb-8 text-white/90">
+        Escríbenos y cuéntanos tu idea. La haremos realidad.
+      </p>
+      <a
+        href="https://wa.me/573102278592?text=Hola!%20Quiero%20crear%20mi%20vela%20personalizada"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-white text-orange-500 font-bold px-8 py-4 rounded-full hover:scale-105 transition-all shadow-xl"
+      >
+        <ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon>
+        Contactar por WhatsApp
+      </a>
+    </div>
+  </section>
 </Layout>
