@@ -600,21 +600,21 @@ import "swiper/css/navigation";
     <!-- Carrusel móvil -->
 <div class="block sm:hidden">
   <swiper-container
-    slides-per-view="1"
-    space-between="20"
+    slides-per-view="1.15"
+    space-between="16"
+    centered-slides="true"
     pagination="true"
     navigation="false"
     loop="true"
-    speed="600"
-    touch-ratio="1.5"
-    threshold="10"
-    long-swipes="true"
-    long-swipes-ratio="0.3"
-    long-swipes-ms="300"
-    follow-finger="true"
+    speed="300"
+    free-mode="true"
+    free-mode-momentum="true"
+    free-mode-momentum-ratio="1"
+    free-mode-momentum-velocity-ratio="1"
+    free-mode-sticky="false"
+    touch-ratio="1"
     resistance="true"
-    resistance-ratio="0"
-    free-mode="false"
+    resistance-ratio="0.85"
     class="w-full"
   >
         <swiper-slide class="flex flex-col items-center pb-12">
