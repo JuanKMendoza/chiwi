@@ -1,7 +1,11 @@
 ---
 // src/pages/productos/[slug].astro
 import Layout from "../../layouts/Layout.astro";
-import { products, getProductBySlug, getRelatedProducts } from "../../data/products";
+import {
+  products,
+  getProductBySlug,
+  getRelatedProducts,
+} from "../../data/products";
 import { Image } from "astro:assets";
 
 export function getStaticPaths() {
@@ -32,7 +36,9 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
       <nav class="flex items-center gap-2 text-sm text-gray-600">
         <a href="/" class="hover:text-orange-500 transition-colors">Inicio</a>
         <span>/</span>
-        <a href="/productos" class="hover:text-orange-500 transition-colors">Productos</a>
+        <a href="/productos" class="hover:text-orange-500 transition-colors"
+          >Productos</a
+        >
         <span>/</span>
         <span class="text-orange-500 font-medium">{product.name}</span>
       </nav>
@@ -43,56 +49,69 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
   <section class="py-12 bg-white">
     <div class="max-w-7xl mx-auto px-4">
       <div class="grid lg:grid-cols-2 gap-12">
-        
         <!-- Galería de Imágenes -->
         <div class="space-y-6">
           <!-- Imagen Principal -->
-          <div class="relative bg-gradient-to-br from-orange-50 to-pink-50 rounded-3xl overflow-hidden aspect-square shadow-2xl">
-            {product.badge && (
-              <span class="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-bold z-10 shadow-lg">
-                {product.badge}
-              </span>
-            )}
-            {product.featured && (
-              <span class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 z-10 shadow-lg">
-                <ion-icon name="star" class="text-lg"></ion-icon>
-                Popular
-              </span>
-            )}
-            <Image
+          <div
+            class="relative bg-gradient-to-br from-orange-50 to-pink-50 rounded-3xl overflow-hidden aspect-square shadow-2xl"
+          >
+            {
+              product.badge && (
+                <span class="absolute top-4 left-4 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-bold z-10 shadow-lg">
+                  {product.badge}
+                </span>
+              )
+            }
+            {
+              product.featured && (
+                <span class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 z-10 shadow-lg">
+                  <ion-icon name="star" class="text-lg" />
+                  Popular
+                </span>
+              )
+            }
+            <img
               id="mainImage"
-              src={product.images?.[0] || product.image}
+              src={product.images?.[0].src || product.image.src}
               alt={product.alt}
               class="w-full h-full object-cover"
-              loading="eager"
             />
           </div>
 
           <!-- Thumbnails (Solo si hay más de 1 imagen) -->
-          {product.images && product.images.length > 1 && (
-            <div class="grid grid-cols-3 gap-4">
-              {product.images.map((img, index) => (
-                <button
-                  data-index={index}
-                  class="thumbnail-btn relative rounded-2xl overflow-hidden aspect-square hover:ring-4 hover:ring-orange-500 transition-all cursor-pointer group border-4 border-transparent shadow-lg hover:shadow-2xl"
-                  data-img-src={img.src}
-                >
-                  <Image
-                    src={img}
-                    alt={`${product.name} - Vista ${index + 1}`}
-                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
-                </button>
-              ))}
-            </div>
-          )}
+          {
+            product.images && product.images.length > 1 && (
+              <div class="grid grid-cols-3 gap-4">
+                {product.images.map((img, index) => (
+                  <button
+                    data-index={index}
+                    data-full-src={img.src}
+                    class="thumbnail-btn relative rounded-2xl overflow-hidden aspect-square hover:ring-4 hover:ring-orange-500 transition-all cursor-pointer group border-4 border-transparent shadow-lg hover:shadow-2xl"
+                  >
+                    <Image
+                      src={img}
+                      alt={`${product.name} - Vista ${index + 1}`}
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      width={300}
+                      height={300}
+                      format="webp"
+                      quality={85}
+                      loading={index < 3 ? "eager" : "lazy"}
+                    />
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
+                  </button>
+                ))}
+              </div>
+            )
+          }
         </div>
 
         <!-- Información del Producto -->
         <div class="flex flex-col gap-6">
           <div>
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">{product.name}</h1>
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">
+              {product.name}
+            </h1>
             <p class="text-4xl font-bold text-orange-500">
               ${product.price.toLocaleString("es-CO")}
               <span class="text-xl text-gray-600 font-normal">COP</span>
@@ -104,40 +123,57 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
           </p>
 
           <!-- Características -->
-          {product.features && (
-            <div>
-              <h3 class="text-xl font-bold text-gray-900 mb-4">Características:</h3>
-              <ul class="space-y-3">
-                {product.features.map((feature) => (
-                  <li class="flex items-start gap-3">
-                    <ion-icon name="checkmark-circle" class="text-2xl text-green-500 flex-shrink-0"></ion-icon>
-                    <span class="text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          {
+            product.features && (
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                  Características:
+                </h3>
+                <ul class="space-y-3">
+                  {product.features.map((feature) => (
+                    <li class="flex items-start gap-3">
+                      <ion-icon
+                        name="checkmark-circle"
+                        class="text-2xl text-green-500 flex-shrink-0"
+                      />
+                      <span class="text-gray-700">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
 
           <!-- Especificaciones -->
           <div class="grid grid-cols-2 gap-4 bg-orange-50 p-6 rounded-xl">
-            {product.size && (
-              <div>
-                <p class="text-sm text-gray-600 mb-1">Tamaño</p>
-                <p class="font-bold text-gray-900">{product.size}</p>
-              </div>
-            )}
-            {product.weight && (
-              <div>
-                <p class="text-sm text-gray-600 mb-1">Peso</p>
-                <p class="font-bold text-gray-900">{product.weight}</p>
-              </div>
-            )}
-            {product.elaborationTime && (
-              <div class="col-span-2">
-                <p class="text-sm text-gray-600 mb-1">Tiempo de elaboración</p>
-                <p class="font-bold text-gray-900">{product.elaborationTime}</p>
-              </div>
-            )}
+            {
+              product.size && (
+                <div>
+                  <p class="text-sm text-gray-600 mb-1">Tamaño</p>
+                  <p class="font-bold text-gray-900">{product.size}</p>
+                </div>
+              )
+            }
+            {
+              product.weight && (
+                <div>
+                  <p class="text-sm text-gray-600 mb-1">Peso</p>
+                  <p class="font-bold text-gray-900">{product.weight}</p>
+                </div>
+              )
+            }
+            {
+              product.elaborationTime && (
+                <div class="col-span-2">
+                  <p class="text-sm text-gray-600 mb-1">
+                    Tiempo de elaboración
+                  </p>
+                  <p class="font-bold text-gray-900">
+                    {product.elaborationTime}
+                  </p>
+                </div>
+              )
+            }
           </div>
 
           <!-- CTA WhatsApp -->
@@ -154,15 +190,19 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
           <!-- Info adicional -->
           <div class="border-t pt-6 space-y-3 text-sm text-gray-600">
             <div class="flex items-center gap-3">
-              <ion-icon name="shield-checkmark-outline" class="text-xl text-orange-500"></ion-icon>
+              <ion-icon
+                name="shield-checkmark-outline"
+                class="text-xl text-orange-500"></ion-icon>
               <span>Garantía de satisfacción 100%</span>
             </div>
             <div class="flex items-center gap-3">
-              <ion-icon name="cube-outline" class="text-xl text-orange-500"></ion-icon>
+              <ion-icon name="cube-outline" class="text-xl text-orange-500"
+              ></ion-icon>
               <span>Envíos a toda Colombia</span>
             </div>
             <div class="flex items-center gap-3">
-              <ion-icon name="leaf-outline" class="text-xl text-orange-500"></ion-icon>
+              <ion-icon name="leaf-outline" class="text-xl text-orange-500"
+              ></ion-icon>
               <span>Productos eco-friendly y naturales</span>
             </div>
           </div>
@@ -172,50 +212,56 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
   </section>
 
   <!-- Productos Relacionados -->
-  {relatedProducts.length > 0 && (
-    <section class="py-16 bg-gradient-to-b from-white to-orange-50/30">
-      <div class="max-w-7xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
-          También te puede interesar
-        </h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {relatedProducts.slice(0, 3).map((relatedProduct) => (
-            <a
-              href={`/productos/${relatedProduct.slug}`}
-              class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 duration-300"
-            >
-              <div class="relative bg-gradient-to-br from-orange-50 to-pink-50 aspect-square overflow-hidden">
-                <Image
-                  src={relatedProduct.image}
-                  alt={relatedProduct.alt}
-                  class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                {relatedProduct.featured && (
-                  <span class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
-                    <ion-icon name="star" class="text-sm"></ion-icon>
-                    Popular
-                  </span>
-                )}
-              </div>
-              <div class="p-6">
-                <h3 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-orange-500 transition-colors">
-                  {relatedProduct.name}
-                </h3>
-                <p class="text-gray-600 text-sm mb-4 line-clamp-2">{relatedProduct.description}</p>
-                <p class="text-2xl font-bold text-orange-500">
-                  ${relatedProduct.price.toLocaleString("es-CO")}
-                  <span class="text-sm text-gray-600 font-normal">COP</span>
-                </p>
-              </div>
-            </a>
-          ))}
+  {
+    relatedProducts.length > 0 && (
+      <section class="py-16 bg-gradient-to-b from-white to-orange-50/30">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+            También te puede interesar
+          </h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {relatedProducts.slice(0, 3).map((relatedProduct) => (
+              <a
+                href={`/productos/${relatedProduct.slug}`}
+                class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2 duration-300"
+              >
+                <div class="relative bg-gradient-to-br from-orange-50 to-pink-50 aspect-square overflow-hidden">
+                  <Image
+                    src={relatedProduct.image}
+                    alt={relatedProduct.alt}
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  {relatedProduct.featured && (
+                    <span class="absolute top-4 right-4 bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg">
+                      <ion-icon name="star" class="text-sm" />
+                      Popular
+                    </span>
+                  )}
+                </div>
+                <div class="p-6">
+                  <h3 class="font-bold text-lg text-gray-900 mb-2 group-hover:text-orange-500 transition-colors">
+                    {relatedProduct.name}
+                  </h3>
+                  <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                    {relatedProduct.description}
+                  </p>
+                  <p class="text-2xl font-bold text-orange-500">
+                    ${relatedProduct.price.toLocaleString("es-CO")}
+                    <span class="text-sm text-gray-600 font-normal">COP</span>
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
-  )}
+      </section>
+    )
+  }
 
   <!-- CTA Final -->
-  <section class="py-16 bg-gradient-to-r from-orange-500 to-pink-500 text-white">
+  <section
+    class="py-16 bg-gradient-to-r from-orange-500 to-pink-500 text-white"
+  >
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">
         ¿Quieres personalizar este diseño?
@@ -236,39 +282,39 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
   </section>
 
   <!-- Script para Galería -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const mainImage = document.getElementById('mainImage') as HTMLImageElement;
-      const thumbnails = document.querySelectorAll('.thumbnail-btn');
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mainImage = document.getElementById('mainImage') as HTMLImageElement;
+    const thumbnails = document.querySelectorAll('.thumbnail-btn');
 
-      if (!mainImage || thumbnails.length === 0) return;
+    if (!mainImage || thumbnails.length === 0) return;
 
-      thumbnails.forEach((thumbnail, index) => {
-        thumbnail.addEventListener('click', () => {
-          const imgElement = thumbnail.querySelector('img') as HTMLImageElement;
-          if (imgElement && mainImage) {
-            // Cambiar la imagen principal
-            mainImage.src = imgElement.src;
-            mainImage.alt = imgElement.alt;
+    thumbnails.forEach((thumbnail) => {
+      thumbnail.addEventListener('click', () => {
+        // Obtener la URL de ALTA RESOLUCIÓN del atributo data
+        const fullSrc = thumbnail.getAttribute('data-full-src');
+        
+        if (fullSrc && mainImage) {
+          mainImage.src = fullSrc;
+        }
 
-            // Quitar el estilo activo de todos los thumbnails
-            thumbnails.forEach(t => {
-              t.classList.remove('ring-4', 'ring-orange-400', 'border-orange-500');
-              t.classList.add('border-transparent');
-            });
-            
-            // Agregar estilo activo al thumbnail clickeado
-            thumbnail.classList.remove('border-transparent');
-            thumbnail.classList.add('ring-4', 'ring-orange-400', 'border-orange-500');
-          }
+        // Quitar el estilo activo de todos los thumbnails
+        thumbnails.forEach(t => {
+          t.classList.remove('ring-4', 'ring-orange-400', 'border-orange-500');
+          t.classList.add('border-transparent');
         });
+        
+        // Agregar estilo activo al thumbnail clickeado
+        thumbnail.classList.remove('border-transparent');
+        thumbnail.classList.add('ring-4', 'ring-orange-400', 'border-orange-500');
       });
-
-      // Marcar el primer thumbnail como activo por defecto
-      if (thumbnails[0]) {
-        thumbnails[0].classList.remove('border-transparent');
-        thumbnails[0].classList.add('ring-4', 'ring-orange-400', 'border-orange-500');
-      }
     });
-  </script>
+
+    // Marcar el primer thumbnail como activo por defecto
+    if (thumbnails[0]) {
+      thumbnails[0].classList.remove('border-transparent');
+      thumbnails[0].classList.add('ring-4', 'ring-orange-400', 'border-orange-500');
+    }
+  });
+</script>
 </Layout>
