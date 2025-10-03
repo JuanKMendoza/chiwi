@@ -605,13 +605,16 @@ import "swiper/css/navigation";
     pagination="true"
     navigation="false"
     loop="true"
-    speed="400"
-    touch-ratio="1"
-    threshold="5"
+    speed="600"
+    touch-ratio="1.5"
+    threshold="10"
+    long-swipes="true"
+    long-swipes-ratio="0.3"
+    long-swipes-ms="300"
+    follow-finger="true"
     resistance="true"
-    resistance-ratio="0.85"
+    resistance-ratio="0"
     free-mode="false"
-    css-mode="false"
     class="w-full"
   >
         <swiper-slide class="flex flex-col items-center pb-12">
@@ -2262,10 +2265,12 @@ import "swiper/css/navigation";
   swiper-slide {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
   
-  /* Prevenir scroll bounce en iOS */
   swiper-container::part(wrapper) {
     overscroll-behavior: contain;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 </style>
