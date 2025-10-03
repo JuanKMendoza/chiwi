@@ -135,14 +135,15 @@ export const products: Product[] = [
     description: "Vela capibara en tono café, diseño minimalista y kawaii",
     longDescription: "La versión café de nuestro capibara favorito. Con un tono cálido y acogedor, esta vela aporta calidez a cualquier espacio. Su diseño minimalista pero expresivo la convierte en el regalo perfecto para amantes de estos tiernos roedores.",
     features: [
-      "Tono café cálido y natural",
       "Expresión kawaii característica",
-      "Cera de soja con aroma a café (opcional)",
-      "Acabado mate premium",
-      "Perfecto como decoración de escritorio"
+      "Elige tu color favorito",
+      "Cera premium",
+      "Detalles pintados a mano",
+      "Ideal para adornar tu habitación, Oficina, o Espacio de estudio",
+      "Descuentos por compras en volumen para recordatorios"
     ],
-    size: "Altura: 7cm, Ancho: 8cm",
-    weight: "140g",
+    size: "Altura: 6cm, Ancho: 3.5cm",
+    //weight: "140g",
     elaborationTime: "2-3 días hábiles",
     relatedProducts: ["capibara-mood-relax", "perrito-cocker"]
   },
