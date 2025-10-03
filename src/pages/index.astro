@@ -600,22 +600,17 @@ import "swiper/css/navigation";
     <!-- Carrusel móvil -->
 <div class="block sm:hidden">
   <swiper-container
-    slides-per-view="1.15"
-    space-between="16"
-    centered-slides="true"
+    slides-per-view="1"
+    space-between="20"
     pagination="true"
     navigation="false"
-    loop="true"
+    loop="false"
     speed="300"
-    free-mode="true"
-    free-mode-momentum="true"
-    free-mode-momentum-ratio="1"
-    free-mode-momentum-velocity-ratio="1"
-    free-mode-sticky="false"
-    touch-ratio="1"
-    resistance="true"
-    resistance-ratio="0.85"
-    class="w-full"
+    touch-release-on-edges="true"
+    momentum="true"
+    momentum-ratio="1"
+    momentum-velocity-ratio="1"
+    class="w-full swiper-mobile"
   >
         <swiper-slide class="flex flex-col items-center pb-12">
           <div class="w-full px-4">
@@ -2257,20 +2252,15 @@ import "swiper/css/navigation";
 </script>
 
 <style is:global>
-  /* Optimizaciones para fluidez del carrusel móvil */
+  .swiper-mobile {
+    overflow: visible !important;
+  }
+
+  .swiper-mobile swiper-slide {
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+  }
+  
   swiper-container {
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  swiper-slide {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-  
-  swiper-container::part(wrapper) {
-    overscroll-behavior: contain;
-    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --swiper-wrapper-transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 </style>
