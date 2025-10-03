@@ -16,6 +16,10 @@ import Indexrecordatorios from "../assets/images/capibara_cafe.jpg";
 import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
 import SeasonalProductSchema from "../components/SeasonalProductSchema.astro";
 
+import fantasmaGatito from "../assets/images/gatito_ghost_orange_back.webp";
+import fantasmaPerrito from "../assets/images/perrito_ghost_purple_back.webp";
+import duoFantasma from "../assets/images/duo_halloween.webp";
+
 // Obtener URLs públicas para el Schema
 const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
 const fantasmasChiwiUrl = new URL(fantasmasChiwiImg.src, baseUrl).href;
@@ -1119,7 +1123,7 @@ import "swiper/css/navigation";
           >
             <!-- Imagen del producto -->
             <Image
-              src={fantasmasChiwiImg}
+              src={fantasmaGatito}
               alt="Fantasma Chiwi"
               class="..."
               width={800}
@@ -1191,7 +1195,7 @@ import "swiper/css/navigation";
             class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-pink-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
           >
             <Image
-              src={fantasmasChiwiImg}
+              src={fantasmaPerrito}
               alt="Fantasma Chiwi"
               class="..."
               width={800}
@@ -1264,7 +1268,7 @@ import "swiper/css/navigation";
             class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-800/50 to-orange-800/50 backdrop-blur-sm border-2 border-purple-500/30 group-hover:border-orange-400 transition-all duration-300"
           >
             <Image
-              src={fantasmasChiwiImg}
+              src={duoFantasma}
               alt="Fantasma Chiwi"
               class="..."
               width={800}

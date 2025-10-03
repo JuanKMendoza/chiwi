@@ -39,6 +39,10 @@ import gatitoManchasRigth from "../assets/images/gatito_manchas_right.webp";
 import gatitoMakoFront from "../assets/images/gatito_mako_front.webp";
 import gatitoMakoRigth from "../assets/images/gatito_mako_right.webp";
 import gatitoGordaLeft from "../assets/images/gatito_gorda_left.webp";
+//Temporada octubre
+import fantasmaGatito from "../assets/images/gatito_ghost_orange_back.webp";
+import fantasmaPerrito from "../assets/images/perrito_ghost_purple_back.webp";
+//import duoFantasma from "../assets/images/duo_halloween.webp";
 
 export interface Product {
   id: number;
@@ -127,8 +131,8 @@ export const products: Product[] = [
     name: "Fantasma Gatito Halloween",
     price: 18900,
     category: ["temporada"],
-    image: fantasmasChiwiImg,
-    images: [fantasmasChiwiImg],
+    image: fantasmaGatito,
+    images: [fantasmaGatito],
     alt: "Fantasma Gatito - Vela Halloween que brilla en la oscuridad",
     featured: true,
     description:
@@ -155,8 +159,8 @@ export const products: Product[] = [
     name: "Fantasma Perrito Halloween",
     price: 18900,
     category: ["temporada"],
-    image: fantasmasChiwiImg,
-    images: [fantasmasChiwiImg],
+    image: fantasmaPerrito,
+    images: [fantasmaPerrito],
     alt: "Fantasma Perrito - Vela Halloween que brilla en la oscuridad",
     featured: true,
     description:
