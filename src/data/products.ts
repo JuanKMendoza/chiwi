@@ -25,7 +25,7 @@ export interface Product {
   slug: string;
   name: string;
   price: number;
-  category: "temporada" | "kawaii" | "mascotas" | "recordatorios";
+  category:  ("temporada" | "kawaii" | "mascotas" | "recordatorios")[]; // Array de categorías
   image: ImageMetadata;
   images?: ImageMetadata[]; // Múltiples imágenes para la galería
   alt: string;
@@ -46,7 +46,7 @@ export const products: Product[] = [
     slug: "perrito-cocker",
     name: "Perrito Cocker",
     price: 14900,
-    category: "kawaii",
+    category: ["kawaii", "mascotas","recordatorios"], // Ahora puede tener múltiples
     image: IndexGrid1,
     images: [CockerBFront, CockerBSide, CockerBBack, CockerBeiFront, CockerBeiSide, CockerBeiBack], // Por ahora solo 3, luego agregas más
     alt: "Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia",
@@ -70,7 +70,7 @@ export const products: Product[] = [
     slug: "familia-de-ositos",
     name: "Familia de Ositos",
     price: 19900,
-    category: "kawaii",
+    category: ["kawaii"],
     image: IndexGrid2,
     images: [IndexGrid2],
     alt: "Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia",
@@ -94,7 +94,7 @@ export const products: Product[] = [
     slug: "capibara-beige-acostado",
     name: "Capibara Acostado Beige",
     price: 15900,
-    category: "kawaii",
+    category: ["kawaii"],
     image: IndexGrid3,
     images: [IndexGrid3],
     alt: "Capibara Acostado Beige - Vela kawaii artesanal hecha en Colombia",
@@ -118,7 +118,7 @@ export const products: Product[] = [
     slug: "capibara-cafe",
     name: "Capibara Café",
     price: 15900,
-    category: "kawaii",
+    category: ["kawaii"],
     image: IndexGrid4,
     images: [IndexGrid4],
     alt: "Capibara Café - Vela artesanal kawaii hecha a mano en Colombia",
@@ -142,7 +142,7 @@ export const products: Product[] = [
     slug: "cajita-recuerdo",
     name: "Cajita Recuerdo",
     price: 29900,
-    category: "recordatorios",
+    category: ["recordatorios"],
     image: IndexGrid5,
     images: [IndexGrid5],
     alt: "Cajita Recuerdo - Kit completo con vela personalizada hecha a mano",
@@ -167,7 +167,7 @@ export const products: Product[] = [
     slug: "cajita-recuerdo-premium",
     name: "Cajita Recuerdo Premium",
     price: 29900,
-    category: "recordatorios",
+    category: ["recordatorios"],
     image: IndexGrid6,
     images: [IndexGrid6],
     alt: "Cajita Recuerdo Premium - Regalo especial con vela personalizada",
@@ -192,7 +192,7 @@ export const products: Product[] = [
     slug: "gatito-personalizado",
     name: "Gatito Personalizado",
     price: 19900,
-    category: "kawaii",
+    category: ["kawaii"],
     image: IndexGrid7,
     images: [IndexGrid7],
     alt: "Gatito Personalizado - Vela kawaii hecha a mano en Colombia",
@@ -217,7 +217,7 @@ export const products: Product[] = [
     slug: "fantasma-gatito-halloween",
     name: "Fantasma Gatito Halloween",
     price: 18900,
-    category: "temporada",
+    category: ["temporada"],
     image: fantasmasChiwiImg,
     images: [fantasmasChiwiImg],
     alt: "Fantasma Gatito - Vela Halloween que brilla en la oscuridad",
@@ -243,7 +243,7 @@ export const products: Product[] = [
     slug: "fantasma-perrito-halloween",
     name: "Fantasma Perrito Halloween",
     price: 18900,
-    category: "temporada",
+    category: ["temporada"],
     image: fantasmasChiwiImg,
     images: [fantasmasChiwiImg],
     alt: "Fantasma Perrito - Vela Halloween que brilla en la oscuridad",
