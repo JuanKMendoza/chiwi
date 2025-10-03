@@ -19,6 +19,14 @@ import CockerBBack from "../assets/images/perrito_cocker_negro_atras.webp"
 import CockerBeiFront from "../assets/images/perrito_cocker_beige_frente.webp"
 import CockerBeiSide from "../assets/images/perrito_cocker_beige_lado.webp"
 import CockerBeiBack from "../assets/images/perrito_cocker_beige_atras.webp"
+//capíbara Mood Relax
+import CapibaraAcostadoFront from "../assets/images/capibara_acostado_beige_front.webp"
+import CapibaraAcostadoLeft  from "../assets/images/capibara_acostado_beige_left_side.webp"
+import CapibaraAcostadoRight from "../assets/images/capibara_acostado_beige_right_side.webp"
+//capíbara Cute
+import CapibaraCuteLeft  from "../assets/images/capibara_cute_miel_left.webp"
+import CapibaraCuteRight from "../assets/images/capibara_cute_miel_rigth.webp"
+
 
 export interface Product {
   id: number;
@@ -51,17 +59,17 @@ export const products: Product[] = [
     images: [CockerBFront, CockerBSide, CockerBBack, CockerBeiFront, CockerBeiSide, CockerBeiBack], // Por ahora solo 3, luego agregas más
     alt: "Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia",
     featured: true,
-    description: "Adorable vela con diseño de perrito Cocker, perfecta para amantes de los perros",
-    longDescription: "Esta hermosa vela artesanal captura la ternura de un Cocker Spaniel en todo su esplendor. Cada detalle está pintado a mano con dedicación, desde sus orejitas caídas hasta su expresión dulce. Perfecta para decorar cualquier espacio o regalar a un amante de los perros.",
+    description: "Adorable vela con diseño de perrito Cocker, perfecta para amantes de estos peluditos",
+    longDescription: "Esta hermosa vela artesanal captura la ternura de un Cocker Spaniel en todo su esplendor. Cada detalle está pintado a mano con dedicación, desde sus orejitas caídas hasta su expresión dulce. Perfecta para decorar cualquier espacio o regalar a un amante de los peluditos.",
     features: [
-      "Cera de soja 100% natural y biodegradable",
+      "Cera 100% natural y biodegradable",
+      "Pintado y personalizado a imagen te tu peludito o llevalo en color natural",
       "Pintado a mano con pinturas no tóxicas",
-      "Mecha de algodón sin plomo",
-      "Aroma suave a vainilla (opcional)",
-      "Duración aproximada: 15-20 horas"
+      "Ideal para un detalle, recordatorio o para decorar tus espacios",
+      "Aromas a tu elección (opcional)"
     ],
     size: "Altura: 8cm, Ancho: 6cm",
-    weight: "120g aproximadamente",
+    //weight: "120g aproximadamente",
     elaborationTime: "2-3 días hábiles",
     relatedProducts: ["capibara-cafe", "gatito-personalizado"]
   },
@@ -91,37 +99,38 @@ export const products: Product[] = [
   },
   {
     id: 3,
-    slug: "capibara-beige-acostado",
-    name: "Capibara Acostado Beige",
+    slug: "capibara-mood-relax",
+    name: "Capibara Mood Relax",
     price: 15900,
-    category: ["kawaii"],
-    image: IndexGrid3,
-    images: [IndexGrid3],
-    alt: "Capibara Acostado Beige - Vela kawaii artesanal hecha en Colombia",
+    category: ["kawaii","recordatorios"],
+    image: CapibaraAcostadoRight,
+    images: [CapibaraAcostadoRight,CapibaraAcostadoFront, CapibaraAcostadoLeft, IndexGrid3],
+    alt: "Capibara Mood Relax - Vela kawaii artesanal hecha en Colombia",
     featured: true,
     description: "Tierna vela de capibara en posición relajada, color beige natural",
     longDescription: "Nuestro capibara más relajado te invita a tomarte las cosas con calma. Esta vela captura la esencia tranquila de estos adorables animales en una posición de descanso total. El color beige natural le da un toque minimalista y elegante.",
     features: [
-      "Diseño único de capibara en posición relajada",
-      "Color beige natural sin colorantes artificiales",
-      "Cera de soja premium",
-      "Detalles faciales pintados a mano",
-      "Base estable antideslizante"
+      "Diseño único de capibara en Mood relajado",
+      "Elige tu color favorito",
+      "Cera premium",
+      "Detalles pintados a mano",
+      "Ideal para adornar tu habitación, Oficina, o Espacio de estudio",
+      "Descuentos por compras en volumen para recordatorios"
     ],
-    size: "Largo: 12cm, Alto: 6cm",
-    weight: "150g",
+    size: "Largo: 7cm, Alto: 3.8cm",
+    //weight: "150g",
     elaborationTime: "2-3 días hábiles",
-    relatedProducts: ["capibara-cafe", "familia-de-ositos"]
+    relatedProducts: ["capibara-cute", "familia-de-ositos"]
   },
   {
     id: 4,
-    slug: "capibara-cafe",
-    name: "Capibara Café",
+    slug: "capibara-cute",
+    name: "Capibara Cute",
     price: 15900,
-    category: ["kawaii"],
+    category: ["kawaii","recordatorios"],
     image: IndexGrid4,
-    images: [IndexGrid4],
-    alt: "Capibara Café - Vela artesanal kawaii hecha a mano en Colombia",
+    images: [IndexGrid4, CapibaraCuteLeft, CapibaraCuteRight],
+    alt: "Capibara Cute - Vela artesanal kawaii hecha a mano en Colombia",
     featured: true,
     description: "Vela capibara en tono café, diseño minimalista y kawaii",
     longDescription: "La versión café de nuestro capibara favorito. Con un tono cálido y acogedor, esta vela aporta calidez a cualquier espacio. Su diseño minimalista pero expresivo la convierte en el regalo perfecto para amantes de estos tiernos roedores.",
@@ -135,7 +144,7 @@ export const products: Product[] = [
     size: "Altura: 7cm, Ancho: 8cm",
     weight: "140g",
     elaborationTime: "2-3 días hábiles",
-    relatedProducts: ["capibara-beige-acostado", "perrito-cocker"]
+    relatedProducts: ["capibara-mood-relax", "perrito-cocker"]
   },
   {
     id: 5,
