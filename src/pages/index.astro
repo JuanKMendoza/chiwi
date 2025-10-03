@@ -597,140 +597,211 @@ import "swiper/css/navigation";
       </article>
     </div>
 
-<!-- Carrusel móvil -->
-<div class="block sm:hidden -mx-4">
+    <!-- Carrusel móvil -->
+<div class="block sm:hidden">
   <swiper-container
-    slides-per-view="1.15"
-    space-between="12"
-    centered-slides="true"
+    slides-per-view="1"
+    space-between="20"
+    pagination="true"
+    navigation="false"
     loop="true"
-    speed="350"
-    class="mobile-swiper"
+    speed="400"
+    touch-ratio="1"
+    threshold="5"
+    resistance="true"
+    resistance-ratio="0.85"
+    free-mode="false"
+    css-mode="false"
+    class="w-full"
   >
-    <swiper-slide>
-      <div class="px-4 pb-12">
-        <a href="/productos/perrito-cocker" class="block">
-          <img
-            src={IndexGrid1.src}
-            alt="Perrito Cocker"
-            class="rounded-xl w-full h-64 object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </a>
-        <div class="mt-3 text-center space-y-2">
-          <p class="font-bold text-lg">Perrito Cocker</p>
-          <p class="font-semibold text-gray-800">$14.900</p>
-          <a href="/productos/perrito-cocker" class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md">
-            <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-            <span class="text-sm">Ver detalles</span>
-          </a>
-        </div>
-      </div>
-    </swiper-slide>
+        <swiper-slide class="flex flex-col items-center pb-12">
+          <div class="w-full px-4">
+            <a href="/productos/perrito-cocker">
+              <img
+                src={IndexGrid1.src}
+                alt="Perrito Cocker - Vela personalizada kawaii"
+                class="rounded-xl w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="mt-3 text-center w-full px-4 space-y-2">
+            <p class="font-bold text-lg">Perrito Cocker</p>
+            <p class="font-semibold text-gray-800">$14.900</p>
+            <a
+              href="/productos/perrito-cocker"
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              aria-label="Ver detalles de Perrito Cocker"
+            >
+              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </div>
+        </swiper-slide>
 
-    <swiper-slide>
-      <div class="px-4 pb-12">
-        <a href="/productos/familia-de-ositos" class="block">
-          <img src={IndexGrid2.src} alt="Familia de Ositos" class="rounded-xl w-full h-64 object-cover" loading="lazy" decoding="async" />
-        </a>
-        <div class="mt-3 text-center space-y-2">
-          <p class="font-bold text-lg">Familia de Ositos</p>
-          <p class="font-semibold text-gray-800">$19.900</p>
-          <a href="/productos/familia-de-ositos" class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md">
-            <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-            <span class="text-sm">Ver detalles</span>
-          </a>
-        </div>
-      </div>
-    </swiper-slide>
+        <swiper-slide class="flex flex-col items-center pb-12">
+          <div class="w-full px-4">
+            <a href="/productos/familia-de-ositos">
+              <img
+                src={IndexGrid2.src}
+                alt="Familia de Ositos - Velas decorativas kawaii"
+                class="rounded-xl w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="mt-3 text-center w-full px-4 space-y-2">
+            <p class="font-bold text-lg">Familia de Ositos</p>
+            <p class="font-semibold text-gray-800">$19.900</p>
+            <a
+              href="/productos/familia-de-ositos"
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              aria-label="Ver detalles de Familia de Ositos"
+            >
+              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </div>
+        </swiper-slide>
 
-    <swiper-slide>
-      <div class="px-4 pb-12">
-        <a href="/productos/capibara-beige-acostado" class="block">
-          <img src={IndexGrid3.src} alt="Capibara Acostado Beige" class="rounded-xl w-full h-64 object-cover" loading="lazy" decoding="async" />
-        </a>
-        <div class="mt-3 text-center space-y-2">
-          <p class="font-bold text-lg">Capibara Acostado Beige</p>
-          <p class="font-semibold text-gray-800">$15.900</p>
-          <a href="/productos/capibara-beige-acostado" class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md">
-            <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-            <span class="text-sm">Ver detalles</span>
-          </a>
-        </div>
-      </div>
-    </swiper-slide>
+        <swiper-slide class="flex flex-col items-center pb-12">
+          <div class="w-full px-4">
+            <a href="/productos/capibara-beige-acostado">
+              <img
+                src={IndexGrid3.src}
+                alt="Capibara Acostado Beige - Vela kawaii"
+                class="rounded-xl w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="mt-3 text-center w-full px-4 space-y-2">
+            <p class="font-bold text-lg">Capibara Acostado Beige</p>
+            <p class="font-semibold text-gray-800">$15.900</p>
+            <a
+              href="/productos/capibara-beige-acostado"
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              aria-label="Ver detalles de Capibara Acostado Beige"
+            >
+              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </div>
+        </swiper-slide>
 
-    <swiper-slide>
-      <div class="px-4 pb-12">
-        <a href="/productos/capibara-cafe" class="block">
-          <img src={IndexGrid4.src} alt="Capibara Café" class="rounded-xl w-full h-64 object-cover" loading="lazy" decoding="async" />
-        </a>
-        <div class="mt-3 text-center space-y-2">
-          <p class="font-bold text-lg">Capibara Café</p>
-          <p class="font-semibold text-gray-800">$15.900</p>
-          <a href="/productos/capibara-cafe" class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md">
-            <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-            <span class="text-sm">Ver detalles</span>
-          </a>
-        </div>
-      </div>
-    </swiper-slide>
+        <swiper-slide class="flex flex-col items-center pb-12">
+          <div class="w-full px-4">
+            <a href="/productos/capibara-cafe">
+              <img
+                src={IndexGrid4.src}
+                alt="Capibara Café - Vela artesanal kawaii"
+                class="rounded-xl w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="mt-3 text-center w-full px-4 space-y-2">
+            <p class="font-bold text-lg">Capibara Café</p>
+            <p class="font-semibold text-gray-800">$15.900</p>
+            <a
+              href="/productos/capibara-cafe"
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              aria-label="Ver detalles de Capibara Café"
+            >
+              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </div>
+        </swiper-slide>
 
-    <swiper-slide>
-      <div class="px-4 pb-12">
-        <a href="/productos/cajita-recuerdo" class="block">
-          <img src={IndexGrid5.src} alt="Cajita Recuerdo" class="rounded-xl w-full h-64 object-cover" loading="lazy" decoding="async" />
-        </a>
-        <div class="mt-3 text-center space-y-2">
-          <p class="font-bold text-lg">Cajita Recuerdo</p>
-          <p class="font-semibold text-gray-800">$29.900</p>
-          <a href="/productos/cajita-recuerdo" class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md">
-            <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-            <span class="text-sm">Ver detalles</span>
-          </a>
-        </div>
-      </div>
-    </swiper-slide>
+        <swiper-slide class="flex flex-col items-center pb-12">
+          <div class="w-full px-4">
+            <a href="/productos/cajita-recuerdo">
+              <img
+                src={IndexGrid5.src}
+                alt="Cajita Recuerdo - Kit completo"
+                class="rounded-xl w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="mt-3 text-center w-full px-4 space-y-2">
+            <p class="font-bold text-lg">Cajita Recuerdo</p>
+            <p class="font-semibold text-gray-800">$29.900</p>
+            <a
+              href="/productos/cajita-recuerdo"
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              aria-label="Ver detalles de Cajita Recuerdo"
+            >
+              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </div>
+        </swiper-slide>
 
-    <swiper-slide>
-      <div class="px-4 pb-12">
-        <a href="/productos/cajita-recuerdo-premium" class="block">
-          <img src={IndexGrid6.src} alt="Cajita Recuerdo Premium" class="rounded-xl w-full h-64 object-cover" loading="lazy" decoding="async" />
-        </a>
-        <div class="mt-3 text-center space-y-2">
-          <p class="font-bold text-lg">Cajita Recuerdo Premium</p>
-          <p class="font-semibold text-gray-800">$29.900</p>
-          <a href="/productos/cajita-recuerdo-premium" class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md">
-            <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-            <span class="text-sm">Ver detalles</span>
-          </a>
-        </div>
-      </div>
-    </swiper-slide>
+        <swiper-slide class="flex flex-col items-center pb-12">
+          <div class="w-full px-4">
+            <a href="/productos/cajita-recuerdo-premium">
+              <img
+                src={IndexGrid6.src}
+                alt="Cajita Recuerdo Premium - Regalo especial"
+                class="rounded-xl w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="mt-3 text-center w-full px-4 space-y-2">
+            <p class="font-bold text-lg">Cajita Recuerdo Premium</p>
+            <p class="font-semibold text-gray-800">$29.900</p>
+            <a
+              href="/productos/cajita-recuerdo-premium"
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              aria-label="Ver detalles de Cajita Recuerdo Premium"
+            >
+              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </div>
+        </swiper-slide>
 
-    <swiper-slide>
-      <div class="px-4 pb-12">
-        <a href="/productos/gatito-personalizado" class="block">
-          <img src={IndexGrid7.src} alt="Gatito Personalizado" class="rounded-xl w-full h-64 object-cover" loading="lazy" decoding="async" />
-        </a>
-        <div class="mt-3 text-center space-y-2">
-          <p class="font-bold text-lg">Gatito Personalizado</p>
-          <p class="font-semibold text-gray-800">$19.900</p>
-          <a href="/productos/gatito-personalizado" class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md">
-            <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-            <span class="text-sm">Ver detalles</span>
-          </a>
-        </div>
-      </div>
-    </swiper-slide>
-  </swiper-container>
+        <swiper-slide class="flex flex-col items-center pb-12">
+          <div class="w-full px-4">
+            <a href="/productos/gatito-personalizado">
+              <img
+                src={IndexGrid7.src}
+                alt="Gatito Personalizado - Vela kawaii hecha a mano"
+                class="rounded-xl w-full h-64 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+          <div class="mt-3 text-center w-full px-4 space-y-2">
+            <p class="font-bold text-lg">Gatito Personalizado</p>
+            <p class="font-semibold text-gray-800">$19.900</p>
+            <a
+              href="/productos/gatito-personalizado"
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+              aria-label="Ver detalles de Gatito Personalizado"
+            >
+              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </div>
+        </swiper-slide>
+      </swiper-container>
 
-  <script>
-    import { register } from "swiper/element/bundle";
-    register();
-  </script>
-</div>
+      <script>
+        import { register } from "swiper/element/bundle";
+        register();
+      </script>
+    </div>
 
     <!-- Botón Ver más (ya estaba correcto) -->
     <div class="mt-16 flex justify-center">
@@ -2183,7 +2254,18 @@ import "swiper/css/navigation";
 </script>
 
 <style is:global>
-  .mobile-swiper {
-    overflow: visible !important;
+  /* Optimizaciones para fluidez del carrusel móvil */
+  swiper-container {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  swiper-slide {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Prevenir scroll bounce en iOS */
+  swiper-container::part(wrapper) {
+    overscroll-behavior: contain;
   }
 </style>
