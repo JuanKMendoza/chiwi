@@ -52,6 +52,11 @@ import fantasmaPerritoRight from "../assets/images/perrito_fantasma_right.webp";
 //Ositos
 import ositosTaller from "../assets/images/trio_ositos_taller.webp";
 import ositosBackWhite from "../assets/images/grupo_ositos_background_white.webp";
+//Pack gatitos
+import packGatito from "../assets/images/pack_gatitos_fondo_beige.webp";
+import packGatitoModelo1 from "../assets/images/pack_gatitos_modelo_1.webp";
+import packGatitoModelo2 from "../assets/images/pack_gatitos_modelo_2.webp";
+
 
 
 export interface Product {
@@ -194,30 +199,29 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    slug: "cajita-recuerdo",
-    name: "Cajita Recuerdo",
+    slug: "cajita-recuerdame",
+    name: "Cajita Recuerdame",
     price: 34000,
     category: ["recordatorios"],
-    image: IndexGrid5,
-    images: [IndexGrid5],
+    image: packGatito,
+    images: [packGatito,packGatitoModelo2,packGatitoModelo1],
     alt: "Cajita Recuerdo - Kit completo con vela personalizada hecha a mano",
     featured: true,
     description:
       "Pack completo con vela personalizada y empaque especial para ocasiones únicas",
     longDescription:
-      "Nuestro pack más completo para celebraciones especiales. Incluye una vela personalizada, caja de presentación decorada, tarjeta personalizable y detalles adicionales. Ideal para baby showers, cumpleaños, bautizos o cualquier ocasión que quieras hacer memorable.",
+      "Nuestro pack incluye una velita de Gatito personalizada, caja de presentación decorada, tarjetita  y suculentas de cera. Ideal para que hagas un homenaje al peludito que siempre te ha acompañado",
     features: [
       "Vela personalizada según tu preferencia",
       "Caja decorativa de presentación",
       "Tarjeta personalizable incluida",
       "Lazo y detalles decorativos",
-      "Opción de agregar nombre o fecha",
-      "Empaque listo para regalo",
+      "Incluye suculentas de cera",
     ],
     size: "Caja: 15cm x 15cm x 10cm",
-    weight: "300g el pack completo",
-    elaborationTime: "4-5 días hábiles",
-    relatedProducts: ["cajita-recuerdo-premium", "gatito-personalizado"],
+    //weight: "300g el pack completo",
+    elaborationTime: "1-2 días hábiles",
+    relatedProducts: ["gatito-personalizado"],
   },
   {
     id: 6,
@@ -308,33 +312,6 @@ export const products: Product[] = [
     //weight: "200g el set completo",
     elaborationTime: "1-2 días hábiles",
     relatedProducts: ["perrito-cocker", "capibara-beige-acostado"],
-  },
-  {
-    id: 9,
-    slug: "cajita-recuerdo-premium",
-    name: "Cajita Recuerdo Premium",
-    price: 29900,
-    category: ["recordatorios"],
-    image: IndexGrid6,
-    images: [IndexGrid6],
-    alt: "Cajita Recuerdo Premium - Regalo especial con vela personalizada",
-    featured: false,
-    description:
-      "Versión premium de nuestro pack de recuerdo con detalles exclusivos",
-    longDescription:
-      "La versión deluxe de nuestro pack de recuerdo. Incluye acabados premium, caja de madera grabada y detalles exclusivos que hacen de este regalo algo verdaderamente especial e inolvidable.",
-    features: [
-      "Caja de madera con grabado láser",
-      "Vela con acabados premium",
-      "Tarjeta en papel especial",
-      "Detalles decorativos exclusivos",
-      "Incluye mensaje personalizado",
-      "Certificado de autenticidad",
-    ],
-    size: "Caja: 18cm x 18cm x 12cm",
-    weight: "400g",
-    elaborationTime: "5-7 días hábiles",
-    relatedProducts: ["cajita-recuerdo", "gatito-personalizado"],
   },
 ];
 
