@@ -1,10 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import velaGatito from "../../assets/images/vela_gatito_personalizada_1.jpg";
-import velasCreativas from "../../assets/images/vela_gatito_personalizada_2.jpg";
-import velasAromaHero from "../../assets/images/grupo_ositos.jpg";
-import kawaiiHero from "../../assets/images/capibara_cafe.jpg";
+import regaloPersonalizado from "../../assets/images/pack_gatitos_modelo_2.webp";
+import gatitosChiwi from "../../assets/images/Hero_1_gatos.png";
+import velasAromaHero from "../../assets/images/hero_velas_aromaticas.webp";
+import kawaiiHero from "../../assets/images/capibara_acostado_beige_right_side.webp";
 
 const posts = [
   {
@@ -12,19 +12,19 @@ const posts = [
     description:
       "Descubre por qué los regalos personalizados como las velitas Chiwi son la tendencia más fuerte del 2025 en Colombia.",
     href: "/blog/regalos-personalizados",
-    cover: velaGatito,
+    cover: regaloPersonalizado,
     date: "2025-09-29T12:00:00",
     category: "Tendencias",
     readTime: "6 min",
   },
   {
-    title: "Velas creativas: la nueva forma de decorar y regalar en 2025",
+    title: "Velas creativas: la nueva forma de decorar y regalar",
     description:
-      "Las velas creativas y personalizadas son tendencia en decoración y regalos para 2025. Descubre cómo Chiwi transforma cada vela en un recuerdo.",
+      "Las velas creativas y personalizadas son tendencia en decoración y regalos. Descubre cómo Chiwi transforma cada vela en un recuerdo.",
     href: "/blog/velas-creativas",
-    cover: velasCreativas,
+    cover: gatitosChiwi,
     date: "2025-09-29T12:00:00",
-    category: "Decoración",
+    category: "Tendencias",
     readTime: "5 min",
   },
   {
@@ -34,19 +34,18 @@ const posts = [
     href: "/blog/velas-aromaticas",
     cover: velasAromaHero,
     date: "2025-09-29T12:00:00",
-    category: "Decoración",
+    category: "Guías",
     readTime: "5 min",
   },
   {
-    title: "Regalos Kawaii en Tendencia 2025: Cómo lo Tierno Conquista Corazones en Colombia",
-    description:"Descubre por qué los regalos kawaii están conquistando Colombia en 2025. Guía completa sobre estilo kawaii, velas personalizadas adorables y regalos que transmiten alegría y ternura.",
+    title: "Regalos Kawaii en Tendencia: Cómo lo Tierno Conquista Corazones en Colombia",
+    description:"Descubre por qué los regalos kawaii están conquistando Colombia. Guía completa sobre estilo kawaii, velas personalizadas adorables y regalos que transmiten alegría y ternura.",
     href: "/blog/regalos-kawaii",
     cover: kawaiiHero,
     date: "2025-09-29T12:00:00",
     category: "Decoración",
     readTime: "5 min",
   }
-  
 ];
 ---
 
@@ -81,19 +80,31 @@ const posts = [
     </div>
   </section>
 
-  <!-- Categorías/Filtros (preparado para futuro) -->
+  <!-- Categorías/Filtros -->
   <section class="max-w-6xl mx-auto px-4 py-6">
     <div class="flex flex-wrap gap-3 justify-center">
-      <button class="px-4 py-2 bg-Naranja-principal text-white rounded-full text-sm font-medium hover:bg-orange-500 transition-colors">
+      <button 
+        data-category="all"
+        class="category-filter px-4 py-2 bg-Naranja-principal text-white rounded-full text-sm font-medium hover:bg-orange-500 transition-colors"
+      >
         Todos
       </button>
-      <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors">
+      <button 
+        data-category="Tendencias"
+        class="category-filter px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors"
+      >
         Tendencias
       </button>
-      <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors">
+      <button 
+        data-category="Decoración"
+        class="category-filter px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors"
+      >
         Decoración
       </button>
-      <button class="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors">
+      <button 
+        data-category="Guías"
+        class="category-filter px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-full text-sm font-medium hover:border-Naranja-principal hover:text-Naranja-principal transition-colors"
+      >
         Guías
       </button>
     </div>
@@ -104,7 +115,10 @@ const posts = [
     
     <!-- Destacado: Primer artículo más grande -->
     {posts.length > 0 && (
-      <article class="mb-12">
+      <article 
+        class="blog-post mb-12" 
+        data-category={posts[0].category}
+      >
         <a
           href={posts[0].href}
           class="group block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
@@ -167,7 +181,10 @@ const posts = [
     <!-- Grid de artículos restantes -->
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {posts.slice(1).map((post) => (
-        <article>
+        <article 
+          class="blog-post"
+          data-category={post.category}
+        >
           <a
             href={post.href}
             class="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 h-full flex flex-col"
@@ -265,21 +282,53 @@ const posts = [
   </section>
 
   <!-- Schema markup para SEO -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Blog Chiwi",
-      "description": "Ideas, inspiración y consejos sobre velas personalizadas y regalos creativos",
-      "url": "https://chiwicolombia.com/blog",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Chiwi",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://chiwicolombia.com/logo.png"
-        }
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog Chiwi",
+    "description": "Ideas, inspiración y consejos sobre velas personalizadas y regalos creativos",
+    "url": "https://chiwicolombia.com/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Chiwi",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://chiwicolombia.com/logo.png"
       }
     }
+  })} />
+
+  <!-- JavaScript para filtrado de categorías -->
+  <script>
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
+    const blogPosts = document.querySelectorAll<HTMLElement>('.blog-post');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Actualizar estilos de botones activos
+        filterButtons.forEach(btn => {
+          if (btn === button) {
+            btn.classList.remove('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+            btn.classList.add('bg-Naranja-principal', 'text-white');
+          } else {
+            btn.classList.remove('bg-Naranja-principal', 'text-white');
+            btn.classList.add('bg-white', 'border', 'border-gray-300', 'text-gray-700');
+          }
+        });
+
+        // Filtrar posts
+        blogPosts.forEach(post => {
+          const postCategory = post.getAttribute('data-category');
+          
+          if (category === 'all' || postCategory === category) {
+            post.style.display = 'block';
+          } else {
+            post.style.display = 'none';
+          }
+        });
+      });
+    });
   </script>
 </Layout>
