@@ -43,6 +43,16 @@ import gatitoGordaLeft from "../assets/images/gatito_gorda_left.webp";
 import fantasmaGatito from "../assets/images/gatito_ghost_orange_back.webp";
 import fantasmaPerrito from "../assets/images/perrito_ghost_purple_back.webp";
 //import duoFantasma from "../assets/images/duo_halloween.webp";
+import fantasmaGatitoShinny from "../assets/images/gatito_fantasma_brillante.webp";
+import fantasmaGatitoLeft from "../assets/images/gatito_fantasma_left.webp";
+import fantasmaGatitoFront from "../assets/images/gatito_fantasma_front.webp";
+import fantasmaPerritoShinny from "../assets/images/perrito_fantasma_brillante.webp";
+import fantasmaPerritoLeft from "../assets/images/perrito_fantasma_left.webp";
+import fantasmaPerritoRight from "../assets/images/perrito_fantasma_right.webp";
+//Ositos
+import ositosTaller from "../assets/images/trio_ositos_taller.webp";
+import ositosBackWhite from "../assets/images/grupo_ositos_background_white.webp";
+
 
 export interface Product {
   id: number;
@@ -69,8 +79,8 @@ export const products: Product[] = [
     id: 1,
     slug: "gatito-personalizado",
     name: "Gatito Personalizado",
-    price: 19900,
-    category: ["kawaii"],
+    price: 25000,
+    category: ["kawaii","mascotas"],
     image: IndexGrid7,
     images: [IndexGrid7, gatitoMartinaLeft,gatitoMartinaBack,gatitoManchasFront,gatitoManchasLeft,gatitoManchasBack,gatitoManchasRigth,gatitoMakoFront,gatitoMakoRigth,gatitoGordaLeft],
     alt: "Gatito Personalizado - Vela kawaii hecha a mano en Colombia",
@@ -132,7 +142,7 @@ export const products: Product[] = [
     price: 18900,
     category: ["temporada"],
     image: fantasmaGatito,
-    images: [fantasmaGatito],
+    images: [fantasmaGatito,fantasmaGatitoShinny,fantasmaGatitoFront,fantasmaGatitoLeft],
     alt: "Fantasma Gatito - Vela Halloween que brilla en la oscuridad",
     featured: true,
     description:
@@ -141,16 +151,16 @@ export const products: Product[] = [
     longDescription:
       "Edición limitada para Halloween. Este adorable gatito fantasma cobra vida en la oscuridad gracias a su pintura fotoluminiscente especial. Perfecto para decorar en octubre y crear un ambiente mágico y tierno a la vez.",
     features: [
+      "Diseño exclusivo fantasmal",
       "Pintura fotoluminiscente (brilla en la oscuridad)",
       "Edición limitada de octubre",
       "Diseño exclusivo de temporada",
       "Se carga con luz natural o artificial",
-      "Brillo dura hasta 6 horas",
       "Color verde fluorescente característico",
     ],
-    size: "Altura: 10cm, Ancho: 7cm",
-    weight: "140g",
-    elaborationTime: "2-3 días hábiles",
+    size: "Altura: 6cm, Ancho: 6cm",
+    //weight: "140g",
+    elaborationTime: "1 día hábil",
     relatedProducts: ["fantasma-perrito-halloween", "gatito-personalizado"],
   },
   {
@@ -160,7 +170,7 @@ export const products: Product[] = [
     price: 18900,
     category: ["temporada"],
     image: fantasmaPerrito,
-    images: [fantasmaPerrito],
+    images: [fantasmaPerrito,fantasmaPerritoShinny,fantasmaPerritoRight,fantasmaPerritoLeft],
     alt: "Fantasma Perrito - Vela Halloween que brilla en la oscuridad",
     featured: true,
     description:
@@ -169,23 +179,24 @@ export const products: Product[] = [
     longDescription:
       "La versión perruna de nuestra colección Halloween. Este tierno perrito fantasma ilumina tus noches de octubre con su brillo fotoluminiscente. Disponible solo durante la temporada de Halloween.",
     features: [
-      "Pintura fotoluminiscente premium",
-      "Disponible solo en octubre",
       "Diseño exclusivo fantasmal",
-      "Brillo intenso y duradero",
-      "Perfecto para decoración Halloween",
+      "Pintura fotoluminiscente (brilla en la oscuridad)",
+      "Edición limitada de octubre",
+      "Diseño exclusivo de temporada",
+      "Se carga con luz natural o artificial",
+      "Color verde fluorescente característico",
       "Amigable y no da miedo",
     ],
-    size: "Altura: 10cm, Ancho: 7cm",
-    weight: "145g",
-    elaborationTime: "2-3 días hábiles",
+    size: "Altura: 6.3cm, Ancho: 5cm",
+    //weight: "145g",
+    elaborationTime: "1 día hábil",
     relatedProducts: ["fantasma-gatito-halloween", "perrito-cocker"],
   },
   {
     id: 5,
     slug: "cajita-recuerdo",
     name: "Cajita Recuerdo",
-    price: 29900,
+    price: 34000,
     category: ["recordatorios"],
     image: IndexGrid5,
     images: [IndexGrid5],
@@ -277,26 +288,25 @@ export const products: Product[] = [
     id: 8,
     slug: "familia-de-ositos",
     name: "Familia de Ositos",
-    price: 19900,
+    price: 14900,
     category: ["kawaii"],
-    image: IndexGrid2,
-    images: [IndexGrid2],
+    image: ositosBackWhite,
+    images: [ositosBackWhite, ositosTaller],
     alt: "Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia",
     featured: true,
     description:
       "Set de velas con diseño de familia de ositos, ideal para regalar",
     longDescription:
-      "Un adorable set de tres ositos que representan el amor familiar. Cada osito está elaborado con cera de soja natural y pintado a mano. Perfectos para decorar una habitación infantil o como regalo para celebrar la unión familiar.",
+      "Un adorable set de tres ositos que representan el amor familiar. Cada osito está elaborado con cera natural y pintado a mano. Perfectos para decorar una habitación infantil o como regalo para celebrar la unión familiar.",
     features: [
-      "Set de 3 ositos de diferentes tamaños",
-      "Cera de soja 100% natural",
+      "Set de 3 ositos",
+      "Cera 100% natural",
       "Colores pastel suaves",
       "Pintados a mano individualmente",
-      "Empaque especial incluido",
     ],
-    size: "Osito grande: 10cm, Mediano: 7cm, Pequeño: 5cm",
-    weight: "200g el set completo",
-    elaborationTime: "3-4 días hábiles",
+    size: "Altura c/u: 3.5cm, Ancho c/u: 2.5cm",
+    //weight: "200g el set completo",
+    elaborationTime: "1-2 días hábiles",
     relatedProducts: ["perrito-cocker", "capibara-beige-acostado"],
   },
   {
