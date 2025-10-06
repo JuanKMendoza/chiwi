@@ -242,364 +242,378 @@ import "swiper/css/navigation";
       </p>
     </div>
 
-    <!-- Grid Desktop -->
-    <div
-      class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+<!-- Grid Desktop -->
+<div
+  class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+>
+  <!-- Producto 1: Perrito Cocker -->
+  <article
+    class="flex flex-col"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <meta itemprop="name" content="Perrito Cocker" />
+    <meta itemprop="description" content="Vela artesanal kawaii con diseño personalizado de perrito Cocker. Hecha a mano con cera natural en Colombia." />
+    <meta itemprop="brand" content="Chiwi Colombia" />
+
+    <a
+      href="/productos/perrito-cocker"
+      class="block w-full relative group"
+      itemprop="url"
     >
-      <!-- Producto 1: Perrito Cocker -->
-      <article
-        class="flex flex-col"
+      <Image
+        src={IndexGrid1}
+        alt="Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia"
+        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={85}
+        itemprop="image"
+      />
+    </a>
+    <div class="mt-3 space-y-1">
+      <h3 class="font-bold text-lg" itemprop="name">Perrito Cocker</h3>
+      <p
+        class="font-semibold text-gray-800"
+        itemprop="offers"
         itemscope
-        itemtype="https://schema.org/Product"
+        itemtype="https://schema.org/Offer"
       >
-        <meta itemprop="name" content="Perrito Cocker" />
+        <span>$14.900</span>
         <meta itemprop="price" content="14900" />
         <meta itemprop="priceCurrency" content="COP" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+      </p>
+    </div>
+    <a
+      href="/productos/perrito-cocker"
+      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+      aria-label="Ver detalles de Perrito Cocker"
+    >
+      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+      <span class="text-sm">Ver detalles</span>
+    </a>
+  </article>
 
-        <a
-          href="/productos/perrito-cocker"
-          class="block w-full relative group"
-          itemprop="url"
-        >
-          <Image
-            src={IndexGrid1}
-            alt="Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-            itemprop="image"
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <h3 class="font-bold text-lg" itemprop="name">Perrito Cocker</h3>
-          <p
-            class="font-semibold text-gray-800"
-            itemprop="offers"
-            itemscope
-            itemtype="https://schema.org/Offer"
-          >
-            <span itemprop="price">$14.900</span>
-            <meta itemprop="priceCurrency" content="COP" />
-          </p>
-        </div>
-        <a
-          href="/productos/perrito-cocker"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-          aria-label="Ver detalles de Perrito Cocker"
-        >
-          <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-          <span class="text-sm">Ver detalles</span>
-        </a>
-      </article>
+  <!-- Producto 2: Familia de Ositos -->
+  <article
+    class="flex flex-col lg:col-span-2"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <meta itemprop="name" content="Familia de Ositos" />
+    <meta itemprop="description" content="Velas decorativas kawaii con diseño de familia de ositos. Hechas a mano con cera natural en Colombia." />
+    <meta itemprop="brand" content="Chiwi Colombia" />
 
-      <!-- Producto 2: Familia de Ositos -->
-      <article
-        class="flex flex-col lg:col-span-2"
+    <a
+      href="/productos/familia-de-ositos"
+      class="block w-full relative group"
+      itemprop="url"
+    >
+      <Image
+        src={IndexGrid2}
+        alt="Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia"
+        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={85}
+        itemprop="image"
+      />
+    </a>
+    <div class="mt-3 space-y-1">
+      <h3 class="font-bold text-lg" itemprop="name">Familia de Ositos</h3>
+      <p
+        class="font-semibold text-gray-800"
+        itemprop="offers"
         itemscope
-        itemtype="https://schema.org/Product"
+        itemtype="https://schema.org/Offer"
       >
-        <meta itemprop="name" content="Familia de Ositos" />
+        <span>$14.900</span>
         <meta itemprop="price" content="14900" />
         <meta itemprop="priceCurrency" content="COP" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+      </p>
+    </div>
+    <a
+      href="/productos/familia-de-ositos"
+      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+      aria-label="Ver detalles de Familia de Ositos"
+    >
+      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+      <span class="text-sm">Ver detalles</span>
+    </a>
+  </article>
 
-        <a
-          href="/productos/familia-de-ositos"
-          class="block w-full relative group"
-          itemprop="url"
-        >
-          <Image
-            src={IndexGrid2}
-            alt="Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-            itemprop="image"
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <h3 class="font-bold text-lg" itemprop="name">Familia de Ositos</h3>
-          <p
-            class="font-semibold text-gray-800"
-            itemprop="offers"
-            itemscope
-            itemtype="https://schema.org/Offer"
-          >
-            <span itemprop="price">$14.900</span>
-            <meta itemprop="priceCurrency" content="COP" />
-          </p>
-        </div>
-        <a
-          href="/productos/familia-de-ositos"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-          aria-label="Ver detalles de Familia de Ositos"
-        >
-          <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-          <span class="text-sm">Ver detalles</span>
-        </a>
-      </article>
+  <!-- Producto 3: capibara Mood Relax -->
+  <article
+    class="flex flex-col"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <meta itemprop="name" content="Capibara Mood Relax" />
+    <meta itemprop="description" content="Vela kawaii artesanal con diseño de capibara acostado color beige. Hecha a mano en Colombia." />
+    <meta itemprop="brand" content="Chiwi Colombia" />
 
-      <!-- Producto 3: capibara Mood Relax -->
-      <article
-        class="flex flex-col"
+    <a
+      href="/productos/capibara-mood-relax"
+      class="block w-full relative group"
+      itemprop="url"
+    >
+      <Image
+        src={IndexGrid3}
+        alt="Capibara Mood Relax - Vela kawaii artesanal hecha en Colombia"
+        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={85}
+        itemprop="image"
+      />
+    </a>
+    <div class="mt-3 space-y-1">
+      <h3 class="font-bold text-lg" itemprop="name">
+        Capibara Mood Relax
+      </h3>
+      <p
+        class="font-semibold text-gray-800"
+        itemprop="offers"
         itemscope
-        itemtype="https://schema.org/Product"
+        itemtype="https://schema.org/Offer"
       >
-        <meta itemprop="name" content="Capibara Mood Relax" />
+        <span>$15.900</span>
         <meta itemprop="price" content="15900" />
         <meta itemprop="priceCurrency" content="COP" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+      </p>
+    </div>
+    <a
+      href="/productos/capibara-mood-relax"
+      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+      aria-label="Ver detalles de capibara Mood Relax"
+    >
+      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+      <span class="text-sm">Ver detalles</span>
+    </a>
+  </article>
 
-        <a
-          href="/productos/capibara-mood-relax"
-          class="block w-full relative group"
-          itemprop="url"
-        >
-          <Image
-            src={IndexGrid3}
-            alt="Capibara Mood Relax - Vela kawaii artesanal hecha en Colombia"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-            itemprop="image"
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <h3 class="font-bold text-lg" itemprop="name">
-            Capibara Mood Relax
-          </h3>
-          <p
-            class="font-semibold text-gray-800"
-            itemprop="offers"
-            itemscope
-            itemtype="https://schema.org/Offer"
-          >
-            <span itemprop="price">$15.900</span>
-            <meta itemprop="priceCurrency" content="COP" />
-          </p>
-        </div>
-        <a
-          href="/productos/capibara-mood-relax"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-          aria-label="Ver detalles de capibara Mood Relax"
-        >
-          <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-          <span class="text-sm">Ver detalles</span>
-        </a>
-      </article>
+  <!-- Producto 4: Capibara Cute -->
+  <article
+    class="flex flex-col"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <meta itemprop="name" content="Capibara Cute" />
+    <meta itemprop="description" content="Vela artesanal kawaii con diseño de capibara color café. Hecha a mano en Colombia." />
+    <meta itemprop="brand" content="Chiwi Colombia" />
 
-      <!-- Producto 4: Capibara Cute -->
-      <article
-        class="flex flex-col"
+    <a
+      href="/productos/capibara-cute"
+      class="block w-full relative group"
+      itemprop="url"
+    >
+      <Image
+        src={IndexGrid4}
+        alt="Capibara Cute - Vela artesanal kawaii hecha a mano en Colombia"
+        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={85}
+        itemprop="image"
+      />
+    </a>
+    <div class="mt-3 space-y-1">
+      <h3 class="font-bold text-lg" itemprop="name">Capibara Cute</h3>
+      <p
+        class="font-semibold text-gray-800"
+        itemprop="offers"
         itemscope
-        itemtype="https://schema.org/Product"
+        itemtype="https://schema.org/Offer"
       >
-        <meta itemprop="name" content="Capibara Cute" />
+        <span>$15.900</span>
         <meta itemprop="price" content="15900" />
         <meta itemprop="priceCurrency" content="COP" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+      </p>
+    </div>
+    <a
+      href="/productos/capibara-cute"
+      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+      aria-label="Ver detalles de Capibara Cute"
+    >
+      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+      <span class="text-sm">Ver detalles</span>
+    </a>
+  </article>
 
-        <a
-          href="/productos/capibara-cute"
-          class="block w-full relative group"
-          itemprop="url"
-        >
-          <Image
-            src={IndexGrid4}
-            alt="Capibara Cute - Vela artesanal kawaii hecha a mano en Colombia"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-            itemprop="image"
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <h3 class="font-bold text-lg" itemprop="name">Capibara Cute</h3>
-          <p
-            class="font-semibold text-gray-800"
-            itemprop="offers"
-            itemscope
-            itemtype="https://schema.org/Offer"
-          >
-            <span itemprop="price">$15.900</span>
-            <meta itemprop="priceCurrency" content="COP" />
-          </p>
-        </div>
-        <a
-          href="/productos/capibara-cute"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-          aria-label="Ver detalles de Capibara Cute"
-        >
-          <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-          <span class="text-sm">Ver detalles</span>
-        </a>
-      </article>
+  <!-- Producto 5: Cajita Recuerdo -->
+  <article
+    class="flex flex-col"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <meta itemprop="name" content="Cajita Recuerdame" />
+    <meta itemprop="description" content="Kit completo con vela personalizada y empaque especial para ocasiones especiales. Hecho en Colombia." />
+    <meta itemprop="brand" content="Chiwi Colombia" />
 
-      <!-- Producto 5: Cajita Recuerdo -->
-      <article
-        class="flex flex-col"
+    <a
+      href="/productos/cajita-recuerdame"
+      class="block w-full relative group"
+      itemprop="url"
+    >
+      <Image
+        src={IndexGrid5}
+        alt="Cajita Recuerdo - Kit completo con vela personalizada hecha a mano"
+        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={85}
+        itemprop="image"
+      />
+    </a>
+    <div class="mt-3 space-y-1">
+      <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdame</h3>
+      <p
+        class="font-semibold text-gray-800"
+        itemprop="offers"
         itemscope
-        itemtype="https://schema.org/Product"
+        itemtype="https://schema.org/Offer"
       >
-        <meta itemprop="name" content="Cajita Recuerdame" />
+        <span>$32.900</span>
         <meta itemprop="price" content="32900" />
         <meta itemprop="priceCurrency" content="COP" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+      </p>
+    </div>
+    <a
+      href="/productos/cajita-recuerdame"
+      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+      aria-label="Ver detalles de Cajita Recuerdame"
+    >
+      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+      <span class="text-sm">Ver detalles</span>
+    </a>
+  </article>
 
-        <a
-          href="/productos/cajita-recuerdame"
-          class="block w-full relative group"
-          itemprop="url"
-        >
-          <Image
-            src={IndexGrid5}
-            alt="Cajita Recuerdo - Kit completo con vela personalizada hecha a mano"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-            itemprop="image"
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdame</h3>
-          <p
-            class="font-semibold text-gray-800"
-            itemprop="offers"
-            itemscope
-            itemtype="https://schema.org/Offer"
-          >
-            <span itemprop="price">$32.900</span>
-            <meta itemprop="priceCurrency" content="COP" />
-          </p>
-        </div>
-        <a
-          href="/productos/cajita-recuerdame"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-          aria-label="Ver detalles de Cajita Recuerdame"
-        >
-          <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-          <span class="text-sm">Ver detalles</span>
-        </a>
-      </article>
+  <!-- Producto 6: Cajita Recuerdo Premium -->
+  <article
+    class="flex flex-col"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <meta itemprop="name" content="Cajita Recuerdame Premium" />
+    <meta itemprop="description" content="Regalo especial con vela personalizada y empaque premium. Hecho en Colombia." />
+    <meta itemprop="brand" content="Chiwi Colombia" />
 
-      <!-- Producto 6: Cajita Recuerdo Premium -->
-      <article
-        class="flex flex-col"
+    <a
+      href="/productos/cajita-recuerdame"
+      class="block w-full relative group"
+      itemprop="url"
+    >
+      <Image
+        src={IndexGrid6}
+        alt="Cajita Recuerdo Premium - Regalo especial con vela personalizada"
+        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={85}
+        itemprop="image"
+      />
+    </a>
+    <div class="mt-3 space-y-1">
+      <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdo Premium</h3>
+      <p
+        class="font-semibold text-gray-800"
+        itemprop="offers"
         itemscope
-        itemtype="https://schema.org/Product"
+        itemtype="https://schema.org/Offer"
       >
-        <meta itemprop="name" content="Cajita Recuerdame" />
+        <span>$32.900</span>
         <meta itemprop="price" content="32900" />
         <meta itemprop="priceCurrency" content="COP" />
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+      </p>
+    </div>
+    <a
+      href="/productos/cajita-recuerdame-premium"
+      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+      aria-label="Ver detalles de Cajita Recuerdame Premium"
+    >
+      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+      <span class="text-sm">Ver detalles</span>
+    </a>
+  </article>
 
-        <a
-          href="/productos/cajita-recuerdame"
-          class="block w-full relative group"
-          itemprop="url"
-        >
-          <Image
-            src={IndexGrid6}
-            alt="Cajita Recuerdo Premium - Regalo especial con vela personalizada"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-            itemprop="image"
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdo Premium</h3>
-          <p
-            class="font-semibold text-gray-800"
-            itemprop="offers"
-            itemscope
-            itemtype="https://schema.org/Offer"
-          >
-            <span itemprop="price">$32.900</span>
-            <meta itemprop="priceCurrency" content="COP" />
-          </p>
-        </div>
-        <a
-          href="/productos/cajita-recuerdame-premium"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-          aria-label="Ver detalles de Cajita Recuerdame Premium"
-        >
-          <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-          <span class="text-sm">Ver detalles</span>
-        </a>
-      </article>
+  <!-- Producto 7: Gatito Personalizado -->
+  <article
+    class="flex flex-col"
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+    <meta itemprop="name" content="Gatito Personalizado" />
+    <meta itemprop="description" content="Vela kawaii hecha a mano con diseño personalizado de gatito. Creada en Colombia." />
+    <meta itemprop="brand" content="Chiwi Colombia" />
 
-      <!-- Producto 7: Gatito Personalizado -->
-      <article
-        class="flex flex-col"
+    <a
+      href="/productos/gatito-personalizado"
+      class="block w-full relative group"
+      itemprop="url"
+    >
+      <Image
+        src={IndexGrid7}
+        alt="Gatito Personalizado - Vela kawaii hecha a mano en Colombia"
+        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+        width={800}
+        height={600}
+        loading="lazy"
+        decoding="async"
+        format="webp"
+        quality={85}
+        itemprop="image"
+      />
+    </a>
+    <div class="mt-3 space-y-1">
+      <h3 class="font-bold text-lg" itemprop="name">
+        Gatito Personalizado
+      </h3>
+      <p
+        class="font-semibold text-gray-800"
+        itemprop="offers"
         itemscope
-        itemtype="https://schema.org/Product"
+        itemtype="https://schema.org/Offer"
       >
-        <meta itemprop="name" content="Gatito Personalizado" />
+        <span>$24.900</span>
         <meta itemprop="price" content="24900" />
         <meta itemprop="priceCurrency" content="COP" />
-
-        <a
-          href="/productos/gatito-personalizado"
-          class="block w-full relative group"
-          itemprop="url"
-        >
-          <Image
-            src={IndexGrid7}
-            alt="Gatito Personalizado - Vela kawaii hecha a mano en Colombia"
-            class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-            width={800}
-            height={600}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-            itemprop="image"
-          />
-        </a>
-        <div class="mt-3 space-y-1">
-          <h3 class="font-bold text-lg" itemprop="name">
-            Gatito Personalizado
-          </h3>
-          <p
-            class="font-semibold text-gray-800"
-            itemprop="offers"
-            itemscope
-            itemtype="https://schema.org/Offer"
-          >
-            <span itemprop="price">$24.900</span>
-            <meta itemprop="priceCurrency" content="COP" />
-          </p>
-        </div>
-        <a
-          href="/productos/gatito-personalizado"
-          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-          aria-label="Ver detalles de Gatito Personalizado"
-        >
-          <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-          <span class="text-sm">Ver detalles</span>
-        </a>
-      </article>
+        <meta itemprop="availability" content="https://schema.org/InStock" />
+      </p>
     </div>
+    <a
+      href="/productos/gatito-personalizado"
+      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+      aria-label="Ver detalles de Gatito Personalizado"
+    >
+      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
+      <span class="text-sm">Ver detalles</span>
+    </a>
+  </article>
+</div>
 
     <!-- Carrusel móvil -->
 <div class="block sm:hidden">
