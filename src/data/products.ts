@@ -99,7 +99,7 @@ export const products: Product[] = [
       "Puedes enviar foto de referencia",
       "Detalles pintados a mano",
       "Expresión kawaii adorable",
-      "Incluye tarjeta con nombre del gatito",
+      "Incluye tarjeta con nombre del gatito y foto tipo Polaroid",
       //"Opción de collar o accesorios personalizados",
     ],
     size: "Altura: 6.5cm, Ancho: 4cm",
@@ -214,7 +214,7 @@ export const products: Product[] = [
     features: [
       "Vela personalizada según tu preferencia",
       "Caja decorativa de presentación",
-      "Tarjeta personalizable incluida",
+      "Tarjeta personalizable incluida y foto de tu peludito tipo Polaroid",
       "Lazo y detalles decorativos",
       "Incluye suculentas de cera",
     ],
