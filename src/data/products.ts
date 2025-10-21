@@ -15,10 +15,12 @@ import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
 import CockerBFront from "../assets/images/perrito_cocker_negro_frente.webp";
 import CockerBSide from "../assets/images/perrito_cocker_negro_lado.webp";
 import CockerBBack from "../assets/images/perrito_cocker_negro_atras.webp";
+import CockerBPhoto from "../assets/images/perrito_cocker_negro_con_foto.webp";
 //Cocker Beige
 import CockerBeiFront from "../assets/images/perrito_cocker_beige_frente.webp";
 import CockerBeiSide from "../assets/images/perrito_cocker_beige_lado.webp";
 import CockerBeiBack from "../assets/images/perrito_cocker_beige_atras.webp";
+import CockerBeiPhoto from "../assets/images/perrito_cocker_beige_con_foto.webp";
 //capíbara Mood Relax
 import CapibaraAcostadoFront from "../assets/images/capibara_acostado_beige_front.webp";
 import CapibaraAcostadoLeft from "../assets/images/capibara_acostado_beige_left_side.webp";
@@ -100,6 +102,7 @@ export const products: Product[] = [
       "Detalles pintados a mano",
       "Expresión kawaii adorable",
       "Incluye tarjeta con nombre del gatito y foto tipo Polaroid",
+      "Aromas a tu elección (opcional)"
       //"Opción de collar o accesorios personalizados",
     ],
     size: "Altura: 6.5cm, Ancho: 4cm",
@@ -110,17 +113,19 @@ export const products: Product[] = [
   {
     id: 2,
     slug: "perrito-cocker",
-    name: "Perrito Cocker",
-    price: 14900,
+    name: "Perrito Cocker Personalizado",
+    price: 21900,
     category: ["kawaii", "mascotas", "recordatorios"], // Ahora puede tener múltiples
     image: IndexGrid1,
     images: [
       CockerBFront,
       CockerBSide,
       CockerBBack,
+      CockerBPhoto,
       CockerBeiFront,
       CockerBeiSide,
       CockerBeiBack,
+      CockerBeiPhoto
     ], // Por ahora solo 3, luego agregas más
     alt: "Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia",
     featured: true,
@@ -132,6 +137,7 @@ export const products: Product[] = [
       "Cera 100% natural y biodegradable",
       "Pintado y personalizado a imagen te tu peludito o llevalo en color natural",
       "Pintado a mano con pinturas no tóxicas",
+      "Incluye tarjeta con nombre del gatito y foto tipo Polaroid",
       "Ideal para un detalle, recordatorio o para decorar tus espacios",
       "Aromas a tu elección (opcional)",
     ],
