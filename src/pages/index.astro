@@ -15,6 +15,9 @@ import Indexrecordatorios from "../assets/images/capibara_cafe.jpg";
 // Importa las imágenes de Halloween
 import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
 import SeasonalProductSchema from "../components/SeasonalProductSchema.astro";
+import DogGhost from "../assets/images/perrito_fantasma.webp";
+import CatGhost from "../assets/images/gatito_fantasma.webp";
+
 
 import fantasmaGatito from "../assets/images/gatito_ghost_orange_back.webp";
 import fantasmaPerrito from "../assets/images/perrito_ghost_purple_back.webp";
@@ -177,6 +180,149 @@ import "swiper/css/navigation";
       </a>
     </div>
   </section>
+
+  <!-- BOTÓN PRINCIPAL -->
+<button id="openGameBtn" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition">
+  🎮 Jugar y ganar
+</button>
+
+<!-- MODAL DEL JUEGO -->
+<div id="gameModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-2xl shadow-xl w-[90%] max-w-md relative p-6 text-center">
+    <button id="closeGameBtn" class="absolute top-3 right-3 text-gray-500 hover:text-black">✖</button>
+    <h2 class="text-2xl font-bold text-purple-600 mb-2">¡Caza los fantasmas! 👻</h2>
+    <p class="text-sm text-gray-600 mb-4">Evita las calaveras 💀 y consigue descuentos</p>
+
+    <!-- ÁREA DEL JUEGO -->
+    <div id="gameArea" class="relative w-full h-64 bg-purple-100 overflow-hidden rounded-xl border border-purple-200"></div>
+
+    <!-- INFO -->
+    <div class="flex justify-between mt-4 text-gray-700">
+      <p>Puntos: <span id="score">0</span></p>
+      <p>Tiempo: <span id="time">30</span>s</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FINAL -->
+<div id="resultModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-2xl shadow-xl w-[90%] max-w-md relative p-6 text-center">
+    <h2 class="text-2xl font-bold text-purple-600 mb-3">🎁 Resultado</h2>
+    <p id="resultText" class="text-lg text-gray-700 mb-4"></p>
+
+    <form id="userForm" class="space-y-3">
+      <input type="text" id="name" placeholder="Tu nombre" class="w-full border border-gray-300 rounded-lg p-2" required>
+      <input type="email" id="email" placeholder="Tu correo" class="w-full border border-gray-300 rounded-lg p-2" required>
+      <button type="submit" class="bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition w-full">
+        Enviar y obtener descuento 🎉
+      </button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const openBtn = document.getElementById('openGameBtn');
+  const closeBtn = document.getElementById('closeGameBtn');
+  const modal = document.getElementById('gameModal');
+  const resultModal = document.getElementById('resultModal');
+  const gameArea = document.getElementById('gameArea');
+  const scoreDisplay = document.getElementById('score');
+  const timeDisplay = document.getElementById('time');
+  const resultText = document.getElementById('resultText');
+  const form = document.getElementById('userForm');
+  let score = 0;
+  let timeLeft = 30;
+  let gameInterval;
+  let timerInterval;
+
+  // Abrir y cerrar modal
+  openBtn.addEventListener('click', startGame);
+  closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+  // Iniciar el juego
+  function startGame() {
+    score = 0;
+    timeLeft = 30;
+    scoreDisplay.textContent = score;
+    timeDisplay.textContent = timeLeft;
+    modal.classList.remove('hidden');
+    gameArea.innerHTML = '';
+
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      timeDisplay.textContent = timeLeft;
+      if (timeLeft <= 0) endGame();
+    }, 1000);
+
+    gameInterval = setInterval(spawnEntity, 800); // aparece algo cada 0.8s
+  }
+
+  // Crear fantasmas o calaveras
+  function spawnEntity() {
+    const isGhost = Math.random() < 0.7; // 70% probabilidad de fantasma
+    const entity = document.createElement('img');
+    entity.src = isGhost
+      ? `/img/fantasmas/fantasma${Math.ceil(Math.random() * 3)}.webp`
+      : `/img/fantasmas/calavera${Math.ceil(Math.random() * 2)}.png`;
+
+    entity.className =
+      'absolute w-12 h-12 cursor-pointer transition-transform duration-200 hover:scale-110';
+    entity.style.top = Math.random() * 80 + '%';
+    entity.style.left = Math.random() * 80 + '%';
+
+    entity.addEventListener('click', () => {
+      if (isGhost) {
+        score += 100;
+      } else {
+        score -= 100;
+      }
+      scoreDisplay.textContent = score;
+      entity.remove();
+    });
+
+    gameArea.appendChild(entity);
+
+    // Desaparecen después de 1.5 segundos
+    setTimeout(() => entity.remove(), 1500);
+  }
+
+  // Finalizar juego
+  function endGame() {
+    clearInterval(gameInterval);
+    clearInterval(timerInterval);
+    modal.classList.add('hidden');
+
+    let discount = 0;
+    if (score >= 500) discount = 15;
+    else if (score >= 300) discount = 10;
+    else if (score >= 200) discount = 5;
+
+    resultText.textContent =
+      discount > 0
+        ? `¡Genial! Obtuviste ${score} puntos 🎉 Ganas un ${discount}% de descuento.`
+        : `Tu puntuación fue ${score} puntos. No hay descuento, pero puedes volver a intentarlo 😉`;
+
+    resultModal.classList.remove('hidden');
+
+    // Guardar el descuento para enviar junto con los datos
+    form.dataset.discount = discount;
+  }
+
+  // Capturar datos del usuario
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const discount = form.dataset.discount;
+
+    // Simulación: mostrar en consola
+    console.log({ name, email, discount });
+
+    // Aquí podrías hacer un fetch() a tu backend, base de datos o formulario externo
+    resultText.textContent = `¡Gracias ${name}! 🎉 Te enviaremos tu ${discount}% de descuento a ${email}`;
+    form.classList.add('hidden');
+  });
+</script>
 
   <!-- Sección de Confianza --
   <section class="bg-gradient-to-r from-orange-50 to-pink-50 py-16">
