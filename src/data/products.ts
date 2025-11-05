@@ -58,6 +58,9 @@ import ositosBackWhite from "../assets/images/grupo_ositos_background_white.webp
 import packGatito from "../assets/images/pack_gatitos_fondo_beige.webp";
 import packGatitoModelo1 from "../assets/images/pack_gatitos_modelo_1.webp";
 import packGatitoModelo2 from "../assets/images/pack_gatitos_modelo_2.webp";
+//Navidad
+import christmasProduct1 from "../assets/images/farolito_solo.webp";
+import christmasProduct3 from "../assets/images/bolitas_velitas_con_nombres.webp";
 
 
 
@@ -145,6 +148,56 @@ export const products: Product[] = [
     //weight: "120g aproximadamente",
     elaborationTime: "2-3 días hábiles",
     relatedProducts: ["capibara-cafe", "gatito-personalizado"],
+  },
+  {
+    id: 9,
+    slug: "farolitos-navideños",
+    name: "Farolitos Navideños",
+    price: 16000,
+    category: ["temporada"],
+    image: christmasProduct1,
+    images: [christmasProduct1],
+    alt: "Farolitos Navideños- Paquete de Siete Farolitos con diseños unicos",
+    featured: true,
+    description:
+      "Edición especial Navidad: Farolitos trazados con diseños unicos, se pueden personalizar con los nombres te tus personas favoritas.",
+    badge: "Edición Limitada",
+    longDescription:
+      "Perfectos para iluminar tu noche de velitas. Son 7, cada uno trae trazado una imagen y un deseo especial: Amor, Felicidad, Paz, Prosperidad, Esperanza, Unión y gratitud.",
+    features: [
+      "Diseño exclusivo hecho a mano",
+      "Pack con 7 diseños y deseos de Navidad distintos",
+      "Material resistente y ecológico",
+    ],
+    size: "Altura: 17cm, Ancho: 9cm",
+    //weight: "140g",
+    elaborationTime: "3 días hábiles - Pidelos antes de la noche de velitas!",
+    relatedProducts: ["pack-bolitas-navideñas"],
+  },
+  {
+    id: 10,
+    slug: "pack-bolitas-navideñas",
+    name: "Pre-Venta Pack Bolitas Navideñas",
+    price: 25000,
+    category: ["temporada"],
+    image: christmasProduct3,
+    images: [christmasProduct3],
+    alt: "Pack Navideño - Bolitas con Velita en forma de Arbol Navideño",
+    featured: true,
+    description:
+      "Este hermoso Pack te sorprendera con una Velita aromatizada en forma de Arbol junto a 4 Bolitas de Navidad Personalizadas.",
+    badge: "Edición Limitada",
+    longDescription:
+      "Este hermoso Pack te sorprendera con una Velita aromatizada en forma de Arbol junto a 4 Bolitas de Navidad transparentes rellenas de pequeñas bolitas blancas y personalizadas con los nombres de tus personas favoritas en ellas.",
+    features: [
+      "Diseños exclusivo hechos a mano",
+      "Personaliza las bolitas con el nombre que desees",
+      "Velita en forma de Arbolito con aroma Navideño",
+    ],
+    size: "Altura: 6cm, Ancho: 6cm",
+    //weight: "140g",
+    elaborationTime: "Entregas a partir del 20 Noviembre",
+    relatedProducts: ["farolitos-navideños"],
   },
   {
     id: 3,
