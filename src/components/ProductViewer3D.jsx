@@ -1,18 +1,15 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stage, useGLTF, Html, useProgress } from '@react-three/drei';
+import { OrbitControls, Stage, useGLTF, Html, useProgress, Center } from '@react-three/drei';
 
 /**
- * COMPONENTE DE CARGA (LOADER)
- * Muestra un spinner y el porcentaje mientras descarga el modelo.
- * Usa <Html center> para centrarlo perfectamente en el canvas.
+ * LOADER (Igual que antes)
  */
 function Loader() {
   const { progress } = useProgress();
   return (
     <Html center>
       <div className="flex flex-col items-center justify-center bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg">
-        {/* Spinner animado color Naranja Chiwi */}
         <div className="w-10 h-10 border-4 border-orange-100 border-t-orange-500 rounded-full animate-spin mb-2"></div>
         <p className="text-xs font-bold text-gray-600">
           Cargando {progress.toFixed(0)}%
@@ -23,81 +20,83 @@ function Loader() {
 }
 
 /**
- * COMPONENTE DEL MODELO
- * Carga el archivo .glb optimizado
+ * MODELO
+ * Aquí aplicamos el truco del <Center>
  */
 function Model({ modelPath }) {
   const { scene } = useGLTF(modelPath);
-  return <primitive object={scene} />;
+  return (
+    // <Center> calcula la caja del modelo y lo pone EXACTAMENTE en el medio.
+    // top: alinea la parte superior del modelo.
+    // disableY/Z: false permite centrar en todos los ejes.
+    <Center>
+      <primitive object={scene} />
+    </Center>
+  );
 }
 
 /**
  * VISOR PRINCIPAL
  */
 export default function ProductViewer3D({ modelPath }) {
-  // Estado para detectar si es celular
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Función para verificar el ancho de la pantalla
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    
-    // Ejecutar al inicio
     checkMobile();
-    
-    // Escuchar cambios de tamaño (por si giran el celular)
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   return (
-    <div className="w-full h-full cursor-move bg-gray-50 rounded-3xl touch-none">
+    <div className="w-full h-full cursor-grab active:cursor-grabbing bg-gray-50 rounded-3xl touch-none">
       <Canvas 
-        // 1. OPTIMIZACIÓN CLAVE: Pixel Ratio (DPR)
-        // Celulares: Máximo 1.5 (HD). Escritorio: Máximo 2 (Retina).
-        // Esto evita que el celular intente renderizar en 4K y se trabe.
         dpr={[1, isMobile ? 1.5 : 2]} 
-        
-        camera={{ fov: 50 }} 
-        
-        // 2. SOMBRAS
-        // Las activamos, pero usaremos "contact" en el Stage que es más barato.
+        camera={{ fov: 45 }} // FOV un poco más cerrado para menos distorsión "ojo de pez"
         shadows 
-        
-        // 3. RENDIMIENTO
-        // "demand": Solo calcula frames cuando el usuario mueve el modelo. Ahorra batería.
         frameloop="demand"
-        
-        // 4. CONFIG WEBGL
         gl={{ 
-          preserveDrawingBuffer: true, // Evita parpadeos en algunos Androids
-          antialias: !isMobile,        // Desactivar antialias en móvil libera mucha potencia GPU
+          preserveDrawingBuffer: true, 
+          antialias: !isMobile, 
           powerPreference: "high-performance"
         }}
       >
-        {/* Suspense maneja la carga asíncrona y muestra el Loader */}
         <Suspense fallback={<Loader />}>
           
-          {/* STAGE: Configuración de estudio automática */}
           <Stage 
-            environment="city" // Iluminación genérica bonita
-            intensity={0.6}    // Intensidad de la luz
-            adjustCamera       // Centra el modelo automáticamente
-            shadows="contact"  // Sombra falsa en el piso (mucho más rápida que la real)
+            environment="city" 
+            intensity={0.6}
+            adjustCamera={1.2} // Ajusta la cámara un poco más lejos (default es 1)
+            shadows="contact"
           >
             <Model modelPath={modelPath} />
           </Stage>
           
         </Suspense>
         
-        {/* CONTROLES DE CÁMARA */}
+        {/* CONTROLES ESTRICTOS TIPO E-COMMERCE */}
         <OrbitControls 
           makeDefault 
+          
+          // 1. BLOQUEAR EL DESPLAZAMIENTO (Vital para que no se mueva de lugar)
+          enablePan={false} 
+          
+          // 2. CONTROLAR LA VELOCIDAD (Para que no gire como loco)
+          rotateSpeed={0.5} 
+          
+          // 3. LIMITAR EL ZOOM (Para que no entren dentro del gato ni se alejen al infinito)
+          enableZoom={true}
+          minDistance={1} 
+          maxDistance={8}
+          
+          // 4. LIMITAR GIRO VERTICAL (Esto evita que lo volteen de cabeza)
+          // Math.PI / 2 es el horizonte (suelo).
+          // Lo configuramos para que solo puedan verlo desde "frente" o "un poco arriba".
+          minPolarAngle={Math.PI / 4} // No mirar desde muy arriba (vista de pájaro extrema)
+          maxPolarAngle={Math.PI / 1.8} // No mirar por debajo del suelo
+          
+          // Opcional: Si quieres que vuelva a girar solo si lo sueltan
           autoRotate={false} 
-          enableZoom={true} 
-          enablePan={false} // No dejar que saquen el objeto del centro
-          minPolarAngle={Math.PI / 4} // Limita rotación vertical (para que no vean por debajo)
-          maxPolarAngle={Math.PI / 1.5}
         />
       </Canvas>
     </div>
