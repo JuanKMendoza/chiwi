@@ -82,6 +82,7 @@ export interface Product {
   size?: string;
   weight?: string;
   elaborationTime?: string;
+  modelUrl?: string;
 }
 
 export const products: Product[] = [
@@ -112,6 +113,7 @@ export const products: Product[] = [
     //weight: "130g",
     elaborationTime: "2-3 días hábiles (por personalización)",
     relatedProducts: ["perrito-cocker", "capibara-mood-relax"],
+    modelUrl: "/gato.glb",
   },
   {
     id: 2,
@@ -148,6 +150,7 @@ export const products: Product[] = [
     //weight: "120g aproximadamente",
     elaborationTime: "2-3 días hábiles",
     relatedProducts: ["capibara-cafe", "gatito-personalizado"],
+    modelUrl: "/cocker.glb",
   },
   {
     id: 9,
