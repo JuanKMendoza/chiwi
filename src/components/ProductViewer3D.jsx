@@ -2,9 +2,6 @@ import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stage, useGLTF, Html, useProgress, Center } from '@react-three/drei';
 
-/**
- * LOADER (Igual que antes)
- */
 function Loader() {
   const { progress } = useProgress();
   return (
@@ -19,25 +16,16 @@ function Loader() {
   );
 }
 
-/**
- * MODELO
- * Aquí aplicamos el truco del <Center>
- */
 function Model({ modelPath }) {
   const { scene } = useGLTF(modelPath);
   return (
-    // <Center> calcula la caja del modelo y lo pone EXACTAMENTE en el medio.
-    // top: alinea la parte superior del modelo.
-    // disableY/Z: false permite centrar en todos los ejes.
-    <Center>
+    // <Center> ayuda, pero recuerda arreglar el gato en gltf.report si sigue fallando
+    <Center top> 
       <primitive object={scene} />
     </Center>
   );
 }
 
-/**
- * VISOR PRINCIPAL
- */
 export default function ProductViewer3D({ modelPath }) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -52,9 +40,11 @@ export default function ProductViewer3D({ modelPath }) {
     <div className="w-full h-full cursor-grab active:cursor-grabbing bg-gray-50 rounded-3xl touch-none">
       <Canvas 
         dpr={[1, isMobile ? 1.5 : 2]} 
-        camera={{ fov: 45 }} // FOV un poco más cerrado para menos distorsión "ojo de pez"
+        camera={{ fov: 45 }} 
         shadows 
-        frameloop="demand"
+        // CAMBIO IMPORTANTE: "demand" a veces corta la inercia. 
+        // OrbitControls maneja esto bien, pero si sientes lag, cambia a "always" (gasta más batería).
+        frameloop="demand" 
         gl={{ 
           preserveDrawingBuffer: true, 
           antialias: !isMobile, 
@@ -62,43 +52,42 @@ export default function ProductViewer3D({ modelPath }) {
         }}
       >
         <Suspense fallback={<Loader />}>
-          
           <Stage 
             environment="city" 
             intensity={0.6}
-            adjustCamera={1.2} // Ajusta la cámara un poco más lejos (default es 1)
+            adjustCamera={1.2} 
             shadows="contact"
           >
             <Model modelPath={modelPath} />
           </Stage>
-          
         </Suspense>
         
-        {/* CONTROLES ESTRICTOS TIPO E-COMMERCE */}
         <OrbitControls 
           makeDefault 
           
-          // 1. BLOQUEAR EL DESPLAZAMIENTO (Vital para que no se mueva de lugar)
+          // 1. FLUIDEZ (INERCIA)
+          // Esto hace que "patine" suavemente al soltarlo
+          enableDamping={true}
+          dampingFactor={0.05}
+          
+          // 2. VELOCIDAD
+          // Lo subí un poco porque con damping se siente más lento
+          rotateSpeed={1.0} 
+          
+          // 3. RESTRICCIONES
           enablePan={false} 
-          
-          // 2. CONTROLAR LA VELOCIDAD (Para que no gire como loco)
-          rotateSpeed={0.5} 
-          
-          // 3. LIMITAR EL ZOOM (Para que no entren dentro del gato ni se alejen al infinito)
           enableZoom={true}
           minDistance={1} 
           maxDistance={8}
+          minPolarAngle={Math.PI / 4} 
+          maxPolarAngle={Math.PI / 1.8} 
           
-          // 4. LIMITAR GIRO VERTICAL (Esto evita que lo volteen de cabeza)
-          // Math.PI / 2 es el horizonte (suelo).
-          // Lo configuramos para que solo puedan verlo desde "frente" o "un poco arriba".
-          minPolarAngle={Math.PI / 4} // No mirar desde muy arriba (vista de pájaro extrema)
-          maxPolarAngle={Math.PI / 1.8} // No mirar por debajo del suelo
-          
-          // Opcional: Si quieres que vuelva a girar solo si lo sueltan
-          autoRotate={false} 
+          // 4. AUTO-ROTACIÓN SUAVE (Opcional)
+          // Si quieres que gire lento cuando nadie lo toca, descomenta esto:
+          // autoRotate={true}
+          // autoRotateSpeed={0.5}
         />
       </Canvas>
     </div>
   );
-}
+} 
