@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stage, useGLTF, Html, useProgress, Center } from '@react-three/drei';
+import { OrbitControls, Stage, useGLTF, Html, useProgress } from '@react-three/drei';
 
 function Loader() {
   const { progress } = useProgress();
@@ -18,12 +18,9 @@ function Loader() {
 
 function Model({ modelPath }) {
   const { scene } = useGLTF(modelPath);
-  return (
-    // <Center> ayuda, pero recuerda arreglar el gato en gltf.report si sigue fallando
-    <Center top> 
-      <primitive object={scene} />
-    </Center>
-  );
+  // VOLVEMOS A LO SIMPLE: Sin <Center>, sin trucos. 
+  // Dejamos el modelo puro para que el Stage lo manipule.
+  return <primitive object={scene} />;
 }
 
 export default function ProductViewer3D({ modelPath }) {
@@ -39,12 +36,11 @@ export default function ProductViewer3D({ modelPath }) {
   return (
     <div className="w-full h-full cursor-grab active:cursor-grabbing bg-gray-50 rounded-3xl touch-none">
       <Canvas 
+        // MANTENEMOS LA OPTIMIZACIÓN DE VELOCIDAD
         dpr={[1, isMobile ? 1.5 : 2]} 
-        camera={{ fov: 45 }} 
+        camera={{ fov: 50 }} 
         shadows 
-        // CAMBIO IMPORTANTE: "demand" a veces corta la inercia. 
-        // OrbitControls maneja esto bien, pero si sientes lag, cambia a "always" (gasta más batería).
-        frameloop="demand" 
+        frameloop="demand"
         gl={{ 
           preserveDrawingBuffer: true, 
           antialias: !isMobile, 
@@ -52,42 +48,39 @@ export default function ProductViewer3D({ modelPath }) {
         }}
       >
         <Suspense fallback={<Loader />}>
+          
+          {/* 
+             AQUÍ ESTÁ EL SECRETO: 
+             El Stage arregla el centrado automáticamente.
+             shadows="contact" mantiene el rendimiento alto.
+          */}
           <Stage 
             environment="city" 
             intensity={0.6}
-            adjustCamera={1.2} 
+            adjustCamera 
             shadows="contact"
           >
             <Model modelPath={modelPath} />
           </Stage>
+          
         </Suspense>
         
+        {/* CONTROLES SUAVES */}
         <OrbitControls 
           makeDefault 
-          
-          // 1. FLUIDEZ (INERCIA)
-          // Esto hace que "patine" suavemente al soltarlo
-          enableDamping={true}
-          dampingFactor={0.05}
-          
-          // 2. VELOCIDAD
-          // Lo subí un poco porque con damping se siente más lento
-          rotateSpeed={1.0} 
-          
-          // 3. RESTRICCIONES
-          enablePan={false} 
+          enablePan={false} // Mantener bloqueado el paneo para que no lo saquen de pantalla
           enableZoom={true}
           minDistance={1} 
           maxDistance={8}
           minPolarAngle={Math.PI / 4} 
-          maxPolarAngle={Math.PI / 1.8} 
+          maxPolarAngle={Math.PI / 1.8}
           
-          // 4. AUTO-ROTACIÓN SUAVE (Opcional)
-          // Si quieres que gire lento cuando nadie lo toca, descomenta esto:
-          // autoRotate={true}
-          // autoRotateSpeed={0.5}
+          // Inercia para que se sienta fluido
+          enableDamping={true}
+          dampingFactor={0.05}
+          rotateSpeed={1.0}
         />
       </Canvas>
     </div>
   );
-} 
+}
