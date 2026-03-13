@@ -296,4 +296,18 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
       }
     });
   </script>
+
+  <!-- Meta Pixel: ViewContent — notifica a Meta cuando alguien ve un producto -->
+  <script define:vars={{ pixelSlug: product.slug, pixelName: product.name, pixelPrice: product.price, pixelCategory: product.category[0] }}>
+    if (typeof fbq === 'function') {
+      fbq('track', 'ViewContent', {
+        content_name:     pixelName,
+        content_ids:      [pixelSlug],
+        content_type:     'product',
+        content_category: pixelCategory,
+        value:            pixelPrice,
+        currency:         'COP',
+      });
+    }
+  </script>
 </Layout>

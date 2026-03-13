@@ -1,0 +1,350 @@
+---
+import { Image } from 'astro:assets';
+
+// ⚠️ Estas son fotos de productos como placeholder visual.
+// Reemplázalas con fotos reales de clientes cuando las tengas.
+import img1 from '../assets/images/capibara_cute_natural_front.webp';
+import img2 from '../assets/images/gatito_martina_front.webp';
+import img3 from '../assets/images/pack_gatitos_fondo_beige.webp';
+import img4 from '../assets/images/farolito_solo.webp';
+import img5 from '../assets/images/grupo_ositos_background_white.webp';
+
+const ROTATIONS = [-6, 5, -8, 7, -4];
+
+const testimonials = [
+  {
+    quote: "Pedí la velita de capibara para mi escritorio y me llegó perfecta. Cada detallito pintado con tanto amor. Ya se la pedí a todas mis amigas para sus cumpleaños.",
+    name: "María José R.",
+    location: "Bogotá, Colombia",
+    product: "Capibara Cute",
+    image: img1,
+    alt: "Velita Capibara Cute de Chiwi Colombia - reseña de cliente feliz",
+  },
+  {
+    quote: "Mi gatito Milo falleció y la velita personalizada fue el detalle más emotivo que pude tener. Lo hicieron idéntico con sus manchitas. Lloré de la emoción cuando la vi.",
+    name: "Valentina C.",
+    location: "Medellín, Colombia",
+    product: "Gatito Personalizado",
+    image: img2,
+    alt: "Gatito Personalizado de Chiwi Colombia - opinión de cliente",
+  },
+  {
+    quote: "Compré la Cajita Recuérdame para el memorial de mi perrita Luna y fue el regalo más significativo que encontré. La presentación es preciosa y llegó perfectamente empacada.",
+    name: "Camila V.",
+    location: "Cali, Colombia",
+    product: "Cajita Recuérdame",
+    image: img3,
+    alt: "Cajita Recuérdame de Chiwi Colombia - testimonio de cliente",
+  },
+  {
+    quote: "Los farolitos navideños son una obra de arte. Mi familia quedó completamente enamorada. Ya son parte de nuestra tradición cada diciembre. Los pido desde noviembre.",
+    name: "Laura P.",
+    location: "Bucaramanga, Colombia",
+    product: "Farolitos Navideños",
+    image: img4,
+    alt: "Farolitos Navideños de Chiwi Colombia - reseña de cliente",
+  },
+  {
+    quote: "Pedí los ositos para los recordatorios de mi empresa y el resultado fue precioso. Muy profesional, a tiempo y con una presentación que sorprendió a todos. Totalmente recomendado.",
+    name: "Daniela M.",
+    location: "Barranquilla, Colombia",
+    product: "Familia de Ositos",
+    image: img5,
+    alt: "Familia de Ositos de Chiwi Colombia - opinión de cliente",
+  },
+];
+
+// Serializar para el script cliente
+const testimonialsData = testimonials.map(({ quote, name, location, product }) => ({
+  quote, name, location, product,
+}));
+---
+
+<section id="testimonios" class="py-24 bg-gradient-to-b from-orange-50/30 via-white to-pink-50/20 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 lg:px-12">
+
+    <!-- Header -->
+    <div class="text-center mb-16 space-y-4">
+      <span class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-pink-100 text-orange-600 font-semibold px-5 py-2 rounded-full text-sm">
+        <svg class="w-4 h-4 fill-current text-yellow-400" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+        </svg>
+        Lo que dicen nuestras clientas
+      </span>
+      <h2 class="text-3xl md:text-5xl font-bold text-gray-900">
+        Historias que nos llenan
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"> el corazón</span>
+      </h2>
+      <p class="text-gray-500 max-w-xl mx-auto text-lg">
+        Cada velita tiene una historia detrás. Estas son algunas de las que más nos han emocionado.
+      </p>
+    </div>
+
+    <!-- Grid principal -->
+    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+      <!-- Columna izquierda: Stack de imágenes -->
+      <div class="relative h-72 sm:h-80 w-full max-w-[320px] mx-auto md:mx-0">
+        {testimonials.map((t, index) => (
+          <div
+            class="testimonial-img absolute inset-0 rounded-3xl overflow-hidden shadow-2xl"
+            data-index={index}
+            style={`--rotate: ${ROTATIONS[index]}deg;`}
+          >
+            <Image
+              src={t.image}
+              alt={t.alt}
+              class="w-full h-full object-cover"
+              width={500}
+              height={400}
+              loading="lazy"
+              format="webp"
+              quality={85}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Columna derecha: Texto + controles -->
+      <div class="flex flex-col justify-between gap-6 min-h-[280px]">
+
+        <!-- Estrellas -->
+        <div class="flex gap-1" aria-label="5 estrellas">
+          {[...Array(5)].map(() => (
+            <svg class="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+          ))}
+        </div>
+
+        <!-- Bloque de texto animado -->
+        <div id="text-block" class="space-y-4">
+          <blockquote id="quote-text" class="text-gray-700 text-lg leading-relaxed min-h-[7rem]">
+            <!-- Populated by JS -->
+          </blockquote>
+          <div>
+            <p id="testimonial-name" class="font-bold text-gray-900 text-xl"></p>
+            <p id="testimonial-location" class="text-gray-400 text-sm mt-0.5"></p>
+            <span id="testimonial-product" class="inline-block mt-2 text-xs bg-orange-100 text-orange-600 font-semibold px-3 py-1 rounded-full"></span>
+          </div>
+        </div>
+
+        <!-- Navegación -->
+        <div class="flex items-center gap-3 pt-2">
+          <button
+            id="prev-testimonial"
+            aria-label="Testimonio anterior"
+            class="h-10 w-10 rounded-full bg-white shadow border border-gray-200 flex items-center justify-center hover:bg-orange-50 hover:border-orange-300 transition-all duration-300 group"
+          >
+            <svg class="w-4 h-4 text-gray-600 group-hover:text-orange-500 group-hover:-rotate-12 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button
+            id="next-testimonial"
+            aria-label="Siguiente testimonio"
+            class="h-10 w-10 rounded-full bg-gradient-to-r from-orange-400 to-pink-400 shadow flex items-center justify-center hover:scale-110 transition-all duration-300 group"
+          >
+            <svg class="w-4 h-4 text-white group-hover:rotate-12 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+
+          <!-- Dots -->
+          <div class="flex items-center gap-2 ml-2" role="tablist" aria-label="Testimonios">
+            {testimonials.map((_, i) => (
+              <button
+                class="dot"
+                data-dot={i}
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-label={`Testimonio ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA compartir -->
+    <div class="text-center mt-16">
+      <p class="text-gray-400 mb-4 text-sm">¿Ya tienes tu velita Chiwi? ¡Cuéntanos tu historia!</p>
+      <a
+        href={`https://wa.me/573102278592?text=${encodeURIComponent('Hola! Quiero contarles mi experiencia con mi velita Chiwi 🕯️')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Comparte tu experiencia con Chiwi por WhatsApp"
+        class="inline-flex items-center gap-2 bg-white border-2 border-orange-200 text-orange-500 font-semibold px-6 py-3 rounded-full hover:bg-orange-50 hover:border-orange-400 transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105"
+      >
+        <svg class="w-5 h-5 fill-current text-green-500" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+        Compartir mi experiencia
+      </a>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ testimonialsData }}>
+  const testimonials = testimonialsData;
+  let active = 0;
+  let autoplayTimer = null;
+
+  const imgs     = document.querySelectorAll('.testimonial-img');
+  const quoteEl  = document.getElementById('quote-text');
+  const nameEl   = document.getElementById('testimonial-name');
+  const locEl    = document.getElementById('testimonial-location');
+  const prodEl   = document.getElementById('testimonial-product');
+  const textBlock = document.getElementById('text-block');
+  const dots     = document.querySelectorAll('.dot');
+  const prevBtn  = document.getElementById('prev-testimonial');
+  const nextBtn  = document.getElementById('next-testimonial');
+
+  function renderQuote(quote) {
+    quoteEl.innerHTML = '';
+    quote.split(' ').forEach((word, i) => {
+      const span = document.createElement('span');
+      span.textContent = word + '\u00A0';
+      span.className = 'word-fade';
+      span.style.animationDelay = `${i * 0.025}s`;
+      quoteEl.appendChild(span);
+    });
+  }
+
+  function updateImages() {
+    const n = testimonials.length;
+    const b1 = (active - 1 + n) % n;
+    const b2 = (active - 2 + n) % n;
+
+    imgs.forEach((img, i) => {
+      img.classList.remove('t-active', 't-behind-1', 't-behind-2');
+      if (i === active)  img.classList.add('t-active');
+      else if (i === b1) img.classList.add('t-behind-1');
+      else if (i === b2) img.classList.add('t-behind-2');
+    });
+  }
+
+  function updateDots() {
+    dots.forEach((dot, i) => {
+      const isActive = i === active;
+      dot.classList.toggle('dot-active', isActive);
+      dot.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+  }
+
+  function goTo(index) {
+    active = index;
+    const t = testimonials[active];
+
+    // Fade out texto
+    textBlock.style.opacity = '0';
+    textBlock.style.transform = 'translateY(10px)';
+
+    setTimeout(() => {
+      renderQuote(t.quote);
+      nameEl.textContent  = t.name;
+      locEl.textContent   = t.location;
+      prodEl.textContent  = t.product;
+      // Fade in texto
+      textBlock.style.opacity   = '1';
+      textBlock.style.transform = 'translateY(0)';
+    }, 180);
+
+    updateImages();
+    updateDots();
+  }
+
+  function startAutoplay() {
+    autoplayTimer = setInterval(() => {
+      goTo((active + 1) % testimonials.length);
+    }, 5000);
+  }
+
+  function restartAutoplay() {
+    if (autoplayTimer) clearInterval(autoplayTimer);
+    startAutoplay();
+  }
+
+  // Init
+  textBlock.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+  goTo(0);
+  startAutoplay();
+
+  prevBtn.addEventListener('click', () => { goTo((active - 1 + testimonials.length) % testimonials.length); restartAutoplay(); });
+  nextBtn.addEventListener('click', () => { goTo((active + 1) % testimonials.length); restartAutoplay(); });
+  dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); restartAutoplay(); }));
+</script>
+
+<style>
+  /* ── Imágenes apiladas ── */
+  .testimonial-img {
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform-origin: bottom center;
+    opacity: 0;
+    transform: scale(0.88) rotate(var(--rotate, 0deg));
+    z-index: 1;
+  }
+
+  .testimonial-img.t-active {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    z-index: 30;
+    animation: imgBounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .testimonial-img.t-behind-1 {
+    opacity: 0.65;
+    transform: scale(0.94) rotate(var(--rotate, -5deg));
+    z-index: 20;
+  }
+
+  .testimonial-img.t-behind-2 {
+    opacity: 0.35;
+    transform: scale(0.88) rotate(calc(var(--rotate, 7deg) * -0.6));
+    z-index: 10;
+  }
+
+  @keyframes imgBounce {
+    0%   { transform: scale(0.95) rotate(0deg) translateY(0); }
+    35%  { transform: scale(1.03) rotate(0deg) translateY(-18px); }
+    65%  { transform: scale(0.98) rotate(0deg) translateY(5px); }
+    100% { transform: scale(1)    rotate(0deg) translateY(0); }
+  }
+
+  /* ── Animación de palabras ── */
+  @keyframes wordFadeIn {
+    from { filter: blur(8px); opacity: 0; transform: translateY(5px); }
+    to   { filter: blur(0);   opacity: 1; transform: translateY(0);   }
+  }
+
+  .word-fade {
+    display: inline-block;
+    animation: wordFadeIn 0.25s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* ── Dots de navegación ── */
+  .dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 9999px;
+    background-color: #d1d5db;
+    border: none;
+    cursor: pointer;
+    transition: all 0.35s ease;
+  }
+
+  .dot.dot-active {
+    width: 1.75rem;
+    background: linear-gradient(to right, #f97316, #ec4899);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-img,
+    .word-fade,
+    .testimonial-img.t-active {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

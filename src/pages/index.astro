@@ -15,6 +15,7 @@ import Indexrecordatorios from "../assets/images/capibara_cafe.jpg";
 // Importa las imágenes de Halloween
 import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
 import SeasonalProductSchema from "../components/SeasonalProductSchema.astro";
+import TestimonialsSection from "../components/TestimonialsSection.astro";
 
 // ⭐ AGREGA ESTAS LÍNEAS AQUÍ (importaciones de Navidad)
 // Por ahora usa imágenes temporales hasta que tengas las reales
@@ -1974,6 +1975,9 @@ import "swiper/css/navigation";
     </div>
   </section>
 
+  <!-- Sección Testimonios -->
+  <TestimonialsSection />
+
   <!-- Sección Newsletter Mejorada y Segura -->
 <section class="relative w-full py-20 px-4 overflow-hidden">
   <div
@@ -2064,6 +2068,10 @@ import "swiper/css/navigation";
     }
 
     const safeEmail = email.replace(/[<>"]/g, '');
+    // Meta Pixel: Lead — optimiza campañas de captación de emails
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', { content_name: 'Newsletter Chiwi' });
+    }
     alert(`¡Gracias! Te avisaremos a ${safeEmail} cuando haya novedades 🌟`);
     form.reset();
   });
