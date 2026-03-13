@@ -62,8 +62,6 @@ import packGatitoModelo2 from "../assets/images/pack_gatitos_modelo_2.webp";
 import christmasProduct1 from "../assets/images/farolito_solo.webp";
 import christmasProduct3 from "../assets/images/bolitas_velitas_con_nombres.webp";
 
-
-
 export interface Product {
   id: number;
   slug: string;
@@ -90,13 +88,23 @@ export const products: Product[] = [
     slug: "gatito-personalizado",
     name: "Gatito Personalizado",
     price: 24900,
-    category: ["kawaii","mascotas"],
+    category: ["kawaii", "mascotas"],
     image: IndexGrid7,
-    images: [IndexGrid7, gatitoMartinaLeft,gatitoMartinaBack,gatitoManchasFront,gatitoManchasLeft,gatitoManchasBack,gatitoManchasRigth,gatitoMakoFront,gatitoMakoRigth,gatitoGordaLeft],
+    images: [
+      IndexGrid7,
+      gatitoMartinaLeft,
+      gatitoMartinaBack,
+      gatitoManchasFront,
+      gatitoManchasLeft,
+      gatitoManchasBack,
+      gatitoManchasRigth,
+      gatitoMakoFront,
+      gatitoMakoRigth,
+      gatitoGordaLeft,
+    ],
     alt: "Gatito Personalizado - Vela kawaii hecha a mano en Colombia",
     featured: true,
-    description:
-      "Vela con diseño personalizable de gatito, ideal para amantes de los gatitos",
+    description: "Vela con diseño personalizable de gatito, ideal para amantes de los gatitos",
     longDescription:
       "¿Tienes un gatito especial? Esta vela puede personalizarse con los colores y rasgos de tu felino favorito. Perfecta para amantes de los gatitos que quieren inmortalizar a su compañero peludo en una pieza artesanal única.",
     features: [
@@ -105,7 +113,7 @@ export const products: Product[] = [
       "Detalles pintados a mano",
       "Expresión kawaii adorable",
       "Incluye tarjeta con nombre del gatito y foto tipo Polaroid",
-      "Aromas a tu elección (opcional)"
+      "Aromas a tu elección (opcional)",
       //"Opción de collar o accesorios personalizados",
     ],
     size: "Altura: 6.5cm, Ancho: 4cm",
@@ -117,7 +125,7 @@ export const products: Product[] = [
     id: 2,
     slug: "perrito-cocker",
     name: "Perrito Cocker Personalizado",
-    price: 21900,
+    price: 24900,
     category: ["kawaii", "mascotas", "recordatorios"], // Ahora puede tener múltiples
     image: IndexGrid1,
     images: [
@@ -128,7 +136,7 @@ export const products: Product[] = [
       CockerBeiFront,
       CockerBeiSide,
       CockerBeiBack,
-      CockerBeiPhoto
+      CockerBeiPhoto,
     ], // Por ahora solo 3, luego agregas más
     alt: "Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia",
     featured: true,
@@ -206,11 +214,10 @@ export const products: Product[] = [
     price: 18900,
     category: ["temporada"],
     image: fantasmaGatito,
-    images: [fantasmaGatito,fantasmaGatitoShinny,fantasmaGatitoFront,fantasmaGatitoLeft],
+    images: [fantasmaGatito, fantasmaGatitoShinny, fantasmaGatitoFront, fantasmaGatitoLeft],
     alt: "Fantasma Gatito - Vela Halloween que brilla en la oscuridad",
     featured: true,
-    description:
-      "Edición especial Halloween: gatito fantasma con pintura fotoluminiscente",
+    description: "Edición especial Halloween: gatito fantasma con pintura fotoluminiscente",
     badge: "Edición Limitada",
     longDescription:
       "Edición limitada para Halloween. Este adorable gatito fantasma cobra vida en la oscuridad gracias a su pintura fotoluminiscente especial. Perfecto para decorar en octubre y crear un ambiente mágico y tierno a la vez.",
@@ -234,11 +241,10 @@ export const products: Product[] = [
     price: 18900,
     category: ["temporada"],
     image: fantasmaPerrito,
-    images: [fantasmaPerrito,fantasmaPerritoShinny,fantasmaPerritoRight,fantasmaPerritoLeft],
+    images: [fantasmaPerrito, fantasmaPerritoShinny, fantasmaPerritoRight, fantasmaPerritoLeft],
     alt: "Fantasma Perrito - Vela Halloween que brilla en la oscuridad",
     featured: true,
-    description:
-      "Edición especial Halloween: perrito fantasma que brilla en la noche",
+    description: "Edición especial Halloween: perrito fantasma que brilla en la noche",
     badge: "Edición Limitada",
     longDescription:
       "La versión perruna de nuestra colección Halloween. Este tierno perrito fantasma ilumina tus noches de octubre con su brillo fotoluminiscente. Disponible solo durante la temporada de Halloween.",
@@ -263,11 +269,10 @@ export const products: Product[] = [
     price: 32900,
     category: ["recordatorios"],
     image: packGatito,
-    images: [packGatito,packGatitoModelo2,packGatitoModelo1],
+    images: [packGatito, packGatitoModelo2, packGatitoModelo1],
     alt: "Cajita Recuerdo - Kit completo con vela personalizada hecha a mano",
     featured: true,
-    description:
-      "Pack completo con vela personalizada y empaque especial para ocasiones únicas",
+    description: "Pack completo con vela personalizada y empaque especial para ocasiones únicas",
     longDescription:
       "Nuestro pack incluye una velita de Gatito personalizada, caja de presentación decorada, tarjetita  y suculentas de cera. Ideal para que hagas un homenaje al peludito que siempre te ha acompañado",
     features: [
@@ -289,16 +294,10 @@ export const products: Product[] = [
     price: 15900,
     category: ["kawaii", "recordatorios"],
     image: CapibaraAcostadoRight,
-    images: [
-      CapibaraAcostadoRight,
-      CapibaraAcostadoFront,
-      CapibaraAcostadoLeft,
-      IndexGrid3,
-    ],
+    images: [CapibaraAcostadoRight, CapibaraAcostadoFront, CapibaraAcostadoLeft, IndexGrid3],
     alt: "Capibara Mood Relax - Vela kawaii artesanal hecha en Colombia",
     featured: true,
-    description:
-      "Tierna vela de capibara en posición relajada, color beige natural",
+    description: "Tierna vela de capibara en posición relajada, color beige natural",
     longDescription:
       "Nuestro capibara más relajado te invita a tomarte las cosas con calma. Esta vela captura la esencia tranquila de estos adorables animales en una posición de descanso total. El color beige natural le da un toque minimalista y elegante.",
     features: [
@@ -357,8 +356,7 @@ export const products: Product[] = [
     images: [ositosBackWhite, ositosTaller],
     alt: "Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia",
     featured: true,
-    description:
-      "Set de velas con diseño de familia de ositos, ideal para regalar",
+    description: "Set de velas con diseño de familia de ositos, ideal para regalar",
     longDescription:
       "Un adorable set de tres ositos que representan el amor familiar. Cada osito está elaborado con cera natural y pintado a mano. Perfectos para decorar una habitación infantil o como regalo para celebrar la unión familiar.",
     features: [
