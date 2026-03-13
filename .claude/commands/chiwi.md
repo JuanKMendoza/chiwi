@@ -13,6 +13,7 @@ Eres un asistente experto en el proyecto **Chiwi Colombia** (`chiwicolombia.com`
 **Ventas:** via WhatsApp `+57-310-227-8592` (no hay pasarela de pagos aun).
 
 **Paleta oficial:**
+
 - Naranja principal: `#F4B08A`
 - Rosa coral / botones: `#FF8F8F`
 - Naranja hover: `#F97316`
@@ -32,7 +33,9 @@ Eres un asistente experto en el proyecto **Chiwi Colombia** (`chiwicolombia.com`
 Dime cual de estas tareas necesitas y la ejecuto:
 
 ### 1. Agregar un producto nuevo
+
 Dime:
+
 - Nombre del producto
 - Precio en COP
 - Categoria: `temporada` | `kawaii` | `mascotas` | `recordatorios` (puede ser multiple)
@@ -45,20 +48,26 @@ Dime:
 Generare el objeto TypeScript completo para agregar a `products.ts` con el slug correcto, alt SEO-friendly y todos los campos.
 
 ### 2. Crear una nueva pagina de temporada
+
 Dime el nombre de la temporada (ej: San Valentin, Dia de la Madre) y generare:
+
 - Componente `src/components/[Temporada].astro` con la estetica correcta
 - Productos de temporada para `products.ts`
 - Schema JSON-LD de temporada
 
 ### 3. Crear un articulo de blog
+
 Dime el tema y generare un archivo `.astro` en `src/pages/blog/` con:
+
 - Estructura SEO optimizada (title, description, H1, H2s)
 - Contenido con tono de marca Chiwi
 - Schema `Article` en JSON-LD
 - Llamado a la accion hacia WhatsApp o productos
 
 ### 4. Refactorizar index.astro
+
 Identificare las secciones del archivo (actualmente ~2370 lineas) y las extraere en componentes separados:
+
 - `HeroSection.astro`
 - `TrustSection.astro`
 - `ProductGrid.astro`
@@ -67,7 +76,9 @@ Identificare las secciones del archivo (actualmente ~2370 lineas) y las extraere
 - `NewsletterSection.astro`
 
 ### 5. Implementar una mejora del plan de optimizacion
+
 Las mejoras priorizadas son:
+
 - **CRITICO:** testimonios, email marketing (pop-up), links de redes sociales, informacion de envios
 - **ALTO:** carrito funcional con mensaje WhatsApp, personalizacion interactiva, ofertas/paquetes
 - **MEDIO:** FAQ, pagina "Sobre Nosotros", panel de administracion, programa de fidelizacion
@@ -75,10 +86,13 @@ Las mejoras priorizadas son:
 Dime cual quieres implementar y planeo + ejecuto los cambios.
 
 ### 6. Generar copy / textos de marca
+
 Necesito saber para que pieza (descripcion de producto, post de Instagram, mensaje de WhatsApp, banner hero, etc.) y generare textos con el tono correcto de Chiwi.
 
 ### 7. Auditar o corregir SEO
+
 Revisare el archivo o pagina indicada y corregire:
+
 - Meta title y description
 - Alt texts de imagenes
 - Schema JSON-LD faltante o incorrecto
@@ -86,6 +100,7 @@ Revisare el archivo o pagina indicada y corregire:
 - URLs canonicas
 
 ### 8. Convertir imagenes a WebP
+
 Identificare las imagenes `.jpg` pendientes de convertir e indicare los pasos o comando para hacerlo con Sharp.
 
 ---
@@ -109,7 +124,7 @@ Identificare las imagenes `.jpg` pendientes de convertir e indicare los pasos o 
 
 - `CLAUDE.md` — arquitectura tecnica, convenciones y roadmap completo
 - `brandbook.md` — identidad visual, paleta, tipografia y voz de marca
-- `agentes.md` — guia de agentes especializados de Claude Code
+- `agent.md` — guia de agentes especializados de Claude Code
 - `plan-mejora.md` — plan de optimizacion de ventas priorizado
 - `src/data/products.ts` — catalogo completo de productos
 - `src/layouts/Layout.astro` — layout base con SEO

@@ -13,15 +13,18 @@ interface Props {
   image?: string;
 }
 
-const { 
+const {
   title,
   description = "Velas kawaii artesanales personalizadas. Hechas a mano con amor en Colombia. ¡Dale vida a tus espacios!",
-  image = "/og-image.png"
+  image = "/og-image.png",
 } = Astro.props;
 
 // URLs canónicas y absolutas
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://chiwicolombia.com');
-const ogImageURL = new URL(image, Astro.site || 'https://chiwicolombia.com');
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site || "https://chiwicolombia.com",
+);
+const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
 ---
 
 <html lang="es">
@@ -30,12 +33,12 @@ const ogImageURL = new URL(image, Astro.site || 'https://chiwicolombia.com');
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- SEO Básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
-    
+
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
     <meta property="fb:app_id" content="123456789" />
@@ -45,45 +48,52 @@ const ogImageURL = new URL(image, Astro.site || 'https://chiwicolombia.com');
     <meta property="og:image" content={ogImageURL} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Chiwi - Velas Kawaii Artesanales Colombia" />
+    <meta
+      property="og:image:alt"
+      content="Chiwi - Velas Kawaii Artesanales Colombia"
+    />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:site_name" content="Chiwi Colombia" />
-    
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
-    
+
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ1ZSKVDEL"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ1ZSKVDEL"
+    ></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-TZ1ZSKVDEL');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-TZ1ZSKVDEL");
     </script>
 
     <!-- Rastrear clics en WhatsApp -->
     <script is:inline>
-      if (typeof window !== 'undefined') {
-        window.addEventListener('load', function() {
-          document.addEventListener('click', function(e) {
+      if (typeof window !== "undefined") {
+        window.addEventListener("load", function () {
+          document.addEventListener("click", function (e) {
             var link = e.target.closest('a[href*="wa.me"]');
             if (link) {
-              var productName = link.getAttribute('aria-label') || 'Producto desconocido';
+              var productName =
+                link.getAttribute("aria-label") || "Producto desconocido";
               // Google Analytics 4
-              if (typeof gtag === 'function') {
-                gtag('event', 'whatsapp_click', {
-                  event_category: 'engagement',
+              if (typeof gtag === "function") {
+                gtag("event", "whatsapp_click", {
+                  event_category: "engagement",
                   event_label: productName,
-                  product_name: productName
+                  product_name: productName,
                 });
               }
               // Meta Pixel — evento Contact (usado por Facebook/Instagram Ads para optimizar)
-              if (typeof fbq === 'function') {
-                fbq('track', 'Contact', { content_name: productName });
+              if (typeof fbq === "function") {
+                fbq("track", "Contact", { content_name: productName });
               }
             }
           });
@@ -96,52 +106,83 @@ const ogImageURL = new URL(image, Astro.site || 'https://chiwicolombia.com');
     <!-- El IIFE crea el stub fbq() de forma síncrona antes de cargar el script async,
          por lo que cualquier fbq('track', ...) posterior es seguro aunque el script no haya cargado aún -->
     <script is:inline>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-      (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'XXXXXXXXXXXXXXXXX');
-      fbq('track', 'PageView');
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "430525195679786");
+      fbq("track", "PageView");
     </script>
     <noscript>
-      <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXXX&ev=PageView&noscript=1"
-        alt="" />
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=430525195679786&ev=PageView&noscript=1"
+        alt=""
+      />
     </noscript>
 
     <!-- Schema de Organización con Logo -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Chiwi Colombia",
-      "alternateName": "Chiwi",
-      "url": "https://chiwicolombia.com",
-      "logo": "https://chiwicolombia.com/favicon.svg",
-      "image": "https://chiwicolombia.com/favicon.svg",
-      "description": "Velas artesanales personalizadas kawaii. Memoriales para mascotas, regalos únicos y velas que brillan en la oscuridad. Hechas a mano con amor en Colombia.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "CO",
-        "addressLocality": "Colombia"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+57-310-227-8592",
-        "contactType": "Customer Service",
-        "availableLanguage": ["Spanish", "es"]
-      }
-    })} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Chiwi Colombia",
+        alternateName: "Chiwi",
+        url: "https://chiwicolombia.com",
+        logo: "https://chiwicolombia.com/favicon.svg",
+        image: "https://chiwicolombia.com/favicon.svg",
+        description:
+          "Velas artesanales personalizadas kawaii. Memoriales para mascotas, regalos únicos y velas que brillan en la oscuridad. Hechas a mano con amor en Colombia.",
+        address: {
+          "@type": "PostalAddress",
+          addressCountry: "CO",
+          addressLocality: "Colombia",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+57-310-227-8592",
+          contactType: "Customer Service",
+          availableLanguage: ["Spanish", "es"],
+        },
+      })}
+    />
   </head>
-  
+
   <body class="font-Quicksand">
     <Topbar />
     <Navbar />
-    <WhatsAppButton/>
+    <WhatsAppButton />
     <slot />
-    <Footer/>
+    <Footer />
   </body>
 
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>
