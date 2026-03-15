@@ -1,0 +1,220 @@
+---
+import heroImg from "../assets/images/Hero_1_gatos.png";
+---
+
+<!-- Hero Section -->
+<section
+  class="relative min-h-[90vh] flex flex-col items-center justify-center text-white text-center overflow-hidden"
+>
+  <!-- Imagen de fondo fija -->
+  <div
+    class="absolute inset-0 bg-cover bg-center"
+    style={`background-image: url(${heroImg.src});`}
+  >
+  </div>
+
+  <!-- Gradiente mejorado -->
+  <div
+    class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/50 to-gray-950/20"
+  >
+  </div>
+
+  <!-- Elementos decorativos flotantes -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div
+      class="floating-element"
+      style="bottom: 30%; left: 20%; animation-delay: 2s;"
+    >
+      🕯️
+    </div>
+    <div
+      class="floating-element"
+      style="top: 40%; right: 25%; animation-delay: 3s;"
+    >
+      🌟
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="relative z-10 w-full max-w-7xl px-4 space-y-8">
+    <!-- Badge superior -->
+    <div class="animate-fade-in-down">
+      <span
+        class="inline-block bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-2 text-sm font-medium text-white/90"
+      >
+        🎨 Hecho a mano con amor en Colombia
+      </span>
+    </div>
+
+    <!-- Título principal con animación -->
+    <h1
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight animate-fade-in-up"
+    >
+      <span class="block">Velitas que</span>
+      <span
+        class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-pink-300 animate-gradient"
+      >
+        cuentan una historia
+      </span>
+    </h1>
+
+    <!-- Subtítulo -->
+    <p
+      class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed animate-fade-in-up animation-delay-500"
+    >
+      Velas personalizadas kawaii, memoriales únicos y regalos que despiertan
+      sonrisas.
+      <span class="text-orange-300 font-semibold"
+        >Cada vela cuenta tu historia.</span
+      >
+    </p>
+
+    <!-- Características destacadas -->
+    <div
+      class="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-1000"
+    >
+      <span
+        class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
+      >
+        🌙 Ediciones limitadas
+      </span>
+      <span
+        class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
+      >
+        🎨 100% Personalizables
+      </span>
+      <span
+        class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
+      >
+        💚 Cera natural
+      </span>
+    </div>
+
+    <!-- Botones CTA -->
+    <div
+      class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-1500"
+    >
+      <a
+        href="https://wa.me/573102278592?text=Hola!%20Quiero%20conocer%20sus%20velas%20personalizadas"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full text-white font-bold px-8 py-4 shadow-2xl hover:scale-110 hover:shadow-orange-500/25 transition-all duration-300"
+      >
+        <ion-icon
+          name="logo-whatsapp"
+          class="text-2xl group-hover:animate-bounce"></ion-icon>
+        Crear mi vela personalizada
+        <ion-icon
+          name="arrow-forward-outline"
+          class="text-xl group-hover:translate-x-1 transition-transform"
+        ></ion-icon>
+      </a>
+
+      <a
+        href="#productos"
+        class="group flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold px-6 py-3 hover:bg-white/20 transition-all duration-300"
+      >
+        Ver catálogo
+        <ion-icon
+          name="chevron-down-outline"
+          class="text-lg group-hover:animate-bounce"></ion-icon>
+      </a>
+    </div>
+  </div>
+
+  <!-- Flecha scroll -->
+  <div
+    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+  >
+    <a
+      href="#productos"
+      class="text-white/60 hover:text-white transition-colors"
+    >
+      <ion-icon name="chevron-down-outline" class="text-3xl"></ion-icon>
+    </a>
+  </div>
+</section>
+
+<style is:global>
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes gradient {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-fade-in-down {
+    animation: fadeInDown 1s ease-out;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-1500 {
+    animation-delay: 1.5s;
+    animation-fill-mode: both;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+    animation-fill-mode: both;
+  }
+
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  .floating-element {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+    opacity: 0.6;
+  }
+</style>
