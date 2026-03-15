@@ -213,6 +213,7 @@ Ejemplo: "Diseña el pop-up de descuento por suscripcion al newsletter de Chiwi"
 1. Editar `products.ts` con el nuevo producto (imagen en `.webp`)
 2. `seo-schema` → Generar schema Product para el nuevo item
 3. `seo-images` → Verificar alt texts de las nuevas imagenes
+4. Verificar que la seccion de envios en `[slug].astro` muestra datos consistentes con el nuevo producto
 
 ### Implementar el carrito de compras (Prioridad ALTA)
 1. `Plan` → Disenar la arquitectura: estado, componente Drawer, generacion de mensaje WhatsApp
@@ -226,18 +227,22 @@ Ejemplo: "Diseña el pop-up de descuento por suscripcion al newsletter de Chiwi"
 3. `interface-design` → Disenar la UI del checkout
 4. Implementar con Claude Code
 
-### Implementar email marketing / NewsletterSection (Prioridad CRITICA)
-1. `general-purpose` → Investigar integracion Mailchimp con Astro SSG (formularios estaticos)
-2. `Plan` → Disenar el componente `NewsletterSection.astro`
-3. `interface-design` → Disenar el pop-up de descuento por suscripcion
-4. Crear el componente y agregarlo a `index.astro`
-5. `seo-technical` → Verificar que no afecta Core Web Vitals ni CLS
+### Conectar NewsletterSection al backend de email (Prioridad CRITICA)
+⚠️ `NewsletterSection.astro` ya existe en `src/components/` y esta incluido en `index.astro`.
+El formulario tiene: campo email, validacion, honeypot anti-bots y tracking Meta Pixel (Lead).
+**El problema: al hacer submit solo ejecuta un `alert()` — no guarda ningun email en ningun lado.**
+
+Para hacerlo funcional:
+1. `general-purpose` → Investigar cual es la integracion mas simple con Astro SSG: Mailchimp embed form, Brevo (ex-Sendinblue) API, o ConvertKit inline form
+2. `Plan` → Disenar el flujo: submit del formulario → API/endpoint → lista de contactos
+3. Modificar el script de `NewsletterSection.astro` para hacer el POST real al endpoint elegido
+4. `seo-technical` → Verificar que el cambio no afecta Core Web Vitals ni CLS
 
 ### Reemplazar testimonios placeholder con reales (Quick Win)
 1. Recopilar fotos y comentarios de clientes reales por WhatsApp
-2. Agregar imagenes a `src/assets/images/` en formato `.webp`
-3. Actualizar el array `testimonials` en `TestimonialsSection.astro`
-4. `seo-schema` → Agregar schema `Review` / `AggregateRating`
+2. Agregar imagenes a `src/assets/images/` en formato `.webp` (nombre: cliente_nombre.webp)
+3. Usar el prompt de PROMPTS.md "Reemplazar testimonios placeholder" — ya tiene la estructura exacta
+4. `seo-schema` → Agregar schema `Review` / `AggregateRating` (el prompt ya lo incluye)
 
 ### Agregar redes sociales (Quick Win — 30 min)
 1. Agregar iconos en `Footer.astro` (Ionicons: logo-instagram, logo-tiktok, etc.)
@@ -250,6 +255,7 @@ Ejemplo: "Diseña el pop-up de descuento por suscripcion al newsletter de Chiwi"
 3. `seo-images` → Corregir las 14 imagenes `.jpg` y alt texts faltantes
 4. `seo-content` → Mejorar calidad del blog (5 articulos existentes)
 5. `seo-schema` → Agregar schema FAQPage al `FAQSection.astro` ya implementado
+6. `seo-schema` → Verificar / agregar schema AggregateRating/Review cuando testimonios reales esten disponibles
 
 ### Crear nueva pagina de blog
 1. `seo-content` → Analizar keywords y estructura del articulo
@@ -257,7 +263,7 @@ Ejemplo: "Diseña el pop-up de descuento por suscripcion al newsletter de Chiwi"
 3. Crear el archivo en `src/pages/blog/` (ver ejemplos existentes)
 4. `seo-page` → Revision final de la pagina creada
 
-### Continuar refactorizacion de index.astro (1408 lineas restantes)
+### Continuar refactorizacion de index.astro (1312 lineas restantes)
 1. `Explore` → Mapear las secciones que quedan inline (temporada, mascotas, recordatorios)
 2. `Plan` → Disenar la extraccion sin romper funcionalidad ni imports
 3. Extraer cada seccion en su componente correspondiente

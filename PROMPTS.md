@@ -237,13 +237,109 @@ Implementa un carrito de compras simple en Chiwi Colombia:
 - Actualiza el contador del ícono del carrito en Navbar.astro
 ```
 
-### Agregar sección de envíos en página de producto
+### ✅ Reemplazar testimonios placeholder con clientes reales
 ```
-En `src/pages/productos/[slug].astro`, agrega debajo de los botones de compra una sección
-"Información de envío" con:
-- Tiempo estimado: 3-7 días hábiles (Bogotá 2-3 días)
-- Carriers: Servientrega, Coordinadora, Interrapidísimo
-- Costo: desde $8.000 COP (varía según ciudad)
-- Empaque: caja protegida con burbuja para garantizar que llegue perfecta
-- Estilo: acordeón o tarjeta simple con ícono de camión (Ionicons: car-outline o bicycle-outline)
+En `src/components/TestimonialsSection.astro`, reemplaza los 5 testimonios placeholder por datos reales de clientes.
+
+ESTRUCTURA ACTUAL DEL COMPONENTE:
+- Las imágenes se importan al inicio del frontmatter (import img1 from '...')
+- El array `testimonials` tiene estos campos por objeto: quote, name, location, product, image, alt
+- El script JS solo usa: quote, name, location, product (no la imagen directamente)
+- Las imágenes aparecen en el stack visual izquierdo del carrusel
+
+PASOS A EJECUTAR:
+
+1. Reemplaza los imports de imágenes placeholder por las fotos reales de clientes.
+   Las fotos reales deben estar en src/assets/images/ con nombres como:
+   cliente_maria_jose.webp, cliente_valentina.webp, etc.
+   Si aún no están disponibles, mantén temporalmente las actuales y deja un comentario
+   `// TODO: reemplazar con foto real de [NOMBRE]`
+
+2. Reemplaza el array `testimonials` con los siguientes datos reales:
+   (Completa con los datos que te entreguen — formato esperado por objeto:)
+   {
+     quote: "Texto exacto del testimonio del cliente",
+     name: "Nombre Apellido",           // ej: "María José R."
+     location: "Ciudad, Colombia",       // ej: "Bogotá, Colombia"
+     product: "Nombre del producto comprado",
+     image: imgN,                        // variable del import correspondiente
+     alt: "Foto de [Nombre] con su velita Chiwi [producto] - testimonio real",
+   }
+
+3. Agrega schema JSON-LD de tipo `AggregateRating` y `Review` justo antes del cierre de </section>
+   para que Google indexe las reseñas. Usa los datos reales del paso 2.
+   Formato:
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Product",
+     "name": "Velas Kawaii Artesanales Chiwi Colombia",
+     "aggregateRating": {
+       "@type": "AggregateRating",
+       "ratingValue": "5",
+       "reviewCount": "N"   // número total de testimonios reales
+     },
+     "review": [ /* array con cada testimonio real */ ]
+   }
+   </script>
+
+4. Después de ejecutar este cambio, actualiza CLAUDE.md:
+   - En la tabla de funcionalidades, cambia "Testimonios reales | Placeholders" a "✅ Implementado"
+   - En la sección "✅ Completado recientemente" agrega: "Testimonios reales reemplazados — fotos y nombres de clientes reales en TestimonialsSection.astro"
+   - Elimina la nota sobre placeholders en la sección de notas importantes
+
+5. Actualiza agent.md:
+   - En el flujo "Reemplazar testimonios placeholder con reales", marca todos los pasos como completados
+   - Agrega en el flujo "Optimizar SEO del sitio" el paso: "`seo-schema` → Verificar schema AggregateRating/Review agregado"
+```
+
+### ✅ Agregar información de envíos en página de producto
+```
+En `src/pages/productos/[slug].astro`, reemplaza el bloque "<!-- Info adicional -->" que va
+desde la línea `<div class="border-t pt-6 space-y-3 text-sm text-gray-600">` hasta su cierre `</div>`
+(actualmente tiene 3 items: garantía, envíos a toda Colombia, eco-friendly) por una versión
+expandida que incluya esos 3 items + una nueva sección de acordeón de envíos detallados.
+
+ESTRUCTURA A IMPLEMENTAR:
+
+Mantén los 3 íconos actuales (shield-checkmark-outline, cube-outline, leaf-outline) tal como están.
+Agrega DEBAJO de ellos, antes del cierre del div de "Info adicional", un acordeón de envíos:
+
+<details class="border border-orange-200 rounded-xl overflow-hidden mt-2">
+  <summary class="...">  <!-- resumen clickeable con ícono de camión -->
+    <ion-icon name="car-outline"> + "Ver información de envío" + chevron
+  </summary>
+  <div class="...">  <!-- contenido expandible con la info real -->
+    CONTENIDO DEL ACORDEÓN (datos reales de Chiwi Colombia):
+
+    - Bogotá D.C.: 2-3 días hábiles, desde $8.000 COP
+    - Ciudades principales (Medellín, Cali, Barranquilla, Bucaramanga, Pereira): 3-5 días hábiles, desde $10.000 COP
+    - Municipios y zonas rurales: 5-8 días hábiles, desde $13.000 COP
+    - Transportadoras: Servientrega, Coordinadora, Interrapidísimo
+    - Empaque: caja de cartón con burbuja protectora — tu velita llega perfecta
+    - Nota: el costo exacto se confirma al momento del pedido por WhatsApp según la ciudad destino
+    - CTA final: enlace WhatsApp con texto "¿Tienes dudas sobre tu envío? Escríbenos"
+      url: https://wa.me/573102278592?text=Hola!%20Tengo%20una%20pregunta%20sobre%20el%20envío
+  </div>
+</details>
+
+ESTILOS (Tailwind + colores Chiwi):
+- summary: cursor-pointer, flex items-center gap-2, py-3 px-4, text-sm font-semibold text-orange-600, bg-orange-50 hover:bg-orange-100, transition-colors
+- chevron: ion-icon name="chevron-down-outline", rotate-180 cuando details está abierto (usar CSS: details[open] summary .chevron { transform: rotate(180deg) })
+- Contenido: px-4 pb-4 pt-2, text-sm text-gray-600, space-y-2
+- Cada fila de info: flex items-start gap-2 con ion-icon de color naranja
+
+RESTRICCIONES:
+- No usar JavaScript externo — el acordeón funciona nativamente con <details>/<summary>
+- Mantener los 3 íconos de garantía, envíos y eco-friendly exactamente como están
+- No modificar el botón de WhatsApp principal ni las especificaciones del producto
+
+4. Después de ejecutar este cambio, actualiza CLAUDE.md:
+   - En la tabla de funcionalidades, cambia "Informacion de envios | Ausente" a "✅ Implementado"
+   - En "✅ Completado recientemente" agrega: "Información de envíos en página de producto — acordeón con precios, tiempos y transportadoras reales"
+   - Elimina "Agregar informacion de envios en pagina de producto [slug].astro" de la lista Quick Wins
+
+5. Actualiza agent.md:
+   - En el flujo "Agregar un nuevo producto de temporada", agrega como paso 5: "Verificar que la sección de envíos en `[slug].astro` muestra datos consistentes con el nuevo producto"
+   - Actualiza la sección de Quick Wins eliminando la tarea de envíos (ya implementada)
 ```

@@ -191,6 +191,59 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
               <span>Productos eco-friendly y naturales</span>
             </div>
           </div>
+
+          <!-- Información de envíos -->
+          <details class="border border-orange-100 rounded-2xl overflow-hidden mt-4">
+            <summary class="flex items-center justify-between gap-4 p-4 cursor-pointer list-none select-none hover:bg-orange-50 transition-colors duration-200">
+              <span class="flex items-center gap-2 font-semibold text-gray-900">
+                <ion-icon name="bicycle-outline" class="text-xl text-orange-500"></ion-icon>
+                Información de envíos
+              </span>
+              <ion-icon name="chevron-down-outline" class="text-gray-500 shipping-chevron transition-transform duration-300"></ion-icon>
+            </summary>
+            <div class="px-4 pb-4 text-sm text-gray-600 space-y-3">
+              <div class="flex items-start gap-2">
+                <ion-icon name="location-outline" class="text-orange-500 mt-0.5 flex-shrink-0"></ion-icon>
+                <div>
+                  <p class="font-semibold text-gray-800">Bogotá</p>
+                  <p>2–3 días hábiles · desde $8.000 COP</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <ion-icon name="business-outline" class="text-orange-500 mt-0.5 flex-shrink-0"></ion-icon>
+                <div>
+                  <p class="font-semibold text-gray-800">Ciudades principales</p>
+                  <p>3–5 días hábiles · desde $10.000 COP</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-2">
+                <ion-icon name="map-outline" class="text-orange-500 mt-0.5 flex-shrink-0"></ion-icon>
+                <div>
+                  <p class="font-semibold text-gray-800">Municipios</p>
+                  <p>5–8 días hábiles · desde $13.000 COP</p>
+                </div>
+              </div>
+              <div class="pt-2 border-t border-orange-100">
+                <p class="flex items-center gap-1">
+                  <ion-icon name="car-outline" class="text-orange-500"></ion-icon>
+                  <span>Servientrega, Coordinadora e Interrapidísimo</span>
+                </p>
+                <p class="flex items-center gap-1 mt-1">
+                  <ion-icon name="gift-outline" class="text-orange-500"></ion-icon>
+                  <span>Empaque protegido para que llegue perfecta</span>
+                </p>
+              </div>
+              <a
+                href="https://wa.me/573102278592?text=Hola!%20Tengo%20una%20pregunta%20sobre%20el%20envío"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-orange-600 font-semibold hover:underline"
+              >
+                <ion-icon name="logo-whatsapp"></ion-icon>
+                Consultar costo exacto de envío
+              </a>
+            </div>
+          </details>
         </div>
       </div>
     </div>
@@ -311,3 +364,9 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
     }
   </script>
 </Layout>
+
+<style>
+  details[open] .shipping-chevron {
+    transform: rotate(180deg);
+  }
+</style>

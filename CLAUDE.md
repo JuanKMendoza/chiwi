@@ -167,43 +167,44 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 ## Estado Actual del Proyecto
 
 ### ✅ Completado recientemente
-- **Refactorizacion parcial de `index.astro`** — reducido de ~2370 a 1408 lineas (~41% menos). Componentes extraidos: `HeroSection`, `ProductGrid`, `TrustSection`, `FAQSection`, `TestimonialsSection`.
+- **Refactorizacion de `index.astro`** — reducido de ~2370 a 1312 lineas (~45% menos). Componentes extraidos: `HeroSection`, `ProductGrid`, `TrustSection`, `FAQSection`, `TestimonialsSection`, `NewsletterSection`.
 - **FAQ implementado** — `FAQSection.astro` con 10 preguntas frecuentes, acordeon sin JS externo.
-- **Testimonios implementados** — `TestimonialsSection.astro` con 5 testimonios (placeholders visuales — reemplazar con fotos reales de clientes).
+- **Testimonios implementados** — `TestimonialsSection.astro` con 5 testimonios (placeholders visuales — reemplazar con fotos reales de clientes cuando esten disponibles).
 - **Busqueda funcional** — `index.astro` ya maneja el parametro `?search=termino`.
+- **NewsletterSection implementado** — `NewsletterSection.astro` con formulario de captura, honeypot anti-bots, validacion de email y tracking Meta Pixel (Lead). ⚠️ El submit solo muestra un `alert()` nativo — no guarda emails en ningun backend. Requiere integracion con Mailchimp, Brevo o similar para ser funcional.
+- **Informacion de envios en pagina de producto** — `[slug].astro` tiene acordeon nativo `<details>/<summary>` con precios, tiempos y transportadoras reales (Servientrega, Coordinadora, Interrapidisimo).
 
 ### ⚠️ Problemas tecnicos pendientes
-- **`index.astro` tiene 1408 lineas** — sigue siendo grande. Falta extraer: secciones de temporada (Navidad/Halloween inline), seccion de Mascotas, seccion de Recordatorios.
+- **`index.astro` tiene 1312 lineas** — sigue siendo reducible. Quedan inline: secciones de temporada (Navidad/Halloween), seccion de Mascotas, seccion de Recordatorios.
 - **14 imagenes en `.jpg`** — deben convertirse a `.webp`: `Perro_vela.jpg`, `grupo_ositos.jpg`, `capibara_beige.jpg`, `capibara_cafe.jpg`, `capibara_beige_acostado.jpg`, `capibara_cafe_acostado.jpg`, `fantasma_chiwi.jpg`, `velita_mafi.jpg`, `vela_gatito_personalizada_1.jpg`, `vela_gatito_personalizada_2.jpg`, `Pack_gatito_1.jpg`, `Pack_gatito_2.jpg`, `Logo variante horizontal.jpg`, `Logo_png.jpg`.
-- **`NewsletterSection.astro`** — componente planeado, aun no creado.
+- **`NewsletterSection.astro` sin backend** — el formulario captura el email pero solo muestra un `alert()` nativo. Requiere integracion con Mailchimp, Brevo, ConvertKit o similar para realmente guardar los correos. Hasta tanto, ningun email se almacena.
 - **Testimonios con imagenes placeholder** — `TestimonialsSection.astro` usa fotos de productos. Reemplazar con fotos reales de clientes cuando esten disponibles.
 
 ### Funcionalidades ausentes (por orden de impacto)
-| Funcionalidad              | Estado              | Impacto         |
-|----------------------------|---------------------|-----------------|
-| Pasarela de pagos          | Ausente             | 🔥🔥🔥 MUY ALTO |
-| Carrito de compras         | Placeholder         | 🔥🔥🔥 ALTO     |
-| Redes sociales (links)     | Ausente             | 🔥🔥🔥 ALTO     |
-| Email marketing / captura  | Ausente             | 🔥🔥🔥 ALTO     |
-| Informacion de envios      | Ausente             | 🔥🔥🔥 ALTO     |
-| Programa de fidelizacion   | Ausente             | 🔥🔥🔥 ALTO     |
-| Personalizacion interactiva| Ausente             | 🔥🔥🔥 MUY ALTO |
-| Testimonios reales         | Placeholders        | 🔥🔥🔥 ALTO     |
-| Pagina "Sobre Nosotros"    | Ausente             | 🔥🔥 MEDIO      |
-| CMS para productos         | Ausente             | 🔥🔥 MEDIO      |
-| Guia de regalos            | Ausente             | 🔥🔥 MEDIO      |
-| FAQ                        | ✅ Implementado     | —               |
+| Funcionalidad              | Estado                        | Impacto         |
+|----------------------------|-------------------------------|-----------------|
+| Pasarela de pagos          | Ausente                       | 🔥🔥🔥 MUY ALTO |
+| Carrito de compras         | Placeholder (icono sin logica)| 🔥🔥🔥 ALTO     |
+| Redes sociales (links)     | Ausente                       | 🔥🔥🔥 ALTO     |
+| Email marketing / backend  | Sin backend (alert solamente) | 🔥🔥🔥 ALTO     |
+| Programa de fidelizacion   | Ausente                       | 🔥🔥🔥 ALTO     |
+| Personalizacion interactiva| Ausente                       | 🔥🔥🔥 MUY ALTO |
+| Testimonios reales         | Placeholders (fotos producto) | 🔥🔥🔥 ALTO     |
+| Pagina "Sobre Nosotros"    | Ausente                       | 🔥🔥 MEDIO      |
+| CMS para productos         | Ausente                       | 🔥🔥 MEDIO      |
+| Guia de regalos            | Ausente                       | 🔥🔥 MEDIO      |
+| Informacion de envios      | ✅ Implementado               | —               |
+| FAQ                        | ✅ Implementado               | —               |
 
 ---
 
 ## Roadmap de Mejoras
 
 ### Prioridad CRITICA (implementar primero)
-1. **Testimonios reales** — Reemplazar placeholders de `TestimonialsSection.astro` con fotos y nombres de clientes reales (pedir por WhatsApp)
+1. **Testimonios reales** — Reemplazar placeholders de `TestimonialsSection.astro` con fotos y nombres de clientes reales (pedirlos por WhatsApp)
 2. **Pasarela de pagos** — Integrar Mercado Pago o Wompi (favoritos en Colombia)
-3. **Email marketing** — Crear `NewsletterSection.astro` con formulario + integrar Mailchimp
+3. **Email marketing backend** — Conectar `NewsletterSection.astro` (ya existe el formulario) a Mailchimp, Brevo o ConvertKit para guardar los correos. Sin esto los emails se pierden.
 4. **Redes sociales** — Agregar iconos en `Footer.astro` y `Navbar.astro`; Pixel de Facebook/Instagram
-5. **Sistema de envios** — Informacion clara de costos, carriers y tiempos en pagina de producto
 
 ### Prioridad ALTA (1-2 meses)
 6. **Carrito de compras funcional** — Agregar multiples productos, generar mensaje WhatsApp automatico con resumen
@@ -223,7 +224,7 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 ### Quick Wins (1-2 dias, alto impacto)
 - Reemplazar fotos placeholder en testimonios con imagenes reales de clientes
 - Agregar iconos de redes sociales en Footer
-- Agregar informacion de envios en pagina de producto `[slug].astro`
+- Conectar `NewsletterSection.astro` a Mailchimp o Brevo (formulario ya existe)
 - Mejorar los CTAs con textos mas persuasivos
 
 ---
@@ -246,7 +247,8 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 - Las imagenes de Halloween estan en el componente `Halloween.astro` separado del catalogo principal.
 - `weight` de los productos esta comentado en todos los items — no mostrar en UI por ahora.
 - Google Analytics ya esta configurado con GA4 (G-TZ1ZSKVDEL) y rastrea clics de WhatsApp automaticamente.
-- Los testimonios actuales en `TestimonialsSection.astro` usan **fotos de productos como placeholder** — reemplazar con fotos de clientes reales.
+- Los testimonios actuales en `TestimonialsSection.astro` usan **fotos de productos como placeholder** — reemplazar con fotos de clientes reales cuando esten disponibles.
+- `NewsletterSection.astro` existe y esta incluido en `index.astro`, pero **no guarda ningun correo** — el `submit` solo ejecuta un `alert()`. Sin integracion a un backend (Mailchimp/Brevo), el formulario es decorativo.
 - Consultar `PROMPTS.md` para tareas comunes listas para ejecutar.
 - Consultar `agent.md` para saber que agente especializado usar en cada tarea.
 - Consultar `brandbook.md` para colores, tipografia y tono de comunicacion.
