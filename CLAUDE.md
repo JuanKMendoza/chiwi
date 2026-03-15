@@ -61,14 +61,21 @@ src/
     TrustSection.astro        # Indicadores de confianza / por que elegirnos ✅ extraido de index.astro
     FAQSection.astro          # Preguntas frecuentes (10 preguntas) ✅ nuevo
     TestimonialsSection.astro # Resenas y testimonios de clientes ✅ nuevo
-    Halloween.astro           # Seccion de temporada Halloween
+    NewsletterSection.astro   # Captura de email con honeypot y Meta Pixel ✅ extraido de index.astro
+    Halloween.astro           # Seccion de temporada Halloween (con imports propios)
     SeasonalProductSchema.astro # Schema JSON-LD para productos de temporada
+    seasons/
+      SeasonHalloween.astro  # Temporada Halloween (oct 1-31)
+      SeasonNavidad.astro    # Temporada Navidad (nov 15 - dic 31)
+      SeasonDiaNinos.astro   # Día del Niño (abr 1-30) ✅ nuevo
+      SeasonMadres.astro     # Día de las Madres (may 1-31) ✅ nuevo
   data/
     products.ts     # Fuente de verdad del catalogo — 11 productos activos
+    seasons.ts      # Config de temporadas: fechas, productos, IDs
   layouts/
     Layout.astro    # Layout base: SEO, OG tags, GA4, Schema Organization
   pages/
-    index.astro         # Pagina de inicio — 1408 lineas (reducido desde ~2370)
+    index.astro         # Pagina de inicio — 649 lineas (reducido desde ~2370)
     productos/
       index.astro        # Catalogo con filtros por categoria
       [slug].astro       # Pagina individual de producto (ruta dinamica)
@@ -148,6 +155,7 @@ interface Product {
 - **Schema:** `Layout.astro` incluye schema `Organization`. `SeasonalProductSchema.astro` se usa para productos de temporada.
 - **WhatsApp:** Los links de compra usan `https://wa.me/573102278592`. Google Analytics rastrea los clics automaticamente.
 - **Datos:** Nunca hardcodear productos en componentes. Siempre filtrar desde `products.ts`.
+- **ProductGrid:** La seleccion de productos del grid de la landing se controla en `GRID_SLUGS` y `WIDE_SLUG` al inicio del frontmatter de `ProductGrid.astro`. No tocar el resto del componente para cambiar cuales productos se muestran.
 
 ---
 
@@ -167,18 +175,23 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 ## Estado Actual del Proyecto
 
 ### ✅ Completado recientemente
-- **Refactorizacion de `index.astro`** — reducido de ~2370 a 1312 lineas (~45% menos). Componentes extraidos: `HeroSection`, `ProductGrid`, `TrustSection`, `FAQSection`, `TestimonialsSection`, `NewsletterSection`.
+- **Sistema de temporadas implementado** — SeasonNavidad/Halloween extraidos de index.astro, SeasonDiaNinos y SeasonMadres nuevos. Visibilidad automatica por fecha via JS cliente (sin rebuild). index.astro reducido a ~649 lineas.
+- **Refactorizacion de `index.astro`** — reducido de ~2370 a 649 lineas (~73% menos). Componentes extraidos: `HeroSection`, `ProductGrid`, `TrustSection`, `FAQSection`, `TestimonialsSection`, `NewsletterSection`, 4 secciones de temporada.
 - **FAQ implementado** — `FAQSection.astro` con 10 preguntas frecuentes, acordeon sin JS externo.
 - **Testimonios implementados** — `TestimonialsSection.astro` con 5 testimonios (placeholders visuales — reemplazar con fotos reales de clientes cuando esten disponibles).
 - **Busqueda funcional** — `index.astro` ya maneja el parametro `?search=termino`.
 - **NewsletterSection implementado** — `NewsletterSection.astro` con formulario de captura, honeypot anti-bots, validacion de email y tracking Meta Pixel (Lead). ⚠️ El submit solo muestra un `alert()` nativo — no guarda emails en ningun backend. Requiere integracion con Mailchimp, Brevo o similar para ser funcional.
 - **Informacion de envios en pagina de producto** — `[slug].astro` tiene acordeon nativo `<details>/<summary>` con precios, tiempos y transportadoras reales (Servientrega, Coordinadora, Interrapidisimo).
+- **Catalogo `/productos` con vista agrupada** — `productos/index.astro` reescrito con dos vistas: agrupada por categoria (default) con encabezados de color por tipo, y vista plana con filtros. Funcion de prioridad: mascotas > temporada > recordatorios > kawaii. Cada producto aparece en una sola categoria.
+- **`ProductGrid.astro` restaurado y mejorado** — Layout bento de 4 columnas en desktop: fila 1 (1+2+1 cols) con `familia-de-ositos` como producto ancho (`lg:col-span-2`), fila 2 (4×1 col) incluyendo tarjeta CTA de "Diseño Personalizado" como 7mo slot. Seleccion de productos via `GRID_SLUGS` y `WIDE_SLUG` configurables al top del componente. Movil con swiper sin cambios.
+- **`PROMPTS.md` depurado** — Eliminados todos los prompts ya ejecutados. Quedan solo: bento grid (pendiente ejecutar en prod), utilidades recurrentes (agregar producto, temporada, blog, testimonio, red social) y pendientes importantes (Sobre Nosotros, carrito, newsletter backend).
 
 ### ⚠️ Problemas tecnicos pendientes
-- **`index.astro` tiene 1312 lineas** — sigue siendo reducible. Quedan inline: secciones de temporada (Navidad/Halloween), seccion de Mascotas, seccion de Recordatorios.
+- **`index.astro` tiene ~649 lineas** — quedan inline: seccion de Mascotas y seccion de Recordatorios (pueden extraerse como componentes si se requiere).
 - **14 imagenes en `.jpg`** — deben convertirse a `.webp`: `Perro_vela.jpg`, `grupo_ositos.jpg`, `capibara_beige.jpg`, `capibara_cafe.jpg`, `capibara_beige_acostado.jpg`, `capibara_cafe_acostado.jpg`, `fantasma_chiwi.jpg`, `velita_mafi.jpg`, `vela_gatito_personalizada_1.jpg`, `vela_gatito_personalizada_2.jpg`, `Pack_gatito_1.jpg`, `Pack_gatito_2.jpg`, `Logo variante horizontal.jpg`, `Logo_png.jpg`.
 - **`NewsletterSection.astro` sin backend** — el formulario captura el email pero solo muestra un `alert()` nativo. Requiere integracion con Mailchimp, Brevo, ConvertKit o similar para realmente guardar los correos. Hasta tanto, ningun email se almacena.
 - **Testimonios con imagenes placeholder** — `TestimonialsSection.astro` usa fotos de productos. Reemplazar con fotos reales de clientes cuando esten disponibles.
+- **`ProductGrid.astro` — bento requiere 7 productos reales** — actualmente la fila 2 usa una tarjeta CTA como 7mo slot. Cuando se agregue un 7mo producto no-estacional a `products.ts`, reemplazar la tarjeta CTA por ese producto y actualizar `GRID_SLUGS`.
 
 ### Funcionalidades ausentes (por orden de impacto)
 | Funcionalidad              | Estado                        | Impacto         |
@@ -213,8 +226,7 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 9. **Google Shopping** — Feed de productos para anuncios
 
 ### Prioridad MEDIA (3-6 meses)
-10. **Continuar refactorizacion de `index.astro`** — Extraer secciones de temporada y mascotas
-11. **Crear `NewsletterSection.astro`** — Captura de email con incentivo de descuento
+10. **Continuar refactorizacion de `index.astro`** — Extraer secciones de Mascotas y Recordatorios (opcional, ya esta en 649 lineas)
 12. **Blog activo** — Publicacion regular: cuidado de velas, procesos, ideas de regalo
 13. **Panel de administracion** — CMS headless (Sanity/Strapi) para gestionar productos sin tocar codigo
 14. **Programa de fidelizacion** — Puntos, descuentos recurrentes, club VIP
@@ -249,6 +261,9 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 - Google Analytics ya esta configurado con GA4 (G-TZ1ZSKVDEL) y rastrea clics de WhatsApp automaticamente.
 - Los testimonios actuales en `TestimonialsSection.astro` usan **fotos de productos como placeholder** — reemplazar con fotos de clientes reales cuando esten disponibles.
 - `NewsletterSection.astro` existe y esta incluido en `index.astro`, pero **no guarda ningun correo** — el `submit` solo ejecuta un `alert()`. Sin integracion a un backend (Mailchimp/Brevo), el formulario es decorativo.
+- **`ProductGrid.astro` — seleccion de productos:** Para cambiar los productos que aparecen en la landing, editar `GRID_SLUGS` al inicio del frontmatter. Para cambiar el producto ancho, editar `WIDE_SLUG`. El 7mo slot es una tarjeta CTA de "Diseño Personalizado" con link a WhatsApp — reemplazar por un 7mo producto real cuando este disponible.
+- **`productos/index.astro` — vista agrupada:** Por defecto muestra productos agrupados por categoria. El filtro de categoria activa la vista plana. La funcion de prioridad determina en que grupo aparece cada producto: mascotas > temporada > recordatorios > kawaii.
+- **Agregar una nueva temporada:** (1) Agregar entrada en `src/data/seasons.ts`, (2) Crear `src/components/seasons/SeasonNombre.astro` siguiendo el patron de `SeasonDiaNinos.astro`, (3) Importar y agregar `<div data-season="id" ... hidden>` en `index.astro`, (4) Agregar `{id, sm, sd, em, ed}` al array del script cliente en `index.astro`.
 - Consultar `PROMPTS.md` para tareas comunes listas para ejecutar.
 - Consultar `agent.md` para saber que agente especializado usar en cada tarea.
 - Consultar `brandbook.md` para colores, tipografia y tono de comunicacion.

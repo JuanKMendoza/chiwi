@@ -34,7 +34,7 @@ Ejemplo: "Investiga como integrar Mercado Pago en un sitio Astro estatico"
 - Encontrar todos los archivos que importan `products.ts`
 - Revisar que paginas tienen Schema markup implementado
 - Identificar las 14 imagenes `.jpg` que deben convertirse a `.webp`
-- Mapear las secciones que quedan inline en `index.astro` (temporada, mascotas)
+- Mapear las secciones que quedan inline en `index.astro` (mascotas, recordatorios — temporadas ya extraidas)
 
 ```
 Ejemplo: "Encuentra todos los componentes .astro que usan el Layout base"
@@ -54,7 +54,7 @@ Ejemplo: "Lista todas las imagenes que no son .webp en src/assets/images/"
 - **Personalizacion interactiva:** Arquitectura del configurador visual de velas con selector de colores/disenos y preview en tiempo real
 - **CMS:** Planificar migracion de `products.ts` a Sanity o Strapi
 - **Temporadas:** Disenar componentes reutilizables para nuevas temporadas (San Valentin, Dia de la Madre)
-- **Extraccion restante de `index.astro`** — Planificar como extraer las secciones de temporada y mascotas que quedan inline (aun ~1408 lineas)
+- **Extraccion restante de `index.astro`** — Planificar como extraer las secciones de Mascotas y Recordatorios que quedan inline (~649 lineas actuales; temporadas ya extraidas)
 
 ```
 Ejemplo: "Como deberia implementarse el carrito con generacion automatica de mensaje WhatsApp?"
@@ -71,7 +71,7 @@ Ejemplo: "Planifica como extraer las secciones de temporada inline que quedan en
 - Auditar el sitio completo antes de un lanzamiento de temporada
 - Verificar que todos los productos tienen schema `Product` correcto
 - Revisar que los meta tags esten bien en todas las paginas
-- Analizar Core Web Vitals post-refactorizacion (index.astro bajo de ~2370 a 1408 lineas)
+- Analizar Core Web Vitals post-refactorizacion (index.astro bajo de ~2370 a ~649 lineas)
 - Verificar impacto SEO de los nuevos componentes: `FAQSection`, `TestimonialsSection`
 
 ```
@@ -263,11 +263,26 @@ Para hacerlo funcional:
 3. Crear el archivo en `src/pages/blog/` (ver ejemplos existentes)
 4. `seo-page` → Revision final de la pagina creada
 
-### Continuar refactorizacion de index.astro (1312 lineas restantes)
-1. `Explore` → Mapear las secciones que quedan inline (temporada, mascotas, recordatorios)
+### Continuar refactorizacion de index.astro (~649 lineas actuales)
+Las secciones de temporada ya fueron extraidas. Quedan inline: seccion de Mascotas y seccion de Recordatorios.
+1. `Explore` → Mapear las secciones que quedan inline en index.astro
 2. `Plan` → Disenar la extraccion sin romper funcionalidad ni imports
 3. Extraer cada seccion en su componente correspondiente
 4. `seo-technical` → Verificar que el rendimiento no empeoro
+
+### Cambiar productos del grid de la landing (tarea recurrente — sin agente)
+No requiere agente. Editar directamente `src/components/ProductGrid.astro`:
+- `GRID_SLUGS` — array de slugs en orden de aparicion (izq → der, arriba → abajo)
+- `WIDE_SLUG` — slug del producto que ocupa 2 columnas en fila 1 (bento)
+- Los slugs disponibles estan en `src/data/products.ts`
+- El 7mo slot es una tarjeta CTA fija; al agregar un 7mo producto real, reemplazarla
+
+### Agregar 7mo producto real al grid de la landing
+Cuando haya un nuevo producto no-estacional:
+1. Agregar el producto a `src/data/products.ts` con imagen .webp
+2. En `ProductGrid.astro`: agregar su slug a `GRID_SLUGS` y eliminar la tarjeta CTA hardcodeada
+3. `seo-schema` → Generar schema Product para el nuevo item
+4. Verificar que el grid desktop queda 4+4 sin celdas vacias
 
 ### Implementar pasarela de pagos (largo plazo)
 1. `general-purpose` → Investigar integracion Mercado Pago / Wompi con Astro SSG

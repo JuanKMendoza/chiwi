@@ -1,3 +1,14 @@
+---
+import { Image } from "astro:assets";
+import SeasonalProductSchema from "./SeasonalProductSchema.astro";
+import fantasmaGatito from "../assets/images/gatito_ghost_orange_back.webp";
+import fantasmaPerrito from "../assets/images/perrito_ghost_purple_back.webp";
+import duoFantasma from "../assets/images/duo_halloween.webp";
+import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
+
+const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
+const fantasmasChiwiUrl = new URL(fantasmasChiwiImg.src, baseUrl).href;
+---
  <!-- Sección Productos de Temporada - HALLOWEEN -->
   <!-- Sección Productos de Temporada - HALLOWEEN OPTIMIZADO -->
   <section

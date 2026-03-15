@@ -5,6 +5,111 @@
 
 ---
 
+## 🎨 LANDING — GRID DE PRODUCTOS
+
+### Restaurar layout bento en ProductGrid y hacer la selección de productos configurable
+```
+Modifica `src/components/ProductGrid.astro` para:
+  (1) Reemplazar el filtro automático `featured: true` por una lista manual de slugs
+  (2) Restaurar el layout bento en desktop donde un producto ocupa el doble de ancho
+  (3) NO tocar nada del carrusel móvil (swiper) — dejarlo exactamente como está
+
+════════════════════════════════════════
+PASO 1 — Reemplazar el filtro automático por slugs manuales
+════════════════════════════════════════
+En el frontmatter de ProductGrid.astro, ELIMINA esta línea:
+  const featuredProducts = products.filter((p) => p.featured);
+
+Y REEMPLÁZALA por estas dos constantes configurables:
+
+  // ──────────────────────────────────────────────────
+  // CONFIGURACIÓN MANUAL DEL GRID — edita aquí
+  // Slugs de los productos que aparecen en la landing
+  // (el orden en el array = el orden visual en el grid)
+  const GRID_SLUGS: string[] = [
+    "perrito-cocker",
+    "familia-de-ositos",
+    "capibara-mood-relax",
+    "capibara-cute",
+    "cajita-recuerdame",
+    "gatito-personalizado",
+  ];
+
+  // Slug del producto que ocupará el doble de ancho en desktop (bento)
+  // Debe estar incluido en GRID_SLUGS
+  const WIDE_SLUG = "familia-de-ositos";
+  // ──────────────────────────────────────────────────
+
+  const featuredProducts = GRID_SLUGS
+    .map((slug) => products.find((p) => p.slug === slug))
+    .filter(Boolean) as (typeof products[number])[];
+
+IMPORTANTE: renombrar la variable interna no es necesario — puede seguir
+llamándose `featuredProducts` para no tener que cambiar el resto del template.
+
+════════════════════════════════════════
+PASO 2 — Restaurar el layout bento desktop (lg:col-span-2)
+════════════════════════════════════════
+En el bloque "Grid Desktop" (el div con clase "hidden sm:grid grid-cols-1
+sm:grid-cols-2 lg:grid-cols-4 gap-6"), dentro del `.map()`, añade la clase
+condicional `lg:col-span-2` al `<article>` cuando el producto es el WIDE_SLUG.
+
+Reemplaza el opening tag del <article> que actualmente es:
+  <article
+    class="flex flex-col"
+    ...
+  >
+
+Por:
+  <article
+    class={`flex flex-col${product.slug === WIDE_SLUG ? " lg:col-span-2" : ""}`}
+    itemscope
+    itemtype="https://schema.org/Product"
+  >
+
+El producto ancho también necesita una imagen más alta para aprovechar el espacio.
+En la <Image> del Grid Desktop, añade la clase condicional de altura:
+  class={`w-full ${product.slug === WIDE_SLUG ? "h-80 lg:h-96" : "h-64"} object-cover rounded-xl transition-transform group-hover:scale-105`}
+
+════════════════════════════════════════
+PASO 3 — Actualizar el Schema JSON-LD al final del componente
+════════════════════════════════════════
+El bloque <script type="application/ld+json" ...> al final del componente
+referencia `featuredProducts` — como el nombre de variable no cambió, este
+bloque no necesita modificaciones. Verificar igualmente que no haya errores
+de TypeScript por el `.filter(Boolean)` usando el cast `as`.
+
+════════════════════════════════════════
+PASO 4 — NO modificar el carrusel móvil
+════════════════════════════════════════
+El bloque "Carrusel móvil" (div con clase "block sm:hidden" que contiene el
+<swiper-container>) ya usa `featuredProducts` y con el cambio del Paso 1
+automáticamente mostrará los mismos productos que el grid desktop.
+NO cambiar ninguna clase, atributo ni lógica del swiper.
+
+════════════════════════════════════════
+PASO 5 — Cómo cambiar los productos del grid en el futuro
+════════════════════════════════════════
+Para cambiar qué productos aparecen en la landing:
+- Edita el array GRID_SLUGS en el frontmatter de ProductGrid.astro
+- El orden del array determina el orden visual (de izquierda a derecha, arriba a abajo)
+- Para cambiar cuál producto ocupa el doble de ancho, cambia el valor de WIDE_SLUG
+- Si quieres que ningún producto sea ancho, deja WIDE_SLUG = "" (string vacío)
+- Los slugs disponibles están en src/data/products.ts
+
+════════════════════════════════════════
+PASO 6 — Verificar
+════════════════════════════════════════
+Después de los cambios:
+- Ejecuta `pnpm build` y confirma que no hay errores
+- En desktop (>= 1024px): el producto "familia-de-ositos" debe ocupar 2 columnas
+  y los demás 1 columna cada uno, sobre un grid de 4 columnas
+- En mobile (< 640px): el swiper debe seguir funcionando igual que antes
+- Confirma que los 6 productos del GRID_SLUGS aparecen en el orden esperado
+```
+
+---
+
 ## 📦 PRODUCTOS
 
 ### Agregar un nuevo producto al catálogo
@@ -31,55 +136,42 @@ En `src/data/products.ts`, actualiza el precio del producto con slug "[SLUG]" a 
 Recuerda que los precios son enteros sin formato (ej: 29900), el formato lo aplica .toLocaleString('es-CO') en el componente.
 ```
 
-### Marcar producto como destacado / quitar destacado
+### Agregar una nueva temporada
 ```
-En `src/data/products.ts`, cambia el campo `featured` del producto "[NOMBRE O SLUG]" a [true | false].
-```
+Agrega una nueva temporada al sistema de visibilidad automática. Lee CLAUDE.md antes de empezar.
 
-### Agregar productos relacionados
-```
-En `src/data/products.ts`, agrega al producto "[SLUG]" los siguientes slugs en el campo `relatedProducts`:
-[slug-1, slug-2, slug-3]
-```
+DATOS DE LA NUEVA TEMPORADA:
+- ID: [id-temporada]           — en kebab-case, ej: "san-valentin"
+- Nombre: [Nombre legible]
+- Inicio: mes [MM] día [DD]
+- Fin: mes [MM] día [DD]
+- Productos: [slug-1, slug-2, slug-3]
 
----
+PASOS A EJECUTAR:
 
-## 🏗️ REFACTORIZACIÓN
+1. En `src/data/seasons.ts`, agrega una nueva entrada al array `seasons[]`:
+   {
+     id: "[id-temporada]",
+     name: "[Nombre legible]",
+     startMonth: MM, startDay: DD,
+     endMonth: MM, endDay: DD,
+     productSlugs: ["slug-1", "slug-2", "slug-3"],
+   }
 
-### Extraer HeroSection de index.astro
-```
-En `src/pages/index.astro`, extrae la sección Hero (desde el primer <section> con clase "relative min-h-[90vh]"
-hasta su cierre </section>) y crea el componente `src/components/HeroSection.astro`.
-- El componente recibe las props que necesite via Astro.props
-- Reemplaza el bloque en index.astro por <HeroSection />
-- Agrega el import correspondiente en index.astro
-- No hardcodees datos que deberían venir de products.ts
-```
+2. Crea `src/components/seasons/SeasonNombre.astro` siguiendo el patrón de
+   `SeasonDiaNinos.astro` — importa productos desde products.ts y filtra por slugs.
+   Diseño: revisar brandbook.md para la paleta de colores de esta temporada.
 
-### Extraer ProductGrid de index.astro
-```
-En `src/pages/index.astro`, extrae la grilla de productos destacados y crea `src/components/ProductGrid.astro`.
-- El componente debe importar y filtrar productos desde `../data/products.ts` (featured: true)
-- Reemplaza el bloque en index.astro por <ProductGrid />
-- Agrega el import correspondiente
-- Mantén toda la lógica de datos en products.ts, no hardcodees productos
-```
+3. En `src/pages/index.astro`:
+   - Agrega el import: import SeasonNombre from "../components/seasons/SeasonNombre.astro"
+   - Agrega el bloque: <div data-season="[id-temporada]" class="season-block" hidden><SeasonNombre /></div>
+   - En el script cliente, agrega al array seasons:
+     { id: "[id-temporada]", sm: MM, sd: DD, em: MM, ed: DD }
 
-### Extraer TrustSection de index.astro
-```
-Extrae la sección de "Por qué elegirnos" / indicadores de confianza de `src/pages/index.astro`
-y crea el componente `src/components/TrustSection.astro`.
-- Reemplaza el bloque en index.astro por <TrustSection />
-- Agrega el import correspondiente
-```
+4. Ejecuta `pnpm build` para verificar que no hay errores.
 
-### Extraer NewsletterSection de index.astro
-```
-Extrae la sección de captura de email / newsletter de `src/pages/index.astro`
-y crea el componente `src/components/NewsletterSection.astro`.
-- Si no existe la sección, créala con: campo de email, botón de suscripción con color de marca (#F97316),
-  texto de incentivo (ej: "Suscríbete y recibe 10% de descuento en tu primera compra")
-- Reemplaza o inserta en index.astro como <NewsletterSection />
+5. Actualiza CLAUDE.md: agrega la nueva temporada en la estructura de componentes/seasons/
+   y en el array de seasons.ts, y en "✅ Completado recientemente".
 ```
 
 ---
@@ -109,18 +201,11 @@ En `src/data/products.ts`, mejora el campo `longDescription` del producto "[SLUG
 - Mantener mención del precio y tiempo de elaboración
 ```
 
-### Actualizar meta description de una página
-```
-En `src/pages/[ARCHIVO].astro`, actualiza el prop `description` que se pasa al componente <Layout>:
-Nueva descripción (máx 160 caracteres): "[NUEVA DESCRIPCIÓN]"
-Asegúrate de que incluya la keyword principal y un llamado a la acción.
-```
-
 ---
 
 ## 🎨 COMPONENTES Y UI
 
-### Agregar testimonio a TestimonialsSection
+### Agregar testimonio real
 ```
 En `src/components/TestimonialsSection.astro`, agrega el siguiente testimonio al array `testimonials`:
 - Quote: "[TEXTO DEL TESTIMONIO]"
@@ -142,30 +227,6 @@ En `src/components/Footer.astro`, agrega el ícono de [Instagram | TikTok | Face
 Sigue el estilo de los íconos ya existentes en el Footer.
 ```
 
-### Crear sección FAQ
-```
-Crea el componente `src/components/FAQSection.astro` con las siguientes 10 preguntas frecuentes de Chiwi Colombia:
-1. ¿Cuánto tiempo tarda en llegar mi pedido?
-2. ¿Cómo hago mi pedido?
-3. ¿Puedo personalizar cualquier vela?
-4. ¿Hacen envíos a toda Colombia?
-5. ¿Cuál es el costo del envío?
-6. ¿Las velas tienen olor?
-7. ¿Cuánto dura encendida una vela Chiwi?
-8. ¿Puedo pedir una vela con la foto de mi mascota?
-9. ¿Aceptan devoluciones?
-10. ¿Tienen descuentos para pedidos al por mayor?
-
-Estilo: acordeón expandible (sin JavaScript externo), colores de marca (naranja #F97316, rosa #FF8F8F).
-Después agrégala a `src/pages/index.astro` o crea `src/pages/faq.astro` según corresponda.
-```
-
-### Agregar badge de temporada a producto
-```
-En `src/data/products.ts`, agrega el campo `badge: "[TEXTO DEL BADGE]"` al producto con slug "[SLUG]".
-Ejemplo de badges: "Edición Limitada", "Nuevo", "Más vendido", "Solo por temporada"
-```
-
 ---
 
 ## 🐛 FIXES Y MANTENIMIENTO
@@ -177,36 +238,12 @@ En `src/data/products.ts` o en el componente donde se use, reemplaza la referenc
 Verifica que el nombre del archivo WebP sea correcto antes de hacer el cambio.
 ```
 
-### Arreglar búsqueda en index.astro
-```
-En `src/pages/index.astro`, implementa el manejo del parámetro de búsqueda:
-- Leer `Astro.url.searchParams.get('search')` al inicio del frontmatter
-- Si hay un término de búsqueda, filtrar los productos mostrados cuyo `name`, `description`
-  o `category` contengan el término (case-insensitive)
-- Mostrar un mensaje "Resultados para: [término]" sobre la grilla si hay búsqueda activa
-- Si no hay resultados, mostrar "No encontramos productos para '[término]'.
-  ¿Hablamos por WhatsApp?" con link a wa.me/573102278592
-```
-
 ### Verificar que el build no tenga errores
 ```
 Ejecuta `pnpm build` en la raíz del proyecto y reporta:
 1. Si hubo errores, muéstralos y propone solución
 2. Si fue exitoso, muestra el tamaño del bundle generado
 3. Verifica que todas las rutas dinámicas /productos/[slug] se generaron correctamente
-```
-
----
-
-## 📊 ANALYTICS Y TRACKING
-
-### Agregar evento GA4 a un botón
-```
-En [ARCHIVO.astro], agrega tracking de Google Analytics GA4 (ya configurado con G-TZ1ZSKVDEL)
-al botón "[DESCRIPCIÓN DEL BOTÓN]":
-- Evento: gtag('event', '[NOMBRE_EVENTO]', { event_category: '[CATEGORÍA]', event_label: '[ETIQUETA]' })
-- Dispáralo en el onclick del elemento
-- Sigue el patrón de tracking de WhatsApp ya implementado en el proyecto
 ```
 
 ---
@@ -237,109 +274,18 @@ Implementa un carrito de compras simple en Chiwi Colombia:
 - Actualiza el contador del ícono del carrito en Navbar.astro
 ```
 
-### ✅ Reemplazar testimonios placeholder con clientes reales
+### Conectar NewsletterSection a backend de email
 ```
-En `src/components/TestimonialsSection.astro`, reemplaza los 5 testimonios placeholder por datos reales de clientes.
+Conecta el formulario de `src/components/NewsletterSection.astro` a [Mailchimp | Brevo | ConvertKit]
+para guardar los correos de suscriptores. Actualmente el submit solo ejecuta un alert().
 
-ESTRUCTURA ACTUAL DEL COMPONENTE:
-- Las imágenes se importan al inicio del frontmatter (import img1 from '...')
-- El array `testimonials` tiene estos campos por objeto: quote, name, location, product, image, alt
-- El script JS solo usa: quote, name, location, product (no la imagen directamente)
-- Las imágenes aparecen en el stack visual izquierdo del carrusel
+PASOS:
+1. Crear endpoint en `src/pages/api/newsletter.ts` (Astro API route, SSR)
+2. El endpoint recibe { email } por POST, valida formato, y llama a la API de [SERVICIO ELEGIDO]
+3. Retorna { success: true } o { error: "mensaje" } en JSON
+4. En NewsletterSection.astro, reemplaza el alert() por un fetch() al endpoint
+5. Mostrar mensaje de éxito/error en la UI sin recargar la página
 
-PASOS A EJECUTAR:
-
-1. Reemplaza los imports de imágenes placeholder por las fotos reales de clientes.
-   Las fotos reales deben estar en src/assets/images/ con nombres como:
-   cliente_maria_jose.webp, cliente_valentina.webp, etc.
-   Si aún no están disponibles, mantén temporalmente las actuales y deja un comentario
-   `// TODO: reemplazar con foto real de [NOMBRE]`
-
-2. Reemplaza el array `testimonials` con los siguientes datos reales:
-   (Completa con los datos que te entreguen — formato esperado por objeto:)
-   {
-     quote: "Texto exacto del testimonio del cliente",
-     name: "Nombre Apellido",           // ej: "María José R."
-     location: "Ciudad, Colombia",       // ej: "Bogotá, Colombia"
-     product: "Nombre del producto comprado",
-     image: imgN,                        // variable del import correspondiente
-     alt: "Foto de [Nombre] con su velita Chiwi [producto] - testimonio real",
-   }
-
-3. Agrega schema JSON-LD de tipo `AggregateRating` y `Review` justo antes del cierre de </section>
-   para que Google indexe las reseñas. Usa los datos reales del paso 2.
-   Formato:
-   <script type="application/ld+json">
-   {
-     "@context": "https://schema.org",
-     "@type": "Product",
-     "name": "Velas Kawaii Artesanales Chiwi Colombia",
-     "aggregateRating": {
-       "@type": "AggregateRating",
-       "ratingValue": "5",
-       "reviewCount": "N"   // número total de testimonios reales
-     },
-     "review": [ /* array con cada testimonio real */ ]
-   }
-   </script>
-
-4. Después de ejecutar este cambio, actualiza CLAUDE.md:
-   - En la tabla de funcionalidades, cambia "Testimonios reales | Placeholders" a "✅ Implementado"
-   - En la sección "✅ Completado recientemente" agrega: "Testimonios reales reemplazados — fotos y nombres de clientes reales en TestimonialsSection.astro"
-   - Elimina la nota sobre placeholders en la sección de notas importantes
-
-5. Actualiza agent.md:
-   - En el flujo "Reemplazar testimonios placeholder con reales", marca todos los pasos como completados
-   - Agrega en el flujo "Optimizar SEO del sitio" el paso: "`seo-schema` → Verificar schema AggregateRating/Review agregado"
-```
-
-### ✅ Agregar información de envíos en página de producto
-```
-En `src/pages/productos/[slug].astro`, reemplaza el bloque "<!-- Info adicional -->" que va
-desde la línea `<div class="border-t pt-6 space-y-3 text-sm text-gray-600">` hasta su cierre `</div>`
-(actualmente tiene 3 items: garantía, envíos a toda Colombia, eco-friendly) por una versión
-expandida que incluya esos 3 items + una nueva sección de acordeón de envíos detallados.
-
-ESTRUCTURA A IMPLEMENTAR:
-
-Mantén los 3 íconos actuales (shield-checkmark-outline, cube-outline, leaf-outline) tal como están.
-Agrega DEBAJO de ellos, antes del cierre del div de "Info adicional", un acordeón de envíos:
-
-<details class="border border-orange-200 rounded-xl overflow-hidden mt-2">
-  <summary class="...">  <!-- resumen clickeable con ícono de camión -->
-    <ion-icon name="car-outline"> + "Ver información de envío" + chevron
-  </summary>
-  <div class="...">  <!-- contenido expandible con la info real -->
-    CONTENIDO DEL ACORDEÓN (datos reales de Chiwi Colombia):
-
-    - Bogotá D.C.: 2-3 días hábiles, desde $8.000 COP
-    - Ciudades principales (Medellín, Cali, Barranquilla, Bucaramanga, Pereira): 3-5 días hábiles, desde $10.000 COP
-    - Municipios y zonas rurales: 5-8 días hábiles, desde $13.000 COP
-    - Transportadoras: Servientrega, Coordinadora, Interrapidísimo
-    - Empaque: caja de cartón con burbuja protectora — tu velita llega perfecta
-    - Nota: el costo exacto se confirma al momento del pedido por WhatsApp según la ciudad destino
-    - CTA final: enlace WhatsApp con texto "¿Tienes dudas sobre tu envío? Escríbenos"
-      url: https://wa.me/573102278592?text=Hola!%20Tengo%20una%20pregunta%20sobre%20el%20envío
-  </div>
-</details>
-
-ESTILOS (Tailwind + colores Chiwi):
-- summary: cursor-pointer, flex items-center gap-2, py-3 px-4, text-sm font-semibold text-orange-600, bg-orange-50 hover:bg-orange-100, transition-colors
-- chevron: ion-icon name="chevron-down-outline", rotate-180 cuando details está abierto (usar CSS: details[open] summary .chevron { transform: rotate(180deg) })
-- Contenido: px-4 pb-4 pt-2, text-sm text-gray-600, space-y-2
-- Cada fila de info: flex items-start gap-2 con ion-icon de color naranja
-
-RESTRICCIONES:
-- No usar JavaScript externo — el acordeón funciona nativamente con <details>/<summary>
-- Mantener los 3 íconos de garantía, envíos y eco-friendly exactamente como están
-- No modificar el botón de WhatsApp principal ni las especificaciones del producto
-
-4. Después de ejecutar este cambio, actualiza CLAUDE.md:
-   - En la tabla de funcionalidades, cambia "Informacion de envios | Ausente" a "✅ Implementado"
-   - En "✅ Completado recientemente" agrega: "Información de envíos en página de producto — acordeón con precios, tiempos y transportadoras reales"
-   - Elimina "Agregar informacion de envios en pagina de producto [slug].astro" de la lista Quick Wins
-
-5. Actualiza agent.md:
-   - En el flujo "Agregar un nuevo producto de temporada", agrega como paso 5: "Verificar que la sección de envíos en `[slug].astro` muestra datos consistentes con el nuevo producto"
-   - Actualiza la sección de Quick Wins eliminando la tarea de envíos (ya implementada)
+API KEY del servicio: [AGREGAR API KEY AQUÍ — no commitear al repositorio, usar .env]
+Variable de entorno: NEWSLETTER_API_KEY
 ```
