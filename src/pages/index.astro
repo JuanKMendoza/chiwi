@@ -1,8 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
-import Indexmemoriales from "../assets/images/Memorial_personalizado, foto.png";
-import Indexrecordatorios from "../assets/images/capibara_cafe.jpg";
+import memorialPortada from "../assets/images/Memorial_personalizado, foto.png";
+import memorialSofi from "../assets/images/recordatorio_sofi.webp";
+import memorialMafi from "../assets/images/velita_mafi.webp";
+import memorialMix from "../assets/images/recordatorio_chiwi_mix_perros_gatitos_v2.webp";
+import memorialMixdos from "../assets/images/recordatorio_chiwi_mix_perros_gatitos_v3.webp";
+import fotoArtesano from "../assets/images/foto_artesano_chiwi.webp";
+import recordatorioMalu from "../assets/images/recordatorio_malu.webp";
+import recordatorioDiaMujer from "../assets/images/recordatorio_dia_mujer.webp";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
 
 import HeroSection from "../components/HeroSection.astro";
@@ -191,23 +197,130 @@ const searchResults = searchQuery
         </a>
       </div>
 
-      <div class="flex justify-center md:justify-end order-1 md:order-2">
-        <div class="relative group">
+      <div class="flex justify-center md:justify-end order-1 md:order-2 w-full">
+        <div class="relative group w-full">
           <div
             class="absolute -inset-4 bg-gradient-to-r from-pink-300 to-orange-300 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"
           >
           </div>
-          <Image
-            src={Indexmemoriales}
-            alt="Memorial personalizado para mascotas - Vela conmemorativa"
-            class="relative rounded-2xl w-full object-cover shadow-2xl"
-            width={1000}
-            height={800}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-          />
+          <!-- Carrusel Memoriales -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <swiper-container
+              id="memoriales-swiper"
+              slides-per-view="1"
+              loop="true"
+              speed="500"
+              autoplay-delay="4000"
+              autoplay-pause-on-mouse-enter="true"
+              css-mode="false"
+              class="w-full"
+              role="region"
+              aria-label="Galería de memoriales para mascotas Chiwi Colombia"
+              aria-roledescription="carrusel"
+            >
+              <swiper-slide aria-roledescription="diapositiva" aria-label="1 de 4">
+                <Image
+                  src={memorialPortada}
+                  alt="Memorial personalizado para mascota - Vela artesanal conmemorativa hecha a mano en Colombia"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="2 de 4">
+                <Image
+                  src={memorialSofi}
+                  alt="Recordatorio Sofi - vela memorial kawaii personalizada con foto de mascota hecha a mano"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="3 de 4">
+                <Image
+                  src={memorialMafi}
+                  alt="Velita Mafi - memorial artesanal personalizado para recordar a tu peludito favorito"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="4 de 4">
+                <Image
+                  src={memorialMix}
+                  alt="Mix memoriales Chiwi Colombia - velas artesanales personalizadas para perros y gatos"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="4 de 4">
+                <Image
+                  src={memorialMixdos}
+                  alt="Mix memoriales Chiwi Colombia - velas artesanales personalizadas para perros y gatos"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+            </swiper-container>
+
+            <!-- Botón anterior -->
+            <button
+              id="mem-prev"
+              type="button"
+              aria-label="Ver imagen anterior de memoriales"
+              class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+
+            <!-- Botón siguiente -->
+            <button
+              id="mem-next"
+              type="button"
+              aria-label="Ver siguiente imagen de memoriales"
+              class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+            <!-- Dots de paginación -->
+            <div
+              class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2 bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/30"
+              role="tablist"
+              aria-label="Navegar entre imágenes de memoriales"
+            >
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:32px;background:white;" role="tab" aria-selected="true" aria-label="Imagen 1 de 4" data-index="0"></button>
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 2 de 4" data-index="1"></button>
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 3 de 4" data-index="2"></button>
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 4 de 4" data-index="3"></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -223,23 +336,103 @@ const searchResults = searchQuery
     <div
       class="relative w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
     >
-      <div class="flex justify-center md:justify-start order-1">
-        <div class="relative group">
+      <div class="flex justify-center md:justify-start order-1 w-full">
+        <div class="relative group w-full">
           <div
             class="absolute -inset-4 bg-gradient-to-r from-green-300 to-blue-300 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"
           >
           </div>
-          <Image
-            src={Indexrecordatorios}
-            alt="Velas personalizadas para celebraciones - Recordatorios únicos"
-            class="relative rounded-2xl w-full object-cover shadow-2xl"
-            width={1000}
-            height={800}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-          />
+          <!-- Carrusel Recordatorios -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <swiper-container
+              id="recordatorios-swiper"
+              slides-per-view="1"
+              loop="true"
+              speed="500"
+              autoplay-delay="4000"
+              autoplay-pause-on-mouse-enter="true"
+              css-mode="false"
+              class="w-full"
+              role="region"
+              aria-label="Galería de recordatorios Chiwi Colombia"
+              aria-roledescription="carrusel"
+            >
+              <swiper-slide aria-roledescription="diapositiva" aria-label="1 de 3">
+                <Image
+                  src={fotoArtesano}
+                  alt="Artesana Chiwi Colombia creando velas recordatorio artesanales personalizadas a mano"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="2 de 3">
+                <Image
+                  src={recordatorioMalu}
+                  alt="Recordatorio personalizado Malu - vela kawaii artesanal hecha a mano en Colombia para honrar un ser querido"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="3 de 3">
+                <Image
+                  src={recordatorioDiaMujer}
+                  alt="Recordatorio Día de la Mujer - velas artesanales personalizadas para celebraciones especiales en Colombia"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+            </swiper-container>
+
+            <!-- Botón anterior -->
+            <button
+              id="rec-prev"
+              type="button"
+              aria-label="Ver imagen anterior de recordatorios"
+              class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+
+            <!-- Botón siguiente -->
+            <button
+              id="rec-next"
+              type="button"
+              aria-label="Ver siguiente imagen de recordatorios"
+              class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+            <!-- Dots de paginación -->
+            <div
+              class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2 bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/30"
+              role="tablist"
+              aria-label="Navegar entre imágenes de recordatorios"
+            >
+              <button type="button" class="rec-dot h-2 rounded-full transition-all duration-300" style="width:32px;background:white;" role="tab" aria-selected="true" aria-label="Imagen 1 de 3" data-index="0"></button>
+              <button type="button" class="rec-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 2 de 3" data-index="1"></button>
+              <button type="button" class="rec-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 3 de 3" data-index="2"></button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -315,6 +508,110 @@ const searchResults = searchQuery
     </div>
   </section>
 
+  <!-- Script carrusel memoriales -->
+  <script>
+    (function () {
+      function initMemorialesCarousel() {
+        const swiperEl = document.getElementById("memoriales-swiper") as any;
+        const prevBtn = document.getElementById("mem-prev");
+        const nextBtn = document.getElementById("mem-next");
+        const dots = Array.from(document.querySelectorAll(".mem-dot")) as HTMLElement[];
+
+        if (!swiperEl) return;
+
+        function updateDots(realIndex: number) {
+          dots.forEach((dot, i) => {
+            if (i === realIndex) {
+              dot.style.width = "32px";
+              dot.style.background = "white";
+              dot.setAttribute("aria-selected", "true");
+            } else {
+              dot.style.width = "8px";
+              dot.style.background = "rgba(255,255,255,0.5)";
+              dot.setAttribute("aria-selected", "false");
+            }
+          });
+        }
+
+        function waitForSwiper() {
+          if (swiperEl.swiper) {
+            const swiper = swiperEl.swiper;
+            prevBtn?.addEventListener("click", () => swiper.slidePrev());
+            nextBtn?.addEventListener("click", () => swiper.slideNext());
+            dots.forEach((dot, i) => {
+              dot.addEventListener("click", () => swiper.slideToLoop(i));
+            });
+            swiperEl.addEventListener("swiperslidechange", () => {
+              updateDots(swiperEl.swiper.realIndex);
+            });
+          } else {
+            setTimeout(waitForSwiper, 80);
+          }
+        }
+
+        waitForSwiper();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initMemorialesCarousel);
+      } else {
+        initMemorialesCarousel();
+      }
+    })();
+  </script>
+
+  <!-- Script carrusel recordatorios -->
+  <script>
+    (function () {
+      function initRecordatoriosCarousel() {
+        const swiperEl = document.getElementById("recordatorios-swiper") as any;
+        const prevBtn = document.getElementById("rec-prev");
+        const nextBtn = document.getElementById("rec-next");
+        const dots = Array.from(document.querySelectorAll(".rec-dot")) as HTMLElement[];
+
+        if (!swiperEl) return;
+
+        function updateDots(realIndex: number) {
+          dots.forEach((dot, i) => {
+            if (i === realIndex) {
+              dot.style.width = "32px";
+              dot.style.background = "white";
+              dot.setAttribute("aria-selected", "true");
+            } else {
+              dot.style.width = "8px";
+              dot.style.background = "rgba(255,255,255,0.5)";
+              dot.setAttribute("aria-selected", "false");
+            }
+          });
+        }
+
+        function waitForSwiper() {
+          if (swiperEl.swiper) {
+            const swiper = swiperEl.swiper;
+            prevBtn?.addEventListener("click", () => swiper.slidePrev());
+            nextBtn?.addEventListener("click", () => swiper.slideNext());
+            dots.forEach((dot, i) => {
+              dot.addEventListener("click", () => swiper.slideToLoop(i));
+            });
+            swiperEl.addEventListener("swiperslidechange", () => {
+              updateDots(swiperEl.swiper.realIndex);
+            });
+          } else {
+            setTimeout(waitForSwiper, 80);
+          }
+        }
+
+        waitForSwiper();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initRecordatoriosCarousel);
+      } else {
+        initRecordatoriosCarousel();
+      }
+    })();
+  </script>
+
   <!-- Sección Testimonios -->
   <TestimonialsSection />
 
@@ -328,7 +625,7 @@ const searchResults = searchQuery
       var seasons = [
         { id: "halloween",  sm: 10, sd: 1,  em: 10, ed: 31 },
         { id: "navidad",    sm: 11, sd: 15, em: 12, ed: 31 },
-        { id: "dia-ninos",  sm: 4,  sd: 1,  em: 4,  ed: 30 },
+        { id: "dia-ninos",  sm: 3,  sd: 1,  em: 3,  ed: 30 },
         { id: "dia-madres", sm: 5,  sd: 1,  em: 5,  ed: 31 },
       ];
 

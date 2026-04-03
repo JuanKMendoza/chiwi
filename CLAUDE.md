@@ -175,6 +175,9 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 ## Estado Actual del Proyecto
 
 ### ✅ Completado recientemente
+- **Carrusel de Memoriales implementado** — Seccion Memoriales en `index.astro` convertida de imagen estatica a carrusel Swiper con 4 slides: `Memorial_personalizado foto.png`, `recordatorio_sofi.webp`, `velita_mafi.webp`, `recordatorio_chiwi_mix_perros_gatitos_v2.webp`. Botones nav circulares blancos, dots de paginacion tipo pill, autoplay 4s con pausa en hover. SEO: alt texts descriptivos, primera imagen `loading="eager"`, resto `loading="lazy"`, roles ARIA completos. IDs: `memoriales-swiper`, `mem-prev`, `mem-next`, clase dots: `mem-dot`.
+- **Carrusel de Recordatorios implementado** — Seccion Recordatorios en `index.astro` convertida de imagen estatica a carrusel Swiper con 3 slides: `foto_artesano_chiwi.webp`, `recordatorio_malu.webp`, `recordatorio_dia_mujer.webp`. Misma estructura de botones y dots que memoriales. IDs: `recordatorios-swiper`, `rec-prev`, `rec-next`, clase dots: `rec-dot`. Para agregar mas fotos ver guia al pie de esta seccion.
+- **`seasons-guide.md` creado** — Guia completa en la raiz del proyecto con instrucciones para modificar fechas de temporadas, tabla de temporadas actuales, ejemplos y pasos para agregar nuevas temporadas.
 - **Sistema de temporadas implementado** — SeasonNavidad/Halloween extraidos de index.astro, SeasonDiaNinos y SeasonMadres nuevos. Visibilidad automatica por fecha via JS cliente (sin rebuild). index.astro reducido a ~649 lineas.
 - **Refactorizacion de `index.astro`** — reducido de ~2370 a 649 lineas (~73% menos). Componentes extraidos: `HeroSection`, `ProductGrid`, `TrustSection`, `FAQSection`, `TestimonialsSection`, `NewsletterSection`, 4 secciones de temporada.
 - **FAQ implementado** — `FAQSection.astro` con 10 preguntas frecuentes, acordeon sin JS externo.
@@ -187,8 +190,8 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 - **`PROMPTS.md` depurado** — Eliminados todos los prompts ya ejecutados. Quedan solo: bento grid (pendiente ejecutar en prod), utilidades recurrentes (agregar producto, temporada, blog, testimonio, red social) y pendientes importantes (Sobre Nosotros, carrito, newsletter backend).
 
 ### ⚠️ Problemas tecnicos pendientes
-- **`index.astro` tiene ~649 lineas** — quedan inline: seccion de Mascotas y seccion de Recordatorios (pueden extraerse como componentes si se requiere).
-- **14 imagenes en `.jpg`** — deben convertirse a `.webp`: `Perro_vela.jpg`, `grupo_ositos.jpg`, `capibara_beige.jpg`, `capibara_cafe.jpg`, `capibara_beige_acostado.jpg`, `capibara_cafe_acostado.jpg`, `fantasma_chiwi.jpg`, `velita_mafi.jpg`, `vela_gatito_personalizada_1.jpg`, `vela_gatito_personalizada_2.jpg`, `Pack_gatito_1.jpg`, `Pack_gatito_2.jpg`, `Logo variante horizontal.jpg`, `Logo_png.jpg`.
+- **`index.astro` tiene ~700 lineas** — quedan inline: seccion de Mascotas, Recordatorios y Memoriales con sus carruseles. Se pueden extraer como componentes si el archivo crece demasiado.
+- **13 imagenes en `.jpg`** — deben convertirse a `.webp`: `Perro_vela.jpg`, `grupo_ositos.jpg`, `capibara_beige.jpg`, `capibara_cafe.jpg`, `capibara_beige_acostado.jpg`, `capibara_cafe_acostado.jpg`, `fantasma_chiwi.jpg`, `vela_gatito_personalizada_1.jpg`, `vela_gatito_personalizada_2.jpg`, `Pack_gatito_1.jpg`, `Pack_gatito_2.jpg`, `Logo variante horizontal.jpg`, `Logo_png.jpg`. (`velita_mafi.webp` ya existe y se usa en el carrusel de memoriales).
 - **`NewsletterSection.astro` sin backend** — el formulario captura el email pero solo muestra un `alert()` nativo. Requiere integracion con Mailchimp, Brevo, ConvertKit o similar para realmente guardar los correos. Hasta tanto, ningun email se almacena.
 - **Testimonios con imagenes placeholder** — `TestimonialsSection.astro` usa fotos de productos. Reemplazar con fotos reales de clientes cuando esten disponibles.
 - **`ProductGrid.astro` — bento requiere 7 productos reales** — actualmente la fila 2 usa una tarjeta CTA como 7mo slot. Cuando se agregue un 7mo producto no-estacional a `products.ts`, reemplazar la tarjeta CTA por ese producto y actualizar `GRID_SLUGS`.
@@ -267,3 +270,5 @@ TailwindCSS se integra via plugin de Vite (`@tailwindcss/vite`), **no** via inte
 - Consultar `PROMPTS.md` para tareas comunes listas para ejecutar.
 - Consultar `agent.md` para saber que agente especializado usar en cada tarea.
 - Consultar `brandbook.md` para colores, tipografia y tono de comunicacion.
+- Consultar `seasons-guide.md` para modificar fechas de temporadas o agregar nuevas.
+- **Carruseles de Memoriales y Recordatorios:** Usan Swiper Web Components (ya instalado). Para agregar fotos al carrusel de Memoriales: (1) importar imagen en frontmatter de `index.astro`, (2) agregar `<swiper-slide>` dentro de `<swiper-container id="memoriales-swiper">`, (3) agregar un `<button class="mem-dot">` nuevo en el `div[role="tablist"]` de memoriales. Para Recordatorios es igual pero con `id="recordatorios-swiper"` y clase `rec-dot`.
