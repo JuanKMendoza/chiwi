@@ -3,14 +3,67 @@ import Layout from "../../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
 import { products } from "../../data/products";
 
-// Categorías para filtros
+// Filtros de la barra superior
 const categories = [
-  { id: "all", name: "Todos los productos", icon: "apps-outline" },
-  { id: "temporada", name: "Temporada", icon: "star-outline" },
-  { id: "kawaii", name: "Velitas Kawaii", icon: "heart-outline" },
-  { id: "mascotas", name: "Para tu Peludo", icon: "paw-outline" },
-  { id: "recordatorios", name: "Recordatorios", icon: "gift-outline" },
+  { id: "all",          name: "Todos los productos", icon: "apps-outline"  },
+  { id: "temporada",    name: "Temporada",            icon: "star-outline"  },
+  { id: "kawaii",       name: "Velitas Kawaii",       icon: "heart-outline" },
+  { id: "mascotas",     name: "Para tu Peludo",       icon: "paw-outline"   },
+  { id: "recordatorios",name: "Recordatorios",        icon: "gift-outline"  },
 ];
+
+// Config de grupos con identidad visual de marca (brandbook)
+const categoryGroups = [
+  {
+    id: "mascotas",
+    label: "Peluditos",
+    icon: "paw-outline",
+    textColor: "#7B4F3A",
+    lineGradient: "linear-gradient(to right, #E8A87A, #FF8F8F, rgba(255,143,143,0))",
+    iconColor: "#E8A87A",
+  },
+  {
+    id: "kawaii",
+    label: "Velitas Kawaii",
+    icon: "heart-outline",
+    textColor: "#9B3A6B",
+    lineGradient: "linear-gradient(to right, #FF8F8F, #C4A0D8, rgba(196,160,216,0))",
+    iconColor: "#FF8F8F",
+  },
+  {
+    id: "recordatorios",
+    label: "Recordatorios",
+    icon: "ribbon-outline",
+    textColor: "#1E6B50",
+    lineGradient: "linear-gradient(to right, #78C4A8, #A8D8C4, rgba(168,216,196,0))",
+    iconColor: "#78C4A8",
+  },
+  {
+    id: "temporada",
+    label: "Temporada",
+    icon: "star-outline",
+    textColor: "#C2410C",
+    lineGradient: "linear-gradient(to right, #F97316, #C4A0D8, rgba(196,160,216,0))",
+    iconColor: "#F97316",
+  },
+];
+
+// Asigna cada producto a su grupo principal (sin duplicados)
+function getPrimaryGroup(cats: string[]): string {
+  if (cats.includes("mascotas"))      return "mascotas";
+  if (cats.includes("temporada"))     return "temporada";
+  if (cats.includes("recordatorios")) return "recordatorios";
+  return "kawaii";
+}
+
+// Arma la estructura de grupos con sus productos
+const groupedProducts = categoryGroups.map((group) => ({
+  ...group,
+  items: products.filter((p) => {
+    const cats = Array.isArray(p.category) ? p.category : [p.category];
+    return getPrimaryGroup(cats) === group.id;
+  }),
+})).filter((g) => g.items.length > 0);
 ---
 
 <Layout
@@ -23,15 +76,10 @@ const categories = [
     <div class="absolute inset-0 bg-gradient-to-b from-gray-950/60 via-gray-950/30 to-white"></div>
 
     <div class="relative max-w-6xl mx-auto px-4 text-center py-16">
-      <!-- Breadcrumb -->
       <nav class="mb-6 flex justify-center" aria-label="Breadcrumb">
         <ol class="flex items-center gap-2 text-sm text-white/80">
-          <li>
-            <a href="/" class="hover:text-white transition-colors">Inicio</a>
-          </li>
-          <li>
-            <ion-icon name="chevron-forward-outline" class="text-xs"></ion-icon>
-          </li>
+          <li><a href="/" class="hover:text-white transition-colors">Inicio</a></li>
+          <li><ion-icon name="chevron-forward-outline" class="text-xs"></ion-icon></li>
           <li class="text-white font-semibold">Productos</li>
         </ol>
       </nav>
@@ -39,17 +87,14 @@ const categories = [
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
         Nuestro <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-pink-300">Catálogo</span>
       </h1>
-
       <p class="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-6">
         Cada vela cuenta una historia única. Diseños kawaii hechos a mano con amor.
       </p>
-
       <div class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-xl mb-8">
         <ion-icon name="color-palette-outline" class="text-2xl"></ion-icon>
         <span class="font-bold">100% Personalizables</span>
         <ion-icon name="sparkles-outline" class="text-xl animate-pulse"></ion-icon>
       </div>
-
       <div class="flex flex-wrap justify-center gap-4 text-sm text-white/80">
         <div class="flex items-center gap-1.5">
           <ion-icon name="flame-outline" class="text-lg text-orange-400"></ion-icon>
@@ -69,7 +114,7 @@ const categories = [
     </div>
   </section>
 
-  <!-- Filtros de Categorías -->
+  <!-- Filtros sticky -->
   <section class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md py-4">
     <div class="max-w-7xl mx-auto px-4">
       <div class="overflow-x-auto scrollbar-hide -mx-4 px-4">
@@ -89,116 +134,201 @@ const categories = [
     </div>
   </section>
 
-  <!-- Grid de Productos -->
-  <section class="py-20 bg-gradient-to-b from-white to-orange-50/30">
+  <!-- Sección de productos -->
+  <section class="py-16 bg-gradient-to-b from-white to-orange-50/30">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="h-4"></div>
-      
-      <div class="mb-8 text-center">
+
+      <!-- Contador (solo en vista plana) -->
+      <div id="flat-header" class="hidden mb-8 text-center">
         <p class="text-gray-600">
-          Mostrando <span id="product-count" class="font-bold text-orange-500">{products.length}</span> productos
+          Mostrando <span id="product-count" class="font-bold text-orange-500">0</span> productos
         </p>
       </div>
 
-      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {products.map((product) => (
-          <article
-            class="product-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-            data-category={Array.isArray(product.category) ? product.category.join(',') : product.category}
-            itemscope
-            itemtype="https://schema.org/Product"
-          >
-            {product.badge && (
-              <div class="absolute top-4 left-4 z-10 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-subtle">
-                {product.badge}
-              </div>
-            )}
+      <!-- ══════════════════════════════════════════
+           VISTA AGRUPADA — visible cuando "Todos"
+           ══════════════════════════════════════════ -->
+      <div id="grouped-view">
+        {groupedProducts.map((group) => (
+          <div class="category-section mb-14" data-group={group.id}>
 
-            {product.featured && (
-              <div class="absolute top-4 right-4 z-10 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                <ion-icon name="star" class="text-sm"></ion-icon>
-                Popular
-              </div>
-            )}
-
-            <div class="relative overflow-hidden aspect-square">
-              <a href={`/productos/${product.slug}`} class="block w-full h-full">
-                <Image
-                  src={product.image}
-                  alt={product.alt}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  width={800}
-                  height={800}
-                  loading="lazy"
-                  decoding="async"
-                  format="webp"
-                  quality={85}
-                  itemprop="image"
-                />
-              </a>
-
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <p class="text-white text-sm leading-relaxed">
-                  {product.description}
-                </p>
-              </div>
-            </div>
-
-            <div class="p-6 space-y-4">
-              <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2" itemprop="name">
-                  {product.name}
-                </h3>
-                
-                <p
-                  class="text-2xl font-bold text-orange-500"
-                  itemprop="offers"
-                  itemscope
-                  itemtype="https://schema.org/Offer"
+            <!-- Cabecera de categoría estilo Chiwi -->
+            <div class="flex items-center gap-4 mb-7">
+              <div class="flex items-center gap-2.5 flex-shrink-0">
+                <ion-icon
+                  name={group.icon}
+                  style={`color: ${group.iconColor}; font-size: 1.6rem;`}
+                ></ion-icon>
+                <h2
+                  class="text-2xl md:text-3xl font-bold tracking-tight"
+                  style={`color: ${group.textColor}`}
                 >
-                  ${product.price.toLocaleString('es-CO')}
-                  <meta itemprop="price" content={product.price.toString()} />
-                  <meta itemprop="priceCurrency" content="COP" />
-                </p>
-              </div>
-
-              <div class="flex flex-wrap gap-2">
-                <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">
-                  Cera natural
-                </span>
-                <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">
-                  Hecho a mano
+                  {group.label}
+                </h2>
+                <span class="text-sm text-gray-400 font-medium">
+                  ({group.items.length})
                 </span>
               </div>
-
-              <a
-                href={`/productos/${product.slug}`}
-                class="block w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2"
-                aria-label={`Ver detalles de ${product.name}`}
-              >
-                <ion-icon name="eye-outline" class="text-xl"></ion-icon>
-                Ver detalles
-              </a>
+              <!-- Línea degradada de marca -->
+              <div
+                class="flex-1 h-[2px] rounded-full"
+                style={`background: ${group.lineGradient}`}
+              ></div>
             </div>
-          </article>
+
+            <!-- Grid de productos del grupo -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {group.items.map((product) => (
+                <article
+                  class="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 card-anim"
+                  itemscope
+                  itemtype="https://schema.org/Product"
+                >
+                  {product.badge && (
+                    <div class="absolute top-4 left-4 z-10 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-subtle">
+                      {product.badge}
+                    </div>
+                  )}
+                  {product.featured && (
+                    <div class="absolute top-4 right-4 z-10 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                      <ion-icon name="star" class="text-sm"></ion-icon>
+                      Popular
+                    </div>
+                  )}
+                  <div class="relative overflow-hidden aspect-square">
+                    <a href={`/productos/${product.slug}`} class="block w-full h-full">
+                      <Image
+                        src={product.image}
+                        alt={product.alt}
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        width={800}
+                        height={800}
+                        loading="lazy"
+                        decoding="async"
+                        format="webp"
+                        quality={85}
+                        itemprop="image"
+                      />
+                    </a>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <p class="text-white text-sm leading-relaxed">{product.description}</p>
+                    </div>
+                  </div>
+                  <div class="p-6 space-y-4">
+                    <div>
+                      <h3 class="text-xl font-bold text-gray-900 mb-2" itemprop="name">
+                        {product.name}
+                      </h3>
+                      <p class="text-2xl font-bold text-orange-500" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        ${product.price.toLocaleString("es-CO")}
+                        <meta itemprop="price" content={product.price.toString()} />
+                        <meta itemprop="priceCurrency" content="COP" />
+                      </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                      <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">Cera natural</span>
+                      <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">Hecho a mano</span>
+                    </div>
+                    <a
+                      href={`/productos/${product.slug}`}
+                      class="block w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2"
+                      aria-label={`Ver detalles de ${product.name}`}
+                    >
+                      <ion-icon name="eye-outline" class="text-xl"></ion-icon>
+                      Ver detalles
+                    </a>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
 
-      <div id="no-results" class="hidden text-center py-20">
-        <div class="text-6xl mb-4">😔</div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-2">
-          No encontramos productos en esta categoría
-        </h3>
-        <p class="text-gray-600 mb-6">
-          Intenta con otra categoría o contáctanos para un diseño personalizado
-        </p>
-        <button
-          onclick="document.querySelector('[data-category=all]').click()"
-          class="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-8 py-3 rounded-full hover:scale-105 transition-all"
-        >
-          Ver todos los productos
-        </button>
+      <!-- ══════════════════════════════════════════
+           VISTA PLANA — visible cuando se filtra
+           ══════════════════════════════════════════ -->
+      <div id="flat-view" class="hidden">
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {products.map((product) => (
+            <article
+              class="product-card group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              data-category={Array.isArray(product.category) ? product.category.join(",") : product.category}
+              itemscope
+              itemtype="https://schema.org/Product"
+            >
+              {product.badge && (
+                <div class="absolute top-4 left-4 z-10 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse-subtle">
+                  {product.badge}
+                </div>
+              )}
+              {product.featured && (
+                <div class="absolute top-4 right-4 z-10 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                  <ion-icon name="star" class="text-sm"></ion-icon>
+                  Popular
+                </div>
+              )}
+              <div class="relative overflow-hidden aspect-square">
+                <a href={`/productos/${product.slug}`} class="block w-full h-full">
+                  <Image
+                    src={product.image}
+                    alt={product.alt}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    width={800}
+                    height={800}
+                    loading="lazy"
+                    decoding="async"
+                    format="webp"
+                    quality={85}
+                    itemprop="image"
+                  />
+                </a>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <p class="text-white text-sm leading-relaxed">{product.description}</p>
+                </div>
+              </div>
+              <div class="p-6 space-y-4">
+                <div>
+                  <h3 class="text-xl font-bold text-gray-900 mb-2" itemprop="name">
+                    {product.name}
+                  </h3>
+                  <p class="text-2xl font-bold text-orange-500" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    ${product.price.toLocaleString("es-CO")}
+                    <meta itemprop="price" content={product.price.toString()} />
+                    <meta itemprop="priceCurrency" content="COP" />
+                  </p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">Cera natural</span>
+                  <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">Hecho a mano</span>
+                </div>
+                <a
+                  href={`/productos/${product.slug}`}
+                  class="block w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 transition-all duration-300 shadow-md hover:shadow-xl flex items-center justify-center gap-2"
+                  aria-label={`Ver detalles de ${product.name}`}
+                >
+                  <ion-icon name="eye-outline" class="text-xl"></ion-icon>
+                  Ver detalles
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <!-- Sin resultados -->
+        <div id="no-results" class="hidden text-center py-20">
+          <div class="text-6xl mb-4">😔</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">No encontramos productos en esta categoría</h3>
+          <p class="text-gray-600 mb-6">Intenta con otra categoría o contáctanos para un diseño personalizado</p>
+          <button
+            onclick="document.querySelector('[data-category=all]').click()"
+            class="bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-8 py-3 rounded-full hover:scale-105 transition-all"
+          >
+            Ver todos los productos
+          </button>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -208,17 +338,12 @@ const categories = [
       <div class="absolute top-0 left-0 w-96 h-96 bg-pink-500 rounded-full blur-3xl"></div>
       <div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-500 rounded-full blur-3xl"></div>
     </div>
-
     <div class="relative max-w-4xl mx-auto px-4 text-center space-y-8">
-      <h2 class="text-4xl md:text-5xl font-bold">
-        ¿No encuentras lo que buscas?
-      </h2>
-      
+      <h2 class="text-4xl md:text-5xl font-bold">¿No encuentras lo que buscas?</h2>
       <p class="text-xl md:text-2xl text-white/90 leading-relaxed">
-        Creamos velas 100% personalizadas según tu idea. 
+        Creamos velas 100% personalizadas según tu idea.
         <span class="font-bold">Tu imaginación es el límite.</span>
       </p>
-
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a
           href="https://wa.me/573102278592?text=Hola!%20Quiero%20una%20vela%20personalizada%20con%20mi%20idea"
@@ -231,7 +356,6 @@ const categories = [
           <ion-icon name="arrow-forward-outline" class="text-xl group-hover:translate-x-2 transition-transform"></ion-icon>
         </a>
       </div>
-
       <div class="pt-8 flex flex-wrap justify-center gap-6 text-sm text-white/80">
         <div class="flex items-center gap-2">
           <ion-icon name="checkmark-circle" class="text-xl text-green-300"></ion-icon>
@@ -257,36 +381,27 @@ const categories = [
           ¿Por qué elegir <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">Chiwi?</span>
         </h2>
       </div>
-
       <div class="grid md:grid-cols-3 gap-8">
         <div class="text-center group">
           <div class="w-20 h-20 bg-gradient-to-r from-orange-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
             <ion-icon name="heart-outline" class="text-4xl text-orange-500"></ion-icon>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-4">Hecho con Amor</h3>
-          <p class="text-gray-600">
-            Cada vela es creada a mano con dedicación y cariño para que sea única y especial.
-          </p>
+          <p class="text-gray-600">Cada vela es creada a mano con dedicación y cariño para que sea única y especial.</p>
         </div>
-
         <div class="text-center group">
           <div class="w-20 h-20 bg-gradient-to-r from-green-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
             <ion-icon name="leaf-outline" class="text-4xl text-green-500"></ion-icon>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-4">100% Natural</h3>
-          <p class="text-gray-600">
-            Usamos cera natural biodegradable y pinturas no tóxicas. Cuidamos tu salud y el planeta.
-          </p>
+          <p class="text-gray-600">Usamos cera natural biodegradable y pinturas no tóxicas. Cuidamos tu salud y el planeta.</p>
         </div>
-
         <div class="text-center group">
           <div class="w-20 h-20 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
             <ion-icon name="car-outline" class="text-4xl text-purple-500"></ion-icon>
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-4">Envíos a toda Colombia</h3>
-          <p class="text-gray-600">
-            Llevamos nuestras velas kawaii a cualquier rincón del país con envío seguro.
-          </p>
+          <p class="text-gray-600">Llevamos nuestras velas kawaii a cualquier rincón del país con envío seguro.</p>
         </div>
       </div>
     </div>
@@ -294,22 +409,33 @@ const categories = [
 </Layout>
 
 <style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
   @keyframes pulse-subtle {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.85; transform: scale(1.05); }
   }
+  .animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
 
-  .animate-pulse-subtle {
-    animation: pulse-subtle 3s ease-in-out infinite;
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Animación de entrada para las cards agrupadas */
+  .card-anim {
+    animation: fadeInUp 0.5s ease-out both;
+  }
+
+  /* Animación de entrada para las cards del filtro plano */
+  .product-card {
+    animation: fadeInUp 0.5s ease-out both;
+  }
+
+  /* Vista agrupada: entrada suave */
+  #grouped-view {
+    animation: fadeInUp 0.35s ease-out;
+  }
+  #flat-view {
+    animation: fadeInUp 0.35s ease-out;
   }
 
   .category-filter.active {
@@ -318,27 +444,8 @@ const categories = [
     border-color: transparent;
   }
 
-  .product-card {
-    animation: fadeInUp 0.6s ease-out;
-    animation-fill-mode: both;
-  }
-
-  .product-card:nth-child(1) { animation-delay: 0.1s; }
-  .product-card:nth-child(2) { animation-delay: 0.15s; }
-  .product-card:nth-child(3) { animation-delay: 0.2s; }
-  .product-card:nth-child(4) { animation-delay: 0.25s; }
-  .product-card:nth-child(5) { animation-delay: 0.3s; }
-  .product-card:nth-child(6) { animation-delay: 0.35s; }
-  .product-card:nth-child(7) { animation-delay: 0.4s; }
-  .product-card:nth-child(8) { animation-delay: 0.45s; }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .animate-float, .animate-pulse-subtle, .product-card {
+    .card-anim, .product-card, #grouped-view, #flat-view, .animate-pulse-subtle {
       animation: none !important;
     }
   }
@@ -347,69 +454,80 @@ const categories = [
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
-    const productCards = document.querySelectorAll<HTMLElement>('.product-card');
-    const productCount = document.getElementById('product-count');
-    const noResults = document.getElementById('no-results');
-    const productsGrid = document.getElementById('products-grid');
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>(".category-filter");
+    const productCards  = document.querySelectorAll<HTMLElement>(".product-card");
+    const productCount  = document.getElementById("product-count");
+    const noResults     = document.getElementById("no-results");
+    const productsGrid  = document.getElementById("products-grid");
+    const groupedView   = document.getElementById("grouped-view");
+    const flatView      = document.getElementById("flat-view");
+    const flatHeader    = document.getElementById("flat-header");
 
+    // Activa el botón "Todos" por defecto
     const allButton = document.querySelector<HTMLButtonElement>('[data-category="all"]');
-    if (allButton) {
-      allButton.classList.add('active');
+    if (allButton) allButton.classList.add("active");
+
+    function showGroupedView() {
+      if (groupedView) groupedView.classList.remove("hidden");
+      if (flatView)    flatView.classList.add("hidden");
+      if (flatHeader)  flatHeader.classList.add("hidden");
     }
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        
-        // Verificar que category no sea null
+    function showFlatView(category: string) {
+      if (groupedView) groupedView.classList.add("hidden");
+      if (flatView)    flatView.classList.remove("hidden");
+      if (flatHeader)  flatHeader.classList.remove("hidden");
+
+      let visibleCount = 0;
+
+      productCards.forEach((card) => {
+        const cardCats = card.getAttribute("data-category")?.split(",") || [];
+        const match = cardCats.includes(category);
+
+        card.style.display = match ? "block" : "none";
+
+        if (match) {
+          // Reinicia la animación de entrada
+          card.style.animation = "none";
+          void card.offsetHeight; // reflow
+          card.style.animation = "fadeInUp 0.5s ease-out both";
+          visibleCount++;
+        }
+      });
+
+      if (productCount) productCount.textContent = visibleCount.toString();
+
+      if (visibleCount === 0) {
+        if (noResults)    noResults.classList.remove("hidden");
+        if (productsGrid) productsGrid.classList.add("hidden");
+      } else {
+        if (noResults)    noResults.classList.add("hidden");
+        if (productsGrid) productsGrid.classList.remove("hidden");
+      }
+
+      // Scroll suave a la grilla
+      setTimeout(() => {
+        flatView?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 80);
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const category = button.getAttribute("data-category");
         if (!category) return;
 
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
 
-        let visibleCount = 0;
-        
-        productCards.forEach(card => {
-          const cardCategories = card.getAttribute('data-category')?.split(',') || [];
-          
-          if (category === 'all' || cardCategories.includes(category)) {
-            card.style.display = 'block';
-            card.style.animation = 'none';
-            setTimeout(() => {
-              card.style.animation = 'fadeInUp 0.6s ease-out';
-            }, 10);
-            visibleCount++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        if (productCount) {
-          productCount.textContent = visibleCount.toString();
-        }
-
-        if (visibleCount === 0) {
-          if (noResults) noResults.classList.remove('hidden');
-          if (productsGrid) productsGrid.classList.add('hidden');
+        if (category === "all") {
+          showGroupedView();
         } else {
-          if (noResults) noResults.classList.add('hidden');
-          if (productsGrid) productsGrid.classList.remove('hidden');
-        }
-
-        const productsSection = document.getElementById('products-grid');
-        if (productsSection && category !== 'all') {
-          setTimeout(() => {
-            productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 100);
+          showFlatView(category);
         }
       });
     });

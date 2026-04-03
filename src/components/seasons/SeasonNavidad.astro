@@ -1,0 +1,703 @@
+---
+import Image from "astro/components/Image.astro";
+import SeasonalProductSchema from "../SeasonalProductSchema.astro";
+import christmasProduct1 from "../../assets/images/farolito_solo.webp";
+import christmasProduct2 from "../../assets/images/Farolitos_uno.webp";
+import christmasProduct3 from "../../assets/images/bolitas_velitas_con_nombres.webp";
+import fantasmasChiwiImg from "../../assets/images/fantasma_chiwi.jpg";
+
+const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
+const christmasProduct1Url = new URL(christmasProduct1.src, baseUrl).href;
+---
+
+<!-- Sección Productos de Temporada - NAVIDAD -->
+<section
+  class="christmas-section relative py-24 overflow-hidden bg-gradient-to-b from-red-900 via-green-900 to-red-950"
+>
+  <!-- Fondo con copos de nieve -->
+  <div class="absolute inset-0 snowflakes-background"></div>
+
+  <!-- Elementos decorativos flotantes REDUCIDOS -->
+  <div
+    class="absolute inset-0 pointer-events-none overflow-hidden"
+    aria-hidden="true"
+  >
+    <div
+      class="christmas-float"
+      style="top: 15%; left: 8%; animation-delay: 0s;"
+    >
+      🎄
+    </div>
+    <div
+      class="christmas-float"
+      style="top: 70%; right: 12%; animation-delay: 1.5s;"
+    >
+      ⛄
+    </div>
+    <div
+      class="christmas-float"
+      style="bottom: 25%; left: 18%; animation-delay: 3s;"
+    >
+      ❄️
+    </div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4">
+    <!-- Header de la sección -->
+    <div class="text-center mb-16 relative">
+      <!-- Badge de temporada -->
+      <div
+        class="inline-flex items-center gap-2 bg-red-500/20 backdrop-blur-sm border-2 border-red-400 rounded-full px-6 py-2 mb-10 animate-pulse-subtle"
+      >
+        <span class="text-2xl" aria-hidden="true">🎄</span>
+        <span
+          class="text-red-300 font-bold text-sm uppercase tracking-wider"
+        >
+          Edición Limitada - Diciembre 2025
+        </span>
+        <span class="text-2xl" aria-hidden="true">🎅</span>
+      </div>
+
+      <!-- Espacio adicional -->
+      <div class="h-6"></div>
+
+      <!-- Título principal con efecto de brillo -->
+      <h2
+        class="text-5xl md:text-7xl font-black text-white mb-6 relative inline-block"
+      >
+        <span class="relative z-10">
+          Especial
+          <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-green-400 to-gold-400 animate-gradient-flow"
+          >
+            Navidad
+          </span>
+        </span>
+        <div
+          class="absolute -inset-2 bg-gradient-to-r from-red-500/30 to-green-500/30 blur-2xl animate-glow"
+        >
+        </div>
+      </h2>
+
+      <!-- Subtítulo -->
+      <p
+        class="text-xl md:text-2xl text-green-200 max-w-3xl mx-auto leading-relaxed"
+      >
+        Velas mágicas que <span class="text-red-300 font-bold"
+          >brillan en la oscuridad</span
+        >. Perfectas para decorar tu Navidad con espíritu kawaii.
+      </p>
+
+      <!-- Contador regresivo -->
+      <div
+        class="mt-8 inline-flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-red-500/30"
+      >
+        <ion-icon
+          name="time-outline"
+          class="text-2xl text-red-400"
+          aria-hidden="true"></ion-icon>
+        <span class="text-red-300 font-semibold"
+          >Cuenta regresiva para Navidad</span
+        >
+        <div class="flex gap-2" role="timer" aria-live="polite">
+          <div class="bg-red-500/20 rounded px-2 py-1">
+            <span
+              class="text-white font-bold text-sm countdown-days"
+              aria-label="días">00</span
+            >
+          </div>
+          <span class="text-white" aria-hidden="true">:</span>
+          <div class="bg-red-500/20 rounded px-2 py-1">
+            <span
+              class="text-white font-bold text-sm countdown-hours"
+              aria-label="horas">00</span
+            >
+          </div>
+          <span class="text-white" aria-hidden="true">:</span>
+          <div class="bg-red-500/20 rounded px-2 py-1">
+            <span
+              class="text-white font-bold text-sm countdown-minutes"
+              aria-label="minutos">00</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid de productos de temporada -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Producto 1: Farolitos -->
+      <article class="group relative christmas-card">
+        <!-- Badge "NUEVO" -->
+        <div
+          class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-red-500 to-green-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+        >
+          NUEVO
+        </div>
+
+        <!-- Badge "Brilla" -->
+        <div
+          class="absolute top-4 left-4 z-20 bg-green-900/90 backdrop-blur-sm text-green-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-green-400"
+        >
+          <ion-icon name="snow-outline" class="text-sm" aria-hidden="true"
+          ></ion-icon>
+          Diseños Únicos
+        </div>
+
+        <div
+          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-800/50 to-green-800/50 backdrop-blur-sm border-2 border-red-500/30 group-hover:border-green-400 transition-all duration-300"
+        >
+          <!-- Imagen del producto -->
+          <Image
+            src={christmasProduct1}
+            alt="Farolitos Navideños- Paquete de Siete Farolitos con diseños unicos"
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+            width={800}
+            height={800}
+            loading="lazy"
+            decoding="async"
+            format="webp"
+            quality={85}
+          />
+
+          <!-- Efecto de brillo al hover -->
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-red-500/0 via-transparent to-green-500/0 group-hover:from-red-500/20 group-hover:to-green-500/20 transition-all duration-300"
+          >
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-3">
+          <h3 class="text-2xl font-bold text-white">Farolitos Navideños</h3>
+          <p class="text-green-200 text-sm">
+            Perfectos para iluminar tu noche de velitas. Son 7, cada uno trae trazado una imagen y un deseo especial: Amor, Felicidad, Paz, Prosperidad, Esperanza, Unión y gratitud.
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-3xl font-bold text-red-400">$16.000</span>
+              <span class="text-gray-400 line-through text-sm ml-2"
+                >$19.200</span
+              >
+            </div>
+            <span
+              class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded"
+              aria-label="descuento">-20%</span
+            >
+          </div>
+
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20de%20Farolitos%20de%20Navidad*%20($16.000)"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full bg-gradient-to-r from-red-500 to-green-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+            aria-label="Pedir Farolito de Navidad por WhatsApp"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
+            Pedir ahora
+          </a>
+        </div>
+      </article>
+
+      <!-- Producto 2: Farolitos con Velitas -->
+      <article class="group relative christmas-card">
+        <div
+          class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-red-500 to-green-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+        >
+          PACK ESPECIAL
+        </div>
+
+        <div
+          class="absolute top-4 left-4 z-20 bg-green-900/90 backdrop-blur-sm text-green-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-green-400"
+        >
+          <ion-icon name="snow-outline" class="text-sm" aria-hidden="true"
+          ></ion-icon>
+          Incluye Velitas aromátizadas
+        </div>
+
+        <div
+          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-800/50 to-green-800/50 backdrop-blur-sm border-2 border-red-500/30 group-hover:border-green-400 transition-all duration-300"
+        >
+          <Image
+            src={christmasProduct2}
+            alt="Farolitos Navideños con Velitas - Incluye Velitas Aroma a Natilla"
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+            width={800}
+            height={800}
+            loading="lazy"
+            decoding="async"
+            format="webp"
+            quality={85}
+          />
+
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-red-500/0 via-transparent to-green-500/0 group-hover:from-red-500/20 group-hover:to-green-500/20 transition-all duration-300"
+          >
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-3">
+          <h3 class="text-2xl font-bold text-white">Farolitos Navideños con Velitas</h3>
+          <p class="text-green-200 text-sm">
+            Este pack de Farolitos incluye cada uno una velita con un agradable aroma a Natilla... Si, créelo a Natilla!.
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-3xl font-bold text-red-400">$22.000</span>
+              <span class="text-gray-400 line-through text-sm ml-2"
+                >$26.400</span
+              >
+            </div>
+            <span
+              class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded"
+              aria-label="descuento">-20%</span
+            >
+          </div>
+
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20de%20Farolitos%20con%20Velitas*%20($22.000)"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full bg-gradient-to-r from-red-500 to-green-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+            aria-label="Pedir Paquete de Farolitos con Velitas"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
+            Pedir ahora
+          </a>
+        </div>
+      </article>
+
+      <!-- Producto 3: Pack Navideño Bolitas con Velita -->
+      <article
+        class="group relative christmas-card md:col-span-2 lg:col-span-1"
+      >
+        <div
+          class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-gold-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
+        >
+          PACK ESPECIAL
+        </div>
+
+        <div
+          class="absolute top-4 left-4 z-20 bg-green-900/90 backdrop-blur-sm text-green-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-green-400"
+        >
+          <ion-icon name="snow-outline" class="text-sm" aria-hidden="true"
+          ></ion-icon>
+          Personaliza tus Bolitas
+        </div>
+
+        <div
+          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-800/50 to-gold-800/50 backdrop-blur-sm border-2 border-red-500/30 group-hover:border-gold-400 transition-all duration-300"
+        >
+          <Image
+            src={christmasProduct3}
+            alt="Pack Navideño - Bolitas con Velita en forma de Arbol Navideño"
+            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+            width={800}
+            height={800}
+            loading="lazy"
+            decoding="async"
+            format="webp"
+            quality={85}
+          />
+
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-red-500/0 via-transparent to-gold-500/0 group-hover:from-red-500/20 group-hover:to-gold-500/20 transition-all duration-300"
+          >
+          </div>
+        </div>
+
+        <div class="mt-4 space-y-3">
+          <h3 class="text-2xl font-bold text-white">Pack Bolitas Navideñas</h3>
+          <p class="text-green-200 text-sm">
+            Este hermoso Pack te sorprendera con una Velita aromatizada en forma de Arbol junto a 4 Bolitas de Navidad Personalizadas.
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-3xl font-bold text-red-400">$25.000</span>
+              <span class="text-gray-400 line-through text-sm ml-2"
+                >$32.500</span
+              >
+            </div>
+            <span
+              class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded"
+              aria-label="descuento">-30%</span
+            >
+          </div>
+
+          <a
+            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20de%20Bolitas%20Navideñas*%20($34.900)"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full bg-gradient-to-r from-gold-500 to-red-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-gold-500/50 transition-all duration-300 flex items-center justify-center gap-2"
+            aria-label="Pedir Pack Bolitas Navideñas"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
+            ></ion-icon>
+            Pedir pack especial
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Características especiales -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+      <div
+        class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-red-500/20 text-center"
+      >
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-red-500 to-gold-500 rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <ion-icon
+            name="snow-outline"
+            class="text-3xl text-white"
+            aria-hidden="true"></ion-icon>
+        </div>
+        <h4 class="text-white font-bold text-lg mb-2">
+          Aromas Navideños
+        </h4>
+        <p class="text-green-200 text-sm">
+          Nuestras velitas están aromatizadas con fragancias únicas que harán que tus recuerdos cobren vida esta época.
+        </p>
+      </div>
+
+      <div
+        class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-green-500/20 text-center"
+      >
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-green-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <ion-icon
+            name="calendar-outline"
+            class="text-3xl text-white"
+            aria-hidden="true"></ion-icon>
+        </div>
+        <h4 class="text-white font-bold text-lg mb-2">Edición Limitada</h4>
+        <p class="text-red-200 text-sm">
+          Solo disponibles en diciembre. ¡No te quedes sin el tuyo!
+        </p>
+      </div>
+
+      <div
+        class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-gold-500/20 text-center"
+      >
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-gold-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4"
+        >
+          <ion-icon
+            name="gift-outline"
+            class="text-3xl text-white"
+            aria-hidden="true"></ion-icon>
+        </div>
+        <h4 class="text-white font-bold text-lg mb-2">Diseños Unicos</h4>
+        <p class="text-gold-200 text-sm">
+          Adorables diseños navideños, hechos a mano y únicos en el mercado.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA Final -->
+    <div class="mt-16 text-center">
+      <a
+        href="https://wa.me/573102278592?text=Hola!%20Quiero%20ver%20todos%20los%20diseños%20de%20Navidad"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-gradient-to-r from-red-500 via-green-500 to-gold-500 text-white font-bold px-10 py-5 rounded-full text-lg hover:scale-105 hover:shadow-2xl hover:shadow-red-500/50 transition-all duration-300"
+        aria-label="Ver más diseños de Navidad por WhatsApp"
+      >
+        <ion-icon
+          name="logo-whatsapp"
+          class="text-2xl animate-pulse"
+          aria-hidden="true"></ion-icon>
+        Ver más diseños de Navidad
+        <ion-icon
+          name="arrow-forward-outline"
+          class="text-xl"
+          aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Schema Markup -->
+<SeasonalProductSchema
+  products={[
+    {
+      name: "Árbol de Navidad Kawaii",
+      description:
+        "Vela fotoluminiscente con diseño kawaii de árbol navideño",
+      image: christmasProduct1Url,
+      price: "19900",
+      validUntil: "2025-12-25",
+    },
+    {
+      name: "Muñeco de Nieve Kawaii",
+      description:
+        "Vela fotoluminiscente con diseño kawaii de muñeco de nieve",
+      image: christmasProduct1Url,
+      price: "19900",
+      validUntil: "2025-12-25",
+    },
+    {
+      name: "Pack Dúo Navideño",
+      description: "Pack de dos velas fotoluminiscentes navideñas kawaii",
+      image: christmasProduct1Url,
+      price: "34900",
+      validUntil: "2025-12-25",
+    },
+  ]}
+/>
+
+<style>
+  /* Colores oro/dorado personalizados */
+  .text-gold-400 {
+    color: #fbbf24;
+  }
+  .from-gold-500 {
+    --tw-gradient-from: #f59e0b;
+  }
+  .to-gold-500 {
+    --tw-gradient-to: #f59e0b;
+  }
+  .to-gold-400 {
+    --tw-gradient-to: #fbbf24;
+  }
+  .border-gold-400 {
+    border-color: #fbbf24;
+  }
+  .border-gold-500 {
+    border-color: #f59e0b;
+  }
+  .text-gold-200 {
+    color: #fde68a;
+  }
+  .from-gold-800 {
+    --tw-gradient-from: #92400e;
+  }
+  .hover\:shadow-gold-500\/50:hover {
+    --tw-shadow-color: rgb(245 158 11 / 0.5);
+  }
+
+  /* Fondo de copos de nieve SIMPLIFICADO */
+  .snowflakes-background {
+    background-image: radial-gradient(2px 2px at 25% 35%, white, transparent),
+      radial-gradient(1px 1px at 75% 15%, white, transparent),
+      radial-gradient(1px 1px at 50% 70%, white, transparent),
+      radial-gradient(2px 2px at 15% 80%, white, transparent),
+      radial-gradient(1px 1px at 85% 60%, white, transparent);
+    background-size: 200% 200%;
+    animation: snowfall 10s ease-in-out infinite;
+    opacity: 0.4;
+  }
+
+  @keyframes snowfall {
+    0% {
+      background-position: 0% 0%;
+      opacity: 0.3;
+    }
+    50% {
+      background-position: 100% 100%;
+      opacity: 0.6;
+    }
+    100% {
+      background-position: 0% 0%;
+      opacity: 0.3;
+    }
+  }
+
+  /* Elementos flotantes navideños OPTIMIZADOS */
+  .christmas-float {
+    position: absolute;
+    font-size: 3rem;
+    animation: float-christmas 6s ease-in-out infinite;
+    opacity: 0.3;
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.4));
+  }
+
+  @keyframes float-christmas {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-25px) rotate(8deg);
+    }
+  }
+
+  /* Pulso sutil OPTIMIZADO */
+  @keyframes pulse-subtle {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.85;
+      transform: scale(1.03);
+    }
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 4s ease-in-out infinite;
+  }
+
+  /* Bounce sutil OPTIMIZADO */
+  @keyframes bounce-subtle {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 3s ease-in-out infinite;
+  }
+
+  /* Gradiente fluido */
+  @keyframes gradient-flow {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-flow {
+    background-size: 200% 200%;
+    animation: gradient-flow 4s ease infinite;
+  }
+
+  /* Efecto de brillo OPTIMIZADO */
+  @keyframes glow {
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  /* Tarjeta navideña */
+  .christmas-card {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .christmas-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .christmas-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .christmas-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Optimización para usuarios con prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .christmas-float,
+    .animate-pulse-subtle,
+    .animate-bounce-subtle,
+    .animate-gradient-flow,
+    .animate-glow {
+      animation: none !important;
+    }
+
+    .christmas-card {
+      animation: none !important;
+      opacity: 1 !important;
+    }
+
+    .snowflakes-background {
+      animation: none !important;
+      opacity: 0.3 !important;
+    }
+  }
+
+  /* Optimización de rendimiento */
+  .group:hover .group-hover\:scale-105 {
+    will-change: transform;
+  }
+</style>
+
+<script>
+  // Contador regresivo con lazy loading
+  const christmasSection = document.querySelector(".christmas-section");
+
+  if (christmasSection) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            initChristmasCountdown();
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: "50px",
+      }
+    );
+
+    observer.observe(christmasSection);
+  }
+
+  function initChristmasCountdown() {
+    updateChristmasCountdown();
+    setInterval(updateChristmasCountdown, 60000); // Actualizar cada minuto
+  }
+
+  function updateChristmasCountdown() {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const christmas = new Date(currentYear, 11, 25, 0, 0, 0); // Dic 25, 00:00:00
+
+    // Si ya pasó Navidad este año, calcular para el próximo
+    if (now > christmas) {
+      christmas.setFullYear(currentYear + 1);
+    }
+
+    const diff = christmas.getTime() - now.getTime();
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+    const daysEl = document.querySelector(".christmas-section .countdown-days");
+    const hoursEl = document.querySelector(".christmas-section .countdown-hours");
+    const minutesEl = document.querySelector(".christmas-section .countdown-minutes");
+
+    if (daysEl) daysEl.textContent = days.toString().padStart(2, "0");
+    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, "0");
+    if (minutesEl)
+      minutesEl.textContent = minutes.toString().padStart(2, "0");
+  }
+</script>

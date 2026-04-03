@@ -1,1770 +1,116 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import heroImg from "../assets/images/Hero_1_gatos.png";
 import Image from "astro/components/Image.astro";
-import IndexGrid1 from "../assets/images/Perro_vela.jpg";
-import IndexGrid2 from "../assets/images/grupo_ositos_background_white.webp";
-import IndexGrid3 from "../assets/images/capibara_beige_acostado.jpg";
-import IndexGrid4 from "../assets/images/capibara_cafe.jpg";
-import IndexGrid5 from "../assets/images/pack_gatitos_fondo_beige.webp";
-import IndexGrid6 from "../assets/images/pack_gatitos_fondo_beige.webp";
-import IndexGrid7 from "../assets/images/gatito_martina_front.webp";
-import Indexmemoriales from "../assets/images/Memorial_personalizado, foto.png";
-import Indexrecordatorios from "../assets/images/capibara_cafe.jpg";
-
-// Importa las imágenes de Halloween
-import fantasmasChiwiImg from "../assets/images/fantasma_chiwi.jpg";
-import SeasonalProductSchema from "../components/SeasonalProductSchema.astro";
+import memorialPortada from "../assets/images/Memorial_personalizado, foto.png";
+import memorialSofi from "../assets/images/recordatorio_sofi.webp";
+import memorialMafi from "../assets/images/velita_mafi.webp";
+import memorialMix from "../assets/images/recordatorio_chiwi_mix_perros_gatitos_v2.webp";
+import memorialMixdos from "../assets/images/recordatorio_chiwi_mix_perros_gatitos_v3.webp";
+import fotoArtesano from "../assets/images/foto_artesano_chiwi.webp";
+import recordatorioMalu from "../assets/images/recordatorio_malu.webp";
+import recordatorioDiaMujer from "../assets/images/recordatorio_dia_mujer.webp";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
 
-// ⭐ AGREGA ESTAS LÍNEAS AQUÍ (importaciones de Navidad)
-// Por ahora usa imágenes temporales hasta que tengas las reales
-import christmasProduct1 from "../assets/images/farolito_solo.webp";
-import christmasProduct2 from "../assets/images/Farolitos_uno.webp";
-import christmasProduct3 from "../assets/images/bolitas_velitas_con_nombres.webp";
+import HeroSection from "../components/HeroSection.astro";
+import ProductGrid from "../components/ProductGrid.astro";
+import TrustSection from "../components/TrustSection.astro";
+import FAQSection from "../components/FAQSection.astro";
+import NewsletterSection from "../components/NewsletterSection.astro";
+import SeasonNavidad   from "../components/seasons/SeasonNavidad.astro";
+import SeasonHalloween from "../components/seasons/SeasonHalloween.astro";
+import SeasonDiaNinos  from "../components/seasons/SeasonDiaNinos.astro";
+import SeasonMadres    from "../components/seasons/SeasonMadres.astro";
+import { products } from "../data/products";
 
-// import fantasmaGatito from "../assets/images/gatito_ghost_orange_back.webp";
-// import fantasmaPerrito from "../assets/images/perrito_ghost_purple_back.webp";
-// import duoFantasma from "../assets/images/duo_halloween.webp";
-
-// Obtener URLs públicas para el Schema
-const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
-const fantasmasChiwiUrl = new URL(fantasmasChiwiImg.src, baseUrl).href;
-const christmasProduct1Url = new URL(christmasProduct1.src, baseUrl).href;
-
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+const searchQuery = Astro.url.searchParams.get("search");
+const searchResults = searchQuery
+  ? products.filter(
+      (p) =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.category.some((c) =>
+          c.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+    )
+  : [];
 ---
 
 <Layout
   title="Chiwi Colombia | Velas Kawaii Artesanales Personalizadas - Memoriales para Mascotas"
   description="Velas artesanales kawaii hechas a mano en Colombia. Memoriales únicos para mascotas, regalos personalizados y velas que brillan en la oscuridad. ¡Crea tu vela especial!"
 >
-  <!-- Hero Section -->
-  <section
-    class="relative min-h-[90vh] flex flex-col items-center justify-center text-white text-center overflow-hidden"
-  >
-    <!-- Imagen de fondo fija -->
-    <div
-      class="absolute inset-0 bg-cover bg-center"
-      style={`background-image: url(${heroImg.src});`}
-    >
-    </div>
+  <HeroSection />
 
-    <!-- Gradiente mejorado -->
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/50 to-gray-950/20"
-    >
-    </div>
+  {/* Sección de Confianza — oculta hasta tener datos reales */}
 
-    <!-- Elementos decorativos flotantes -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden">
-      <!-- <div
-        class="floating-element"
-        style="top: 20%; left: 10%; animation-delay: 0s;"
-      >
-        ✨
-      </div>
-      <div
-        class="floating-element"
-        style="top: 60%; right: 15%; animation-delay: 1s;"
-      >
-        💖
-      </div> -->
-      <div
-        class="floating-element"
-        style="bottom: 30%; left: 20%; animation-delay: 2s;"
-      >
-        🕯️
-      </div>
-      <div
-        class="floating-element"
-        style="top: 40%; right: 25%; animation-delay: 3s;"
-      >
-        🌟
-      </div>
-    </div>
-
-    <!-- Contenido principal -->
-    <div class="relative z-10 w-full max-w-7xl px-4 space-y-8">
-      <!-- Badge superior -->
-      <div class="animate-fade-in-down">
-        <span
-          class="inline-block bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-6 py-2 text-sm font-medium text-white/90"
-        >
-          🎨 Hecho a mano con amor en Colombia
-        </span>
-      </div>
-
-      <!-- Título principal con animación -->
-      <h1
-        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight animate-fade-in-up"
-      >
-        <span class="block">Velitas que</span>
-        <span
-          class="block text-transparent bg-clip-text bg-gradient-to-r from-orange-300 to-pink-300 animate-gradient"
-        >
-          cuentan una historia
-        </span>
-      </h1>
-
-      <!-- Subtítulo -->
-      <p
-        class="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 max-w-4xl mx-auto leading-relaxed animate-fade-in-up animation-delay-500"
-      >
-        Velas personalizadas kawaii, memoriales únicos y regalos que despiertan
-        sonrisas.
-        <span class="text-orange-300 font-semibold"
-          >Cada vela cuenta tu historia.</span
-        >
-      </p>
-
-      <!-- Características destacadas -->
-      <div
-        class="flex flex-wrap justify-center gap-4 animate-fade-in-up animation-delay-1000"
-      >
-        <span
-          class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
-        >
-          🌙 Ediciones limitadas
-        </span>
-        <span
-          class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
-        >
-          🎨 100% Personalizables
-        </span>
-        <span
-          class="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm border border-white/20"
-        >
-          💚 Cera natural
-        </span>
-      </div>
-
-      <!-- Botones CTA -->
-      <div
-        class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-1500"
-      >
-        <a
-          href="https://wa.me/573102278592?text=Hola!%20Quiero%20conocer%20sus%20velas%20personalizadas"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full text-white font-bold px-8 py-4 shadow-2xl hover:scale-110 hover:shadow-orange-500/25 transition-all duration-300"
-        >
-          <ion-icon
-            name="logo-whatsapp"
-            class="text-2xl group-hover:animate-bounce"></ion-icon>
-          Crear mi vela personalizada
-          <ion-icon
-            name="arrow-forward-outline"
-            class="text-xl group-hover:translate-x-1 transition-transform"
-          ></ion-icon>
-        </a>
-
-        <a
-          href="#productos"
-          class="group flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 rounded-full text-white font-semibold px-6 py-3 hover:bg-white/20 transition-all duration-300"
-        >
-          Ver catálogo
-          <ion-icon
-            name="chevron-down-outline"
-            class="text-lg group-hover:animate-bounce"></ion-icon>
-        </a>
-      </div>
-    </div>
-
-    <!-- Flecha scroll -->
-    <div
-      class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-    >
-      <a
-        href="#productos"
-        class="text-white/60 hover:text-white transition-colors"
-      >
-        <ion-icon name="chevron-down-outline" class="text-3xl"></ion-icon>
-      </a>
-    </div>
-  </section>
-
-  <!-- Sección de Confianza --
-  <section class="bg-gradient-to-r from-orange-50 to-pink-50 py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-        <div class="space-y-2">
-          <div
-            class="text-3xl md:text-4xl font-bold text-gray-900 counter"
-            data-target="500"
-          >
-            0
-          </div>
-          <p class="text-gray-600 text-sm md:text-base">Velas creadas</p>
+  {searchQuery ? (
+    <section id="productos" class="w-full py-16">
+      <div class="w-full max-w-7xl mx-auto px-4">
+        <div class="mb-8">
+          <p class="text-gray-500 text-sm mb-2">Búsqueda activa</p>
+          <h2 class="text-3xl font-bold text-gray-900">
+            Resultados para: <span class="text-orange-500">"{searchQuery}"</span>
+          </h2>
+          <a href="/" class="text-sm text-orange-500 hover:underline mt-2 inline-block">← Ver todos los productos</a>
         </div>
-        <div class="space-y-2">
-          <div
-            class="text-3xl md:text-4xl font-bold text-gray-900 counter"
-            data-target="200"
-          >
-            0
+        {searchResults.length > 0 ? (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {searchResults.map((product) => (
+              <article class="flex flex-col">
+                <a href={'/productos/' + product.slug} class="block w-full relative group">
+                  <img
+                    src={product.image.src}
+                    alt={product.alt}
+                    class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <div class="mt-3 space-y-1">
+                  <h3 class="font-bold text-lg">{product.name}</h3>
+                  <p class="font-semibold text-gray-800">{"$" + product.price.toLocaleString('es-CO')}</p>
+                </div>
+                <a
+                  href={'/productos/' + product.slug}
+                  class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+                >
+                  <ion-icon name="eye-outline" class="text-xl" aria-hidden="true" />
+                  <span class="text-sm">Ver detalles</span>
+                </a>
+              </article>
+            ))}
           </div>
-          <p class="text-gray-600 text-sm md:text-base">Clientes felices</p>
-        </div>
-        <div class="space-y-2">
-          <div
-            class="text-3xl md:text-4xl font-bold text-gray-900 counter"
-            data-target="15"
-          >
-            0
-          </div>
-          <p class="text-gray-600 text-sm md:text-base">Diseños únicos</p>
-        </div>
-        <div class="space-y-2">
-          <div class="text-3xl md:text-4xl font-bold text-gray-900">
-            100<span class="text-orange-500">%</span>
-          </div>
-          <p class="text-gray-600 text-sm md:text-base">Hechas a mano</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección Productos Populares -->
-  <!-- Sección Productos Populares OPTIMIZADA -->
-  <section
-  id="productos"
-  class="w-full min-h-[60vh] py-16 flex items-center"
-  aria-labelledby="productos-heading"
->
-  <div class="w-full max-w-7xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2
-        id="productos-heading"
-        class="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-      >
-        Productos <span
-          class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"
-          >Populares</span
-        >
-      </h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-        Descubre nuestras velas más amadas por clientes de toda Colombia
-      </p>
-    </div>
-
-<!-- Grid Desktop -->
-<div
-  class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
->
-  <!-- Producto 1: Perrito Cocker -->
-  <article
-    class="flex flex-col"
-    itemscope
-    itemtype="https://schema.org/Product"
-  >
-    <meta itemprop="name" content="Perrito Cocker" />
-    <meta itemprop="description" content="Vela artesanal kawaii con diseño personalizado de perrito Cocker. Hecha a mano con cera natural en Colombia." />
-    <meta itemprop="brand" content="Chiwi Colombia" />
-
-    <a
-      href="/productos/perrito-cocker"
-      class="block w-full relative group"
-      itemprop="url"
-    >
-      <Image
-        src={IndexGrid1}
-        alt="Perrito Cocker - Vela personalizada kawaii hecha a mano en Colombia"
-        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-        width={800}
-        height={600}
-        loading="lazy"
-        decoding="async"
-        format="webp"
-        quality={85}
-        itemprop="image"
-      />
-    </a>
-    <div class="mt-3 space-y-1">
-      <h3 class="font-bold text-lg" itemprop="name">Perrito Cocker</h3>
-      <p
-        class="font-semibold text-gray-800"
-        itemprop="offers"
-        itemscope
-        itemtype="https://schema.org/Offer"
-      >
-        <span>$21.900</span>
-        <meta itemprop="price" content="14900" />
-        <meta itemprop="priceCurrency" content="COP" />
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-      </p>
-    </div>
-    <a
-      href="/productos/perrito-cocker"
-      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-      aria-label="Ver detalles de Perrito Cocker"
-    >
-      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      <span class="text-sm">Ver detalles</span>
-    </a>
-  </article>
-
-  <!-- Producto 2: Familia de Ositos -->
-  <article
-    class="flex flex-col lg:col-span-2"
-    itemscope
-    itemtype="https://schema.org/Product"
-  >
-    <meta itemprop="name" content="Familia de Ositos" />
-    <meta itemprop="description" content="Velas decorativas kawaii con diseño de familia de ositos. Hechas a mano con cera natural en Colombia." />
-    <meta itemprop="brand" content="Chiwi Colombia" />
-
-    <a
-      href="/productos/familia-de-ositos"
-      class="block w-full relative group"
-      itemprop="url"
-    >
-      <Image
-        src={IndexGrid2}
-        alt="Familia de Ositos - Velas decorativas kawaii hechas a mano en Colombia"
-        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-        width={800}
-        height={600}
-        loading="lazy"
-        decoding="async"
-        format="webp"
-        quality={85}
-        itemprop="image"
-      />
-    </a>
-    <div class="mt-3 space-y-1">
-      <h3 class="font-bold text-lg" itemprop="name">Familia de Ositos</h3>
-      <p
-        class="font-semibold text-gray-800"
-        itemprop="offers"
-        itemscope
-        itemtype="https://schema.org/Offer"
-      >
-        <span>$14.900</span>
-        <meta itemprop="price" content="14900" />
-        <meta itemprop="priceCurrency" content="COP" />
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-      </p>
-    </div>
-    <a
-      href="/productos/familia-de-ositos"
-      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-      aria-label="Ver detalles de Familia de Ositos"
-    >
-      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      <span class="text-sm">Ver detalles</span>
-    </a>
-  </article>
-
-  <!-- Producto 3: capibara Mood Relax -->
-  <article
-    class="flex flex-col"
-    itemscope
-    itemtype="https://schema.org/Product"
-  >
-    <meta itemprop="name" content="Capibara Mood Relax" />
-    <meta itemprop="description" content="Vela kawaii artesanal con diseño de capibara acostado color beige. Hecha a mano en Colombia." />
-    <meta itemprop="brand" content="Chiwi Colombia" />
-
-    <a
-      href="/productos/capibara-mood-relax"
-      class="block w-full relative group"
-      itemprop="url"
-    >
-      <Image
-        src={IndexGrid3}
-        alt="Capibara Mood Relax - Vela kawaii artesanal hecha en Colombia"
-        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-        width={800}
-        height={600}
-        loading="lazy"
-        decoding="async"
-        format="webp"
-        quality={85}
-        itemprop="image"
-      />
-    </a>
-    <div class="mt-3 space-y-1">
-      <h3 class="font-bold text-lg" itemprop="name">
-        Capibara Mood Relax
-      </h3>
-      <p
-        class="font-semibold text-gray-800"
-        itemprop="offers"
-        itemscope
-        itemtype="https://schema.org/Offer"
-      >
-        <span>$15.900</span>
-        <meta itemprop="price" content="15900" />
-        <meta itemprop="priceCurrency" content="COP" />
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-      </p>
-    </div>
-    <a
-      href="/productos/capibara-mood-relax"
-      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-      aria-label="Ver detalles de capibara Mood Relax"
-    >
-      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      <span class="text-sm">Ver detalles</span>
-    </a>
-  </article>
-
-  <!-- Producto 4: Capibara Cute -->
-  <article
-    class="flex flex-col"
-    itemscope
-    itemtype="https://schema.org/Product"
-  >
-    <meta itemprop="name" content="Capibara Cute" />
-    <meta itemprop="description" content="Vela artesanal kawaii con diseño de capibara color café. Hecha a mano en Colombia." />
-    <meta itemprop="brand" content="Chiwi Colombia" />
-
-    <a
-      href="/productos/capibara-cute"
-      class="block w-full relative group"
-      itemprop="url"
-    >
-      <Image
-        src={IndexGrid4}
-        alt="Capibara Cute - Vela artesanal kawaii hecha a mano en Colombia"
-        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-        width={800}
-        height={600}
-        loading="lazy"
-        decoding="async"
-        format="webp"
-        quality={85}
-        itemprop="image"
-      />
-    </a>
-    <div class="mt-3 space-y-1">
-      <h3 class="font-bold text-lg" itemprop="name">Capibara Cute</h3>
-      <p
-        class="font-semibold text-gray-800"
-        itemprop="offers"
-        itemscope
-        itemtype="https://schema.org/Offer"
-      >
-        <span>$15.900</span>
-        <meta itemprop="price" content="15900" />
-        <meta itemprop="priceCurrency" content="COP" />
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-      </p>
-    </div>
-    <a
-      href="/productos/capibara-cute"
-      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-      aria-label="Ver detalles de Capibara Cute"
-    >
-      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      <span class="text-sm">Ver detalles</span>
-    </a>
-  </article>
-
-  <!-- Producto 5: Cajita Recuerdo -->
-  <article
-    class="flex flex-col"
-    itemscope
-    itemtype="https://schema.org/Product"
-  >
-    <meta itemprop="name" content="Cajita Recuerdame" />
-    <meta itemprop="description" content="Kit completo con vela personalizada y empaque especial para ocasiones especiales. Hecho en Colombia." />
-    <meta itemprop="brand" content="Chiwi Colombia" />
-
-    <a
-      href="/productos/cajita-recuerdame"
-      class="block w-full relative group"
-      itemprop="url"
-    >
-      <Image
-        src={IndexGrid5}
-        alt="Cajita Recuerdo - Kit completo con vela personalizada hecha a mano"
-        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-        width={800}
-        height={600}
-        loading="lazy"
-        decoding="async"
-        format="webp"
-        quality={85}
-        itemprop="image"
-      />
-    </a>
-    <div class="mt-3 space-y-1">
-      <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdame</h3>
-      <p
-        class="font-semibold text-gray-800"
-        itemprop="offers"
-        itemscope
-        itemtype="https://schema.org/Offer"
-      >
-        <span>$32.900</span>
-        <meta itemprop="price" content="32900" />
-        <meta itemprop="priceCurrency" content="COP" />
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-      </p>
-    </div>
-    <a
-      href="/productos/cajita-recuerdame"
-      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-      aria-label="Ver detalles de Cajita Recuerdame"
-    >
-      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      <span class="text-sm">Ver detalles</span>
-    </a>
-  </article>
-
-  <!-- Producto 6: Cajita Recuerdo Premium -->
-  <article
-    class="flex flex-col"
-    itemscope
-    itemtype="https://schema.org/Product"
-  >
-    <meta itemprop="name" content="Cajita Recuerdame Premium" />
-    <meta itemprop="description" content="Regalo especial con vela personalizada y empaque premium. Hecho en Colombia." />
-    <meta itemprop="brand" content="Chiwi Colombia" />
-
-    <a
-      href="/productos/cajita-recuerdame"
-      class="block w-full relative group"
-      itemprop="url"
-    >
-      <Image
-        src={IndexGrid6}
-        alt="Cajita Recuerdo Premium - Regalo especial con vela personalizada"
-        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-        width={800}
-        height={600}
-        loading="lazy"
-        decoding="async"
-        format="webp"
-        quality={85}
-        itemprop="image"
-      />
-    </a>
-    <div class="mt-3 space-y-1">
-      <h3 class="font-bold text-lg" itemprop="name">Cajita Recuerdo Premium</h3>
-      <p
-        class="font-semibold text-gray-800"
-        itemprop="offers"
-        itemscope
-        itemtype="https://schema.org/Offer"
-      >
-        <span>$32.900</span>
-        <meta itemprop="price" content="32900" />
-        <meta itemprop="priceCurrency" content="COP" />
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-      </p>
-    </div>
-    <a
-      href="/productos/cajita-recuerdame-premium"
-      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-      aria-label="Ver detalles de Cajita Recuerdame Premium"
-    >
-      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      <span class="text-sm">Ver detalles</span>
-    </a>
-  </article>
-
-  <!-- Producto 7: Gatito Personalizado -->
-  <article
-    class="flex flex-col"
-    itemscope
-    itemtype="https://schema.org/Product"
-  >
-    <meta itemprop="name" content="Gatito Personalizado" />
-    <meta itemprop="description" content="Vela kawaii hecha a mano con diseño personalizado de gatito. Creada en Colombia." />
-    <meta itemprop="brand" content="Chiwi Colombia" />
-
-    <a
-      href="/productos/gatito-personalizado"
-      class="block w-full relative group"
-      itemprop="url"
-    >
-      <Image
-        src={IndexGrid7}
-        alt="Gatito Personalizado - Vela kawaii hecha a mano en Colombia"
-        class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
-        width={800}
-        height={600}
-        loading="lazy"
-        decoding="async"
-        format="webp"
-        quality={85}
-        itemprop="image"
-      />
-    </a>
-    <div class="mt-3 space-y-1">
-      <h3 class="font-bold text-lg" itemprop="name">
-        Gatito Personalizado
-      </h3>
-      <p
-        class="font-semibold text-gray-800"
-        itemprop="offers"
-        itemscope
-        itemtype="https://schema.org/Offer"
-      >
-        <span>$24.900</span>
-        <meta itemprop="price" content="24900" />
-        <meta itemprop="priceCurrency" content="COP" />
-        <meta itemprop="availability" content="https://schema.org/InStock" />
-      </p>
-    </div>
-    <a
-      href="/productos/gatito-personalizado"
-      class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
-      aria-label="Ver detalles de Gatito Personalizado"
-    >
-      <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-      <span class="text-sm">Ver detalles</span>
-    </a>
-  </article>
-</div>
-
-    <!-- Carrusel móvil -->
-<div class="block sm:hidden">
-  <swiper-container
-    slides-per-view="1"
-    space-between="20"
-    pagination="true"
-    navigation="false"
-    loop="true"
-    speed="400"
-    touch-ratio="1"
-    threshold="5"
-    resistance="true"
-    resistance-ratio="0.85"
-    free-mode="false"
-    css-mode="false"
-    class="w-full"
-  >
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a href="/productos/perrito-cocker">
-              <img
-                src={IndexGrid1.src}
-                alt="Perrito Cocker - Vela personalizada kawaii"
-                class="rounded-xl w-full h-64 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
-            <p class="font-bold text-lg">Perrito Cocker</p>
-            <p class="font-semibold text-gray-800">$21.900</p>
+        ) : (
+          <div class="text-center py-16">
+            <p class="text-xl text-gray-600 mb-2">
+              No encontramos productos para <strong>"{searchQuery}"</strong>.
+            </p>
+            <p class="text-gray-500 mb-8">¿Hablamos por WhatsApp? Podemos hacer lo que imagines 💫</p>
             <a
-              href="/productos/perrito-cocker"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-              aria-label="Ver detalles de Perrito Cocker"
+              href="https://wa.me/573102278592"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all"
             >
-              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-              <span class="text-sm">Ver detalles</span>
+              <ion-icon name="logo-whatsapp" class="text-2xl" />
+              Hablemos por WhatsApp
             </a>
           </div>
-        </swiper-slide>
-
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a href="/productos/familia-de-ositos">
-              <img
-                src={IndexGrid2.src}
-                alt="Familia de Ositos - Velas decorativas kawaii"
-                class="rounded-xl w-full h-64 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
-            <p class="font-bold text-lg">Familia de Ositos</p>
-            <p class="font-semibold text-gray-800">$14.900</p>
-            <a
-              href="/productos/familia-de-ositos"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-              aria-label="Ver detalles de Familia de Ositos"
-            >
-              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-              <span class="text-sm">Ver detalles</span>
-            </a>
-          </div>
-        </swiper-slide>
-
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a href="/productos/capibara-mood-relax">
-              <img
-                src={IndexGrid3.src}
-                alt="capibara Mood Relax - Vela kawaii"
-                class="rounded-xl w-full h-64 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
-            <p class="font-bold text-lg">capibara Mood Relax</p>
-            <p class="font-semibold text-gray-800">$15.900</p>
-            <a
-              href="/productos/capibara-mood-relax"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-              aria-label="Ver detalles de capibara Mood Relax"
-            >
-              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-              <span class="text-sm">Ver detalles</span>
-            </a>
-          </div>
-        </swiper-slide>
-
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a href="/productos/capibara-cute">
-              <img
-                src={IndexGrid4.src}
-                alt="Capibara Cute - Vela artesanal kawaii"
-                class="rounded-xl w-full h-64 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
-            <p class="font-bold text-lg">Capibara Cute</p>
-            <p class="font-semibold text-gray-800">$15.900</p>
-            <a
-              href="/productos/capibara-cute"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-              aria-label="Ver detalles de Capibara Cute"
-            >
-              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-              <span class="text-sm">Ver detalles</span>
-            </a>
-          </div>
-        </swiper-slide>
-
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a href="/productos/cajita-recuerdame">
-              <img
-                src={IndexGrid5.src}
-                alt="Cajita Recuerdo - Kit completo"
-                class="rounded-xl w-full h-64 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
-            <p class="font-bold text-lg">Cajita Recuerdo</p>
-            <p class="font-semibold text-gray-800">$32.900</p>
-            <a
-              href="/productos/cajita-recuerdame"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-              aria-label="Ver detalles de Cajita Recuerdo"
-            >
-              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-              <span class="text-sm">Ver detalles</span>
-            </a>
-          </div>
-        </swiper-slide>
-
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a href="/productos/cajita-recuerdame">
-              <img
-                src={IndexGrid6.src}
-                alt="Cajita Recuerdo Premium - Regalo especial"
-                class="rounded-xl w-full h-64 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
-            <p class="font-bold text-lg">Cajita Recuerdo Premium</p>
-            <p class="font-semibold text-gray-800">$32.900</p>
-            <a
-              href="/productos/cajita-recuerdame"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-              aria-label="Ver detalles de Cajita Recuerdo Premium"
-            >
-              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-              <span class="text-sm">Ver detalles</span>
-            </a>
-          </div>
-        </swiper-slide>
-
-        <swiper-slide class="flex flex-col items-center pb-12">
-          <div class="w-full px-4">
-            <a href="/productos/gatito-personalizado">
-              <img
-                src={IndexGrid7.src}
-                alt="Gatito Personalizado - Vela kawaii hecha a mano"
-                class="rounded-xl w-full h-64 object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-          <div class="mt-3 text-center w-full px-4 space-y-2">
-            <p class="font-bold text-lg">Gatito Personalizado</p>
-            <p class="font-semibold text-gray-800">$24.900</p>
-            <a
-              href="/productos/gatito-personalizado"
-              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
-              aria-label="Ver detalles de Gatito Personalizado"
-            >
-              <ion-icon name="eye-outline" class="text-xl" aria-hidden="true"></ion-icon>
-              <span class="text-sm">Ver detalles</span>
-            </a>
-          </div>
-        </swiper-slide>
-      </swiper-container>
-
-      <script>
-        import { register } from "swiper/element/bundle";
-        register();
-      </script>
-    </div>
-
-    <!-- Botón Ver más (ya estaba correcto) -->
-    <div class="mt-16 flex justify-center">
-      <a
-        href="/productos"
-        class="group flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:shadow-orange-500/25 transition-all duration-300"
-        aria-label="Ver más productos de Chiwi"
-      >
-        Ver más productos
-        <ion-icon
-          name="arrow-forward-outline"
-          class="text-xl group-hover:translate-x-1 transition-transform"
-          aria-hidden="true"></ion-icon>
-      </a>
-    </div>
-  </div>
-</section>
-
-  <!-- Schema Markup Productos Populares -->
-  <!-- Schema Markup Productos Populares CORREGIDO -->
-  <script
-    type="application/ld+json"
-    set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      name: "Productos Populares Chiwi",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          item: {
-            "@type": "Product",
-            name: "Perrito Cocker",
-            description:
-              "Vela personalizada con diseño kawaii de perrito Cocker hecha a mano en Colombia con Cera natural",
-            image: new URL(
-              IndexGrid1.src,
-              Astro.site || "https://chiwicolombia.com"
-            ).href,
-            brand: {
-              "@type": "Brand",
-              name: "Chiwi",
-            },
-            offers: {
-              "@type": "Offer",
-              price: "14900",
-              priceCurrency: "COP",
-              availability: "https://schema.org/InStock",
-              url: "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Perrito%20Cocker*",
-            },
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          item: {
-            "@type": "Product",
-            name: "Familia de Ositos",
-            description:
-              "Velas decorativas kawaii con diseño de familia de ositos hechas a mano en Colombia",
-            image: new URL(
-              IndexGrid2.src,
-              Astro.site || "https://chiwicolombia.com"
-            ).href,
-            brand: {
-              "@type": "Brand",
-              name: "Chiwi",
-            },
-            offers: {
-              "@type": "Offer",
-              price: "14900",
-              priceCurrency: "COP",
-              availability: "https://schema.org/InStock",
-              url: "https://wa.me/573102278592?text=Hola!%20Me%20interesa%20la%20*Familia%20de%20Ositos*",
-            },
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          item: {
-            "@type": "Product",
-            name: "capibara Mood Relax",
-            description:
-              "Vela kawaii artesanal con diseño de capibara acostado color beige hecha en Colombia",
-            image: new URL(
-              IndexGrid3.src,
-              Astro.site || "https://chiwicolombia.com"
-            ).href,
-            brand: {
-              "@type": "Brand",
-              name: "Chiwi",
-            },
-            offers: {
-              "@type": "Offer",
-              price: "15900",
-              priceCurrency: "COP",
-              availability: "https://schema.org/InStock",
-            },
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 4,
-          item: {
-            "@type": "Product",
-            name: "Capibara Cute",
-            description:
-              "Vela artesanal kawaii con diseño de capibara color café hecha a mano en Colombia",
-            image: new URL(
-              IndexGrid4.src,
-              Astro.site || "https://chiwicolombia.com"
-            ).href,
-            brand: {
-              "@type": "Brand",
-              name: "Chiwi",
-            },
-            offers: {
-              "@type": "Offer",
-              price: "15900",
-              priceCurrency: "COP",
-              availability: "https://schema.org/InStock",
-            },
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 5,
-          item: {
-            "@type": "Product",
-            name: "Cajita Recuerdame",
-            description:
-              "Kit completo con vela personalizada y empaque especial para ocasiones especiales hecho en Colombia",
-            image: new URL(
-              IndexGrid5.src,
-              Astro.site || "https://chiwicolombia.com"
-            ).href,
-            brand: {
-              "@type": "Brand",
-              name: "Chiwi",
-            },
-            offers: {
-              "@type": "Offer",
-              price: "32900",
-              priceCurrency: "COP",
-              availability: "https://schema.org/InStock",
-            },
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 6,
-          item: {
-            "@type": "Product",
-            name: "Gatito Personalizado",
-            description:
-              "Vela kawaii hecha a mano con diseño personalizado de gatito en Colombia",
-            image: new URL(
-              IndexGrid7.src,
-              Astro.site || "https://chiwicolombia.com"
-            ).href,
-            brand: {
-              "@type": "Brand",
-              name: "Chiwi",
-            },
-            offers: {
-              "@type": "Offer",
-              price: "24900",
-              priceCurrency: "COP",
-              availability: "https://schema.org/InStock",
-            },
-          },
-        },
-      ],
-    })}
-  />
-
-
-<!-- Sección Productos de Temporada - NAVIDAD -->
-<section
-  class="christmas-section relative py-24 overflow-hidden bg-gradient-to-b from-red-900 via-green-900 to-red-950"
->
-  <!-- Fondo con copos de nieve -->
-  <div class="absolute inset-0 snowflakes-background"></div>
-
-  <!-- Elementos decorativos flotantes REDUCIDOS -->
-  <div
-    class="absolute inset-0 pointer-events-none overflow-hidden"
-    aria-hidden="true"
-  >
-    <div
-      class="christmas-float"
-      style="top: 15%; left: 8%; animation-delay: 0s;"
-    >
-      🎄
-    </div>
-    <div
-      class="christmas-float"
-      style="top: 70%; right: 12%; animation-delay: 1.5s;"
-    >
-      ⛄
-    </div>
-    <div
-      class="christmas-float"
-      style="bottom: 25%; left: 18%; animation-delay: 3s;"
-    >
-      ❄️
-    </div>
-  </div>
-
-  <div class="relative max-w-7xl mx-auto px-4">
-    <!-- Header de la sección -->
-    <div class="text-center mb-16 relative">
-      <!-- Badge de temporada -->
-      <div
-        class="inline-flex items-center gap-2 bg-red-500/20 backdrop-blur-sm border-2 border-red-400 rounded-full px-6 py-2 mb-10 animate-pulse-subtle"
-      >
-        <span class="text-2xl" aria-hidden="true">🎄</span>
-        <span
-          class="text-red-300 font-bold text-sm uppercase tracking-wider"
-        >
-          Edición Limitada - Diciembre 2025
-        </span>
-        <span class="text-2xl" aria-hidden="true">🎅</span>
+        )}
       </div>
-
-      <!-- Espacio adicional -->
-      <div class="h-6"></div>
-
-      <!-- Título principal con efecto de brillo -->
-      <h2
-        class="text-5xl md:text-7xl font-black text-white mb-6 relative inline-block"
-      >
-        <span class="relative z-10">
-          Especial
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-green-400 to-gold-400 animate-gradient-flow"
-          >
-            Navidad
-          </span>
-        </span>
-        <div
-          class="absolute -inset-2 bg-gradient-to-r from-red-500/30 to-green-500/30 blur-2xl animate-glow"
-        >
-        </div>
-      </h2>
-
-      <!-- Subtítulo -->
-      <p
-        class="text-xl md:text-2xl text-green-200 max-w-3xl mx-auto leading-relaxed"
-      >
-        Velas mágicas que <span class="text-red-300 font-bold"
-          >brillan en la oscuridad</span
-        >. Perfectas para decorar tu Navidad con espíritu kawaii.
-      </p>
-
-      <!-- Contador regresivo -->
-      <div
-        class="mt-8 inline-flex items-center gap-3 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-red-500/30"
-      >
-        <ion-icon
-          name="time-outline"
-          class="text-2xl text-red-400"
-          aria-hidden="true"></ion-icon>
-        <span class="text-red-300 font-semibold"
-          >Cuenta regresiva para Navidad</span
-        >
-        <div class="flex gap-2" role="timer" aria-live="polite">
-          <div class="bg-red-500/20 rounded px-2 py-1">
-            <span
-              class="text-white font-bold text-sm countdown-days"
-              aria-label="días">00</span
-            >
-          </div>
-          <span class="text-white" aria-hidden="true">:</span>
-          <div class="bg-red-500/20 rounded px-2 py-1">
-            <span
-              class="text-white font-bold text-sm countdown-hours"
-              aria-label="horas">00</span
-            >
-          </div>
-          <span class="text-white" aria-hidden="true">:</span>
-          <div class="bg-red-500/20 rounded px-2 py-1">
-            <span
-              class="text-white font-bold text-sm countdown-minutes"
-              aria-label="minutos">00</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Grid de productos de temporada -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      <!-- Producto 1: Farolitos -->
-      <article class="group relative christmas-card">
-        <!-- Badge "NUEVO" -->
-        <div
-          class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-red-500 to-green-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
-        >
-          NUEVO
-        </div>
-
-        <!-- Badge "Brilla" -->
-        <div
-          class="absolute top-4 left-4 z-20 bg-green-900/90 backdrop-blur-sm text-green-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-green-400"
-        >
-          <ion-icon name="snow-outline" class="text-sm" aria-hidden="true"
-          ></ion-icon>
-          Diseños Únicos
-        </div>
-
-        <div
-          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-800/50 to-green-800/50 backdrop-blur-sm border-2 border-red-500/30 group-hover:border-green-400 transition-all duration-300"
-        >
-          <!-- Imagen del producto -->
-          <Image
-            src={christmasProduct1}
-            alt="Farolitos Navideños- Paquete de Siete Farolitos con diseños unicos"
-            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-            width={800}
-            height={800}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-          />
-
-          <!-- Efecto de brillo al hover -->
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-red-500/0 via-transparent to-green-500/0 group-hover:from-red-500/20 group-hover:to-green-500/20 transition-all duration-300"
-          >
-          </div>
-        </div>
-
-        <div class="mt-4 space-y-3">
-          <h3 class="text-2xl font-bold text-white">Farolitos Navideños</h3>
-          <p class="text-green-200 text-sm">
-            Perfectos para iluminar tu noche de velitas. Son 7, cada uno trae trazado una imagen y un deseo especial: Amor, Felicidad, Paz, Prosperidad, Esperanza, Unión y gratitud.
-          </p>
-
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-3xl font-bold text-red-400">$16.000</span>
-              <span class="text-gray-400 line-through text-sm ml-2"
-                >$19.200</span
-              >
-            </div>
-            <span
-              class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded"
-              aria-label="descuento">-20%</span
-            >
-          </div>
-
-          <a
-            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20de%20Farolitos%20de%20Navidad*%20($16.000)"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block w-full bg-gradient-to-r from-red-500 to-green-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-            aria-label="Pedir Farolito de Navidad por WhatsApp"
-          >
-            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
-            ></ion-icon>
-            Pedir ahora
-          </a>
-        </div>
-      </article>
-
-      <!-- Producto 2: Farolitos con Velitas -->
-      <article class="group relative christmas-card">
-        <div
-          class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-red-500 to-green-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
-        >
-          PACK ESPECIAL
-        </div>
-
-        <div
-          class="absolute top-4 left-4 z-20 bg-green-900/90 backdrop-blur-sm text-green-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-green-400"
-        >
-          <ion-icon name="snow-outline" class="text-sm" aria-hidden="true"
-          ></ion-icon>
-          Incluye Velitas aromátizadas
-        </div>
-
-        <div
-          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-800/50 to-green-800/50 backdrop-blur-sm border-2 border-red-500/30 group-hover:border-green-400 transition-all duration-300"
-        >
-          <Image
-            src={christmasProduct2}
-            alt="Farolitos Navideños con Velitas - Incluye Velitas Aroma a Natilla"
-            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-            width={800}
-            height={800}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-          />
-
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-red-500/0 via-transparent to-green-500/0 group-hover:from-red-500/20 group-hover:to-green-500/20 transition-all duration-300"
-          >
-          </div>
-        </div>
-
-        <div class="mt-4 space-y-3">
-          <h3 class="text-2xl font-bold text-white">Farolitos Navideños con Velitas</h3>
-          <p class="text-green-200 text-sm">
-            Este pack de Farolitos incluye cada uno una velita con un agradable aroma a Natilla... Si, créelo a Natilla!.
-          </p>
-
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-3xl font-bold text-red-400">$22.000</span>
-              <span class="text-gray-400 line-through text-sm ml-2"
-                >$26.400</span
-              >
-            </div>
-            <span
-              class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded"
-              aria-label="descuento">-20%</span
-            >
-          </div>
-
-          <a
-            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20de%20Farolitos%20con%20Velitas*%20($22.000)"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block w-full bg-gradient-to-r from-red-500 to-green-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-red-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-            aria-label="Pedir Paquete de Farolitos con Velitas"
-          >
-            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
-            ></ion-icon>
-            Pedir ahora
-          </a>
-        </div>
-      </article>
-
-      <!-- Producto 3: Pack Navideño Bolitas con Velita -->
-      <article
-        class="group relative christmas-card md:col-span-2 lg:col-span-1"
-      >
-        <div
-          class="absolute -top-3 -right-3 z-20 bg-gradient-to-r from-gold-500 to-red-500 text-white font-bold px-4 py-2 rounded-full shadow-lg text-sm animate-bounce-subtle"
-        >
-          PACK ESPECIAL
-        </div>
-
-        <div
-          class="absolute top-4 left-4 z-20 bg-green-900/90 backdrop-blur-sm text-green-200 font-semibold px-3 py-1 rounded-full text-xs flex items-center gap-1 border border-green-400"
-        >
-          <ion-icon name="snow-outline" class="text-sm" aria-hidden="true"
-          ></ion-icon>
-          Personaliza tus Bolitas
-        </div>
-
-        <div
-          class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-800/50 to-gold-800/50 backdrop-blur-sm border-2 border-red-500/30 group-hover:border-gold-400 transition-all duration-300"
-        >
-          <Image
-            src={christmasProduct3}
-            alt="Pack Navideño - Bolitas con Velita en forma de Arbol Navideño"
-            class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-            width={800}
-            height={800}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-          />
-
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-red-500/0 via-transparent to-gold-500/0 group-hover:from-red-500/20 group-hover:to-gold-500/20 transition-all duration-300"
-          >
-          </div>
-        </div>
-
-        <div class="mt-4 space-y-3">
-          <h3 class="text-2xl font-bold text-white">Pack Bolitas Navideñas</h3>
-          <p class="text-green-200 text-sm">
-            Este hermoso Pack te sorprendera con una Velita aromatizada en forma de Arbol junto a 4 Bolitas de Navidad Personalizadas.
-          </p>
-
-          <div class="flex items-center justify-between">
-            <div>
-              <span class="text-3xl font-bold text-red-400">$25.000</span>
-              <span class="text-gray-400 line-through text-sm ml-2"
-                >$32.500</span
-              >
-            </div>
-            <span
-              class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded"
-              aria-label="descuento">-30%</span
-            >
-          </div>
-
-          <a
-            href="https://wa.me/573102278592?text=Hola!%20Me%20interesa%20el%20*Pack%20de%20Bolitas%20Navideñas*%20($34.900)"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block w-full bg-gradient-to-r from-gold-500 to-red-500 text-white font-bold py-3 rounded-full text-center hover:scale-105 hover:shadow-lg hover:shadow-gold-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-            aria-label="Pedir Pack Bolitas Navideñas"
-          >
-            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"
-            ></ion-icon>
-            Pedir pack especial
-          </a>
-        </div>
-      </article>
-    </div>
-
-    <!-- Características especiales -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-      <div
-        class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-red-500/20 text-center"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-red-500 to-gold-500 rounded-full flex items-center justify-center mx-auto mb-4"
-        >
-          <ion-icon
-            name="snow-outline"
-            class="text-3xl text-white"
-            aria-hidden="true"></ion-icon>
-        </div>
-        <h4 class="text-white font-bold text-lg mb-2">
-          Aromas Navideños
-        </h4>
-        <p class="text-green-200 text-sm">
-          Nuestras velitas están aromatizadas con fragancias únicas que harán que tus recuerdos cobren vida esta época.
-        </p>
-      </div>
-
-      <div
-        class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-green-500/20 text-center"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-green-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4"
-        >
-          <ion-icon
-            name="calendar-outline"
-            class="text-3xl text-white"
-            aria-hidden="true"></ion-icon>
-        </div>
-        <h4 class="text-white font-bold text-lg mb-2">Edición Limitada</h4>
-        <p class="text-red-200 text-sm">
-          Solo disponibles en diciembre. ¡No te quedes sin el tuyo!
-        </p>
-      </div>
-
-      <div
-        class="bg-black/30 backdrop-blur-sm rounded-xl p-6 border border-gold-500/20 text-center"
-      >
-        <div
-          class="w-16 h-16 bg-gradient-to-br from-gold-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4"
-        >
-          <ion-icon
-            name="gift-outline"
-            class="text-3xl text-white"
-            aria-hidden="true"></ion-icon>
-        </div>
-        <h4 class="text-white font-bold text-lg mb-2">Diseños Unicos</h4>
-        <p class="text-gold-200 text-sm">
-          Adorables diseños navideños, hechos a mano y únicos en el mercado.
-        </p>
-      </div>
-    </div>
-
-    <!-- CTA Final -->
-    <div class="mt-16 text-center">
-      <a
-        href="https://wa.me/573102278592?text=Hola!%20Quiero%20ver%20todos%20los%20diseños%20de%20Navidad"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-3 bg-gradient-to-r from-red-500 via-green-500 to-gold-500 text-white font-bold px-10 py-5 rounded-full text-lg hover:scale-105 hover:shadow-2xl hover:shadow-red-500/50 transition-all duration-300"
-        aria-label="Ver más diseños de Navidad por WhatsApp"
-      >
-        <ion-icon
-          name="logo-whatsapp"
-          class="text-2xl animate-pulse"
-          aria-hidden="true"></ion-icon>
-        Ver más diseños de Navidad
-        <ion-icon
-          name="arrow-forward-outline"
-          class="text-xl"
-          aria-hidden="true"></ion-icon>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- Schema Markup -->
-<SeasonalProductSchema
-  products={[
-    {
-      name: "Árbol de Navidad Kawaii",
-      description:
-        "Vela fotoluminiscente con diseño kawaii de árbol navideño",
-      image: christmasProduct1Url,
-      price: "19900",
-      validUntil: "2025-12-25",
-    },
-    {
-      name: "Muñeco de Nieve Kawaii",
-      description:
-        "Vela fotoluminiscente con diseño kawaii de muñeco de nieve",
-      image: christmasProduct1Url,
-      price: "19900",
-      validUntil: "2025-12-25",
-    },
-    {
-      name: "Pack Dúo Navideño",
-      description: "Pack de dos velas fotoluminiscentes navideñas kawaii",
-      image: christmasProduct1Url,
-      price: "34900",
-      validUntil: "2025-12-25",
-    },
-  ]}
-/>
-
-<style>
-  /* Colores oro/dorado personalizados */
-  .text-gold-400 {
-    color: #fbbf24;
-  }
-  .from-gold-500 {
-    --tw-gradient-from: #f59e0b;
-  }
-  .to-gold-500 {
-    --tw-gradient-to: #f59e0b;
-  }
-  .to-gold-400 {
-    --tw-gradient-to: #fbbf24;
-  }
-  .border-gold-400 {
-    border-color: #fbbf24;
-  }
-  .border-gold-500 {
-    border-color: #f59e0b;
-  }
-  .text-gold-200 {
-    color: #fde68a;
-  }
-  .from-gold-800 {
-    --tw-gradient-from: #92400e;
-  }
-  .hover\:shadow-gold-500\/50:hover {
-    --tw-shadow-color: rgb(245 158 11 / 0.5);
-  }
-
-  /* Fondo de copos de nieve SIMPLIFICADO */
-  .snowflakes-background {
-    background-image: radial-gradient(2px 2px at 25% 35%, white, transparent),
-      radial-gradient(1px 1px at 75% 15%, white, transparent),
-      radial-gradient(1px 1px at 50% 70%, white, transparent),
-      radial-gradient(2px 2px at 15% 80%, white, transparent),
-      radial-gradient(1px 1px at 85% 60%, white, transparent);
-    background-size: 200% 200%;
-    animation: snowfall 10s ease-in-out infinite;
-    opacity: 0.4;
-  }
-
-  @keyframes snowfall {
-    0% {
-      background-position: 0% 0%;
-      opacity: 0.3;
-    }
-    50% {
-      background-position: 100% 100%;
-      opacity: 0.6;
-    }
-    100% {
-      background-position: 0% 0%;
-      opacity: 0.3;
-    }
-  }
-
-  /* Elementos flotantes navideños OPTIMIZADOS */
-  .christmas-float {
-    position: absolute;
-    font-size: 3rem;
-    animation: float-christmas 6s ease-in-out infinite;
-    opacity: 0.3;
-    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.4));
-  }
-
-  @keyframes float-christmas {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-25px) rotate(8deg);
-    }
-  }
-
-  /* Pulso sutil OPTIMIZADO */
-  @keyframes pulse-subtle {
-    0%,
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.85;
-      transform: scale(1.03);
-    }
-  }
-
-  .animate-pulse-subtle {
-    animation: pulse-subtle 4s ease-in-out infinite;
-  }
-
-  /* Bounce sutil OPTIMIZADO */
-  @keyframes bounce-subtle {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-4px);
-    }
-  }
-
-  .animate-bounce-subtle {
-    animation: bounce-subtle 3s ease-in-out infinite;
-  }
-
-  /* Gradiente fluido */
-  @keyframes gradient-flow {
-    0%,
-    100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  .animate-gradient-flow {
-    background-size: 200% 200%;
-    animation: gradient-flow 4s ease infinite;
-  }
-
-  /* Efecto de brillo OPTIMIZADO */
-  @keyframes glow {
-    0%,
-    100% {
-      opacity: 0.4;
-    }
-    50% {
-      opacity: 0.8;
-    }
-  }
-
-  .animate-glow {
-    animation: glow 3s ease-in-out infinite;
-  }
-
-  /* Tarjeta navideña */
-  .christmas-card {
-    animation: fadeInUp 0.8s ease-out;
-    animation-fill-mode: both;
-  }
-
-  .christmas-card:nth-child(1) {
-    animation-delay: 0.1s;
-  }
-
-  .christmas-card:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-
-  .christmas-card:nth-child(3) {
-    animation-delay: 0.3s;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Optimización para usuarios con prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    .christmas-float,
-    .animate-pulse-subtle,
-    .animate-bounce-subtle,
-    .animate-gradient-flow,
-    .animate-glow {
-      animation: none !important;
-    }
-
-    .christmas-card {
-      animation: none !important;
-      opacity: 1 !important;
-    }
-
-    .snowflakes-background {
-      animation: none !important;
-      opacity: 0.3 !important;
-    }
-  }
-
-  /* Optimización de rendimiento */
-  .group:hover .group-hover\:scale-105 {
-    will-change: transform;
-  }
-</style>
-
-<script>
-  // Contador regresivo con lazy loading
-  const christmasSection = document.querySelector(".christmas-section");
-
-  if (christmasSection) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            initChristmasCountdown();
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: "50px",
-      }
-    );
-
-    observer.observe(christmasSection);
-  }
-
-  function initChristmasCountdown() {
-    updateChristmasCountdown();
-    setInterval(updateChristmasCountdown, 60000); // Actualizar cada minuto
-  }
-
-  function updateChristmasCountdown() {
-    const now = new Date();
-    const currentYear = now.getFullYear();
-    const christmas = new Date(currentYear, 11, 25, 0, 0, 0); // Dic 25, 00:00:00
-
-    // Si ya pasó Navidad este año, calcular para el próximo
-    if (now > christmas) {
-      christmas.setFullYear(currentYear + 1);
-    }
-
-    const diff = christmas.getTime() - now.getTime();
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-    const daysEl = document.querySelector(".christmas-section .countdown-days");
-    const hoursEl = document.querySelector(".christmas-section .countdown-hours");
-    const minutesEl = document.querySelector(".christmas-section .countdown-minutes");
-
-    if (daysEl) daysEl.textContent = days.toString().padStart(2, "0");
-    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, "0");
-    if (minutesEl)
-      minutesEl.textContent = minutes.toString().padStart(2, "0");
-  }
-</script>
-
-  <!-- Sección Por qué elegir Chiwi -->
-  <section class="bg-white py-20" aria-labelledby="why-choose-heading">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="text-center mb-16">
-        <h2
-          id="why-choose-heading"
-          class="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
-        >
-          ¿Por qué elegir <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"
-            >Chiwi?</span
-          >
-        </h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Más que velas, creamos recuerdos que perduran para siempre
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center group">
-          <div
-            class="w-20 h-20 bg-gradient-to-r from-orange-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
-          >
-            <ion-icon name="brush-outline" class="text-3xl text-orange-500"
-            ></ion-icon>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-4">
-            100% Personalizable
-          </h3>
-          <p class="text-gray-600">
-            Cada vela se diseña según tu mascota o idea. No hay dos velas Chiwi
-            iguales en el mundo.
-          </p>
-        </div>
-
-        <div class="text-center group">
-          <div
-            class="w-20 h-20 bg-gradient-to-r from-green-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
-          >
-            <ion-icon name="leaf-outline" class="text-3xl text-green-500"
-            ></ion-icon>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-4">
-            Materiales Naturales
-          </h3>
-          <p class="text-gray-600">
-            Cera de  biodegradable y pinturas no tóxicas. Cuidamos tu salud
-            y la del planeta.
-          </p>
-        </div>
-
-        <div class="text-center group">
-          <div
-            class="w-20 h-20 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform"
-          >
-            <ion-icon name="heart-outline" class="text-3xl text-purple-500"
-            ></ion-icon>
-          </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-4">Hecho con Amor</h3>
-          <p class="text-gray-600">
-            Cada vela es pintada a mano con cariño y dedicación. Se nota en cada
-            detalle.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  ) : (
+    <ProductGrid />
+  )}
+
+<!-- ══ SECCIONES DE TEMPORADA (visibilidad controlada por JS según fecha) ══ -->
+<div data-season="halloween"  class="season-block" hidden> <SeasonHalloween /> </div>
+<div data-season="navidad"    class="season-block" hidden> <SeasonNavidad />   </div>
+<div data-season="dia-ninos"  class="season-block" hidden> <SeasonDiaNinos />  </div>
+<div data-season="dia-madres" class="season-block" hidden> <SeasonMadres />    </div>
+
+
+  <TrustSection />
 
   <!-- Sección Memoriales Mejorada -->
   <section class="relative py-20 overflow-hidden">
@@ -1851,23 +197,130 @@ import "swiper/css/navigation";
         </a>
       </div>
 
-      <div class="flex justify-center md:justify-end order-1 md:order-2">
-        <div class="relative group">
+      <div class="flex justify-center md:justify-end order-1 md:order-2 w-full">
+        <div class="relative group w-full">
           <div
             class="absolute -inset-4 bg-gradient-to-r from-pink-300 to-orange-300 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"
           >
           </div>
-          <Image
-            src={Indexmemoriales}
-            alt="Memorial personalizado para mascotas - Vela conmemorativa"
-            class="relative rounded-2xl w-full object-cover shadow-2xl"
-            width={1000}
-            height={800}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-          />
+          <!-- Carrusel Memoriales -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <swiper-container
+              id="memoriales-swiper"
+              slides-per-view="1"
+              loop="true"
+              speed="500"
+              autoplay-delay="4000"
+              autoplay-pause-on-mouse-enter="true"
+              css-mode="false"
+              class="w-full"
+              role="region"
+              aria-label="Galería de memoriales para mascotas Chiwi Colombia"
+              aria-roledescription="carrusel"
+            >
+              <swiper-slide aria-roledescription="diapositiva" aria-label="1 de 4">
+                <Image
+                  src={memorialPortada}
+                  alt="Memorial personalizado para mascota - Vela artesanal conmemorativa hecha a mano en Colombia"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="2 de 4">
+                <Image
+                  src={memorialSofi}
+                  alt="Recordatorio Sofi - vela memorial kawaii personalizada con foto de mascota hecha a mano"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="3 de 4">
+                <Image
+                  src={memorialMafi}
+                  alt="Velita Mafi - memorial artesanal personalizado para recordar a tu peludito favorito"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="4 de 4">
+                <Image
+                  src={memorialMix}
+                  alt="Mix memoriales Chiwi Colombia - velas artesanales personalizadas para perros y gatos"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="4 de 4">
+                <Image
+                  src={memorialMixdos}
+                  alt="Mix memoriales Chiwi Colombia - velas artesanales personalizadas para perros y gatos"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+            </swiper-container>
+
+            <!-- Botón anterior -->
+            <button
+              id="mem-prev"
+              type="button"
+              aria-label="Ver imagen anterior de memoriales"
+              class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+
+            <!-- Botón siguiente -->
+            <button
+              id="mem-next"
+              type="button"
+              aria-label="Ver siguiente imagen de memoriales"
+              class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+            <!-- Dots de paginación -->
+            <div
+              class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2 bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/30"
+              role="tablist"
+              aria-label="Navegar entre imágenes de memoriales"
+            >
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:32px;background:white;" role="tab" aria-selected="true" aria-label="Imagen 1 de 4" data-index="0"></button>
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 2 de 4" data-index="1"></button>
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 3 de 4" data-index="2"></button>
+              <button type="button" class="mem-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 4 de 4" data-index="3"></button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1883,23 +336,103 @@ import "swiper/css/navigation";
     <div
       class="relative w-full max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
     >
-      <div class="flex justify-center md:justify-start order-1">
-        <div class="relative group">
+      <div class="flex justify-center md:justify-start order-1 w-full">
+        <div class="relative group w-full">
           <div
             class="absolute -inset-4 bg-gradient-to-r from-green-300 to-blue-300 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity"
           >
           </div>
-          <Image
-            src={Indexrecordatorios}
-            alt="Velas personalizadas para celebraciones - Recordatorios únicos"
-            class="relative rounded-2xl w-full object-cover shadow-2xl"
-            width={1000}
-            height={800}
-            loading="lazy"
-            decoding="async"
-            format="webp"
-            quality={85}
-          />
+          <!-- Carrusel Recordatorios -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+            <swiper-container
+              id="recordatorios-swiper"
+              slides-per-view="1"
+              loop="true"
+              speed="500"
+              autoplay-delay="4000"
+              autoplay-pause-on-mouse-enter="true"
+              css-mode="false"
+              class="w-full"
+              role="region"
+              aria-label="Galería de recordatorios Chiwi Colombia"
+              aria-roledescription="carrusel"
+            >
+              <swiper-slide aria-roledescription="diapositiva" aria-label="1 de 3">
+                <Image
+                  src={fotoArtesano}
+                  alt="Artesana Chiwi Colombia creando velas recordatorio artesanales personalizadas a mano"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="eager"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="2 de 3">
+                <Image
+                  src={recordatorioMalu}
+                  alt="Recordatorio personalizado Malu - vela kawaii artesanal hecha a mano en Colombia para honrar un ser querido"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+              <swiper-slide aria-roledescription="diapositiva" aria-label="3 de 3">
+                <Image
+                  src={recordatorioDiaMujer}
+                  alt="Recordatorio Día de la Mujer - velas artesanales personalizadas para celebraciones especiales en Colombia"
+                  class="w-full h-72 sm:h-96 md:h-[450px] object-cover"
+                  width={1000}
+                  height={800}
+                  loading="lazy"
+                  decoding="async"
+                  format="webp"
+                  quality={85}
+                />
+              </swiper-slide>
+            </swiper-container>
+
+            <!-- Botón anterior -->
+            <button
+              id="rec-prev"
+              type="button"
+              aria-label="Ver imagen anterior de recordatorios"
+              class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+
+            <!-- Botón siguiente -->
+            <button
+              id="rec-next"
+              type="button"
+              aria-label="Ver siguiente imagen de recordatorios"
+              class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/70 hover:bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200"
+            >
+              <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+
+            <!-- Dots de paginación -->
+            <div
+              class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2 bg-white/20 backdrop-blur-sm rounded-xl px-3 py-2 border border-white/30"
+              role="tablist"
+              aria-label="Navegar entre imágenes de recordatorios"
+            >
+              <button type="button" class="rec-dot h-2 rounded-full transition-all duration-300" style="width:32px;background:white;" role="tab" aria-selected="true" aria-label="Imagen 1 de 3" data-index="0"></button>
+              <button type="button" class="rec-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 2 de 3" data-index="1"></button>
+              <button type="button" class="rec-dot h-2 rounded-full transition-all duration-300" style="width:8px;background:rgba(255,255,255,0.5);" role="tab" aria-selected="false" aria-label="Imagen 3 de 3" data-index="2"></button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1975,107 +508,143 @@ import "swiper/css/navigation";
     </div>
   </section>
 
+  <!-- Script carrusel memoriales -->
+  <script>
+    (function () {
+      function initMemorialesCarousel() {
+        const swiperEl = document.getElementById("memoriales-swiper") as any;
+        const prevBtn = document.getElementById("mem-prev");
+        const nextBtn = document.getElementById("mem-next");
+        const dots = Array.from(document.querySelectorAll(".mem-dot")) as HTMLElement[];
+
+        if (!swiperEl) return;
+
+        function updateDots(realIndex: number) {
+          dots.forEach((dot, i) => {
+            if (i === realIndex) {
+              dot.style.width = "32px";
+              dot.style.background = "white";
+              dot.setAttribute("aria-selected", "true");
+            } else {
+              dot.style.width = "8px";
+              dot.style.background = "rgba(255,255,255,0.5)";
+              dot.setAttribute("aria-selected", "false");
+            }
+          });
+        }
+
+        function waitForSwiper() {
+          if (swiperEl.swiper) {
+            const swiper = swiperEl.swiper;
+            prevBtn?.addEventListener("click", () => swiper.slidePrev());
+            nextBtn?.addEventListener("click", () => swiper.slideNext());
+            dots.forEach((dot, i) => {
+              dot.addEventListener("click", () => swiper.slideToLoop(i));
+            });
+            swiperEl.addEventListener("swiperslidechange", () => {
+              updateDots(swiperEl.swiper.realIndex);
+            });
+          } else {
+            setTimeout(waitForSwiper, 80);
+          }
+        }
+
+        waitForSwiper();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initMemorialesCarousel);
+      } else {
+        initMemorialesCarousel();
+      }
+    })();
+  </script>
+
+  <!-- Script carrusel recordatorios -->
+  <script>
+    (function () {
+      function initRecordatoriosCarousel() {
+        const swiperEl = document.getElementById("recordatorios-swiper") as any;
+        const prevBtn = document.getElementById("rec-prev");
+        const nextBtn = document.getElementById("rec-next");
+        const dots = Array.from(document.querySelectorAll(".rec-dot")) as HTMLElement[];
+
+        if (!swiperEl) return;
+
+        function updateDots(realIndex: number) {
+          dots.forEach((dot, i) => {
+            if (i === realIndex) {
+              dot.style.width = "32px";
+              dot.style.background = "white";
+              dot.setAttribute("aria-selected", "true");
+            } else {
+              dot.style.width = "8px";
+              dot.style.background = "rgba(255,255,255,0.5)";
+              dot.setAttribute("aria-selected", "false");
+            }
+          });
+        }
+
+        function waitForSwiper() {
+          if (swiperEl.swiper) {
+            const swiper = swiperEl.swiper;
+            prevBtn?.addEventListener("click", () => swiper.slidePrev());
+            nextBtn?.addEventListener("click", () => swiper.slideNext());
+            dots.forEach((dot, i) => {
+              dot.addEventListener("click", () => swiper.slideToLoop(i));
+            });
+            swiperEl.addEventListener("swiperslidechange", () => {
+              updateDots(swiperEl.swiper.realIndex);
+            });
+          } else {
+            setTimeout(waitForSwiper, 80);
+          }
+        }
+
+        waitForSwiper();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initRecordatoriosCarousel);
+      } else {
+        initRecordatoriosCarousel();
+      }
+    })();
+  </script>
+
   <!-- Sección Testimonios -->
   <TestimonialsSection />
 
-  <!-- Sección Newsletter Mejorada y Segura -->
-<section class="relative w-full py-20 px-4 overflow-hidden">
-  <div
-    class="absolute inset-0 bg-gradient-to-br from-[#F4B08A] via-[#F49C6E] to-[#E1814C]"
-  ></div>
-  <div
-    class="absolute inset-0 opacity-10"
-    style="background-image: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px); background-size: 20px 20px;"
-  ></div>
+  <NewsletterSection />
 
-  <div
-    class="relative max-w-3xl mx-auto flex flex-col items-center text-center gap-8"
-  >
-    <div class="space-y-4">
-      <span
-        class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white"
-      >
-        Únete a la familia Chiwi
-      </span>
-      <h2 class="text-3xl md:text-4xl font-bold text-white">
-        No te pierdas nuestras ediciones especiales
-      </h2>
-    </div>
+  <FAQSection />
 
-    <p class="text-white/90 leading-relaxed text-lg max-w-2xl">
-      Sé el primero en conocer nuestros nuevos diseños. Suscríbete y recibe
-      descuentos exclusivos, lanzamientos anticipados y tips para que tus
-      velitas cuenten aún más historias.
-    </p>
+  <script>
+    (function () {
+      // Configuración de temporadas — sincronizada con src/data/seasons.ts
+      var seasons = [
+        { id: "halloween",  sm: 10, sd: 1,  em: 10, ed: 31 },
+        { id: "navidad",    sm: 11, sd: 15, em: 12, ed: 31 },
+        { id: "dia-ninos",  sm: 3,  sd: 1,  em: 3,  ed: 30 },
+        { id: "dia-madres", sm: 5,  sd: 1,  em: 5,  ed: 31 },
+      ];
 
-    <!-- ✅ Newsletter con protección -->
-    <form
-      id="newsletter-form"
-      class="w-full flex flex-col md:flex-row items-center gap-4"
-      novalidate
-    >
-      <!-- 🕵️ Honeypot invisible (anti-bots) -->
-      <input type="text" name="nickname" style="display:none" tabindex="-1" autocomplete="off" />
+      var now   = new Date();
+      var month = now.getMonth() + 1; // 1-12
+      var day   = now.getDate();
 
-      <input
-        type="email"
-        name="email"
-        placeholder="tu@correo.com"
-        required
-        aria-label="Correo electrónico"
-        autocomplete="off"
-        class="w-full md:flex-1 px-6 py-4 rounded-full border-2 border-white/30 bg-white/90 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:bg-white font-medium text-gray-900"
-      />
+      var active = seasons.find(function (s) {
+        var afterStart = month > s.sm || (month === s.sm && day >= s.sd);
+        var beforeEnd  = month < s.em || (month === s.em && day <= s.ed);
+        return afterStart && beforeEnd;
+      });
 
-      <button
-        type="submit"
-        aria-label="Suscribirse al newsletter"
-        class="group flex items-center justify-center gap-3 bg-white text-[#E1814C] font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300 w-full md:w-auto"
-      >
-        <ion-icon
-          name="paper-plane-outline"
-          class="text-xl group-hover:translate-x-1 transition-transform"
-        ></ion-icon>
-        Suscribirme
-      </button>
-    </form>
-
-    <p class="text-white/70 text-sm">
-      Respetamos tu privacidad. Sin spam, solo amor y velas kawaii.
-    </p>
-  </div>
-</section>
-
-<!-- ✅ JS seguro (protege sin backend) -->
-<script>
-  const form = document.getElementById('newsletter-form') as HTMLFormElement;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const emailInput = form.querySelector('[name="email"]') as HTMLInputElement;
-    const trapInput = form.querySelector('[name="nickname"]') as HTMLInputElement;
-
-    const email = emailInput.value.trim();
-    const trap = trapInput.value.trim();
-
-    if (trap !== '') return; // Bot detectado
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert('Por favor, ingresa un correo válido.');
-      return;
-    }
-
-    const safeEmail = email.replace(/[<>"]/g, '');
-    // Meta Pixel: Lead — optimiza campañas de captación de emails
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'Newsletter Chiwi' });
-    }
-    alert(`¡Gracias! Te avisaremos a ${safeEmail} cuando haya novedades 🌟`);
-    form.reset();
-  });
-</script>
+      if (active) {
+        var block = document.querySelector('[data-season="' + active.id + '"]');
+        if (block) block.removeAttribute("hidden");
+      }
+    })();
+  </script>
 
 </Layout>
 

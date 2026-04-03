@@ -1,0 +1,292 @@
+---
+import { Image } from "astro:assets";
+import { products } from "../data/products";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// ──────────────────────────────────────────────────
+// CONFIGURACIÓN MANUAL DEL GRID — edita aquí
+// Slugs de los productos que aparecen en la landing
+// El orden determina el orden visual (izq → der, arriba → abajo)
+// Layout desktop: 4 columnas
+//   Fila 1: slug[0](1col) + slug[1](2col WIDE) + slug[2](1col) = 4 ✓
+//   Fila 2: slug[3](1col) + slug[4](1col) + slug[5](1col) + tarjeta CTA(1col) = 4 ✓
+const GRID_SLUGS: string[] = [
+  "perrito-cocker",
+  "familia-de-ositos",   // ← este es el ancho (WIDE_SLUG)
+  "capibara-mood-relax",
+  "capibara-cute",
+  "cajita-recuerdame",
+  "gatito-personalizado",
+];
+
+// Slug del producto que ocupa 2 columnas en desktop (bento)
+const WIDE_SLUG = "familia-de-ositos";
+// ──────────────────────────────────────────────────
+
+const featuredProducts = GRID_SLUGS
+  .map((slug) => products.find((p) => p.slug === slug))
+  .filter(Boolean) as (typeof products[number])[];
+
+const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
+---
+
+<!-- Sección Productos Populares -->
+<section
+  id="productos"
+  class="w-full min-h-[60vh] py-16 flex items-center"
+  aria-labelledby="productos-heading"
+>
+  <div class="w-full max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2
+        id="productos-heading"
+        class="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+      >
+        Productos <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500"
+          >Populares</span
+        >
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Descubre nuestras velas más amadas por clientes de toda Colombia
+      </p>
+    </div>
+
+    <!-- Grid Desktop -->
+    <div
+      class="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+    >
+      {
+        featuredProducts.map((product) => (
+          <article
+            class={`flex flex-col${product.slug === WIDE_SLUG ? " lg:col-span-2" : ""}`}
+            itemscope
+            itemtype="https://schema.org/Product"
+          >
+            <meta itemprop="name" content={product.name} />
+            <meta itemprop="description" content={product.description} />
+            <meta itemprop="brand" content="Chiwi Colombia" />
+
+            <a
+              href={`/productos/${product.slug}`}
+              class="block w-full relative group"
+              itemprop="url"
+            >
+              <Image
+                src={product.image}
+                alt={product.alt}
+                class="w-full h-64 object-cover rounded-xl transition-transform group-hover:scale-105"
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
+                format="webp"
+                quality={85}
+                itemprop="image"
+              />
+              {product.badge && (
+                <span class="absolute top-2 left-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                  {product.badge}
+                </span>
+              )}
+            </a>
+            <div class="mt-3 space-y-1">
+              <h3 class="font-bold text-lg" itemprop="name">
+                {product.name}
+              </h3>
+              <p
+                class="font-semibold text-gray-800"
+                itemprop="offers"
+                itemscope
+                itemtype="https://schema.org/Offer"
+              >
+                <span>
+                  ${product.price.toLocaleString("es-CO")}
+                </span>
+                <meta itemprop="price" content={product.price.toString()} />
+                <meta itemprop="priceCurrency" content="COP" />
+                <meta
+                  itemprop="availability"
+                  content="https://schema.org/InStock"
+                />
+              </p>
+            </div>
+            <a
+              href={`/productos/${product.slug}`}
+              class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+              aria-label={`Ver detalles de ${product.name}`}
+            >
+              <ion-icon
+                name="eye-outline"
+                class="text-xl"
+                aria-hidden="true"
+              />
+              <span class="text-sm">Ver detalles</span>
+            </a>
+          </article>
+        ))
+      }
+
+      <!-- Tarjeta CTA — ocupa el 7mo slot (completa la fila 2 del bento) -->
+      <article class="flex flex-col">
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Tengo%20una%20idea%20para%20una%20vela%20personalizada%20%F0%9F%95%AF%EF%B8%8F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block w-full relative group h-64 rounded-xl overflow-hidden"
+          aria-label="Pedir vela personalizada por WhatsApp"
+        >
+          <div class="absolute inset-0 bg-gradient-to-br from-orange-400 via-pink-400 to-purple-400 transition-all group-hover:scale-105 duration-300" />
+          <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 gap-3">
+            <span class="text-4xl">🕯️</span>
+            <p class="font-bold text-lg leading-tight">¿Tienes una idea en mente?</p>
+            <p class="text-sm opacity-90">Creamos la vela que imaginas, hecha solo para ti</p>
+            <span class="mt-1 flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-full border border-white/30">
+              <ion-icon name="logo-whatsapp" class="text-base" aria-hidden="true" />
+              Cuéntanos tu idea
+            </span>
+          </div>
+        </a>
+        <div class="mt-3 space-y-1">
+          <h3 class="font-bold text-lg">Diseño Personalizado</h3>
+          <p class="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">
+            Precio según diseño
+          </p>
+        </div>
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Tengo%20una%20idea%20para%20una%20vela%20personalizada%20%F0%9F%95%AF%EF%B8%8F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md hover:scale-105 transition-all"
+          aria-label="Pedir diseño personalizado por WhatsApp"
+        >
+          <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true" />
+          <span class="text-sm">Pedir ahora</span>
+        </a>
+      </article>
+    </div>
+
+    <!-- Carrusel móvil -->
+    <div class="block sm:hidden">
+      <swiper-container
+        slides-per-view="1"
+        space-between="20"
+        pagination="true"
+        navigation="false"
+        loop="true"
+        speed="400"
+        touch-ratio="1"
+        threshold="5"
+        resistance="true"
+        resistance-ratio="0.85"
+        free-mode="false"
+        css-mode="false"
+        class="w-full"
+      >
+        {
+          featuredProducts.map((product) => (
+            <swiper-slide class="flex flex-col items-center pb-12">
+              <div class="w-full px-4">
+                <a href={`/productos/${product.slug}`}>
+                  <img
+                    src={product.image.src}
+                    alt={product.alt}
+                    class="rounded-xl w-full h-64 object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+              <div class="mt-3 text-center w-full px-4 space-y-2">
+                <p class="font-bold text-lg">{product.name}</p>
+                <p class="font-semibold text-gray-800">
+                  ${product.price.toLocaleString("es-CO")}
+                </p>
+                <a
+                  href={`/productos/${product.slug}`}
+                  class="mt-3 w-full flex items-center justify-center gap-2 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-semibold px-4 py-2.5 rounded-full shadow-md"
+                  aria-label={`Ver detalles de ${product.name}`}
+                >
+                  <ion-icon
+                    name="eye-outline"
+                    class="text-xl"
+                    aria-hidden="true"
+                  />
+                  <span class="text-sm">Ver detalles</span>
+                </a>
+              </div>
+            </swiper-slide>
+          ))
+        }
+      </swiper-container>
+
+      <script>
+        import { register } from "swiper/element/bundle";
+        register();
+      </script>
+    </div>
+
+    <!-- Botón Ver más -->
+    <div class="mt-16 flex justify-center">
+      <a
+        href="/productos"
+        class="group flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 hover:shadow-orange-500/25 transition-all duration-300"
+        aria-label="Ver más productos de Chiwi"
+      >
+        Ver más productos
+        <ion-icon
+          name="arrow-forward-outline"
+          class="text-xl group-hover:translate-x-1 transition-transform"
+          aria-hidden="true"></ion-icon>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Schema Markup Productos Populares -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Productos Populares Chiwi",
+    itemListElement: featuredProducts.map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: product.name,
+        description: product.description,
+        image: new URL(product.image.src, baseUrl).href,
+        brand: {
+          "@type": "Brand",
+          name: "Chiwi Colombia",
+        },
+        offers: {
+          "@type": "Offer",
+          price: product.price.toString(),
+          priceCurrency: "COP",
+          availability: "https://schema.org/InStock",
+        },
+      },
+    })),
+  })}
+/>
+
+<style is:global>
+  /* Optimizaciones para fluidez del carrusel móvil */
+  swiper-container {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  swiper-slide {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  swiper-container::part(wrapper) {
+    overscroll-behavior: contain;
+  }
+</style>

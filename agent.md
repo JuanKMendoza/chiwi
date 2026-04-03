@@ -33,8 +33,8 @@ Ejemplo: "Investiga como integrar Mercado Pago en un sitio Astro estatico"
 - Listar todos los componentes y sus dependencias antes de refactorizar
 - Encontrar todos los archivos que importan `products.ts`
 - Revisar que paginas tienen Schema markup implementado
-- Identificar imagenes `.jpg` que deben convertirse a `.webp`
-- Mapear todas las secciones de `index.astro` antes de dividirla en componentes
+- Identificar las 14 imagenes `.jpg` que deben convertirse a `.webp`
+- Mapear las secciones que quedan inline en `index.astro` (mascotas, recordatorios — temporadas ya extraidas)
 
 ```
 Ejemplo: "Encuentra todos los componentes .astro que usan el Layout base"
@@ -50,15 +50,16 @@ Ejemplo: "Lista todas las imagenes que no son .webp en src/assets/images/"
 **Cuando usarlo en Chiwi:**
 - **Carrito de compras:** Planificar como agregar productos al carrito y generar mensaje WhatsApp con resumen del pedido
 - **Pasarela de pagos:** Disenar la integracion de Mercado Pago o Wompi con el flujo actual
-- **Refactorizacion:** Planificar como dividir `index.astro` (2370 lineas) en componentes (HeroSection, TrustSection, ProductGrid, TestimonialsSection, NewsletterSection)
+- **NewsletterSection:** Planificar formulario de captura + integracion Mailchimp con Astro SSG
 - **Personalizacion interactiva:** Arquitectura del configurador visual de velas con selector de colores/disenos y preview en tiempo real
 - **CMS:** Planificar migracion de `products.ts` a Sanity o Strapi
 - **Temporadas:** Disenar componentes reutilizables para nuevas temporadas (San Valentin, Dia de la Madre)
+- **Extraccion restante de `index.astro`** — Planificar como extraer las secciones de Mascotas y Recordatorios que quedan inline (~649 lineas actuales; temporadas ya extraidas)
 
 ```
-Ejemplo: "Planifica como dividir index.astro en componentes manteniendo toda la funcionalidad"
 Ejemplo: "Como deberia implementarse el carrito con generacion automatica de mensaje WhatsApp?"
 Ejemplo: "Diseña la arquitectura del configurador visual de personalizacion de velas"
+Ejemplo: "Planifica como extraer las secciones de temporada inline que quedan en index.astro"
 ```
 
 ---
@@ -70,8 +71,8 @@ Ejemplo: "Diseña la arquitectura del configurador visual de personalizacion de 
 - Auditar el sitio completo antes de un lanzamiento de temporada
 - Verificar que todos los productos tienen schema `Product` correcto
 - Revisar que los meta tags esten bien en todas las paginas
-- Analizar Core Web Vitals (importante dado el tamano de `index.astro`)
-- Verificar impacto SEO despues de agregar nuevas paginas (testimonios, FAQ, sobre nosotros)
+- Analizar Core Web Vitals post-refactorizacion (index.astro bajo de ~2370 a ~649 lineas)
+- Verificar impacto SEO de los nuevos componentes: `FAQSection`, `TestimonialsSection`
 
 ```
 Ejemplo: "/seo-audit https://chiwicolombia.com"
@@ -86,13 +87,13 @@ Ejemplo: "/seo-audit https://chiwicolombia.com"
 - Generar schema `Product` para cada vela del catalogo (precio en COP)
 - Validar el schema `Organization` en `Layout.astro`
 - Agregar schema `BreadcrumbList` a las paginas de productos
-- Generar schema `FAQPage` cuando se implemente la seccion de preguntas frecuentes
+- **Generar schema `FAQPage`** para el `FAQSection.astro` ya implementado
 - Agregar schema `LocalBusiness` para Chiwi Colombia
-- Generar schema `Review` / `AggregateRating` cuando se implemente el sistema de resenas
+- Generar schema `Review` / `AggregateRating` cuando los testimonios sean datos reales
 
 ```
+Ejemplo: "Genera schema FAQPage con las 10 preguntas de FAQSection.astro"
 Ejemplo: "Genera schema Product para el Gatito Personalizado con precio en COP"
-Ejemplo: "Genera schema FAQPage con las 10 preguntas frecuentes de Chiwi"
 Ejemplo: "Valida el schema Organization de Layout.astro"
 ```
 
@@ -102,10 +103,9 @@ Ejemplo: "Valida el schema Organization de Layout.astro"
 **Uso:** Evaluar E-E-A-T, legibilidad, profundidad de contenido, deteccion de contenido delgado.
 
 **Cuando usarlo en Chiwi:**
-- Revisar los articulos del blog (`/blog/*`) para mejorar su calidad SEO
+- Revisar los 5 articulos del blog (`/blog/*`) para mejorar su calidad SEO
 - Evaluar las descripciones de productos (`longDescription`) para conversion y SEO
 - Planificar nuevos articulos de blog: "Como cuidar tus velas artesanales", "Proceso de creacion", "Ideas de regalo"
-- Evaluar si la pagina "Sobre Nosotros" (cuando se cree) tiene suficiente storytelling de marca
 - Optimizar para SEO local: "velas artesanales Bogota", "velas kawaii Colombia"
 
 ```
@@ -120,10 +120,9 @@ Ejemplo: "Sugiere estructura para articulo 'Historia detras de cada diseno Chiwi
 
 **Cuando usarlo en Chiwi:**
 - Auditar que todos los `alt` de productos tengan keywords relevantes
-- **Identificar imagenes `.jpg` que deben convertirse a `.webp`** (problema conocido: `Perro_vela.jpg`, `grupo_ositos.jpg`, `capibara_beige_acostado.jpg`, etc.)
+- **Identificar y planificar conversion de las 14 imagenes `.jpg` pendientes** a `.webp`
 - Revisar que se use `loading="lazy"` en imagenes fuera del viewport
 - Detectar imagenes que podrian causar CLS (Cumulative Layout Shift)
-- Revisar optimizacion de imagenes en paginas de producto despues de agregar galeria con zoom
 
 ```
 Ejemplo: "Audita los alt text de todos los productos en products.ts"
@@ -138,10 +137,9 @@ Ejemplo: "Encuentra todas las imagenes .jpg en src/assets que deberian ser .webp
 **Cuando usarlo en Chiwi:**
 - Verificar que el `robots.txt` y `sitemap.xml` estan correctos
 - Auditar la estructura de URLs de productos (`/productos/[slug]`)
-- Revisar seguridad y headers HTTP
 - **Analizar performance mobile** (critico: 60%+ del trafico llega por WhatsApp desde movil)
-- Verificar que la refactorizacion de `index.astro` no rompe el rendimiento
-- Revisar que paginas nuevas (FAQ, testimonios, sobre nosotros) esten correctamente indexadas
+- Verificar que la refactorizacion de `index.astro` no rompio el rendimiento
+- Verificar que los nuevos componentes (`FAQSection`, `TestimonialsSection`) esten correctamente indexados
 
 ---
 
@@ -151,8 +149,7 @@ Ejemplo: "Encuentra todas las imagenes .jpg en src/assets que deberian ser .webp
 **Cuando usarlo en Chiwi:**
 - Generar `sitemap.xml` con todas las rutas del sitio
 - Verificar que los productos nuevos queden incluidos
-- Actualizar el sitemap despues de agregar paginas de FAQ, testimonios o sobre nosotros
-- Validar el formato del sitemap existente
+- Actualizar el sitemap despues de agregar paginas nuevas
 
 ---
 
@@ -160,11 +157,10 @@ Ejemplo: "Encuentra todas las imagenes .jpg en src/assets que deberian ser .webp
 **Uso:** Analisis SEO profundo de una sola pagina.
 
 **Cuando usarlo en Chiwi:**
-- Analizar la pagina de un producto especifico antes de publicarlo
-- Revisar la pagina de inicio (`/`) despues de la refactorizacion
+- Analizar la pagina de inicio (`/`) post-refactorizacion
+- Revisar la pagina de un producto especifico antes de publicarlo
 - Optimizar una pagina de blog especifica
-- Analizar la nueva pagina "Sobre Nosotros" cuando se cree
-- Revisar la pagina de FAQ antes de publicarla
+- **Revisar la nueva `FAQSection`** — verificar que el contenido esta correctamente estructurado para SEO
 
 ```
 Ejemplo: "/seo-page /productos/gatito-personalizado"
@@ -188,17 +184,15 @@ Ejemplo: "/seo-page /blog/velas-aromaticas"
 **Uso:** Disenar dashboards, paneles, apps y herramientas interactivas.
 
 **Cuando usarlo en Chiwi:**
-- **Disenar el carrito de compras:** Panel lateral (drawer) con resumen, cantidades y boton "Pedir por WhatsApp"
+- **Carrito de compras:** Panel lateral (drawer) con resumen, cantidades y boton "Pedir por WhatsApp"
 - **Configurador visual de velas:** Interfaz de personalizacion con selector de colores, texto y preview en tiempo real
 - **Panel de administracion:** Dashboard para gestionar productos, pedidos e inventario
-- **Pagina de seguimiento de pedido:** UI de tracking con estados del pedido
-- **Pop-up de email marketing:** Diseno del modal de descuento por suscripcion
-- **Seccion de testimonios:** Layout para mostrar resenas con fotos y estrellas
-- **Guia de regalos:** Interfaz del quiz interactivo "Encuentra el regalo perfecto"
+- **NewsletterSection:** Diseno del pop-up o seccion de descuento por suscripcion
+- **Pagina "Sobre Nosotros":** Layout para historia de la marca con fotos y timeline
 
 ```
 Ejemplo: "Diseña la UI del carrito lateral (drawer) para Chiwi con boton de WhatsApp"
-Ejemplo: "Diseña la interfaz del configurador de personalizacion de velas kawaii"
+Ejemplo: "Diseña el pop-up de descuento por suscripcion al newsletter de Chiwi"
 ```
 
 ---
@@ -216,13 +210,13 @@ Ejemplo: "Diseña la interfaz del configurador de personalizacion de velas kawai
 ## Flujos Recomendados por Tarea
 
 ### Agregar un nuevo producto de temporada
-1. `Plan` → Planificar estructura del producto y si requiere componente nuevo
-2. Editar `products.ts` y agregar imagenes en `.webp`
-3. `seo-schema` → Generar schema Product para el nuevo item
-4. `seo-images` → Verificar alt texts de las nuevas imagenes
+1. Editar `products.ts` con el nuevo producto (imagen en `.webp`)
+2. `seo-schema` → Generar schema Product para el nuevo item
+3. `seo-images` → Verificar alt texts de las nuevas imagenes
+4. Verificar que la seccion de envios en `[slug].astro` muestra datos consistentes con el nuevo producto
 
 ### Implementar el carrito de compras (Prioridad ALTA)
-1. `Plan` → Disenar la arquitectura: localStorage, componente Drawer, generacion de mensaje WhatsApp
+1. `Plan` → Disenar la arquitectura: estado, componente Drawer, generacion de mensaje WhatsApp
 2. `interface-design` → Disenar la UI del carrito
 3. Implementar con Claude Code
 4. `seo-technical` → Verificar que no afecta el SEO ni la performance
@@ -233,40 +227,65 @@ Ejemplo: "Diseña la interfaz del configurador de personalizacion de velas kawai
 3. `interface-design` → Disenar la UI del checkout
 4. Implementar con Claude Code
 
-### Refactorizar `index.astro` (Prioridad MEDIA)
-1. `Explore` → Mapear todas las secciones actuales del archivo
-2. `Plan` → Disenar la division en componentes sin romper funcionalidad
-3. Crear componentes: `HeroSection`, `TrustSection`, `ProductGrid`, `SeasonalSection`, `TestimonialsSection`, `NewsletterSection`
-4. `seo-technical` → Verificar que el rendimiento no empeoro
-5. `seo-page` → Auditoria de la pagina de inicio post-refactorizacion
+### Conectar NewsletterSection al backend de email (Prioridad CRITICA)
+⚠️ `NewsletterSection.astro` ya existe en `src/components/` y esta incluido en `index.astro`.
+El formulario tiene: campo email, validacion, honeypot anti-bots y tracking Meta Pixel (Lead).
+**El problema: al hacer submit solo ejecuta un `alert()` — no guarda ningun email en ningun lado.**
 
-### Agregar testimonios (Quick Win — 1-2 dias)
-1. Recopilar testimonios reales por WhatsApp (fotos + comentario)
-2. `interface-design` → Disenar la seccion de testimonios
-3. Crear `TestimonialsSection.astro`
-4. `seo-schema` → Agregar schema `Review` / `AggregateRating`
-5. `seo-page` → Verificar impacto en la pagina de inicio
+Para hacerlo funcional:
+1. `general-purpose` → Investigar cual es la integracion mas simple con Astro SSG: Mailchimp embed form, Brevo (ex-Sendinblue) API, o ConvertKit inline form
+2. `Plan` → Disenar el flujo: submit del formulario → API/endpoint → lista de contactos
+3. Modificar el script de `NewsletterSection.astro` para hacer el POST real al endpoint elegido
+4. `seo-technical` → Verificar que el cambio no afecta Core Web Vitals ni CLS
+
+### Reemplazar testimonios placeholder con reales (Quick Win)
+1. Recopilar fotos y comentarios de clientes reales por WhatsApp
+2. Agregar imagenes a `src/assets/images/` en formato `.webp` (nombre: cliente_nombre.webp)
+3. Usar el prompt de PROMPTS.md "Reemplazar testimonios placeholder" — ya tiene la estructura exacta
+4. `seo-schema` → Agregar schema `Review` / `AggregateRating` (el prompt ya lo incluye)
+
+### Agregar redes sociales (Quick Win — 30 min)
+1. Agregar iconos en `Footer.astro` (Ionicons: logo-instagram, logo-tiktok, etc.)
+2. `Explore` → Verificar si hay otros lugares donde deban aparecer
+3. `seo-technical` → Verificar que los links tienen `rel="noopener noreferrer"`
 
 ### Optimizar SEO del sitio
 1. `seo-audit` → Auditoria completa
 2. `seo-technical` → Problemas tecnicos especificos
-3. `seo-images` → Corregir imagenes `.jpg` y alt texts faltantes
-4. `seo-content` → Mejorar calidad del blog
-5. `seo-schema` → Validar y completar structured data de todos los productos
+3. `seo-images` → Corregir las 14 imagenes `.jpg` y alt texts faltantes
+4. `seo-content` → Mejorar calidad del blog (5 articulos existentes)
+5. `seo-schema` → Agregar schema FAQPage al `FAQSection.astro` ya implementado
+6. `seo-schema` → Verificar / agregar schema AggregateRating/Review cuando testimonios reales esten disponibles
 
 ### Crear nueva pagina de blog
 1. `seo-content` → Analizar keywords y estructura del articulo
 2. `seo-geo` → Optimizar para busquedas de IA
-3. Crear el archivo en `src/pages/blog/`
+3. Crear el archivo en `src/pages/blog/` (ver ejemplos existentes)
 4. `seo-page` → Revision final de la pagina creada
 
-### Agregar redes sociales (Quick Win — 30 min)
-1. Agregar iconos en `Footer.astro` y `Navbar.astro`
-2. `Explore` → Verificar que no hay otros lugares donde deban aparecer
-3. `seo-technical` → Verificar que los links tienen `rel="noopener noreferrer"`
+### Continuar refactorizacion de index.astro (~649 lineas actuales)
+Las secciones de temporada ya fueron extraidas. Quedan inline: seccion de Mascotas y seccion de Recordatorios.
+1. `Explore` → Mapear las secciones que quedan inline en index.astro
+2. `Plan` → Disenar la extraccion sin romper funcionalidad ni imports
+3. Extraer cada seccion en su componente correspondiente
+4. `seo-technical` → Verificar que el rendimiento no empeoro
 
-### Implementar email marketing (Prioridad CRITICA)
-1. `general-purpose` → Investigar integracion Mailchimp con Astro
-2. `interface-design` → Disenar el pop-up de descuento por suscripcion
-3. Crear `NewsletterSection.astro` con formulario
-4. `seo-technical` → Verificar que el pop-up no afecta Core Web Vitals ni CLS
+### Cambiar productos del grid de la landing (tarea recurrente — sin agente)
+No requiere agente. Editar directamente `src/components/ProductGrid.astro`:
+- `GRID_SLUGS` — array de slugs en orden de aparicion (izq → der, arriba → abajo)
+- `WIDE_SLUG` — slug del producto que ocupa 2 columnas en fila 1 (bento)
+- Los slugs disponibles estan en `src/data/products.ts`
+- El 7mo slot es una tarjeta CTA fija; al agregar un 7mo producto real, reemplazarla
+
+### Agregar 7mo producto real al grid de la landing
+Cuando haya un nuevo producto no-estacional:
+1. Agregar el producto a `src/data/products.ts` con imagen .webp
+2. En `ProductGrid.astro`: agregar su slug a `GRID_SLUGS` y eliminar la tarjeta CTA hardcodeada
+3. `seo-schema` → Generar schema Product para el nuevo item
+4. Verificar que el grid desktop queda 4+4 sin celdas vacias
+
+### Implementar pasarela de pagos (largo plazo)
+1. `general-purpose` → Investigar integracion Mercado Pago / Wompi con Astro SSG
+2. `Plan` → Disenar flujo: producto → carrito → checkout → pago
+3. `interface-design` → UI del checkout
+4. Implementar y testear
