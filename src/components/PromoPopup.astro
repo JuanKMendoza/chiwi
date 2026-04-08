@@ -1,0 +1,236 @@
+---
+import type { PromoPopupConfig } from "../data/promoPopup";
+
+interface Props {
+  config: PromoPopupConfig;
+}
+
+const { config } = Astro.props;
+
+const popupId = "promo-popup";
+const titleId = `${popupId}-title`;
+const messageId = `${popupId}-message`;
+---
+
+<div
+  id={popupId}
+  class="promo-popup fixed inset-0 z-[120] hidden items-center justify-center p-4 sm:p-6"
+  hidden
+  aria-hidden="true"
+  data-enabled={config.enabled ? "true" : "false"}
+>
+  <div class="promo-popup__backdrop absolute inset-0 bg-[#3a241e]/55 backdrop-blur-sm"></div>
+
+  <div
+    class="promo-popup__dialog relative z-10 w-full max-w-3xl overflow-hidden rounded-[2rem] bg-[#fff8f4] shadow-[0_24px_80px_rgba(67,37,29,0.28)] ring-1 ring-white/70"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby={titleId}
+    aria-describedby={messageId}
+    tabindex="-1"
+  >
+    <button
+      type="button"
+      class="promo-popup__close absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#6f4b3f] shadow-md transition hover:scale-105 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2"
+      aria-label="Cerrar aviso promocional"
+    >
+      <ion-icon name="close-outline" class="text-2xl" aria-hidden="true"></ion-icon>
+    </button>
+
+    <div class="grid gap-0 md:grid-cols-[1.05fr_1fr]">
+      {config.imageSrc ? (
+        <div class="relative min-h-[220px] overflow-hidden bg-gradient-to-br from-[#f6c8b3] via-[#fce5db] to-[#f8c3c8]">
+          <img
+            src={config.imageSrc}
+            alt="Promoción destacada de Chiwi"
+            class="h-full w-full object-cover"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#5c3024]/25 via-transparent to-transparent"></div>
+        </div>
+      ) : null}
+
+      <div class="relative flex flex-col justify-center gap-5 p-6 pt-16 sm:p-8 sm:pt-18 md:p-10">
+        <div class="absolute -left-10 top-0 h-36 w-36 rounded-full bg-[#ffd9c8]/70 blur-2xl"></div>
+        <div class="absolute bottom-2 right-0 h-28 w-28 rounded-full bg-[#f7cfd3]/60 blur-2xl"></div>
+
+        {config.seasonTag ? (
+          <span class="relative inline-flex w-fit items-center rounded-full bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#b86547] shadow-sm">
+            {config.seasonTag}
+          </span>
+        ) : null}
+
+        <div class="relative space-y-3">
+          <h2 id={titleId} class="text-3xl font-black leading-tight text-[#4d2c22] sm:text-4xl">
+            {config.title}
+          </h2>
+          <p id={messageId} class="max-w-xl text-base leading-7 text-[#6d4f42] sm:text-lg">
+            {config.message}
+          </p>
+        </div>
+
+        <div class="relative flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href={config.ctaHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="promo-popup__cta inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#f18f72] via-[#f39b7d] to-[#ef7d95] px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2"
+          >
+            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"></ion-icon>
+            <span>{config.ctaText}</span>
+          </a>
+
+          <button
+            type="button"
+            class="promo-popup__dismiss inline-flex items-center justify-center rounded-full border border-[#e8cabc] bg-white/70 px-5 py-3 text-sm font-semibold text-[#765648] transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2"
+          >
+            Seguir explorando
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ popupId }}>
+  (() => {
+    const sessionKey = "promo-popup-dismissed";
+
+    const setupPromoPopup = () => {
+      const popup = document.getElementById(popupId);
+      if (!(popup instanceof HTMLElement)) return;
+      if (popup.dataset.enabled !== "true") return;
+      if (window.location.pathname !== "/") return;
+      if (window.sessionStorage.getItem(sessionKey) === "true") return;
+
+      const dialog = popup.querySelector(".promo-popup__dialog");
+      const backdrop = popup.querySelector(".promo-popup__backdrop");
+      const closeButton = popup.querySelector(".promo-popup__close");
+      const dismissButton = popup.querySelector(".promo-popup__dismiss");
+      const ctaLink = popup.querySelector(".promo-popup__cta");
+
+      if (!(dialog instanceof HTMLElement)) return;
+
+      let lastFocusedElement = document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+
+      const focusableSelector = [
+        "a[href]",
+        "button:not([disabled])",
+        "textarea:not([disabled])",
+        "input:not([disabled])",
+        "select:not([disabled])",
+        '[tabindex]:not([tabindex="-1"])',
+      ].join(",");
+
+      const getFocusableElements = () =>
+        Array.from(dialog.querySelectorAll(focusableSelector)).filter(
+          (element) =>
+            element instanceof HTMLElement &&
+            !element.hasAttribute("disabled") &&
+            element.getAttribute("aria-hidden") !== "true",
+        );
+
+      const lockScroll = () => {
+        document.body.dataset.promoPopupOpen = "true";
+        document.body.style.overflow = "hidden";
+      };
+
+      const unlockScroll = () => {
+        delete document.body.dataset.promoPopupOpen;
+        document.body.style.overflow = "";
+      };
+
+      const markDismissed = () => {
+        window.sessionStorage.setItem(sessionKey, "true");
+      };
+
+      const closePopup = () => {
+        popup.hidden = true;
+        popup.classList.add("hidden");
+        popup.classList.remove("flex");
+        popup.setAttribute("aria-hidden", "true");
+        unlockScroll();
+        document.removeEventListener("keydown", handleKeydown);
+        lastFocusedElement?.focus();
+      };
+
+      const openPopup = () => {
+        lastFocusedElement = document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+        popup.hidden = false;
+        popup.classList.remove("hidden");
+        popup.classList.add("flex");
+        popup.setAttribute("aria-hidden", "false");
+        lockScroll();
+        document.addEventListener("keydown", handleKeydown);
+
+        const focusableElements = getFocusableElements();
+        const initialFocus = focusableElements[0] ?? dialog;
+        window.requestAnimationFrame(() => initialFocus.focus());
+      };
+
+      const handleKeydown = (event) => {
+        if (event.key === "Escape") {
+          markDismissed();
+          closePopup();
+          return;
+        }
+
+        if (event.key !== "Tab") return;
+
+        const focusableElements = getFocusableElements();
+        if (focusableElements.length === 0) {
+          event.preventDefault();
+          dialog.focus();
+          return;
+        }
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        const activeElement = document.activeElement;
+
+        if (event.shiftKey && activeElement === firstElement) {
+          event.preventDefault();
+          lastElement.focus();
+        } else if (!event.shiftKey && activeElement === lastElement) {
+          event.preventDefault();
+          firstElement.focus();
+        }
+      };
+
+      closeButton?.addEventListener("click", () => {
+        markDismissed();
+        closePopup();
+      });
+
+      dismissButton?.addEventListener("click", () => {
+        markDismissed();
+        closePopup();
+      });
+
+      backdrop?.addEventListener("click", () => {
+        markDismissed();
+        closePopup();
+      });
+
+      ctaLink?.addEventListener("click", () => {
+        markDismissed();
+        closePopup();
+      });
+
+      openPopup();
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupPromoPopup, {
+        once: true,
+      });
+    } else {
+      setupPromoPopup();
+    }
+  })();
+</script>
