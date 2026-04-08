@@ -14,7 +14,7 @@ const messageId = `${popupId}-message`;
 
 <div
   id={popupId}
-  class="promo-popup fixed inset-0 z-[120] hidden items-center justify-center p-4 sm:p-6"
+  class="promo-popup fixed inset-0 z-[120] hidden items-center justify-center p-3 sm:p-6"
   hidden
   aria-hidden="true"
   data-enabled={config.enabled ? "true" : "false"}
@@ -22,7 +22,7 @@ const messageId = `${popupId}-message`;
   <div class="promo-popup__backdrop absolute inset-0 bg-[#3a241e]/55 backdrop-blur-sm"></div>
 
   <div
-    class="promo-popup__dialog relative z-10 w-full max-w-3xl overflow-hidden rounded-[2rem] bg-[#fff8f4] shadow-[0_24px_80px_rgba(67,37,29,0.28)] ring-1 ring-white/70"
+    class="promo-popup__dialog relative z-10 flex max-h-[92vh] w-full max-w-3xl flex-col overflow-y-auto overscroll-contain rounded-[2rem] bg-[#fff8f4] shadow-[0_24px_80px_rgba(67,37,29,0.28)] ring-1 ring-white/70"
     role="dialog"
     aria-modal="true"
     aria-labelledby={titleId}
@@ -31,7 +31,7 @@ const messageId = `${popupId}-message`;
   >
     <button
       type="button"
-      class="promo-popup__close absolute right-4 top-4 z-20 inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/90 text-[#6f4b3f] shadow-md transition hover:scale-105 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2"
+      class="promo-popup__close sticky right-0 top-3 z-30 ml-auto mr-3 mt-3 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/70 bg-white/95 text-[#6f4b3f] shadow-md transition hover:scale-105 hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2"
       aria-label="Cerrar aviso promocional"
     >
       <ion-icon name="close-outline" class="text-2xl" aria-hidden="true"></ion-icon>
@@ -39,11 +39,11 @@ const messageId = `${popupId}-message`;
 
     <div class="grid gap-0 md:grid-cols-[1.05fr_1fr]">
       {config.imageSrc ? (
-        <div class="relative min-h-[220px] overflow-hidden bg-gradient-to-br from-[#f6c8b3] via-[#fce5db] to-[#f8c3c8]">
+        <div class="relative h-44 overflow-hidden bg-gradient-to-br from-[#f6c8b3] via-[#fce5db] to-[#f8c3c8] sm:h-56 md:h-auto md:min-h-[420px]">
           <img
             src={config.imageSrc}
             alt="Promoción destacada de Chiwi"
-            class="h-full w-full object-cover"
+            class="h-full w-full object-cover object-center"
             loading="eager"
             decoding="async"
           />
@@ -51,7 +51,7 @@ const messageId = `${popupId}-message`;
         </div>
       ) : null}
 
-      <div class="relative flex flex-col justify-center gap-5 p-6 pt-16 sm:p-8 sm:pt-18 md:p-10">
+      <div class="relative flex flex-col justify-center gap-5 p-6 pb-7 pt-4 sm:p-8 md:p-10">
         <div class="absolute -left-10 top-0 h-36 w-36 rounded-full bg-[#ffd9c8]/70 blur-2xl"></div>
         <div class="absolute bottom-2 right-0 h-28 w-28 rounded-full bg-[#f7cfd3]/60 blur-2xl"></div>
 
