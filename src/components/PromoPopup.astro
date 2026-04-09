@@ -10,6 +10,10 @@ const { config } = Astro.props;
 const popupId = "promo-popup";
 const titleId = `${popupId}-title`;
 const messageId = `${popupId}-message`;
+const hasStructuredMessage =
+  Boolean(config.messagePrefix) ||
+  Boolean(config.messageHighlight) ||
+  Boolean(config.messageSuffix);
 ---
 
 <div
@@ -65,28 +69,38 @@ const messageId = `${popupId}-message`;
           <h2 id={titleId} class="text-3xl font-black leading-tight text-[#4d2c22] sm:text-4xl">
             {config.title}
           </h2>
-          <p id={messageId} class="max-w-xl text-base leading-7 text-[#6d4f42] sm:text-lg">
-            {config.message}
-          </p>
+          {hasStructuredMessage ? (
+            <p id={messageId} class="max-w-xl text-base leading-7 text-[#6d4f42] sm:text-lg">
+              {config.messagePrefix}
+              {config.messageHighlight ? (
+                <span class="font-bold text-[#b86547]">{config.messageHighlight}</span>
+              ) : null}
+              {config.messageSuffix}
+            </p>
+          ) : config.message ? (
+            <p id={messageId} class="max-w-xl text-base leading-7 text-[#6d4f42] sm:text-lg">
+              {config.message}
+            </p>
+          ) : null}
         </div>
 
-        <div class="relative flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div class="relative flex flex-col gap-3 sm:flex-row sm:items-stretch">
           <a
             href={config.ctaHref}
             target="_blank"
             rel="noopener noreferrer"
-            class="promo-popup__cta inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#f18f72] via-[#f39b7d] to-[#ef7d95] px-6 py-3.5 text-center text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2"
+            class="promo-popup__cta inline-flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#f18f72] via-[#f39b7d] to-[#ef7d95] px-6 py-3.5 text-center text-sm font-bold leading-tight text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2 sm:min-h-[64px] sm:min-w-[240px] sm:px-8 sm:text-lg"
           >
-            <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"></ion-icon>
-            <span>{config.ctaText}</span>
+            <ion-icon name="logo-whatsapp" class="text-xl sm:text-5xl" aria-hidden="true"></ion-icon>
+            <span class="text-center">{config.ctaText}</span>
           </a>
 
-          <button
-            type="button"
-            class="promo-popup__dismiss inline-flex items-center justify-center rounded-full border border-[#e8cabc] bg-white/70 px-5 py-3 text-sm font-semibold text-[#765648] transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2"
+          <a
+            href="/productos/gatito-personalizado"
+            class="promo-popup__dismiss inline-flex min-h-[56px] items-center justify-center rounded-full border border-[#e8cabc] bg-white/70 px-5 py-3 text-center text-sm font-semibold leading-tight text-[#765648] transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-[#f29d7e] focus:ring-offset-2 sm:min-h-[64px] sm:min-w-[126px] sm:px-8 sm:text-lg"
           >
-            Seguir explorando
-          </button>
+            <span class="text-center">Ver más</span>
+          </a>
         </div>
       </div>
     </div>
