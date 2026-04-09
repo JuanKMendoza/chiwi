@@ -107,7 +107,14 @@ const hasStructuredMessage =
   </div>
 </div>
 
-<script define:vars={{ popupId }}>
+<script
+  define:vars={{
+    popupId,
+    popupTitle: config.title,
+    popupSeasonTag: config.seasonTag || "Promocion destacada",
+    popupCtaHref: config.ctaHref,
+  }}
+>
   (() => {
     const sessionKey = "promo-popup-dismissed";
 
@@ -161,6 +168,18 @@ const hasStructuredMessage =
         window.sessionStorage.setItem(sessionKey, "true");
       };
 
+      const trackPopupEvent = (eventName, extraPayload = {}) => {
+        if (typeof window.chiwiTrackEvent !== "function") return;
+
+        window.chiwiTrackEvent(eventName, {
+          content_name: popupTitle,
+          content_category: "promo_popup",
+          campaign: popupSeasonTag,
+          cta_url: popupCtaHref,
+          ...extraPayload,
+        });
+      };
+
       const closePopup = () => {
         popup.hidden = true;
         popup.classList.add("hidden");
@@ -185,11 +204,18 @@ const hasStructuredMessage =
         const focusableElements = getFocusableElements();
         const initialFocus = focusableElements[0] ?? dialog;
         window.requestAnimationFrame(() => initialFocus.focus());
+        trackPopupEvent("popup_view", {
+          source_section: "promo_popup",
+        });
       };
 
       const handleKeydown = (event) => {
         if (event.key === "Escape") {
           markDismissed();
+          trackPopupEvent("popup_dismiss", {
+            source_section: "promo_popup",
+            dismiss_reason: "escape",
+          });
           closePopup();
           return;
         }
@@ -218,21 +244,36 @@ const hasStructuredMessage =
 
       closeButton?.addEventListener("click", () => {
         markDismissed();
+        trackPopupEvent("popup_dismiss", {
+          source_section: "promo_popup",
+          dismiss_reason: "close_button",
+        });
         closePopup();
       });
 
       dismissButton?.addEventListener("click", () => {
         markDismissed();
+        trackPopupEvent("popup_dismiss", {
+          source_section: "promo_popup",
+          dismiss_reason: "secondary_cta",
+        });
         closePopup();
       });
 
       backdrop?.addEventListener("click", () => {
         markDismissed();
+        trackPopupEvent("popup_dismiss", {
+          source_section: "promo_popup",
+          dismiss_reason: "backdrop",
+        });
         closePopup();
       });
 
       ctaLink?.addEventListener("click", () => {
         markDismissed();
+        trackPopupEvent("popup_cta_click", {
+          source_section: "promo_popup",
+        });
         closePopup();
       });
 

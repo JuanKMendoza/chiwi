@@ -1,0 +1,256 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getDiscountedPrice, getProductBySlug } from "../../data/products";
+import catLoverHero from "../../assets/images/pack_gatitos_modelo_2.webp";
+import catLoverDetail from "../../assets/images/gatito_martina_front.webp";
+
+const productHref = "/productos/gatito-personalizado";
+const whatsappUrl =
+  "https://wa.me/573102278592?text=Hola!%20Quiero%20un%20regalo%20personalizado%20para%20amante%20de%20gatos";
+const catProduct = getProductBySlug("gatito-personalizado");
+const catProductPrice = catProduct ? getDiscountedPrice(catProduct) : undefined;
+---
+
+<Layout
+  title="Regalo personalizado para amante de gatos: ideas que si emocionan | Chiwi"
+  description="Descubre como elegir un regalo personalizado para amante de gatos con valor emocional real. Ideas bonitas, utiles y memorables para sorprender con Chiwi."
+>
+  <article class="max-w-4xl mx-auto px-4 py-8 md:py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-Naranja-principal transition-colors">Inicio</a></li>
+        <li>&rsaquo;</li>
+        <li><a href="/blog" class="hover:text-Naranja-principal transition-colors">Blog</a></li>
+        <li>&rsaquo;</li>
+        <li class="text-gray-700">Regalo personalizado para amante de gatos</li>
+      </ol>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+        Regalo personalizado para amante de gatos: ideas que si emocionan de verdad
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
+        <time datetime="2026-04-08">8 de abril, 2026</time>
+        <span>&bull;</span>
+        <span>6 min de lectura</span>
+        <span>&bull;</span>
+        <span class="text-Naranja-principal font-medium">Guias</span>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-lg mb-6">
+        <Image
+          src={catLoverHero}
+          alt="Regalo personalizado para amante de gatos con velitas Chiwi"
+          class="w-full h-[300px] md:h-[420px] object-cover"
+          width={1200}
+          height={720}
+        />
+      </div>
+    </header>
+
+    <div class="bg-gradient-to-r from-orange-50 to-pink-50 border-l-4 border-Naranja-principal p-6 rounded-lg mb-8">
+      <p class="text-lg md:text-xl leading-relaxed text-gray-800">
+        Si estas buscando un <strong>regalo personalizado para amante de gatos</strong>, no necesitas algo costoso: necesitas algo que le diga a esa persona "pense en tu gatito, en tu historia y en lo que te hace feliz".
+      </p>
+    </div>
+
+    <nav class="bg-white border border-gray-200 rounded-xl p-6 mb-10 shadow-sm">
+      <h2 class="font-bold text-lg mb-4 text-gray-900">En este articulo:</h2>
+      <ol class="space-y-2 text-gray-700">
+        <li><a href="#por-que" class="hover:text-Naranja-principal transition-colors">1. Por que un regalo cat lover conecta mas</a></li>
+        <li><a href="#ideas" class="hover:text-Naranja-principal transition-colors">2. Ideas de regalo con valor emocional</a></li>
+        <li><a href="#chiwi" class="hover:text-Naranja-principal transition-colors">3. Por que una velita personalizada destaca</a></li>
+        <li><a href="#ocasiones" class="hover:text-Naranja-principal transition-colors">4. En que ocasiones regalarla</a></li>
+        <li><a href="#faq" class="hover:text-Naranja-principal transition-colors">5. Preguntas frecuentes antes de comprar</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose prose-lg max-w-none">
+      <section id="por-que" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Por que un regalo personalizado para amante de gatos conecta mucho mas
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Las personas que aman a sus gatos no ven a su mascota como un simple animalito. La ven como compania, rutina, hogar y ternura. Por eso un regalo generico casi nunca genera el mismo efecto que un detalle creado pensando en ese vinculo.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          Un buen regalo cat lover tiene tres elementos: <strong>historia</strong>, <strong>identidad</strong> y <strong>emocion</strong>. Si ademas esta hecho a mano y puede parecerse a su propio gatito, el valor percibido sube muchisimo.
+        </p>
+      </section>
+
+      <section id="ideas" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Ideas de regalo para amante de gatos con valor emocional real
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6 items-center mb-6">
+          <div class="rounded-xl overflow-hidden shadow-md">
+            <Image
+              src={catLoverDetail}
+              alt="Velita personalizada de gatito Chiwi"
+              class="w-full h-72 object-cover"
+              width={700}
+              height={700}
+            />
+          </div>
+          <div>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start gap-3">
+                <span class="text-Naranja-principal font-bold">01</span>
+                <span>Una velita personalizada con colores y rasgos parecidos a su gato.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-Naranja-principal font-bold">02</span>
+                <span>Un detalle hecho a mano con tarjeta y dedicatoria especial.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-Naranja-principal font-bold">03</span>
+                <span>Un regalo que tambien decore su espacio y le saque una sonrisa cada vez que lo vea.</span>
+              </li>
+            </ul>
+            <p class="text-gray-700 leading-relaxed mt-4">
+              La diferencia esta en que no regalas un objeto cualquiera: regalas una representacion tierna de algo que la persona ama todos los dias.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="chiwi" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Por que una velita Chiwi destaca frente a un regalo generico
+        </h2>
+        <div class="bg-orange-50 rounded-2xl p-6 mb-5">
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Esta hecha a mano en Colombia y no se siente masiva ni impersonal.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Puede inspirarse en la foto del gatito real.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Sirve como regalo, recuerdo decorativo y detalle conversable al mismo tiempo.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Se percibe como un regalo pensado de verdad, no como una compra de ultimo minuto.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl bg-gradient-to-r from-Naranja-principal to-pink-400 text-white p-8 shadow-xl">
+          <h3 class="text-2xl md:text-3xl font-bold mb-3">Ver regalo personalizado para amante de gatos</h3>
+          <p class="text-lg text-white/90 mb-6">
+            Si ya sabes que quieres sorprender a una persona cat lover, este es el producto mas alineado con esa intencion de compra.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href={productHref}
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-bold text-Naranja-principal transition hover:scale-[1.02]"
+              data-track-event="blog_cta_click"
+              data-track-content-name="Gatito Personalizado"
+              data-track-content-category="blog_cat_lovers"
+              data-track-content-id="gatito-personalizado"
+              data-track-source-section="cat_lovers_primary_product_cta"
+              data-track-value={catProductPrice ? String(catProductPrice) : undefined}
+            >
+              Ver regalo personalizado
+            </a>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-7 py-4 font-bold text-white transition hover:bg-white/10"
+              data-track-event="blog_cta_click"
+              data-track-content-name="WhatsApp regalo amante de gatos"
+              data-track-content-category="blog_cat_lovers"
+              data-track-source-section="cat_lovers_primary_whatsapp_cta"
+            >
+              Pedir por WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="ocasiones" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Para quien y en que ocasiones funciona mejor
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Este tipo de regalo funciona especialmente bien para cumpleanos, aniversarios, amigo secreto, celebraciones entre pareja, detalles de agradecimiento y regalos sorpresa para alguien que siempre habla de su gatito.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-900 mb-2">Ideal para:</h3>
+            <p class="text-gray-600">novias, hermanas, amigas, mamas y cualquier persona que trate a su gato como parte de la familia.</p>
+          </div>
+          <div class="rounded-xl border border-gray-200 p-5">
+            <h3 class="font-bold text-gray-900 mb-2">Cuando mas convierte:</h3>
+            <p class="text-gray-600">cuando personalizas el mensaje y compras con unos dias de anticipacion para que el proceso artesanal juegue a tu favor.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Preguntas frecuentes antes de comprar
+        </h2>
+        <div class="space-y-4">
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">Se puede hacer parecida a mi gato?</summary>
+            <p class="mt-3 text-gray-600">Si. Puedes enviar foto de referencia para acercar colores y rasgos al estilo del producto.</p>
+          </details>
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">Sirve solo como decoracion o tambien como regalo?</summary>
+            <p class="mt-3 text-gray-600">Las dos. Funciona muy bien como detalle emotivo, pieza decorativa y recuerdo bonito al mismo tiempo.</p>
+          </details>
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">Como la pido mas rapido?</summary>
+            <p class="mt-3 text-gray-600">La via mas directa es escribir por WhatsApp con la idea, la foto del gatito y la fecha en la que la necesitas.</p>
+          </details>
+        </div>
+      </section>
+
+      <aside class="border-t border-gray-200 pt-8 mt-12">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Sigue explorando</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a
+            href="/blog/regalos-dia-de-la-madre"
+            class="flex gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
+          >
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-900 mb-1">Regalos para Dia de la Madre</h4>
+              <p class="text-sm text-gray-600">Ideas emotivas y hechas a mano para una fecha clave.</p>
+            </div>
+          </a>
+          <a href={productHref} class="flex gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200">
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-900 mb-1">Gatito Personalizado</h4>
+              <p class="text-sm text-gray-600">El producto mas alineado con esta busqueda.</p>
+            </div>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Regalo personalizado para amante de gatos: ideas que si emocionan de verdad",
+      "description": "Guia de compra para elegir un regalo personalizado para amante de gatos con valor emocional real.",
+      "datePublished": "2026-04-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Chiwi Colombia"
+      },
+      "mainEntityOfPage": "https://chiwicolombia.com/blog/regalo-personalizado-amante-gatos",
+      "keywords": "regalo personalizado para amante de gatos, regalo cat lover, regalo para amante de gatos, velita personalizada de gato"
+    }
+  </script>
+</Layout>
