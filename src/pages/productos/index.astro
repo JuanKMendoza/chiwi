@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Image from "astro/components/Image.astro";
-import { products } from "../../data/products";
+import { getDiscountedPrice, hasDiscount, products } from "../../data/products";
 
 // Filtros de la barra superior
 const categories = [
@@ -220,8 +220,20 @@ const groupedProducts = categoryGroups.map((group) => ({
                         {product.name}
                       </h3>
                       <p class="text-2xl font-bold text-orange-500" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                        ${product.price.toLocaleString("es-CO")}
-                        <meta itemprop="price" content={product.price.toString()} />
+                        {hasDiscount(product) ? (
+                          <span class="flex flex-wrap items-center gap-x-2 gap-y-2">
+                            <span>${getDiscountedPrice(product).toLocaleString("es-CO")}</span>
+                            <span class="text-base font-semibold text-gray-400 line-through">
+                              ${product.price.toLocaleString("es-CO")}
+                            </span>
+                            <span class="rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-600">
+                              -{product.discountPercent}%
+                            </span>
+                          </span>
+                        ) : (
+                          `$${product.price.toLocaleString("es-CO")}`
+                        )}
+                        <meta itemprop="price" content={getDiscountedPrice(product).toString()} />
                         <meta itemprop="priceCurrency" content="COP" />
                       </p>
                     </div>
@@ -293,8 +305,20 @@ const groupedProducts = categoryGroups.map((group) => ({
                     {product.name}
                   </h3>
                   <p class="text-2xl font-bold text-orange-500" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-                    ${product.price.toLocaleString("es-CO")}
-                    <meta itemprop="price" content={product.price.toString()} />
+                    {hasDiscount(product) ? (
+                      <span class="flex flex-wrap items-center gap-x-2 gap-y-2">
+                        <span>${getDiscountedPrice(product).toLocaleString("es-CO")}</span>
+                        <span class="text-base font-semibold text-gray-400 line-through">
+                          ${product.price.toLocaleString("es-CO")}
+                        </span>
+                        <span class="rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-600">
+                          -{product.discountPercent}%
+                        </span>
+                      </span>
+                    ) : (
+                      `$${product.price.toLocaleString("es-CO")}`
+                    )}
+                    <meta itemprop="price" content={getDiscountedPrice(product).toString()} />
                     <meta itemprop="priceCurrency" content="COP" />
                   </p>
                 </div>

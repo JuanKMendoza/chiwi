@@ -67,6 +67,7 @@ export interface Product {
   slug: string;
   name: string;
   price: number;
+  discountPercent?: number;
   category: ("temporada" | "kawaii" | "mascotas" | "recordatorios")[]; // Array de categorías
   image: ImageMetadata;
   images?: ImageMetadata[]; // Múltiples imágenes para la galería
@@ -87,7 +88,8 @@ export const products: Product[] = [
     id: 1,
     slug: "gatito-personalizado",
     name: "Gatito Personalizado",
-    price: 24900,
+    price: 27900,
+    discountPercent: 10,
     category: ["kawaii", "mascotas"],
     image: IndexGrid7,
     images: [
@@ -381,4 +383,13 @@ export function getProductBySlug(slug: string): Product | undefined {
 export function getRelatedProducts(product: Product): Product[] {
   if (!product.relatedProducts) return [];
   return products.filter((p) => product.relatedProducts?.includes(p.slug));
+}
+
+export function hasDiscount(product: Product): boolean {
+  return typeof product.discountPercent === "number" && product.discountPercent > 0;
+}
+
+export function getDiscountedPrice(product: Product): number {
+  if (!hasDiscount(product)) return product.price;
+  return Math.round(product.price * (1 - (product.discountPercent as number) / 100));
 }

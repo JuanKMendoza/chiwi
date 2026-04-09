@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { products } from "../data/products";
+import { getDiscountedPrice, hasDiscount, products } from "../data/products";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -102,10 +102,24 @@ const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
                 itemscope
                 itemtype="https://schema.org/Offer"
               >
-                <span>
-                  ${product.price.toLocaleString("es-CO")}
-                </span>
-                <meta itemprop="price" content={product.price.toString()} />
+                {hasDiscount(product) ? (
+                  <span class="flex flex-wrap items-center gap-x-2 gap-y-1">
+                    <span class="text-lg font-bold text-orange-500">
+                      ${getDiscountedPrice(product).toLocaleString("es-CO")}
+                    </span>
+                    <span class="text-sm text-gray-400 line-through">
+                      ${product.price.toLocaleString("es-CO")}
+                    </span>
+                    <span class="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-orange-600">
+                      -{product.discountPercent}%
+                    </span>
+                  </span>
+                ) : (
+                  <span>
+                    ${product.price.toLocaleString("es-CO")}
+                  </span>
+                )}
+                <meta itemprop="price" content={getDiscountedPrice(product).toString()} />
                 <meta itemprop="priceCurrency" content="COP" />
                 <meta
                   itemprop="availability"
@@ -202,7 +216,21 @@ const baseUrl = Astro.site?.href || "https://chiwicolombia.com";
               <div class="mt-3 text-center w-full px-4 space-y-2">
                 <p class="font-bold text-lg">{product.name}</p>
                 <p class="font-semibold text-gray-800">
-                  ${product.price.toLocaleString("es-CO")}
+                  {hasDiscount(product) ? (
+                    <span class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+                      <span class="text-lg font-bold text-orange-500">
+                        ${getDiscountedPrice(product).toLocaleString("es-CO")}
+                      </span>
+                      <span class="text-sm text-gray-400 line-through">
+                        ${product.price.toLocaleString("es-CO")}
+                      </span>
+                      <span class="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-bold text-orange-600">
+                        -{product.discountPercent}%
+                      </span>
+                    </span>
+                  ) : (
+                    `$${product.price.toLocaleString("es-CO")}`
+                  )}
                 </p>
                 <a
                   href={`/productos/${product.slug}`}
