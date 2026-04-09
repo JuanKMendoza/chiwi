@@ -3,8 +3,10 @@
 import Layout from "../../layouts/Layout.astro";
 import {
   products,
+  getDiscountedPrice,
   getProductBySlug,
   getRelatedProducts,
+  hasDiscount,
 } from "../../data/products";
 import { Image } from "astro:assets";
 
@@ -22,7 +24,8 @@ if (!product) {
 }
 
 const relatedProducts = getRelatedProducts(product);
-const whatsappMessage = `Hola! Me interesa el producto: ${product.name} (${product.price.toLocaleString("es-CO")} COP)`;
+const displayPrice = getDiscountedPrice(product);
+const whatsappMessage = `Hola! Me interesa el producto: ${product.name} (${displayPrice.toLocaleString("es-CO")} COP)`;
 const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsappMessage)}`;
 ---
 
@@ -118,10 +121,25 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
         <div class="flex flex-col gap-6">
           <div>
             <h1 class="text-4xl font-bold text-gray-900 mb-2">{product.name}</h1>
-            <p class="text-4xl font-bold text-orange-500">
-              ${product.price.toLocaleString("es-CO")}
-              <span class="text-xl text-gray-600 font-normal">COP</span>
-            </p>
+            {hasDiscount(product) ? (
+              <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <p class="text-4xl font-bold text-orange-500">
+                  ${displayPrice.toLocaleString("es-CO")}
+                  <span class="text-xl text-gray-600 font-normal">COP</span>
+                </p>
+                <span class="text-2xl font-semibold text-gray-400 line-through">
+                  ${product.price.toLocaleString("es-CO")}
+                </span>
+                <span class="inline-flex items-center rounded-full bg-orange-100 px-3 py-1 text-sm font-bold text-orange-600">
+                  -{product.discountPercent}%
+                </span>
+              </div>
+            ) : (
+              <p class="text-4xl font-bold text-orange-500">
+                ${product.price.toLocaleString("es-CO")}
+                <span class="text-xl text-gray-600 font-normal">COP</span>
+              </p>
+            )}
           </div>
 
           <p class="text-lg text-gray-700 leading-relaxed">
@@ -280,10 +298,25 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
                   {relatedProduct.name}
                 </h3>
                 <p class="text-gray-600 text-sm mb-4 line-clamp-2">{relatedProduct.description}</p>
-                <p class="text-2xl font-bold text-orange-500">
-                  ${relatedProduct.price.toLocaleString("es-CO")}
-                  <span class="text-sm text-gray-600 font-normal">COP</span>
-                </p>
+                {hasDiscount(relatedProduct) ? (
+                  <div class="flex flex-wrap items-center gap-x-2 gap-y-2">
+                    <p class="text-2xl font-bold text-orange-500">
+                      ${getDiscountedPrice(relatedProduct).toLocaleString("es-CO")}
+                      <span class="text-sm text-gray-600 font-normal">COP</span>
+                    </p>
+                    <span class="text-sm font-semibold text-gray-400 line-through">
+                      ${relatedProduct.price.toLocaleString("es-CO")}
+                    </span>
+                    <span class="rounded-full bg-orange-100 px-2.5 py-1 text-xs font-bold text-orange-600">
+                      -{relatedProduct.discountPercent}%
+                    </span>
+                  </div>
+                ) : (
+                  <p class="text-2xl font-bold text-orange-500">
+                    ${relatedProduct.price.toLocaleString("es-CO")}
+                    <span class="text-sm text-gray-600 font-normal">COP</span>
+                  </p>
+                )}
               </div>
             </a>
           ))}
@@ -351,7 +384,7 @@ const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsa
   </script>
 
   <!-- Meta Pixel: ViewContent — notifica a Meta cuando alguien ve un producto -->
-  <script define:vars={{ pixelSlug: product.slug, pixelName: product.name, pixelPrice: product.price, pixelCategory: product.category[0] }}>
+  <script define:vars={{ pixelSlug: product.slug, pixelName: product.name, pixelPrice: displayPrice, pixelCategory: product.category[0] }}>
     if (typeof fbq === 'function') {
       fbq('track', 'ViewContent', {
         content_name:     pixelName,
