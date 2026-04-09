@@ -76,12 +76,83 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
       gtag("config", "G-TZ1ZSKVDEL");
     </script>
 
-    <!-- Rastrear clics en WhatsApp -->
+    <!-- Helper global de analitica y rastreo de clics -->
     <script is:inline>
       if (typeof window !== "undefined") {
+        window.chiwiTrackEvent = function (eventName, payload) {
+          if (!eventName) return;
+
+          var safePayload = payload || {};
+
+          if (typeof gtag === "function") {
+            gtag("event", eventName, safePayload);
+          }
+
+          if (typeof fbq === "function") {
+            fbq("trackCustom", eventName, safePayload);
+          }
+        };
+
+        var getTrackPayload = function (element) {
+          var payload = {};
+          var contentName =
+            element.getAttribute("data-track-content-name") ||
+            element.getAttribute("aria-label");
+          var contentCategory = element.getAttribute("data-track-content-category");
+          var contentId = element.getAttribute("data-track-content-id");
+          var contentIds = element.getAttribute("data-track-content-ids");
+          var sourceSection = element.getAttribute("data-track-source-section");
+          var campaign = element.getAttribute("data-track-campaign");
+          var value = element.getAttribute("data-track-value");
+
+          if (contentName) payload.content_name = contentName;
+          if (contentCategory) payload.content_category = contentCategory;
+          if (contentId) payload.content_id = contentId;
+          if (contentIds) payload.content_ids = contentIds.split(",");
+          if (sourceSection) payload.source_section = sourceSection;
+          if (campaign) payload.campaign = campaign;
+          if (value && !Number.isNaN(Number(value))) payload.value = Number(value);
+
+          return payload;
+        };
+
         window.addEventListener("load", function () {
           document.addEventListener("click", function (e) {
-            var link = e.target.closest('a[href*="wa.me"]');
+            var target = e.target;
+
+            if (!(target instanceof Element)) return;
+
+            var trackedElement = target.closest("[data-track-event]");
+            if (trackedElement) {
+              var eventName = trackedElement.getAttribute("data-track-event");
+              if (eventName) {
+                window.chiwiTrackEvent(eventName, getTrackPayload(trackedElement));
+              }
+            }
+
+            if (!trackedElement) {
+              var seasonLink = target.closest('.season-block a[href]');
+              if (seasonLink) {
+                var seasonBlock = seasonLink.closest(".season-block");
+                var seasonName = seasonBlock
+                  ? seasonBlock.getAttribute("data-season")
+                  : null;
+
+                if (seasonName) {
+                  window.chiwiTrackEvent("season_cta_click", {
+                    content_name:
+                      seasonLink.getAttribute("aria-label") ||
+                      seasonLink.textContent?.trim() ||
+                      "CTA de temporada",
+                    content_category: seasonName,
+                    source_section: "season_block_link",
+                    campaign: seasonName,
+                  });
+                }
+              }
+            }
+
+            var link = target.closest('a[href*="wa.me"]');
             if (link) {
               var productName =
                 link.getAttribute("aria-label") || "Producto desconocido";

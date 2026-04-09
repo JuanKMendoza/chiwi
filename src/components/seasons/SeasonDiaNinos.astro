@@ -39,7 +39,17 @@ const diaDeNinosProducts = products.filter(p =>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-12">
       {diaDeNinosProducts.map((product) => (
         <article class="bg-white rounded-2xl shadow-lg hover:-translate-y-2 hover:shadow-xl transition-all duration-300 border-t-4 border-[#78C4A8] overflow-hidden">
-          <a href={`/productos/${product.slug}`} class="block">
+          <a
+            href={`/productos/${product.slug}`}
+            class="block"
+            data-track-event="season_cta_click"
+            data-track-content-name={product.name}
+            data-track-content-category="dia-del-nino"
+            data-track-content-id={product.slug}
+            data-track-source-section="season_ninos_product_card"
+            data-track-campaign="dia-del-nino"
+            data-track-value={String(product.price)}
+          >
             <div class="relative overflow-hidden">
               <Image
                 src={product.image}
@@ -66,6 +76,13 @@ const diaDeNinosProducts = products.filter(p =>
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#FF8F8F] to-[#F4B08A] text-white font-semibold px-4 py-2.5 rounded-full hover:scale-105 transition-all"
+              data-track-event="season_cta_click"
+              data-track-content-name={product.name}
+              data-track-content-category="dia-del-nino"
+              data-track-content-id={product.slug}
+              data-track-source-section="season_ninos_whatsapp_button"
+              data-track-campaign="dia-del-nino"
+              data-track-value={String(product.price)}
             >
               <ion-icon name="logo-whatsapp" class="text-xl" aria-hidden="true"></ion-icon>
               Pedir velita
@@ -101,6 +118,11 @@ const diaDeNinosProducts = products.filter(p =>
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500 to-pink-500 text-white font-bold px-10 py-5 rounded-full text-lg hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300"
+        data-track-event="season_cta_click"
+        data-track-content-name="Disenos kawaii para el Dia del Nino"
+        data-track-content-category="dia-del-nino"
+        data-track-source-section="season_ninos_final_cta"
+        data-track-campaign="dia-del-nino"
       >
         <ion-icon name="logo-whatsapp" class="text-2xl" aria-hidden="true"></ion-icon>
         Ver todos los diseños kawaii 🎈

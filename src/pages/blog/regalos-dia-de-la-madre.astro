@@ -1,0 +1,262 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getDiscountedPrice, getProductBySlug } from "../../data/products";
+import mothersHero from "../../assets/images/recordatorio_dia_mujer.webp";
+import mothersGift from "../../assets/images/hero_regalos.webp";
+
+const catProductHref = "/productos/gatito-personalizado";
+const dogProductHref = "/productos/perrito-cocker";
+const whatsappUrl =
+  "https://wa.me/573102278592?text=Hola!%20Quiero%20ideas%20de%20regalos%20para%20el%20Dia%20de%20la%20Madre";
+const catProduct = getProductBySlug("gatito-personalizado");
+const dogProduct = getProductBySlug("perrito-cocker");
+const catProductPrice = catProduct ? getDiscountedPrice(catProduct) : undefined;
+const dogProductPrice = dogProduct ? getDiscountedPrice(dogProduct) : undefined;
+---
+
+<Layout
+  title="Regalos para Dia de la Madre: ideas emotivas y hechas a mano | Chiwi"
+  description="Descubre regalos para Dia de la Madre que si emocionan: detalles artesanales, personalizados y perfectos para una sorpresa memorable."
+>
+  <article class="max-w-4xl mx-auto px-4 py-8 md:py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-Naranja-principal transition-colors">Inicio</a></li>
+        <li>&rsaquo;</li>
+        <li><a href="/blog" class="hover:text-Naranja-principal transition-colors">Blog</a></li>
+        <li>&rsaquo;</li>
+        <li class="text-gray-700">Regalos para Dia de la Madre</li>
+      </ol>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+        Regalos para Dia de la Madre: ideas emotivas y hechas a mano que si se recuerdan
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
+        <time datetime="2026-04-08">8 de abril, 2026</time>
+        <span>&bull;</span>
+        <span>6 min de lectura</span>
+        <span>&bull;</span>
+        <span class="text-Naranja-principal font-medium">Tendencias</span>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-lg mb-6">
+        <Image
+          src={mothersHero}
+          alt="Regalos para Dia de la Madre hechos a mano en Chiwi"
+          class="w-full h-[300px] md:h-[420px] object-cover"
+          width={1200}
+          height={720}
+        />
+      </div>
+    </header>
+
+    <div class="bg-gradient-to-r from-pink-50 to-orange-50 border-l-4 border-pink-400 p-6 rounded-lg mb-8">
+      <p class="text-lg md:text-xl leading-relaxed text-gray-800">
+        Elegir <strong>regalos para Dia de la Madre</strong> no deberia sentirse como cumplir una tarea. Deberia sentirse como encontrar un detalle que se parezca al amor, al cuidado y a la historia que tu mama te ha regalado durante anos.
+      </p>
+    </div>
+
+    <nav class="bg-white border border-gray-200 rounded-xl p-6 mb-10 shadow-sm">
+      <h2 class="font-bold text-lg mb-4 text-gray-900">En este articulo:</h2>
+      <ol class="space-y-2 text-gray-700">
+        <li><a href="#que-buscar" class="hover:text-Naranja-principal transition-colors">1. Que buscar en un regalo para mama</a></li>
+        <li><a href="#ideas" class="hover:text-Naranja-principal transition-colors">2. Ideas emotivas y hechas a mano</a></li>
+        <li><a href="#productos" class="hover:text-Naranja-principal transition-colors">3. Dos opciones de Chiwi que funcionan muy bien</a></li>
+        <li><a href="#cuando" class="hover:text-Naranja-principal transition-colors">4. Cuando comprar para llegar a tiempo</a></li>
+        <li><a href="#faq" class="hover:text-Naranja-principal transition-colors">5. Preguntas frecuentes antes de pedir</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose prose-lg max-w-none">
+      <section id="que-buscar" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Que hace especial a un regalo para el Dia de la Madre
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          El mejor regalo para mama no es necesariamente el mas costoso. Es el que se siente <strong>pensado</strong>, <strong>personal</strong> y <strong>emocionalmente correcto</strong> para la relacion que tienen.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          Por eso los detalles artesanales y personalizados suelen funcionar tan bien: porque no parecen sacados de una vitrina cualquiera. Parecen elegidos con intencion.
+        </p>
+      </section>
+
+      <section id="ideas" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Ideas de regalos para Dia de la Madre que si emocionan
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6 items-center mb-6">
+          <div>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start gap-3">
+                <span class="text-pink-500 font-bold">01</span>
+                <span>Un detalle artesanal hecho especialmente para ella.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-pink-500 font-bold">02</span>
+                <span>Un regalo que recuerde a su mascota o a un momento familiar especial.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-pink-500 font-bold">03</span>
+                <span>Una pieza bonita que tambien decore su espacio y la haga sonreir.</span>
+              </li>
+            </ul>
+            <p class="text-gray-700 leading-relaxed mt-4">
+              Cuando una mama recibe algo asi, no siente solo que le regalaron un objeto: siente que le regalaron atencion, memoria y carino.
+            </p>
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-md">
+            <Image
+              src={mothersGift}
+              alt="Detalle artesanal para Dia de la Madre de Chiwi"
+              class="w-full h-72 object-cover"
+              width={700}
+              height={700}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="productos" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Dos opciones de Chiwi que funcionan muy bien para esta fecha
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-5">
+          <a
+            href={catProductHref}
+            class="rounded-2xl border border-orange-100 bg-orange-50 p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+            data-track-event="blog_cta_click"
+            data-track-content-name="Gatito Personalizado"
+            data-track-content-category="blog_mothers_day"
+            data-track-content-id="gatito-personalizado"
+            data-track-source-section="mothers_day_product_grid"
+            data-track-value={catProductPrice ? String(catProductPrice) : undefined}
+          >
+            <h3 class="text-xl font-bold text-gray-900">Gatito Personalizado</h3>
+            <p class="mt-2 text-gray-600">
+              Ideal para mamas amantes de los gatos o para quienes quieren regalar una pieza tierna, decorativa y personalizable.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-500">
+              Ver velita para mama
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </span>
+          </a>
+
+          <a
+            href={dogProductHref}
+            class="rounded-2xl border border-pink-100 bg-pink-50 p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+            data-track-event="blog_cta_click"
+            data-track-content-name="Perrito Cocker Personalizado"
+            data-track-content-category="blog_mothers_day"
+            data-track-content-id="perrito-cocker"
+            data-track-source-section="mothers_day_product_grid"
+            data-track-value={dogProductPrice ? String(dogProductPrice) : undefined}
+          >
+            <h3 class="text-xl font-bold text-gray-900">Perrito Cocker Personalizado</h3>
+            <p class="mt-2 text-gray-600">
+              Perfecto para mamas perrunas o para un regalo emotivo que recuerde a su companero peludo favorito.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pink-500">
+              Ver regalo personalizado
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </span>
+          </a>
+        </div>
+
+        <div class="rounded-2xl bg-gradient-to-r from-pink-400 to-orange-400 text-white p-8 shadow-xl mt-8">
+          <h3 class="text-2xl md:text-3xl font-bold mb-3">Pedir una idea de regalo para mama por WhatsApp</h3>
+          <p class="text-lg text-white/90 mb-6">
+            Si quieres que te ayudemos a escoger el detalle correcto segun presupuesto, fecha y estilo, escribe y te guiamos.
+          </p>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-bold text-pink-500 transition hover:scale-[1.02]"
+            data-track-event="blog_cta_click"
+            data-track-content-name="WhatsApp regalos Dia de la Madre"
+            data-track-content-category="blog_mothers_day"
+            data-track-source-section="mothers_day_primary_whatsapp_cta"
+          >
+            Pedir por WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <section id="cuando" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Cuando conviene pedirlo para llegar tranquila
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Si el detalle es personalizado, lo ideal es no dejarlo para el ultimo momento. En Chiwi hay productos que requieren un tiempo corto de elaboracion, asi que mientras antes compartas idea, foto y fecha, mejor quedara el resultado.
+        </p>
+        <div class="rounded-xl border border-gray-200 p-5 bg-white">
+          <p class="text-gray-600">
+            Consejo practico: si ya sabes que tu mama ama los gatitos, los perritos o los regalos hechos a mano, pedir con anticipacion te permite personalizar mejor y recibir una recomendacion mas afinada por WhatsApp.
+          </p>
+        </div>
+      </section>
+
+      <section id="faq" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Preguntas frecuentes antes de pedir
+        </h2>
+        <div class="space-y-4">
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">Que producto recomiendan si mi mama ama a su mascota?</summary>
+            <p class="mt-3 text-gray-600">Los personalizados de gatito o perrito suelen ser de las opciones mas emotivas porque se pueden acercar a la referencia real.</p>
+          </details>
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">Puedo pedir ayuda para escoger entre varias opciones?</summary>
+            <p class="mt-3 text-gray-600">Si. Justamente WhatsApp es el mejor canal para recomendarte un regalo segun estilo, presupuesto y fecha.</p>
+          </details>
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">Sirven como regalo aunque no esten encendidas?</summary>
+            <p class="mt-3 text-gray-600">Totalmente. Son regalos visuales, decorativos y emocionales, incluso antes de usarse como vela.</p>
+          </details>
+        </div>
+      </section>
+
+      <aside class="border-t border-gray-200 pt-8 mt-12">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Articulos relacionados</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a
+            href="/blog/regalo-personalizado-amante-gatos"
+            class="flex gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
+          >
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-900 mb-1">Regalo personalizado para amante de gatos</h4>
+              <p class="text-sm text-gray-600">Una guia de compra enfocada en cat lovers.</p>
+            </div>
+          </a>
+          <a href="/blog" class="flex gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200">
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-900 mb-1">Ver mas ideas en el blog</h4>
+              <p class="text-sm text-gray-600">Contenido pensado para regalar mejor y vender con intencion.</p>
+            </div>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Regalos para Dia de la Madre: ideas emotivas y hechas a mano que si se recuerdan",
+      "description": "Ideas de regalos para Dia de la Madre con enfoque emocional, artesanal y personalizado.",
+      "datePublished": "2026-04-08",
+      "author": {
+        "@type": "Organization",
+        "name": "Chiwi Colombia"
+      },
+      "mainEntityOfPage": "https://chiwicolombia.com/blog/regalos-dia-de-la-madre",
+      "keywords": "regalos para Dia de la Madre, regalo artesanal para mama, regalo personalizado para mama, velitas para mama"
+    }
+  </script>
+</Layout>
