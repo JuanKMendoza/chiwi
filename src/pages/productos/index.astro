@@ -483,8 +483,12 @@ const groupedProducts = categoryGroups.map((group) => ({
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>(".category-filter");
-    const productCards  = document.querySelectorAll<HTMLElement>(".product-card");
+    const filterButtons = Array.from(document.querySelectorAll(".category-filter")).filter(
+      (button) => button instanceof HTMLButtonElement,
+    );
+    const productCards  = Array.from(document.querySelectorAll(".product-card")).filter(
+      (card) => card instanceof HTMLElement,
+    );
     const productCount  = document.getElementById("product-count");
     const noResults     = document.getElementById("no-results");
     const productsGrid  = document.getElementById("products-grid");
@@ -493,7 +497,7 @@ const groupedProducts = categoryGroups.map((group) => ({
     const flatHeader    = document.getElementById("flat-header");
 
     // Activa el botón "Todos" por defecto
-    const allButton = document.querySelector<HTMLButtonElement>('[data-category="all"]');
+    const allButton = document.querySelector('[data-category="all"]');
     if (allButton) allButton.classList.add("active");
 
     function showGroupedView() {
@@ -502,7 +506,7 @@ const groupedProducts = categoryGroups.map((group) => ({
       if (flatHeader)  flatHeader.classList.add("hidden");
     }
 
-    function showFlatView(category: string) {
+    function showFlatView(category) {
       if (groupedView) groupedView.classList.add("hidden");
       if (flatView)    flatView.classList.remove("hidden");
       if (flatHeader)  flatHeader.classList.remove("hidden");

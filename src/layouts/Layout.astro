@@ -79,6 +79,17 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
     <!-- Helper global de analitica y rastreo de clics -->
     <script is:inline>
       if (typeof window !== "undefined") {
+        window.chiwiMetaTrack = function (eventName, payload, method) {
+          if (!eventName || typeof window.fbq !== "function") return false;
+
+          window.fbq(
+            method === "custom" ? "trackCustom" : "track",
+            eventName,
+            payload || {},
+          );
+          return true;
+        };
+
         window.chiwiTrackEvent = function (eventName, payload) {
           if (!eventName) return;
 
@@ -88,9 +99,7 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
             gtag("event", eventName, safePayload);
           }
 
-          if (typeof fbq === "function") {
-            fbq("trackCustom", eventName, safePayload);
-          }
+          window.chiwiMetaTrack(eventName, safePayload, "custom");
         };
 
         var getTrackPayload = function (element) {
@@ -103,6 +112,8 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
           var contentIds = element.getAttribute("data-track-content-ids");
           var sourceSection = element.getAttribute("data-track-source-section");
           var campaign = element.getAttribute("data-track-campaign");
+          var contentType = element.getAttribute("data-track-content-type");
+          var currency = element.getAttribute("data-track-currency");
           var value = element.getAttribute("data-track-value");
 
           if (contentName) payload.content_name = contentName;
@@ -111,9 +122,23 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
           if (contentIds) payload.content_ids = contentIds.split(",");
           if (sourceSection) payload.source_section = sourceSection;
           if (campaign) payload.campaign = campaign;
+          if (contentType) payload.content_type = contentType;
+          if (currency) payload.currency = currency;
           if (value && !Number.isNaN(Number(value))) payload.value = Number(value);
 
           return payload;
+        };
+
+        var getMetaEvents = function (element) {
+          var metaTrack = element.getAttribute("data-meta-track");
+          if (!metaTrack) return [];
+
+          return metaTrack
+            .split(",")
+            .map(function (eventName) {
+              return eventName.trim();
+            })
+            .filter(Boolean);
         };
 
         window.addEventListener("load", function () {
@@ -128,6 +153,16 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
               if (eventName) {
                 window.chiwiTrackEvent(eventName, getTrackPayload(trackedElement));
               }
+            }
+
+            var metaTrackedElement = target.closest("[data-meta-track]");
+            if (metaTrackedElement) {
+              var metaPayload = getTrackPayload(metaTrackedElement);
+              var metaEvents = getMetaEvents(metaTrackedElement);
+
+              metaEvents.forEach(function (metaEventName) {
+                window.chiwiMetaTrack(metaEventName, metaPayload);
+              });
             }
 
             if (!trackedElement) {
@@ -165,9 +200,7 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
                 });
               }
               // Meta Pixel — evento Contact (usado por Facebook/Instagram Ads para optimizar)
-              if (typeof fbq === "function") {
-                fbq("track", "Contact", { content_name: productName });
-              }
+              window.chiwiMetaTrack("Contact", { content_name: productName });
             }
           });
         });

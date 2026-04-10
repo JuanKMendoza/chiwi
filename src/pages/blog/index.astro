@@ -322,8 +322,12 @@ const posts = [
 
   <!-- JavaScript para filtrado de categorías -->
   <script>
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('.category-filter');
-    const blogPosts = document.querySelectorAll<HTMLElement>('.blog-post');
+    const filterButtons = Array.from(document.querySelectorAll('.category-filter')).filter(
+      (button) => button instanceof HTMLButtonElement,
+    );
+    const blogPosts = Array.from(document.querySelectorAll('.blog-post')).filter(
+      (post) => post instanceof HTMLElement,
+    );
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {

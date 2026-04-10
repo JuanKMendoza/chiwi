@@ -1,7 +1,7 @@
 ---
 ---
 
-<!-- Sección Newsletter Mejorada y Segura -->
+<!-- Seccion Newsletter Mejorada y Segura -->
 <section class="relative w-full py-20 px-4 overflow-hidden">
   <div
     class="absolute inset-0 bg-gradient-to-br from-[#F4B08A] via-[#F49C6E] to-[#E1814C]"
@@ -18,7 +18,7 @@
       <span
         class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold text-white"
       >
-        Únete a la familia Chiwi
+        Unete a la familia Chiwi
       </span>
       <h2 class="text-3xl md:text-4xl font-bold text-white">
         No te pierdas nuestras ediciones especiales
@@ -26,18 +26,18 @@
     </div>
 
     <p class="text-white/90 leading-relaxed text-lg max-w-2xl">
-      Sé el primero en conocer nuestros nuevos diseños. Suscríbete y recibe
+      Se el primero en conocer nuestros nuevos disenos. Suscribete y recibe
       descuentos exclusivos, lanzamientos anticipados y tips para que tus
-      velitas cuenten aún más historias.
+      velitas cuenten aun mas historias.
     </p>
 
-    <!-- ✅ Newsletter con protección -->
+    <!-- Newsletter con proteccion -->
     <form
       id="newsletter-form"
       class="w-full flex flex-col md:flex-row items-center gap-4"
       novalidate
     >
-      <!-- 🕵️ Honeypot invisible (anti-bots) -->
+      <!-- Honeypot invisible (anti-bots) -->
       <input type="text" name="nickname" style="display:none" tabindex="-1" autocomplete="off" />
 
       <input
@@ -45,7 +45,7 @@
         name="email"
         placeholder="tu@correo.com"
         required
-        aria-label="Correo electrónico"
+        aria-label="Correo electronico"
         autocomplete="off"
         class="w-full md:flex-1 px-6 py-4 rounded-full border-2 border-white/30 bg-white/90 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:bg-white font-medium text-gray-900"
       />
@@ -69,33 +69,39 @@
   </div>
 </section>
 
-<!-- ✅ JS seguro (protege sin backend) -->
+<!-- JS seguro (protege sin backend) -->
 <script>
-  const form = document.getElementById('newsletter-form') as HTMLFormElement;
+  const form = document.getElementById("newsletter-form");
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
+  if (form instanceof HTMLFormElement) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    const emailInput = form.querySelector('[name="email"]') as HTMLInputElement;
-    const trapInput = form.querySelector('[name="nickname"]') as HTMLInputElement;
+      const emailInput = form.querySelector('[name="email"]');
+      const trapInput = form.querySelector('[name="nickname"]');
 
-    const email = emailInput.value.trim();
-    const trap = trapInput.value.trim();
+      if (!(emailInput instanceof HTMLInputElement) || !(trapInput instanceof HTMLInputElement)) {
+        return;
+      }
 
-    if (trap !== '') return; // Bot detectado
+      const email = emailInput.value.trim();
+      const trap = trapInput.value.trim();
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert('Por favor, ingresa un correo válido.');
-      return;
-    }
+      if (trap !== "") return; // Bot detectado
 
-    const safeEmail = email.replace(/[<>"]/g, '');
-    // Meta Pixel: Lead — optimiza campañas de captación de emails
-    if (typeof fbq === 'function') {
-      fbq('track', 'Lead', { content_name: 'Newsletter Chiwi' });
-    }
-    alert(`¡Gracias! Te avisaremos a ${safeEmail} cuando haya novedades 🌟`);
-    form.reset();
-  });
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Por favor, ingresa un correo valido.");
+        return;
+      }
+
+      const safeEmail = email.replace(/[<>"]/g, "");
+      if (typeof window !== "undefined" && typeof window.chiwiMetaTrack === "function") {
+        window.chiwiMetaTrack("Lead", { content_name: "Newsletter Chiwi" });
+      }
+
+      alert(`Gracias! Te avisaremos a ${safeEmail} cuando haya novedades.`);
+      form.reset();
+    });
+  }
 </script>

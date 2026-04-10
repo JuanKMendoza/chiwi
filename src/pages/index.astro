@@ -512,14 +512,16 @@ const searchResults = searchQuery
   <script>
     (function () {
       function initMemorialesCarousel() {
-        const swiperEl = document.getElementById("memoriales-swiper") as any;
+        const swiperEl = document.getElementById("memoriales-swiper");
         const prevBtn = document.getElementById("mem-prev");
         const nextBtn = document.getElementById("mem-next");
-        const dots = Array.from(document.querySelectorAll(".mem-dot")) as HTMLElement[];
+        const dots = Array.from(document.querySelectorAll(".mem-dot")).filter(
+          (dot) => dot instanceof HTMLElement,
+        );
 
         if (!swiperEl) return;
 
-        function updateDots(realIndex: number) {
+        function updateDots(realIndex) {
           dots.forEach((dot, i) => {
             if (i === realIndex) {
               dot.style.width = "32px";
@@ -534,7 +536,7 @@ const searchResults = searchQuery
         }
 
         function waitForSwiper() {
-          if (swiperEl.swiper) {
+          if ("swiper" in swiperEl && swiperEl.swiper) {
             const swiper = swiperEl.swiper;
             prevBtn?.addEventListener("click", () => swiper.slidePrev());
             nextBtn?.addEventListener("click", () => swiper.slideNext());
@@ -564,14 +566,16 @@ const searchResults = searchQuery
   <script>
     (function () {
       function initRecordatoriosCarousel() {
-        const swiperEl = document.getElementById("recordatorios-swiper") as any;
+        const swiperEl = document.getElementById("recordatorios-swiper");
         const prevBtn = document.getElementById("rec-prev");
         const nextBtn = document.getElementById("rec-next");
-        const dots = Array.from(document.querySelectorAll(".rec-dot")) as HTMLElement[];
+        const dots = Array.from(document.querySelectorAll(".rec-dot")).filter(
+          (dot) => dot instanceof HTMLElement,
+        );
 
         if (!swiperEl) return;
 
-        function updateDots(realIndex: number) {
+        function updateDots(realIndex) {
           dots.forEach((dot, i) => {
             if (i === realIndex) {
               dot.style.width = "32px";
@@ -586,7 +590,7 @@ const searchResults = searchQuery
         }
 
         function waitForSwiper() {
-          if (swiperEl.swiper) {
+          if ("swiper" in swiperEl && swiperEl.swiper) {
             const swiper = swiperEl.swiper;
             prevBtn?.addEventListener("click", () => swiper.slidePrev());
             nextBtn?.addEventListener("click", () => swiper.slideNext());
@@ -864,10 +868,11 @@ const searchResults = searchQuery
     rootMargin: "0px",
   };
 
-  const observerCallback = (entries: IntersectionObserverEntry[]) => {
+  const observerCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        const counter = entry.target as HTMLElement;
+        const counter = entry.target;
+        if (!(counter instanceof HTMLElement)) return;
         const target = parseInt(counter.getAttribute("data-target") || "0");
         const duration = 2000;
         const step = target / (duration / 16);

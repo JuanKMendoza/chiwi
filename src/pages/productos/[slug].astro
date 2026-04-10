@@ -210,6 +210,16 @@ if (product.category.includes("mascotas") || product.category.includes("kawaii")
             target="_blank"
             rel="noopener noreferrer"
             class="bg-gradient-to-r from-green-500 to-green-600 text-white font-bold py-4 px-8 rounded-full hover:shadow-xl hover:scale-105 transition-all flex items-center justify-center gap-3 text-lg"
+            data-meta-track="AddToCart"
+            data-track-content-name={product.name}
+            data-track-content-id={product.slug}
+            data-track-content-ids={product.slug}
+            data-track-content-category={product.category[0]}
+            data-track-content-type="product"
+            data-track-source-section="product_primary_cta"
+            data-track-value={String(displayPrice)}
+            data-track-currency="COP"
+            aria-label={`Pedir ${product.name} por WhatsApp`}
           >
             <ion-icon name="logo-whatsapp" class="text-3xl"></ion-icon>
             Pedir por WhatsApp
@@ -389,6 +399,16 @@ if (product.category.includes("mascotas") || product.category.includes("kawaii")
         target="_blank"
         rel="noopener noreferrer"
         class="inline-flex items-center gap-3 bg-white text-orange-500 font-bold px-8 py-4 rounded-full hover:scale-105 transition-all shadow-xl"
+        data-meta-track="InitiateCheckout"
+        data-track-content-name={product.name}
+        data-track-content-id={product.slug}
+        data-track-content-ids={product.slug}
+        data-track-content-category={product.category[0]}
+        data-track-content-type="product"
+        data-track-source-section="product_final_cta"
+        data-track-value={String(displayPrice)}
+        data-track-currency="COP"
+        aria-label={`Personalizar ${product.name} por WhatsApp`}
       >
         <ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon>
         Personalizar por WhatsApp
@@ -406,17 +426,17 @@ if (product.category.includes("mascotas") || product.category.includes("kawaii")
     }}
   >
     document.addEventListener('DOMContentLoaded', () => {
-      const mainImage = document.getElementById('mainImage') as HTMLImageElement;
+      const mainImage = document.getElementById('mainImage');
       const thumbnails = document.querySelectorAll('.thumbnail-btn');
 
-      if (!mainImage || thumbnails.length === 0) return;
+      if (!(mainImage instanceof HTMLImageElement) || thumbnails.length === 0) return;
 
       thumbnails.forEach((thumbnail) => {
         thumbnail.addEventListener('click', () => {
           // Obtener la imagen de ALTA RESOLUCIÓN oculta
-          const highResImg = thumbnail.querySelector('.high-res-version') as HTMLImageElement;
+          const highResImg = thumbnail.querySelector('.high-res-version');
           
-          if (highResImg && mainImage) {
+          if (highResImg instanceof HTMLImageElement) {
             mainImage.src = highResImg.src;
             mainImage.srcset = highResImg.srcset || '';
           }
@@ -453,8 +473,8 @@ if (product.category.includes("mascotas") || product.category.includes("kawaii")
 
   <!-- Meta Pixel: ViewContent — notifica a Meta cuando alguien ve un producto -->
   <script define:vars={{ pixelSlug: product.slug, pixelName: product.name, pixelPrice: displayPrice, pixelCategory: product.category[0] }}>
-    if (typeof fbq === 'function') {
-      fbq('track', 'ViewContent', {
+    if (typeof window !== "undefined" && typeof window.chiwiMetaTrack === "function") {
+      window.chiwiMetaTrack('ViewContent', {
         content_name:     pixelName,
         content_ids:      [pixelSlug],
         content_type:     'product',
