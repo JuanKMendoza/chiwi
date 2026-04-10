@@ -141,7 +141,43 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
             .filter(Boolean);
         };
 
+        var isWhatsAppLink = function (element) {
+          if (!(element instanceof HTMLAnchorElement)) return false;
+
+          var href = element.getAttribute("href") || "";
+          return href.includes("wa.me") || href.includes("api.whatsapp.com");
+        };
+
+        window.trackWhatsAppClick = function (element) {
+          if (!(element instanceof HTMLAnchorElement)) return;
+          if (element.dataset.whatsappTrackingBound === "true") return;
+
+          element.dataset.whatsappTrackingBound = "true";
+          element.addEventListener("click", function () {
+            var payload = getTrackPayload(element);
+
+            if (typeof gtag === "function") {
+              gtag("event", "whatsapp_click", {
+                event_category: "engagement",
+                event_label: payload.content_name || "WhatsApp",
+                product_name: payload.content_name || "WhatsApp",
+              });
+            }
+
+            window.chiwiMetaTrack("InitiateCheckout", payload);
+            window.chiwiMetaTrack("Contact", payload);
+          });
+        };
+
+        window.setupWhatsAppTracking = function () {
+          document
+            .querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]')
+            .forEach(window.trackWhatsAppClick);
+        };
+
         window.addEventListener("load", function () {
+          window.setupWhatsAppTracking();
+
           document.addEventListener("click", function (e) {
             var target = e.target;
 
@@ -159,8 +195,16 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
             if (metaTrackedElement) {
               var metaPayload = getTrackPayload(metaTrackedElement);
               var metaEvents = getMetaEvents(metaTrackedElement);
+              var metaTrackedIsWhatsApp = isWhatsAppLink(metaTrackedElement);
 
               metaEvents.forEach(function (metaEventName) {
+                if (
+                  metaTrackedIsWhatsApp &&
+                  (metaEventName === "InitiateCheckout" || metaEventName === "Contact")
+                ) {
+                  return;
+                }
+
                 window.chiwiMetaTrack(metaEventName, metaPayload);
               });
             }
@@ -185,22 +229,6 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
                   });
                 }
               }
-            }
-
-            var link = target.closest('a[href*="wa.me"]');
-            if (link) {
-              var productName =
-                link.getAttribute("aria-label") || "Producto desconocido";
-              // Google Analytics 4
-              if (typeof gtag === "function") {
-                gtag("event", "whatsapp_click", {
-                  event_category: "engagement",
-                  event_label: productName,
-                  product_name: productName,
-                });
-              }
-              // Meta Pixel — evento Contact (usado por Facebook/Instagram Ads para optimizar)
-              window.chiwiMetaTrack("Contact", { content_name: productName });
             }
           });
         });
