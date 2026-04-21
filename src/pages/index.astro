@@ -10,6 +10,7 @@ import fotoArtesano from "../assets/images/foto_artesano_chiwi.webp";
 import recordatorioMalu from "../assets/images/recordatorio_malu.webp";
 import recordatorioDiaMujer from "../assets/images/recordatorio_dia_mujer.webp";
 import TestimonialsSection from "../components/TestimonialsSection.astro";
+import DeliveredGallerySection from "../components/DeliveredGallerySection.astro";
 
 import HeroSection from "../components/HeroSection.astro";
 import ProductGrid from "../components/ProductGrid.astro";
@@ -102,6 +103,8 @@ const searchResults = searchQuery
   ) : (
     <ProductGrid />
   )}
+
+  <DeliveredGallerySection />
 
 <!-- ══ SECCIONES DE TEMPORADA (visibilidad controlada por JS según fecha) ══ -->
 <div data-season="halloween"  class="season-block" hidden> <SeasonHalloween /> </div>

@@ -88,8 +88,8 @@ export const products: Product[] = [
     id: 1,
     slug: "gatito-personalizado",
     name: "Gatito Personalizado",
-    price: 29900,
-    discountPercent: 10,
+    price: 36000,
+    //discountPercent: 0,
     category: ["kawaii", "mascotas"],
     image: IndexGrid7,
     images: [

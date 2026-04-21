@@ -1,0 +1,196 @@
+---
+import { Image } from "astro:assets";
+
+import memorialSofi from "../assets/images/recordatorio_sofi.webp";
+import memorialMafi from "../assets/images/velita_mafi.webp";
+import memorialMix from "../assets/images/recordatorio_chiwi_mix_perros_gatitos_v2.webp";
+import perritoFoto from "../assets/images/perrito_cocker_beige_con_foto.webp";
+import recordatorioMalu from "../assets/images/recordatorio_malu.webp";
+import recordatorioMaluTarjeta from "../assets/images/recordatorio_malu_osito_tarjeta.webp";
+
+const galleryItems = [
+  {
+    image: memorialSofi,
+    alt: "Pedido real de memorial personalizado para mascota entregado por Chiwi Colombia",
+    label: "Memorial personalizado",
+    detail: "Hecho desde foto real",
+    city: "Ibagué",
+    size: "featured",
+  },
+  {
+    image: perritoFoto,
+    alt: "Pedido real de perrito personalizado con foto de referencia hecho a mano por Chiwi Colombia",
+    label: "Mascota personalizada",
+    detail: "Inspirado en su peludito",
+    city: "Bogotá",
+    size: "standard",
+  },
+  {
+    image: recordatorioMalu,
+    alt: "Pedido real de recordatorio artesanal personalizado entregado por Chiwi Colombia",
+    label: "Recordatorio de evento",
+    detail: "Listo para entregar",
+    city: "Cali",
+    size: "standard",
+  },
+  {
+    image: memorialMafi,
+    alt: "Pedido real de velita memorial personalizada entregada a cliente de Chiwi Colombia",
+    label: "Recuerdo con amor",
+    detail: "Pintado a mano",
+    city: "Medellín",
+    size: "standard",
+  },
+  {
+    image: recordatorioMaluTarjeta,
+    alt: "Pedido real de recordatorio con tarjeta personalizada elaborado por Chiwi Colombia",
+    label: "Detalle para regalar",
+    detail: "Con presentación especial",
+    city: "Barranquilla",
+    size: "standard",
+  },
+  {
+    image: memorialMix,
+    alt: "Colección de pedidos reales personalizados de perros y gatos hechos por Chiwi Colombia",
+    label: "Pedidos para familias",
+    detail: "Varias historias reales",
+    city: "Envíos Colombia",
+    size: "wide",
+  },
+];
+
+const heroItem = galleryItems.find((item) => item.size === "featured")!;
+const secondaryItems = galleryItems.filter((item) => item.size !== "featured");
+---
+
+<section
+  class="relative overflow-hidden bg-[#fffaf6] py-20"
+  aria-labelledby="pedidos-reales-heading"
+>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(244,176,138,0.22),_transparent_38%),radial-gradient(circle_at_bottom_right,_rgba(255,143,143,0.18),_transparent_34%)]"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4">
+    <div class="mx-auto max-w-3xl text-center">
+      <span class="inline-flex items-center gap-2 rounded-full border border-[#f4cdb9] bg-white/90 px-4 py-2 text-sm font-semibold text-[#bb6a46] shadow-sm">
+        Pedidos reales de clientes Chiwi
+      </span>
+      <h2
+        id="pedidos-reales-heading"
+        class="mt-5 text-4xl font-bold tracking-tight text-gray-900 md:text-5xl"
+      >
+        Así se ven nuestras velitas
+        <span class="bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
+          cuando llegan a su nuevo hogar
+        </span>
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-gray-600">
+        Antes de escribirnos, muchas personas quieren ver si de verdad quedan bonitas,
+        si se sienten especiales y si transmiten amor de verdad. Esta galería responde
+        justo eso con pedidos reales y personalizados.
+      </p>
+    </div>
+
+    <div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm font-semibold text-gray-700">
+      <span class="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-[#f6d7c8]">
+        Hechas a mano en Colombia
+      </span>
+      <span class="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-[#f6d7c8]">
+        Inspiradas en fotos e ideas reales
+      </span>
+      <span class="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-[#f6d7c8]">
+        Diseños entregados con presentación especial
+      </span>
+    </div>
+
+    <div class="mt-14 grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <article class="group relative self-start overflow-hidden rounded-[2rem] bg-white shadow-[0_22px_60px_rgba(109,71,52,0.14)] ring-1 ring-[#f8d9ca]">
+        <div class="relative aspect-[4/5] lg:aspect-[4/4.8]">
+          <Image
+            src={heroItem.image}
+            alt={heroItem.alt}
+            class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+            width={1200}
+            height={1400}
+            loading="lazy"
+            format="webp"
+            quality={88}
+          />
+          <div class="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#42281f]/85 via-[#42281f]/30 to-transparent"></div>
+          <div class="absolute left-5 top-5 flex flex-wrap gap-2">
+            <span class="rounded-full bg-white/90 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-[#b86547] shadow-sm">
+              {heroItem.label}
+            </span>
+            <span class="rounded-full bg-[#fff2eb]/90 px-3 py-1 text-xs font-semibold text-[#7f4d3f] shadow-sm">
+              {heroItem.city}
+            </span>
+          </div>
+          <div class="absolute inset-x-0 bottom-0 p-6 text-left text-white md:p-8">
+            <p class="text-2xl font-bold md:text-3xl">Pedidos que sí se sienten personales</p>
+            <p class="mt-3 max-w-xl text-sm leading-6 text-white/90 md:text-base">
+              No son solo fotos bonitas: son recuerdos creados para personas reales que
+              querían regalar, homenajear o guardar una historia especial.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <div class="grid gap-6 sm:grid-cols-2">
+        {secondaryItems.map((item) => (
+          <article class={`group relative overflow-hidden rounded-[1.75rem] bg-white shadow-[0_18px_45px_rgba(109,71,52,0.12)] ring-1 ring-[#f8d9ca] ${item.size === "wide" ? "sm:col-span-2" : ""}`}>
+            <div class="relative">
+              <Image
+                src={item.image}
+                alt={item.alt}
+                class={`w-full object-cover transition duration-500 group-hover:scale-[1.03] ${item.size === "wide" ? "h-[230px] md:h-[260px]" : "h-[230px]"}`}
+                width={900}
+                height={item.size === "wide" ? 700 : 900}
+                loading="lazy"
+                format="webp"
+                quality={86}
+              />
+              <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#3e271f]/85 via-[#3e271f]/25 to-transparent"></div>
+              <div class="absolute left-4 top-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-white/92 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#b86547] shadow-sm">
+                  {item.label}
+                </span>
+              </div>
+              <div class="absolute inset-x-0 bottom-0 p-4 text-white">
+                <p class="text-sm font-bold md:text-base">{item.detail}</p>
+                <p class="mt-1 text-xs text-white/85 md:text-sm">{item.city}</p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-12 rounded-[2rem] border border-[#f4d3c2] bg-white/90 p-6 shadow-[0_18px_45px_rgba(109,71,52,0.09)] backdrop-blur sm:p-8">
+      <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div class="max-w-2xl">
+          <p class="text-sm font-bold uppercase tracking-[0.18em] text-[#bb6a46]">
+            Lo que esta sección le dice a tu cliente
+          </p>
+          <p class="mt-3 text-lg leading-relaxed text-gray-700">
+            “Sí hay pedidos reales, sí quedan hermosos fuera de la foto de catálogo y sí
+            puedo confiar en que mi idea será tratada con cariño”.
+          </p>
+        </div>
+
+        <a
+          href="https://wa.me/573102278592?text=Hola!%20Vi%20los%20pedidos%20de%20Chiwi%20y%20quiero%20hacer%20el%20mio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-7 py-4 text-center font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+          data-meta-track="InitiateCheckout"
+          data-track-content-name="CTA pedidos reales"
+          data-track-content-category="social_proof"
+          data-track-content-type="gallery"
+          data-track-source-section="delivered_gallery"
+        >
+          <ion-icon name="logo-whatsapp" class="text-2xl" aria-hidden="true"></ion-icon>
+          Quiero mi pedido personalizado
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
