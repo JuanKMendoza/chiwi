@@ -74,7 +74,7 @@ const gallery = [
           </div>
         </div>
 
-        <div class="flex flex-col gap-3 sm:flex-row">
+        <div class="hidden flex-col gap-3 sm:flex-row lg:flex">
           <a
             href={whatsappUrl}
             target="_blank"
@@ -159,6 +159,30 @@ const gallery = [
             </a>
           ))}
         </div>
+      </div>
+
+      <div class="flex flex-col gap-3 lg:hidden">
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#1E6B50] to-[#78C4A8] px-7 py-4 text-center font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+          data-meta-track="InitiateCheckout"
+          data-track-content-name="Flores naturales preservadas"
+          data-track-content-category="flores"
+          data-track-content-type="collection"
+          data-track-source-section="preserved_flowers_home"
+        >
+          <ion-icon name="logo-whatsapp" class="text-2xl" aria-hidden="true"></ion-icon>
+          Armar mi ramo por WhatsApp
+        </a>
+        <a
+          href="/productos"
+          class="inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full border border-[#d7bba9] bg-white/80 px-7 py-4 text-center font-bold text-[#7B4F3A] shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+        >
+          Ver flores en catalogo
+          <ion-icon name="arrow-forward-outline" class="text-xl" aria-hidden="true"></ion-icon>
+        </a>
       </div>
     </div>
   </div>
