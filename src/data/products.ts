@@ -61,6 +61,24 @@ import packGatitoModelo2 from "../assets/images/pack_gatitos_modelo_2.webp";
 //Navidad
 import christmasProduct1 from "../assets/images/farolito_solo.webp";
 import christmasProduct3 from "../assets/images/bolitas_velitas_con_nombres.webp";
+// Flores preservadas
+import bouquetSurtido from "../assets/images/flores/bouquet_surtido_preservado.webp";
+import bouquetSurtidoDetalle from "../assets/images/flores/bouquet_surtido_detalle.webp";
+import ramoGypso from "../assets/images/flores/ramo_gypso_preservado.webp";
+import ramoGypsoColores from "../assets/images/flores/ramo_gypso_colores.webp";
+import ramoStatis from "../assets/images/flores/ramo_statis_lila_amarillo_verde.webp";
+import ramoStatisSurtido from "../assets/images/flores/ramo_statis_surtido_colores.webp";
+import ramoStatisVertical from "../assets/images/flores/ramo_statis_multicolor_vertical.webp";
+import ramoAster from "../assets/images/flores/ramo_aster_preservado.webp";
+import ramoAsterSurtido from "../assets/images/flores/ramo_aster_surtido.webp";
+import ramoCaspia from "../assets/images/flores/ramo_caspia_preservada.webp";
+import ramoCaspiaColores from "../assets/images/flores/ramo_caspia_colores.webp";
+import ramoRuscus from "../assets/images/flores/ramo_ruscus_preservado.webp";
+import ramoRuscusColores from "../assets/images/flores/ramo_ruscus_rosa_verde.webp";
+import ramoEucalipto from "../assets/images/flores/ramo_eucalipto_preservado.webp";
+import ramoCecilitas from "../assets/images/flores/ramo_cecilitas_colores.webp";
+import ramoCecilitasRosa from "../assets/images/flores/ramo_cecilitas_rosa_verde.webp";
+import ramoCecilitasVertical from "../assets/images/flores/ramo_cecilitas_multicolor_vertical.webp";
 
 export interface Product {
   id: number;
@@ -68,7 +86,7 @@ export interface Product {
   name: string;
   price: number;
   discountPercent?: number;
-  category: ("temporada" | "kawaii" | "mascotas" | "recordatorios")[]; // Array de categorías
+  category: ("temporada" | "kawaii" | "mascotas" | "recordatorios" | "flores")[]; // Array de categorías
   image: ImageMetadata;
   images?: ImageMetadata[]; // Múltiples imágenes para la galería
   alt: string;
@@ -371,6 +389,206 @@ export const products: Product[] = [
     //weight: "200g el set completo",
     elaborationTime: "1-2 días hábiles",
     relatedProducts: ["perrito-cocker", "capibara-beige-acostado"],
+  },
+  {
+    id: 11,
+    slug: "ramo-gypso-preservado",
+    name: "Ramo de Gypso Preservado",
+    price: 18000,
+    category: ["flores"],
+    image: ramoGypso,
+    images: [ramoGypso, ramoGypsoColores],
+    alt: "Ramo de gypso preservado natural para regalar y decorar en Colombia",
+    featured: true,
+    description: "Ramo delicado de gypso preservado, perfecto para detalles romanticos y decoracion suave.",
+    longDescription:
+      "Un ramillete delicado, luminoso y facil de combinar. El gypso preservado no necesita agua y conserva su encanto por meses, ideal para decorar tu espacio, complementar un regalo o armar un detalle personalizado con flores naturales.",
+    badge: "Natural preservada",
+    features: [
+      "Flor natural preservada",
+      "No necesita agua",
+      "Dura por meses con cuidados simples",
+      "Ideal para regalar o decorar",
+      "Puedes combinarla con otras referencias",
+    ],
+    size: "Ramo pequeno/mediano, tamano variable por tallo",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["bouquet-surtido-preservado", "ramo-statis-preservado"],
+  },
+  {
+    id: 12,
+    slug: "ramo-statis-preservado",
+    name: "Ramo de Statis Preservado",
+    price: 22000,
+    category: ["flores"],
+    image: ramoStatis,
+    images: [ramoStatis, ramoStatisSurtido, ramoStatisVertical],
+    alt: "Ramo de statis preservado en tonos lila amarillo y verde",
+    featured: true,
+    description: "Flores de statis preservadas con color vibrante para regalos que duran mas.",
+    longDescription:
+      "El statis preservado suma color, textura y volumen sin perder ese look natural que enamora. Es una opcion preciosa para detalles de cumpleanos, decoracion de escritorio o ramos personalizados con paletas suaves o vibrantes.",
+    badge: "Dura por meses",
+    features: [
+      "Flor natural preservada",
+      "Disponible en tonos segun stock",
+      "No necesita agua",
+      "Perfecta para ramos surtidos",
+      "Empaque protegido para envio",
+    ],
+    size: "Ramo mediano, volumen variable por tallo",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["ramo-gypso-preservado", "ramo-caspia-preservada"],
+  },
+  {
+    id: 13,
+    slug: "ramo-aster-preservado",
+    name: "Ramo de Aster Preservado",
+    price: 22000,
+    category: ["flores"],
+    image: ramoAster,
+    images: [ramoAster, ramoAsterSurtido],
+    alt: "Ramo de aster preservado natural en tonos calidos",
+    featured: false,
+    description: "Aster preservado con textura botanica, ideal para detalles naturales y duraderos.",
+    longDescription:
+      "El aster preservado aporta un toque organico y silvestre a cualquier rincon. Funciona muy bien solo o combinado con gypso, statis y follajes para crear un ramo lleno de vida que no necesita mantenimiento diario.",
+    badge: "Natural preservada",
+    features: [
+      "Flor natural preservada",
+      "Textura botanica y silvestre",
+      "No necesita agua",
+      "Ideal para combinar en bouquets",
+      "Preparado con empaque de regalo",
+    ],
+    size: "Ramo pequeno/mediano, tamano variable por tallo",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["bouquet-surtido-preservado", "ramo-ruscus-preservado"],
+  },
+  {
+    id: 14,
+    slug: "ramo-caspia-preservada",
+    name: "Ramo de Caspia Preservada",
+    price: 22000,
+    category: ["flores"],
+    image: ramoCaspia,
+    images: [ramoCaspia, ramoCaspiaColores],
+    alt: "Ramo de caspia preservada de colores para regalar",
+    featured: false,
+    description: "Caspia preservada con volumen ligero para armar ramos llenos de color.",
+    longDescription:
+      "La caspia preservada es perfecta cuando quieres un detalle colorido, liviano y con mucha presencia visual. Sus ramitas finas crean volumen sin sentirse pesado, ideal para decorar o acompanar una velita especial.",
+    badge: "Dura por meses",
+    features: [
+      "Flor natural preservada",
+      "Disponible en colores segun stock",
+      "No necesita agua",
+      "Aporta volumen a bouquets",
+      "Puedes pedir mezcla de tonos",
+    ],
+    size: "Ramo mediano, volumen variable por tallo",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["ramo-statis-preservado", "bouquet-surtido-preservado"],
+  },
+  {
+    id: 15,
+    slug: "ramo-ruscus-preservado",
+    name: "Ramo de Ruscus Preservado",
+    price: 24000,
+    category: ["flores"],
+    image: ramoRuscus,
+    images: [ramoRuscus, ramoRuscusColores],
+    alt: "Ramo de ruscus preservado natural en tonos verdes y rosados",
+    featured: false,
+    description: "Follaje de ruscus preservado para dar estructura y color a tus arreglos.",
+    longDescription:
+      "El ruscus preservado es el follaje ideal para elevar un ramo: da forma, color y una sensacion natural preciosa. Es una opcion versatil para decorar jarrones, complementar flores o crear arreglos duraderos.",
+    badge: "Natural preservada",
+    features: [
+      "Follaje natural preservado",
+      "No necesita agua",
+      "Perfecto para decorar jarrones",
+      "Combina con flores de colores",
+      "Empaque protegido para envio",
+    ],
+    size: "Ramo mediano, tamano variable por tallo",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["ramo-eucalipto-preservado", "ramo-aster-preservado"],
+  },
+  {
+    id: 16,
+    slug: "ramo-eucalipto-preservado",
+    name: "Ramo de Eucalipto Preservado",
+    price: 26000,
+    category: ["flores"],
+    image: ramoEucalipto,
+    images: [ramoEucalipto],
+    alt: "Ramo de eucalipto preservado en tonos verdes y naturales",
+    featured: true,
+    description: "Eucalipto preservado elegante para decorar espacios con un toque botanico.",
+    longDescription:
+      "El eucalipto preservado trae calma, textura y una estetica natural muy facil de integrar en cualquier espacio. Es ideal para jarrones, escritorios, mesas auxiliares o como base para un bouquet personalizado.",
+    badge: "Dura por meses",
+    features: [
+      "Follaje natural preservado",
+      "No necesita agua",
+      "Estetica elegante y botanica",
+      "Ideal para decoracion de hogar",
+      "Puedes combinarlo con gypso o statis",
+    ],
+    size: "Ramo mediano/grande, tamano variable por tallo",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["ramo-ruscus-preservado", "bouquet-surtido-preservado"],
+  },
+  {
+    id: 17,
+    slug: "mini-rosas-preservadas",
+    name: "Mini Rosas Preservadas",
+    price: 28000,
+    category: ["flores"],
+    image: ramoCecilitas,
+    images: [ramoCecilitas, ramoCecilitasRosa, ramoCecilitasVertical],
+    alt: "Mini rosas y flores preservadas de colores para regalar",
+    featured: true,
+    description: "Mini flores preservadas llenas de color para detalles romanticos y personalizados.",
+    longDescription:
+      "Un detalle dulce y colorido para regalar sin que se marchite rapido. Estas mini flores preservadas son perfectas para armar ramilletes pequenos, complementar una velita o crear un detalle lleno de ternura.",
+    badge: "Lista para regalar",
+    features: [
+      "Flores naturales preservadas",
+      "No necesitan agua",
+      "Colores disponibles segun stock",
+      "Ideales para detalles romanticos",
+      "Puedes pedir combinacion personalizada",
+    ],
+    size: "Ramo pequeno/mediano, tamano variable por tallo",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["ramo-gypso-preservado", "bouquet-surtido-preservado"],
+  },
+  {
+    id: 18,
+    slug: "bouquet-surtido-preservado",
+    name: "Bouquet Surtido Preservado",
+    price: 45000,
+    category: ["flores"],
+    image: bouquetSurtido,
+    images: [bouquetSurtido, bouquetSurtidoDetalle],
+    alt: "Bouquet surtido de flores naturales preservadas listo para regalar",
+    featured: true,
+    description: "Bouquet de flores preservadas con mezcla de colores, texturas y empaque especial.",
+    longDescription:
+      "Un bouquet colorido, alegre y listo para sorprender. Mezclamos flores y follajes preservados segun disponibilidad para crear un arreglo unico que dura por meses y llega preparado para regalar.",
+    badge: "Favorito floral",
+    features: [
+      "Mezcla de flores naturales preservadas",
+      "No necesita agua",
+      "Paleta de color personalizable segun stock",
+      "Empaque especial para regalo",
+      "Ideal para cumpleanos, amor, gracias o decoracion",
+    ],
+    size: "Bouquet mediano, volumen variable segun mezcla",
+    elaborationTime: "Disponible segun stock; preparacion 1-2 dias habiles",
+    relatedProducts: ["ramo-gypso-preservado", "ramo-eucalipto-preservado", "mini-rosas-preservadas"],
   },
 ];
 

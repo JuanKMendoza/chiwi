@@ -28,6 +28,7 @@ const displayPrice = getDiscountedPrice(product);
 const whatsappMessage = `Hola! Me interesa el producto: ${product.name} (${displayPrice.toLocaleString("es-CO")} COP)`;
 const whatsappUrl = `https://wa.me/573102278592?text=${encodeURIComponent(whatsappMessage)}`;
 const relatedGuides = [];
+const isFlowerProduct = product.category.includes("flores");
 
 if (product.slug === "gatito-personalizado") {
   relatedGuides.push({
@@ -237,7 +238,7 @@ if (product.category.includes("mascotas") || product.category.includes("kawaii")
             </div>
             <div class="flex items-center gap-3">
               <ion-icon name="leaf-outline" class="text-xl text-orange-500"></ion-icon>
-              <span>Productos eco-friendly y naturales</span>
+              <span>{isFlowerProduct ? "Flores naturales preservadas" : "Productos eco-friendly y naturales"}</span>
             </div>
           </div>
 
@@ -389,10 +390,10 @@ if (product.category.includes("mascotas") || product.category.includes("kawaii")
   <section class="py-16 bg-gradient-to-r from-orange-500 to-pink-500 text-white">
     <div class="max-w-4xl mx-auto px-4 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        ¿Quieres personalizar este diseño?
+        {isFlowerProduct ? "¿Quieres armar tu ramo ideal?" : "¿Quieres personalizar este diseño?"}
       </h2>
       <p class="text-xl mb-8 text-white/90">
-        Contáctanos y cuéntanos tu idea. La haremos realidad.
+        {isFlowerProduct ? "Cuéntanos los colores o el estilo que quieres y revisamos disponibilidad contigo." : "Contáctanos y cuéntanos tu idea. La haremos realidad."}
       </p>
       <a
         href={whatsappUrl}
@@ -408,10 +409,10 @@ if (product.category.includes("mascotas") || product.category.includes("kawaii")
         data-track-source-section="product_final_cta"
         data-track-value={String(displayPrice)}
         data-track-currency="COP"
-        aria-label={`Personalizar ${product.name} por WhatsApp`}
+        aria-label={`${isFlowerProduct ? "Armar" : "Personalizar"} ${product.name} por WhatsApp`}
       >
         <ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon>
-        Personalizar por WhatsApp
+        {isFlowerProduct ? "Armar por WhatsApp" : "Personalizar por WhatsApp"}
       </a>
     </div>
   </section>

@@ -1,0 +1,194 @@
+---
+import { Image } from "astro:assets";
+
+import bouquetSurtido from "../assets/images/flores/bouquet_surtido_preservado.webp";
+import bouquetDetalle from "../assets/images/flores/bouquet_surtido_detalle.webp";
+import collageEucaliptoStatis from "../assets/images/flores/flores_collage_eucalipto_statis.webp";
+import collageGypsoColores from "../assets/images/flores/flores_collage_gypso_colores.webp";
+import gypso from "../assets/images/flores/ramo_gypso_preservado.webp";
+import eucalipto from "../assets/images/flores/ramo_eucalipto_preservado.webp";
+import statis from "../assets/images/flores/ramo_statis_surtido_colores.webp";
+
+const whatsappUrl =
+  "https://wa.me/573102278592?text=Hola!%20Quiero%20conocer%20las%20flores%20naturales%20preservadas%20de%20Chiwi";
+
+const gallery = [
+  {
+    image: gypso,
+    alt: "Ramo de gypso preservado natural de Chiwi Colombia",
+    label: "Gypso",
+  },
+  {
+    image: eucalipto,
+    alt: "Ramo de eucalipto preservado natural para decorar",
+    label: "Eucalipto",
+  },
+  {
+    image: statis,
+    alt: "Ramos de statis preservado en colores lila amarillo y verde",
+    label: "Statis",
+  },
+];
+---
+
+<section
+  id="flores-preservadas"
+  class="relative overflow-hidden bg-[#fffaf4] py-20"
+  aria-labelledby="flores-preservadas-heading"
+>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(120,196,168,0.22),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(232,144,154,0.20),_transparent_38%)]"></div>
+
+  <div class="relative mx-auto max-w-7xl px-4">
+    <div class="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div class="space-y-7">
+        <span class="inline-flex items-center gap-2 rounded-full border border-[#d7eadf] bg-white/90 px-4 py-2 text-sm font-bold text-[#1E6B50] shadow-sm">
+          Nueva línea Chiwi
+        </span>
+
+        <div class="space-y-5">
+          <h2
+            id="flores-preservadas-heading"
+            class="text-4xl font-bold leading-tight tracking-tight text-gray-900 md:text-5xl"
+          >
+            Flores naturales preservadas
+            <span class="block bg-gradient-to-r from-[#1E6B50] via-[#E8909A] to-[#F97316] bg-clip-text text-transparent">
+              que duran mucho más que un detalle
+            </span>
+          </h2>
+          <p class="max-w-xl text-lg leading-relaxed text-gray-700">
+            Ramos y bouquets naturales listos para regalar, decorar o acompañar
+            una velita especial. Conservan su belleza por meses y no necesitan agua.
+          </p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-3">
+          <div class="rounded-2xl border border-[#d7eadf] bg-white/90 p-4 shadow-sm">
+            <p class="text-sm font-bold text-[#1E6B50]">Duran por meses</p>
+            <p class="mt-1 text-sm text-gray-600">Belleza natural sin marchitarse rápido.</p>
+          </div>
+          <div class="rounded-2xl border border-[#f5d2d8] bg-white/90 p-4 shadow-sm">
+            <p class="text-sm font-bold text-[#9B3A6B]">Listas para regalar</p>
+            <p class="mt-1 text-sm text-gray-600">Con empaque cuidado y protegido.</p>
+          </div>
+          <div class="rounded-2xl border border-[#f8d7c5] bg-white/90 p-4 shadow-sm">
+            <p class="text-sm font-bold text-[#C2410C]">Paleta a tu gusto</p>
+            <p class="mt-1 text-sm text-gray-600">Combinamos colores según stock.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-[56px] items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[#1E6B50] to-[#78C4A8] px-7 py-4 text-center font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl"
+            data-meta-track="InitiateCheckout"
+            data-track-content-name="Flores naturales preservadas"
+            data-track-content-category="flores"
+            data-track-content-type="collection"
+            data-track-source-section="preserved_flowers_home"
+          >
+            <ion-icon name="logo-whatsapp" class="text-2xl" aria-hidden="true"></ion-icon>
+            Armar mi ramo por WhatsApp
+          </a>
+          <a
+            href="/productos"
+            class="inline-flex min-h-[56px] items-center justify-center gap-2 rounded-full border border-[#d7bba9] bg-white/80 px-7 py-4 text-center font-bold text-[#7B4F3A] shadow-sm transition hover:-translate-y-0.5 hover:bg-white hover:shadow-md"
+          >
+            Ver flores en catálogo
+            <ion-icon name="arrow-forward-outline" class="text-xl" aria-hidden="true"></ion-icon>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-[1.05fr_0.95fr]">
+        <article class="group relative overflow-hidden rounded-[2rem] bg-white shadow-[0_22px_60px_rgba(76,58,43,0.16)] ring-1 ring-[#efd8c7] sm:row-span-2">
+          <Image
+            src={bouquetSurtido}
+            alt="Bouquet surtido de flores naturales preservadas de Chiwi Colombia"
+            class="h-[430px] w-full object-cover transition duration-500 group-hover:scale-[1.03] sm:h-full"
+            width={1100}
+            height={1400}
+            loading="lazy"
+            format="webp"
+            quality={88}
+          />
+          <div class="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#2c211a]/85 via-[#2c211a]/25 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-6 text-white">
+            <p class="text-2xl font-bold">Bouquets con alma natural</p>
+            <p class="mt-2 max-w-sm text-sm leading-6 text-white/90">
+              Mezclas de color, textura y follaje para regalar algo que se queda.
+            </p>
+          </div>
+        </article>
+
+        <article class="relative overflow-hidden rounded-[1.5rem] bg-white shadow-[0_16px_42px_rgba(76,58,43,0.12)] ring-1 ring-[#efd8c7]">
+          <Image
+            src={bouquetDetalle}
+            alt="Detalle de bouquet surtido preservado listo para regalo"
+            class="h-56 w-full object-cover"
+            width={900}
+            height={700}
+            loading="lazy"
+            format="webp"
+            quality={86}
+          />
+          <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-[#7B4F3A] shadow-sm">
+            Listo para regalo
+          </span>
+        </article>
+
+        <div class="grid grid-cols-3 gap-3">
+          {gallery.map((item) => (
+            <a
+              href="/productos"
+              class="group relative overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-[#efd8c7]"
+              aria-label={`Ver ${item.label} preservado en el catálogo`}
+            >
+              <Image
+                src={item.image}
+                alt={item.alt}
+                class="h-36 w-full object-cover transition duration-300 group-hover:scale-105"
+                width={420}
+                height={520}
+                loading="lazy"
+                format="webp"
+                quality={84}
+              />
+              <span class="absolute inset-x-2 bottom-2 rounded-full bg-white/88 px-2 py-1 text-center text-xs font-bold text-[#4c3a2b] shadow-sm">
+                {item.label}
+              </span>
+            </a>
+          ))}
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 sm:col-span-2">
+          <article class="relative overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-[#efd8c7]">
+            <Image
+              src={collageEucaliptoStatis}
+              alt="Collage de eucalipto y statis preservado de Chiwi Colombia"
+              class="h-36 w-full object-cover"
+              width={700}
+              height={520}
+              loading="lazy"
+              format="webp"
+              quality={84}
+            />
+          </article>
+          <article class="relative overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-[#efd8c7]">
+            <Image
+              src={collageGypsoColores}
+              alt="Collage de gypso y flores preservadas de colores"
+              class="h-36 w-full object-cover"
+              width={700}
+              height={520}
+              loading="lazy"
+              format="webp"
+              quality={84}
+            />
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
