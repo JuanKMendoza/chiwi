@@ -1,0 +1,326 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getDiscountedPrice, getProductBySlug } from "../../data/products";
+import bouquetHero from "../../assets/images/flores/bouquet_surtido_preservado.webp";
+import gypsoDetail from "../../assets/images/flores/ramo_gypso_preservado.webp";
+
+const bouquetHref = "/productos/bouquet-surtido-preservado";
+const gypsoHref = "/productos/ramo-gypso-preservado";
+const eucaliptoHref = "/productos/ramo-eucalipto-preservado";
+const whatsappUrl =
+  "https://wa.me/573102278592?text=Hola!%20Quiero%20asesoria%20sobre%20flores%20preservadas%20naturales%20y%20gypso";
+
+const bouquetProduct = getProductBySlug("bouquet-surtido-preservado");
+const gypsoProduct = getProductBySlug("ramo-gypso-preservado");
+const bouquetPrice = bouquetProduct ? getDiscountedPrice(bouquetProduct) : undefined;
+const gypsoPrice = gypsoProduct ? getDiscountedPrice(gypsoProduct) : undefined;
+---
+
+<Layout
+  title="Flores preservadas naturales y gypso: qué son, cuánto duran y cómo usarlas | Chiwi"
+  description="Descubre qué son las flores preservadas naturales, cómo se usa el gypso, cuánto duran y por qué se han vuelto una opción fuerte para decorar, regalar y vender mejor."
+>
+  <article class="max-w-4xl mx-auto px-4 py-8 md:py-12">
+    <nav class="text-sm text-gray-500 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-Naranja-principal transition-colors">Inicio</a></li>
+        <li>&rsaquo;</li>
+        <li><a href="/blog" class="hover:text-Naranja-principal transition-colors">Blog</a></li>
+        <li>&rsaquo;</li>
+        <li class="text-gray-700">Flores preservadas y gypso</li>
+      </ol>
+    </nav>
+
+    <header class="mb-8">
+      <h1 class="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+        Flores preservadas naturales y gypso: qué son, cuánto duran y por qué enamoran tanto
+      </h1>
+
+      <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
+        <time datetime="2026-05-23">23 de mayo, 2026</time>
+        <span>&bull;</span>
+        <span>7 min de lectura</span>
+        <span>&bull;</span>
+        <span class="text-Naranja-principal font-medium">Guías</span>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden shadow-lg mb-6">
+        <Image
+          src={bouquetHero}
+          alt="Bouquet de flores preservadas naturales de Chiwi Colombia"
+          class="w-full h-[300px] md:h-[420px] object-cover"
+          width={1200}
+          height={760}
+        />
+      </div>
+    </header>
+
+    <div class="bg-gradient-to-r from-orange-50 to-pink-50 border-l-4 border-Naranja-principal p-6 rounded-lg mb-8">
+      <p class="text-lg md:text-xl leading-relaxed text-gray-800">
+        Las <strong>flores preservadas naturales</strong> ya no son solo una tendencia bonita en Pinterest. Se han convertido en una categoría real de compra para personas que quieren <strong>decorar</strong>, <strong>regalar</strong> y conservar una estética floral durante mucho más tiempo. Dentro de esa conversación, el <strong>gypso</strong> destaca como una de las opciones más buscadas por su textura, su versatilidad y su encanto visual.
+      </p>
+    </div>
+
+    <nav class="bg-white border border-gray-200 rounded-xl p-6 mb-10 shadow-sm">
+      <h2 class="font-bold text-lg mb-4 text-gray-900">En este artículo:</h2>
+      <ol class="space-y-2 text-gray-700">
+        <li><a href="#que-son" class="hover:text-Naranja-principal transition-colors">1. Qué son las flores preservadas naturales</a></li>
+        <li><a href="#gypso" class="hover:text-Naranja-principal transition-colors">2. Qué es el gypso y por qué gusta tanto</a></li>
+        <li><a href="#por-que-se-venden" class="hover:text-Naranja-principal transition-colors">3. Por qué esta categoría vende tan bien</a></li>
+        <li><a href="#como-usarlas" class="hover:text-Naranja-principal transition-colors">4. Cómo usarlas para decorar y regalar</a></li>
+        <li><a href="#cuidados" class="hover:text-Naranja-principal transition-colors">5. Cuidados básicos y dudas frecuentes</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose prose-lg max-w-none">
+      <section id="que-son" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Qué son las flores preservadas naturales
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Las flores preservadas naturales son flores reales que pasan por un proceso de conservación para mantener su apariencia, color y textura durante mucho más tiempo que una flor fresca. A diferencia de una flor recién cortada, no necesitan agua y se vuelven una alternativa muy atractiva para hogares, escritorios, regalos y arreglos decorativos.
+        </p>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          En el mercado, la intención de búsqueda gira mucho alrededor de preguntas como <strong>qué son</strong>, <strong>cuánto duran</strong>, <strong>cómo se cuidan</strong> y <strong>si sirven para decorar o regalar</strong>. Eso nos dice algo importante: la gente no solo busca “comprar”, también busca entender bien el producto antes de decidir.
+        </p>
+        <p class="text-gray-700 leading-relaxed">
+          Esa combinación de belleza natural, duración y facilidad de mantenimiento es justamente lo que ha hecho que esta categoría crezca tanto en decoración floral, detalles personalizados y regalos con valor percibido más alto.
+        </p>
+      </section>
+
+      <section id="gypso" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Qué es el gypso y por qué se ha vuelto tan protagonista
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6 items-center mb-6">
+          <div class="rounded-xl overflow-hidden shadow-md">
+            <Image
+              src={gypsoDetail}
+              alt="Ramo de gypso preservado natural en Chiwi Colombia"
+              class="w-full h-72 object-cover"
+              width={720}
+              height={720}
+            />
+          </div>
+          <div>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              El gypso, también conocido por mucha gente como gypsophila o “flor nube”, es una flor muy valorada por su textura ligera y romántica. En preservado funciona especialmente bien porque mantiene un efecto visual delicado y combina con muchísimos estilos de ramo.
+            </p>
+            <ul class="space-y-3 text-gray-700">
+              <li class="flex items-start gap-3">
+                <span class="text-Naranja-principal font-bold">01</span>
+                <span>Se ve bonito solo, pero también mezcla muy bien con follajes y bouquets surtidos.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-Naranja-principal font-bold">02</span>
+                <span>Encaja con decoración suave, regalos románticos, celebraciones y detalles minimalistas.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-Naranja-principal font-bold">03</span>
+                <span>Su apariencia ligera hace que el producto se sienta tierno, elegante y fácil de regalar.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="por-que-se-venden" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Por qué las flores preservadas se venden tan bien hoy
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Hay una razón comercial bastante clara: resuelven varias intenciones de compra al mismo tiempo. Quien llega buscando flores preservadas no siempre quiere lo mismo. A veces quiere un regalo duradero. A veces quiere decorar un rincón de su casa. A veces quiere algo visualmente especial para un evento o una mesa.
+        </p>
+        <div class="bg-orange-50 rounded-2xl p-6 mb-5">
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Se perciben como más duraderas que una flor fresca tradicional.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Tienen una estética “lista para foto” que funciona muy bien en redes y regalos.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Combinan decoración, detalle emocional y practicidad en una sola compra.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-green-500 font-bold">✓</span>
+              <span>Permiten hablar de color, estilo, ocasión y personalización sin salir de la misma categoría.</span>
+            </li>
+          </ul>
+        </div>
+        <p class="text-gray-700 leading-relaxed">
+          Si un negocio vende estos productos, el contenido que más posibilidades tiene de posicionar no es el más “inflado”, sino el que responde mejor esa intención mixta: explicar, inspirar y facilitar la compra.
+        </p>
+      </section>
+
+      <section id="como-usarlas" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Cómo usar flores preservadas y gypso para decorar o regalar
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-5 mb-8">
+          <a
+            href={gypsoHref}
+            class="rounded-2xl border border-orange-100 bg-orange-50 p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+            data-track-event="blog_cta_click"
+            data-track-content-name="Ramo de Gypso Preservado"
+            data-track-content-category="blog_flores_preservadas"
+            data-track-content-id="ramo-gypso-preservado"
+            data-track-source-section="preserved_flowers_product_grid"
+            data-track-value={gypsoPrice ? String(gypsoPrice) : undefined}
+          >
+            <h3 class="text-xl font-bold text-gray-900">Ramo de Gypso Preservado</h3>
+            <p class="mt-2 text-gray-600">
+              Ideal si quieres un detalle ligero, delicado y fácil de combinar con otras flores o con un regalo especial.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-orange-500">
+              Ver ramo de gypso
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </span>
+          </a>
+
+          <a
+            href={bouquetHref}
+            class="rounded-2xl border border-pink-100 bg-pink-50 p-6 transition hover:-translate-y-0.5 hover:shadow-md"
+            data-track-event="blog_cta_click"
+            data-track-content-name="Bouquet Surtido Preservado"
+            data-track-content-category="blog_flores_preservadas"
+            data-track-content-id="bouquet-surtido-preservado"
+            data-track-source-section="preserved_flowers_product_grid"
+            data-track-value={bouquetPrice ? String(bouquetPrice) : undefined}
+          >
+            <h3 class="text-xl font-bold text-gray-900">Bouquet Surtido Preservado</h3>
+            <p class="mt-2 text-gray-600">
+              Funciona muy bien cuando la intención es sorprender con un regalo vistoso, colorido y listo para entregar.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-pink-500">
+              Ver bouquet surtido
+              <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+            </span>
+          </a>
+        </div>
+
+        <p class="text-gray-700 leading-relaxed mb-4">
+          A nivel práctico, estas flores funcionan muy bien para:
+        </p>
+        <ul class="space-y-3 text-gray-700 mb-6">
+          <li class="flex items-start gap-3">
+            <span class="text-Naranja-principal font-bold">01</span>
+            <span>Regalos de cumpleaños, agradecimiento, aniversario o detalles “porque sí”.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-Naranja-principal font-bold">02</span>
+            <span>Decoración de mesas, escritorios, repisas, tocadores y rincones fotogénicos.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-Naranja-principal font-bold">03</span>
+            <span>Combinaciones con velas, cajas regalo o arreglos personalizados.</span>
+          </li>
+        </ul>
+
+        <div class="rounded-2xl bg-gradient-to-r from-Naranja-principal to-pink-400 text-white p-8 shadow-xl">
+          <h3 class="text-2xl md:text-3xl font-bold mb-3">Pedir flores preservadas por WhatsApp</h3>
+          <p class="text-lg text-white/90 mb-6">
+            Si quieres ayuda para elegir entre gypso, bouquet surtido o follajes preservados, te guiamos según color, ocasión y presupuesto.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-4 font-bold text-Naranja-principal transition hover:scale-[1.02]"
+              data-track-event="blog_cta_click"
+              data-track-content-name="WhatsApp flores preservadas"
+              data-track-content-category="blog_flores_preservadas"
+              data-track-source-section="preserved_flowers_primary_whatsapp_cta"
+            >
+              Pedir asesoría por WhatsApp
+            </a>
+            <a
+              href={eucaliptoHref}
+              class="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 px-7 py-4 font-bold text-white transition hover:bg-white/10"
+              data-track-event="blog_cta_click"
+              data-track-content-name="Ramo de Eucalipto Preservado"
+              data-track-content-category="blog_flores_preservadas"
+              data-track-content-id="ramo-eucalipto-preservado"
+              data-track-source-section="preserved_flowers_secondary_product_cta"
+            >
+              Ver eucalipto preservado
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="cuidados" class="mb-12 scroll-mt-20">
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+          Cuidados básicos y preguntas frecuentes
+        </h2>
+        <p class="text-gray-700 leading-relaxed mb-4">
+          Si alguien busca este tipo de producto con intención real de compra, casi siempre quiere saber si es difícil de mantener. La respuesta corta es no: precisamente una de sus ventajas es que no requieren el cuidado diario de una flor fresca.
+        </p>
+        <div class="space-y-4">
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">¿Las flores preservadas son naturales?</summary>
+            <p class="mt-3 text-gray-600">Sí. Son flores reales que pasan por un proceso de conservación para durar más tiempo.</p>
+          </details>
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">¿El gypso preservado sirve solo para bodas o también para hogar?</summary>
+            <p class="mt-3 text-gray-600">Sirve para ambas cosas. Queda precioso en ramos, regalos y decoración cotidiana.</p>
+          </details>
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">¿Necesitan agua?</summary>
+            <p class="mt-3 text-gray-600">No. Justamente por eso son tan prácticas para regalar y decorar.</p>
+          </details>
+          <details class="rounded-xl border border-gray-200 p-5">
+            <summary class="cursor-pointer font-semibold text-gray-900">¿Cómo sé cuál elegir?</summary>
+            <p class="mt-3 text-gray-600">Piensa en la intención: gypso para algo delicado, bouquet surtido para algo más protagonista, y follajes como eucalipto para una estética más natural.</p>
+          </details>
+        </div>
+      </section>
+
+      <aside class="border-t border-gray-200 pt-8 mt-12">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Sigue explorando</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <a
+            href="/blog/regalos-dia-de-la-madre"
+            class="flex gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
+          >
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-900 mb-1">Regalos para Dia de la Madre</h4>
+              <p class="text-sm text-gray-600">Otra intención fuerte de compra para detalles memorables.</p>
+            </div>
+          </a>
+          <a
+            href={bouquetHref}
+            class="flex gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"
+          >
+            <div class="flex-1">
+              <h4 class="font-semibold text-gray-900 mb-1">Bouquet Surtido Preservado</h4>
+              <p class="text-sm text-gray-600">Una opción directa para quien ya viene con intención de compra.</p>
+            </div>
+          </a>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Flores preservadas naturales y gypso: qué son, cuánto duran y por qué enamoran tanto",
+      "description": "Guía práctica sobre flores preservadas naturales y gypso para decorar, regalar y entender por qué se han vuelto una categoría tan buscada.",
+      "datePublished": "2026-05-23",
+      "author": {
+        "@type": "Organization",
+        "name": "Chiwi Colombia"
+      },
+      "mainEntityOfPage": "https://chiwicolombia.com/blog/flores-preservadas-gypso",
+      "keywords": "flores preservadas naturales, gypso preservado, bouquet de flores preservadas, flores preservadas para regalar, flores preservadas decoracion"
+    }
+  </script>
+</Layout>
