@@ -6,6 +6,7 @@ import { getDiscountedPrice, hasDiscount, products } from "../../data/products";
 // Filtros de la barra superior
 const categories = [
   { id: "all",          name: "Todos los productos", icon: "apps-outline"  },
+  { id: "flores",       name: "Flores Preservadas",   icon: "flower-outline" },
   { id: "temporada",    name: "Temporada",            icon: "star-outline"  },
   { id: "kawaii",       name: "Velitas Kawaii",       icon: "heart-outline" },
   { id: "mascotas",     name: "Para tu Peludo",       icon: "paw-outline"   },
@@ -14,6 +15,14 @@ const categories = [
 
 // Config de grupos con identidad visual de marca (brandbook)
 const categoryGroups = [
+  {
+    id: "flores",
+    label: "Flores Preservadas",
+    icon: "flower-outline",
+    textColor: "#1E6B50",
+    lineGradient: "linear-gradient(to right, #78C4A8, #E8909A, rgba(232,144,154,0))",
+    iconColor: "#78C4A8",
+  },
   {
     id: "mascotas",
     label: "Peluditos",
@@ -50,6 +59,7 @@ const categoryGroups = [
 
 // Asigna cada producto a su grupo principal (sin duplicados)
 function getPrimaryGroup(cats: string[]): string {
+  if (cats.includes("flores"))        return "flores";
   if (cats.includes("mascotas"))      return "mascotas";
   if (cats.includes("temporada"))     return "temporada";
   if (cats.includes("recordatorios")) return "recordatorios";
@@ -64,6 +74,20 @@ const groupedProducts = categoryGroups.map((group) => ({
     return getPrimaryGroup(cats) === group.id;
   }),
 })).filter((g) => g.items.length > 0);
+
+function getProductTags(product: (typeof products)[number]) {
+  if (product.category.includes("flores")) {
+    return [
+      { label: "Natural preservada", className: "bg-green-100 text-green-700" },
+      { label: "Dura por meses", className: "bg-pink-100 text-pink-700" },
+    ];
+  }
+
+  return [
+    { label: "Cera natural", className: "bg-orange-100 text-orange-700" },
+    { label: "Hecho a mano", className: "bg-pink-100 text-pink-700" },
+  ];
+}
 ---
 
 <Layout
@@ -238,8 +262,11 @@ const groupedProducts = categoryGroups.map((group) => ({
                       </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                      <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">Cera natural</span>
-                      <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">Hecho a mano</span>
+                      {getProductTags(product).map((tag) => (
+                        <span class={`text-xs px-3 py-1 rounded-full font-medium ${tag.className}`}>
+                          {tag.label}
+                        </span>
+                      ))}
                     </div>
                     <a
                       href={`/productos/${product.slug}`}
@@ -323,8 +350,11 @@ const groupedProducts = categoryGroups.map((group) => ({
                   </p>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                  <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-medium">Cera natural</span>
-                  <span class="text-xs bg-pink-100 text-pink-700 px-3 py-1 rounded-full font-medium">Hecho a mano</span>
+                  {getProductTags(product).map((tag) => (
+                    <span class={`text-xs px-3 py-1 rounded-full font-medium ${tag.className}`}>
+                      {tag.label}
+                    </span>
+                  ))}
                 </div>
                 <a
                   href={`/productos/${product.slug}`}
