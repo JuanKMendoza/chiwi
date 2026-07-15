@@ -1,7 +1,102 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+
+const whatsappUrl =
+  "https://wa.me/573102278592?text=Hola!%20Necesito%20una%20cotizacion%20para%20un%20pedido%20por%20cantidad";
 ---
 
-<Layout>
-	<h1 class="text-3xl">Ppaquetes</h1>
+<Layout
+  title="Paquetes y pedidos por cantidad | Chiwi Colombia"
+  description="Paquetes de velas artesanales, recordatorios y detalles personalizados para eventos, empresas y celebraciones en Colombia."
+>
+  <main>
+    <section class="relative overflow-hidden bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 py-20 px-4">
+      <div class="relative mx-auto max-w-5xl text-center">
+        <span class="inline-block rounded-full bg-white px-4 py-2 text-sm font-semibold text-orange-600 shadow-sm">
+          Eventos, empresas y celebraciones
+        </span>
+        <h1 class="mt-6 text-4xl font-bold leading-tight text-gray-900 md:text-6xl">
+          Detalles hechos a mano para regalar en cantidad
+        </h1>
+        <p class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-700 md:text-xl">
+          Creamos velitas, recordatorios y paquetes personalizados para que tu
+          evento tenga un detalle bonito, especial y fácil de coordinar.
+        </p>
+        <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track-content-name="Cotizar pedido por cantidad"
+            data-track-content-category="paquetes"
+            class="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 px-8 py-4 font-bold text-white shadow-xl transition-all hover:scale-105"
+          >
+            <ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon>
+            Cotizar mi pedido
+            <ion-icon name="arrow-forward-outline" class="text-xl"></ion-icon>
+          </a>
+          <a href="#como-funciona" class="rounded-full border border-orange-300 bg-white/70 px-6 py-3 font-semibold text-gray-700 transition-colors hover:bg-white">
+            Cómo funciona
+          </a>
+        </div>
+        <p class="mt-5 text-sm text-gray-600">Cuéntanos la cantidad, la fecha y la ciudad. Te orientamos por WhatsApp.</p>
+      </div>
+    </section>
+
+    <section id="como-funciona" class="px-4 py-16">
+      <div class="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
+        <article class="rounded-2xl border border-orange-100 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 text-2xl">1</div>
+          <h2 class="text-xl font-bold text-gray-900">Cuéntanos tu idea</h2>
+          <p class="mt-3 text-gray-600">Indícanos ocasión, cantidad, ciudad, fecha y presupuesto aproximado.</p>
+        </article>
+        <article class="rounded-2xl border border-pink-100 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-100 text-2xl">2</div>
+          <h2 class="text-xl font-bold text-gray-900">Recibe opciones</h2>
+          <p class="mt-3 text-gray-600">Te enviamos alternativas, precio por cantidad, tiempos y empaque.</p>
+        </article>
+        <article class="rounded-2xl border border-purple-100 bg-white p-6 text-center shadow-sm">
+          <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-purple-100 text-2xl">3</div>
+          <h2 class="text-xl font-bold text-gray-900">Confirmamos y producimos</h2>
+          <p class="mt-3 text-gray-600">Aprobamos los detalles y coordinamos elaboración, pago y despacho.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="bg-gray-50 px-4 py-16">
+      <div class="mx-auto max-w-5xl">
+        <h2 class="text-center text-3xl font-bold text-gray-900 md:text-4xl">Ideal para</h2>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["🎉", "Eventos", "Cumpleaños, bautizos, bodas y baby showers."],
+            ["🏢", "Empresas", "Regalos corporativos y detalles para equipos."],
+            ["🕯️", "Recordatorios", "Un detalle especial para agradecer y recordar."],
+            ["🌸", "Floristerías", "Complementos con velas y flores preservadas."],
+          ].map(([icon, title, text]) => (
+            <article class="rounded-2xl bg-white p-6 text-center shadow-sm">
+              <div class="text-4xl">{icon}</div>
+              <h3 class="mt-4 font-bold text-gray-900">{title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-gray-600">{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-16 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 md:text-4xl">¿Ya tienes una fecha?</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-lg text-gray-600">Escríbenos con la cantidad que necesitas y te ayudamos a encontrar la mejor opción.</p>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-track-content-name="WhatsApp paquetes y eventos"
+        data-track-content-category="paquetes"
+        class="mt-8 inline-flex items-center gap-3 rounded-full bg-[#25D366] px-8 py-4 font-bold text-white shadow-lg transition-all hover:scale-105"
+      >
+        <ion-icon name="logo-whatsapp" class="text-2xl"></ion-icon>
+        Hablar con Chiwi
+      </a>
+    </section>
+  </main>
 </Layout>
