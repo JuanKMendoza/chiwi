@@ -273,6 +273,227 @@ No cambiar cinco elementos a la vez. Cada prueba debe tener una hipótesis, un p
 - [ ] Las promociones tienen vigencia, stock y condiciones claras.
 - [ ] La operación puede cumplir la promesa de tiempo y respuesta.
 
+## Estrategia específica para que te encuentren las floristerías
+
+### Objetivo comercial
+
+La prioridad para esta línea no debe ser aparecer para búsquedas genéricas como “flores bonitas” o “flores para regalar”. Debe ser aparecer cuando una floristería, tienda de regalos, decorador o emprendedor ya está buscando abastecimiento:
+
+> Proveedor colombiano de flores naturales preservadas al por mayor, con disponibilidad, colores, precios por volumen y despacho nacional.
+
+La página debe hablarle a dos públicos distintos:
+
+- **Floristería establecida**: busca margen, disponibilidad constante, calidad, reposición, cumplimiento y factura.
+- **Emprendedor o tienda pequeña**: busca mínimos bajos, surtido de prueba, fotos para vender, asesoría y bajo riesgo de inventario.
+
+No conviene esconder esta oportunidad dentro de “Flores preservadas”. Crear una entrada visible en el menú y en la homepage: **“Mayoristas y floristerías”**.
+
+### Oferta mayorista que debe existir antes de invertir en SEO
+
+El SEO traerá consultas más calificadas si la oferta responde de inmediato estas preguntas:
+
+- ¿Qué flores y follajes hay? Gypso, statis, aster, caspia, ruscus, eucalipto, mini rosas y bouquets surtidos ya existen en el catálogo.
+- ¿Cuál es el pedido mínimo? Definir un mínimo real por referencia y otro para el kit de prueba.
+- ¿Cuánto cuesta al por mayor? Mostrar “desde” o rangos por cantidad, aunque la cotización final dependa del color y stock.
+- ¿Qué margen puede obtener la floristería? No prometer un margen fijo sin conocer el precio final de reventa, pero sí incluir un ejemplo de cálculo.
+- ¿Cada cuánto se repone? Comunicar frecuencia de actualización de inventario y cómo se avisa el stock.
+- ¿Se puede mezclar el pedido? Especificar si se permite surtido por color, especie o referencia.
+- ¿Cómo se envía? Indicar ciudades, transportadora, embalaje, costo aproximado y quién asume el riesgo del transporte.
+- ¿Cuánto tarda? Separar disponibilidad inmediata de pedido bajo encargo.
+- ¿Entregan factura o soporte de compra? Confirmar con la operación y comunicarlo solo si realmente está disponible.
+- ¿Hay muestras? Crear un **kit mayorista de prueba** con referencias seleccionadas, catálogo, cuidados y precios.
+
+Una propuesta inicial podría ser: **“Pide el catálogo mayorista y recibe disponibilidad, precios por volumen y condiciones de envío por WhatsApp”**. El beneficio debe ser real, rápido y útil para comprar.
+
+### Página B2B recomendada
+
+Crear una página independiente, por ejemplo `/mayoristas-flores-preservadas` o `/proveedor-flores-preservadas-colombia`. La primera opción es más clara para el comprador; la segunda ayuda a capturar búsquedas de proveedor. Se puede usar una como página principal y enlazar la otra solo si tiene contenido realmente diferente.
+
+Estructura sugerida:
+
+1. Hero: “Flores preservadas al por mayor para floristerías en Colombia”.
+2. Subtítulo: “Compra por volumen, arma tu surtido y recibe asesoría de disponibilidad, colores y despacho”.
+3. CTA: **“Solicitar catálogo mayorista”** y CTA secundario: **“Hablar con un asesor”**.
+4. Logos o tipos de negocio atendidos: floristerías, tiendas de regalos, wedding planners, decoradores, hoteles y emprendimientos.
+5. Galería ordenada por referencia, no solo por estética: nombre, color, tamaño, unidad de venta y disponibilidad.
+6. Tabla de tramos: pedido de prueba, mayorista inicial, reposición y volumen alto.
+7. Beneficios operativos: surtido, embalaje, despacho, asesoría y reposición.
+8. Cómo comprar en cuatro pasos: solicita catálogo, eliges referencias, confirmamos stock y despachamos.
+9. Cuidados y duración esperada de las flores preservadas.
+10. Testimonios o casos de floristerías reales; si aún no existen, no inventarlos: usar “buscamos aliados mayoristas” y documentar los primeros casos.
+11. FAQ B2B: mínimo, colores, stock, cambios, factura, envío, tiempos y muestras.
+12. Formulario corto y WhatsApp con mensaje prellenado.
+
+El CTA debe estar visible al inicio, después de la tabla de precios y al final. Una floristería no debería tener que regresar a la homepage para cotizar.
+
+### Keywords y grupos de intención
+
+Usar estas familias como hipótesis de trabajo y validarlas en Google Search Console, Keyword Planner y autocompletado de Google antes de producir decenas de páginas:
+
+| Intención | Ejemplos de búsquedas | Página destino |
+|---|---|---|
+| Proveedor | proveedor de flores preservadas Colombia, proveedor flores secas Colombia, mayorista flores preservadas | `/mayoristas-flores-preservadas` |
+| Compra mayorista | flores preservadas al por mayor, flores preservadas mayorista, comprar flores preservadas por volumen | `/mayoristas-flores-preservadas` |
+| Floristería | flores preservadas para floristerías, insumos para floristerías Colombia, flores secas para floristería | `/mayoristas-flores-preservadas` |
+| Producto | gypso preservado al por mayor, statis preservado por mayor, eucalipto preservado Colombia | categoría o ficha de referencia |
+| Ciudad | flores preservadas al por mayor Bogotá, Medellín, Cali, Barranquilla, Bucaramanga | página regional solo si existe operación o logística real |
+| Problema | flores que duran meses para floristería, flores sin agua para arreglos, flores preservadas para reventa | guía + CTA mayorista |
+| Ocasión profesional | flores preservadas para bodas, arreglos con flores preservadas, proveedores para wedding planners | guía o landing de alianzas |
+
+Evitar repetir la misma página cambiando únicamente el nombre de la ciudad. Eso produce contenido débil. Crear una página regional solo cuando se pueda aportar información concreta: tiempo de despacho, cobertura, transportadoras, costos orientativos, pedidos atendidos o alianzas reales.
+
+### SEO on-page obligatorio
+
+Para la página B2B:
+
+- **Title**: `Flores preservadas al por mayor en Colombia | Chiwi`
+- **Meta description**: `Proveedor de flores naturales preservadas para floristerías y tiendas en Colombia. Consulta catálogo, precios por volumen, colores, stock y envíos.`
+- Un solo H1 con la intención principal.
+- H2 separados para “Mayoristas”, “Referencias”, “Precios por volumen”, “Envíos” y “Cómo comprar”.
+- Texto alternativo descriptivo: `ramo de gypso preservado para floristerías en Colombia`, no solo `flores bonitas`.
+- Enlaces internos desde homepage, `/productos`, fichas florales, blog, contacto y footer.
+- Breadcrumb visible y schema `BreadcrumbList`.
+- Schema `Product` en cada referencia con precio, moneda COP, disponibilidad y marca cuando los datos sean verdaderos.
+- Schema `Organization` y `LocalBusiness` solo con datos reales; no inventar dirección, horarios o sucursales.
+- `FAQPage` únicamente para preguntas visibles en la página y respuestas honestas.
+- Open Graph específico para compartir el catálogo mayorista por WhatsApp.
+- Canonical correcto y sitemap enviado a Google Search Console.
+
+### Arquitectura de URLs y contenidos
+
+Propuesta mínima:
+
+```text
+/flores-preservadas
+/mayoristas-flores-preservadas
+/productos/ramo-gypso-preservado
+/productos/ramo-statis-preservado
+/productos/ramo-eucalipto-preservado
+/blog/flores-preservadas-para-floristerias
+/blog/como-comprar-flores-preservadas-al-por-mayor
+/blog/cuidados-flores-naturales-preservadas
+/blog/flores-preservadas-vs-flores-secas
+```
+
+La página `/flores-preservadas` debe vender al consumidor final y enlazar a la ruta mayorista. La página mayorista debe vender abastecimiento y enlazar a fichas de referencia. No mezclar ambos mensajes en el mismo H1.
+
+### Calendario de contenidos para 90 días
+
+Publicar contenido con una llamada a cotizar, no artículos informativos aislados:
+
+**Mes 1 — Capturar demanda existente**
+
+- Flores preservadas al por mayor para floristerías en Colombia.
+- Cómo comprar flores preservadas para reventa.
+- Catálogo de gypso, statis, eucalipto y follajes preservados.
+
+**Mes 2 — Resolver objeciones**
+
+- Cuánto duran las flores preservadas y cómo cuidarlas.
+- Cómo calcular el margen de un ramo preservado.
+- Cómo transportar y almacenar flores preservadas sin dañarlas.
+
+**Mes 3 — Capturar segmentos**
+
+- Proveedores para wedding planners y decoración de eventos.
+- Flores preservadas para tiendas de regalos.
+- Kit inicial para emprender una línea de ramos preservados.
+
+Cada artículo debe incluir: resumen de la respuesta, fotografías originales, datos de Chiwi, enlaces a la página mayorista, CTA de catálogo y una fecha de actualización. Evitar copiar descripciones de proveedores o bancos de imágenes.
+
+### SEO local y descubrimiento en Colombia
+
+- Crear o revisar el Perfil de Empresa de Google si existe una operación elegible. Mantener nombre, categoría, teléfono, web, horario y descripción consistentes.
+- Si la empresa no atiende público en una dirección, usar correctamente un área de servicio; no publicar una dirección ficticia.
+- Subir fotografías propias del inventario, empaques, preparación de pedidos y despacho.
+- Pedir reseñas a floristerías reales después de una compra mayorista, sin ofrecer incentivos engañosos.
+- Responder cada reseña con contexto de producto y servicio.
+- Conseguir menciones y enlaces de floristerías aliadas, organizadores de bodas, blogs de decoración, directorios profesionales y proveedores complementarios.
+- Mantener una página de contacto con WhatsApp, ciudades atendidas, horario de respuesta y cobertura logística.
+- Incluir en redes sociales frases que también usa el comprador: “flores preservadas al por mayor”, “proveedor para floristerías”, “despachos a Colombia”.
+
+Google no posiciona una página solo por repetir “Colombia”. La relevancia vendrá de la combinación de contenido útil, productos reales, señales de confianza, enlaces y una experiencia que resuelva la cotización.
+
+### Formulario de captación mayorista
+
+El formulario debe tener dos niveles para no perder oportunidades:
+
+**Formulario corto para tráfico frío**
+
+- Nombre.
+- WhatsApp.
+- Ciudad.
+- Tipo de negocio.
+- Cantidad aproximada.
+- Botón: “Recibir catálogo mayorista”.
+
+**Formulario de cotización para intención alta**
+
+- Nombre y empresa.
+- WhatsApp y correo opcional.
+- Ciudad y dirección de entrega aproximada.
+- Referencias o colores de interés.
+- Cantidad por referencia.
+- Fecha de compra o evento.
+- ¿Compra inicial o reposición?
+- ¿Necesita factura o soporte comercial?
+
+Después del envío mostrar una página de gracias con tres acciones: abrir WhatsApp, descargar el catálogo y guardar el contacto. El catálogo debe tener una fecha de actualización y condiciones claras; no enviar un PDF desactualizado.
+
+### Mensaje de WhatsApp para floristerías
+
+```text
+Hola Chiwi. Soy [nombre] de [negocio]. Me interesa comprar flores preservadas al por mayor.
+Ciudad: [ciudad]
+Compra inicial o reposición: [opción]
+Cantidad aproximada: [cantidad]
+Referencias/colores: [opcional]
+¿Me pueden compartir catálogo, precios por volumen y disponibilidad?
+```
+
+La respuesta comercial debe devolver, en un solo bloque: catálogo vigente, mínimo, tres opciones de compra, stock, tiempo de despacho, transporte, forma de pago y pregunta de cierre. Ejemplo de cierre: **“¿Quieres que te cotice el kit inicial o un surtido para reposición?”**
+
+### Alianzas para generar autoridad y ventas
+
+Además del posicionamiento orgánico, crear una lista de 50 aliados potenciales por ciudad: floristerías, tiendas de regalos, wedding planners, decoradores, hoteles boutique, cafés con tienda y emprendimientos de cajas regalo. Contactarlos con una propuesta de prueba, no con un mensaje genérico:
+
+- kit de muestras o pedido inicial con mínimo accesible;
+- fotografías verticales listas para publicar;
+- tabla de precios por volumen;
+- reposición y disponibilidad por WhatsApp;
+- posibilidad de armar surtidos;
+- historia de proveedor local y empaque protegido.
+
+Solicitar autorización para publicar el caso solo después de entregar. Las primeras cinco floristerías satisfechas pueden aportar reseñas, fotos, enlaces, preguntas frecuentes y lenguaje real para mejorar el SEO.
+
+### Métricas SEO y B2B
+
+Revisar semanalmente:
+
+- impresiones y clics para “flores preservadas”, “mayorista”, “proveedor” y cada ciudad;
+- posición de la página B2B y de cada ficha de flor;
+- clics en WhatsApp desde búsqueda orgánica;
+- formularios iniciados y completados;
+- catálogo solicitado;
+- leads calificados por ciudad y tipo de negocio;
+- cotizaciones enviadas;
+- pedidos iniciales, reposiciones y valor promedio;
+- tasa de respuesta y tiempo hasta primera respuesta;
+- motivos de pérdida: precio, mínimo, stock, envío o tiempo.
+
+El éxito no es únicamente “estar primero”. La señal importante es que las floristerías correctas encuentren la página, soliciten catálogo, reciban una cotización y vuelvan a comprar.
+
+## Prioridad adicional para la línea mayorista
+
+1. Definir mínimo, tramos de precio, stock, empaque, pagos, factura y promesa de despacho.
+2. Crear `/mayoristas-flores-preservadas` con copy, fotos, tabla y formulario.
+3. Añadir el enlace “Mayoristas y floristerías” al menú, homepage, catálogo y footer.
+4. Crear el kit inicial y el PDF/landing de catálogo con fecha de actualización.
+5. Implementar eventos `wholesale_catalog_request`, `wholesale_form_submit`, `quote_requested`, `quote_sent` y `repeat_order`.
+6. Publicar las primeras tres piezas SEO y medir Search Console.
+7. Contactar aliados reales y convertir sus dudas en contenido.
+8. Construir reseñas, casos y enlaces antes de crear páginas masivas por ciudad.
+
 ## Conclusión
 
 Chiwi no necesita parecer una tienda genérica. Su ventaja es la personalización emocional y la conversación humana. La conversión crecerá cuando la web haga tres cosas con precisión: identificar qué desea el visitante, demostrar que Chiwi puede entregarlo en la fecha y presupuesto correctos, y abrir una conversación con contexto suficiente para cerrar.
