@@ -13,7 +13,7 @@ El problema central es de foco comercial. En la misma experiencia se mezclan vel
 
 ## Diagnóstico actual
 
-### Lo que ya funciona
+### Lo que ya funciona:
 
 - El hero comunica una promesa emocional clara: “Velitas que cuentan una historia”.
 - El CTA principal dirige a WhatsApp con un mensaje prellenado.
@@ -27,20 +27,20 @@ El problema central es de foco comercial. En la misma experiencia se mezclan vel
 
 ### Fricciones y oportunidades prioritarias
 
-| Hallazgo | Impacto comercial | Prioridad |
-|---|---|---|
-| El hero ofrece “crear mi vela”, “ver catálogo” y varios mensajes secundarios sin segmentar la intención | El visitante no sabe cuál es el siguiente paso más adecuado | P0 |
-| El menú incluye búsqueda, carrito placeholder, blog y contacto, pero no una ruta visible para “eventos/empresas” | Se pierden leads de alto volumen y se genera expectativa de compra online | P0 |
-| El carrito no funciona y su botón solo registra un `console.log` | Rompe confianza y distrae del canal real de venta | P0 |
-| El newsletter solo muestra un `alert()`; no guarda correos | No existe captura real ni posibilidad de seguimiento | P0 |
-| La homepage es extensa y mezcla cinco intenciones de compra | La información compite en vez de conducir | P0 |
-| Las flores aparecen como una línea secundaria, aunque requieren otra propuesta de valor | Se desaprovecha una categoría con ocasión de regalo, decoración y compra recurrente | P1 |
-| “Cera natural”, “dura por meses” y beneficios similares necesitan evidencia y explicación | Algunas promesas pueden generar dudas o expectativas incorrectas | P1 |
-| Los testimonios usan imágenes de producto como placeholder | Reduce prueba social y autenticidad | P1 |
-| Hay un popup promocional global | Puede interrumpir antes de que el visitante entienda la oferta | P1 |
-| El tono es cálido, pero faltan números comerciales: precios “desde”, mínimos, fechas límite y capacidad | Dificulta calificar y cerrar pedidos | P1 |
-| La página de paquetes es prácticamente un placeholder (“Ppaquetes”) | Se pierde una landing natural para combos y ticket promedio | P0 |
-| El contenido SEO existe, pero no todas las páginas parecen diseñadas para capturar demanda | Tráfico orgánico puede llegar sin una oferta clara | P2 |
+| Hallazgo                                                                                                         | Impacto comercial                                                                   | Prioridad |
+| ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | --------- |
+| El hero ofrece “crear mi vela”, “ver catálogo” y varios mensajes secundarios sin segmentar la intención          | El visitante no sabe cuál es el siguiente paso más adecuado                         | P0        |
+| El menú incluye búsqueda, carrito placeholder, blog y contacto, pero no una ruta visible para “eventos/empresas” | Se pierden leads de alto volumen y se genera expectativa de compra online           | P0        |
+| El carrito no funciona y su botón solo registra un `console.log`                                                 | Rompe confianza y distrae del canal real de venta                                   | P0        |
+| El newsletter solo muestra un `alert()`; no guarda correos                                                       | No existe captura real ni posibilidad de seguimiento                                | P0        |
+| La homepage es extensa y mezcla cinco intenciones de compra                                                      | La información compite en vez de conducir                                           | P0        |
+| Las flores aparecen como una línea secundaria, aunque requieren otra propuesta de valor                          | Se desaprovecha una categoría con ocasión de regalo, decoración y compra recurrente | P1        |
+| “Cera natural”, “dura por meses” y beneficios similares necesitan evidencia y explicación                        | Algunas promesas pueden generar dudas o expectativas incorrectas                    | P1        |
+| Los testimonios usan imágenes de producto como placeholder                                                       | Reduce prueba social y autenticidad                                                 | P1        |
+| Hay un popup promocional global                                                                                  | Puede interrumpir antes de que el visitante entienda la oferta                      | P1        |
+| El tono es cálido, pero faltan números comerciales: precios “desde”, mínimos, fechas límite y capacidad          | Dificulta calificar y cerrar pedidos                                                | P1        |
+| La página de paquetes es prácticamente un placeholder (“Ppaquetes”)                                              | Se pierde una landing natural para combos y ticket promedio                         | P0        |
+| El contenido SEO existe, pero no todas las páginas parecen diseñadas para capturar demanda                       | Tráfico orgánico puede llegar sin una oferta clara                                  | P2        |
 
 ## Propuesta de posicionamiento
 
@@ -153,10 +153,10 @@ Crear además rutas para “ramo para cumpleaños”, “flores para escritorio�
 
 Cada CTA debe llevar parámetros de origen y un mensaje distinto. Ejemplos:
 
-- “Hola Chiwi, busco un regalo. Mi presupuesto es ___, lo necesito en ___ para la ciudad de ___.”
-- “Hola Chiwi, quiero una vela de mi mascota. Te envío la foto; mi ciudad es ___ y la necesito para ___.”
-- “Hola Chiwi, necesito ___ unidades para un evento el ___. Es para ___ y mi presupuesto por unidad es ___.”
-- “Hola Chiwi, quiero un ramo preservado en tonos ___, presupuesto ___, para entregar en ___.”
+- “Hola Chiwi, busco un regalo. Mi presupuesto es **_, lo necesito en _** para la ciudad de \_\_\_.”
+- “Hola Chiwi, quiero una vela de mi mascota. Te envío la foto; mi ciudad es **_ y la necesito para _**.”
+- “Hola Chiwi, necesito **_ unidades para un evento el _**. Es para **_ y mi presupuesto por unidad es _**.”
+- “Hola Chiwi, quiero un ramo preservado en tonos **_, presupuesto _**, para entregar en \_\_\_.”
 
 No pedir diez datos antes de abrir WhatsApp. Pedir tres o cuatro datos útiles y completar el resto en la conversación.
 
@@ -330,15 +330,15 @@ El CTA debe estar visible al inicio, después de la tabla de precios y al final.
 
 Usar estas familias como hipótesis de trabajo y validarlas en Google Search Console, Keyword Planner y autocompletado de Google antes de producir decenas de páginas:
 
-| Intención | Ejemplos de búsquedas | Página destino |
-|---|---|---|
-| Proveedor | proveedor de flores preservadas Colombia, proveedor flores secas Colombia, mayorista flores preservadas | `/mayoristas-flores-preservadas` |
-| Compra mayorista | flores preservadas al por mayor, flores preservadas mayorista, comprar flores preservadas por volumen | `/mayoristas-flores-preservadas` |
-| Floristería | flores preservadas para floristerías, insumos para floristerías Colombia, flores secas para floristería | `/mayoristas-flores-preservadas` |
-| Producto | gypso preservado al por mayor, statis preservado por mayor, eucalipto preservado Colombia | categoría o ficha de referencia |
-| Ciudad | flores preservadas al por mayor Bogotá, Medellín, Cali, Barranquilla, Bucaramanga | página regional solo si existe operación o logística real |
-| Problema | flores que duran meses para floristería, flores sin agua para arreglos, flores preservadas para reventa | guía + CTA mayorista |
-| Ocasión profesional | flores preservadas para bodas, arreglos con flores preservadas, proveedores para wedding planners | guía o landing de alianzas |
+| Intención           | Ejemplos de búsquedas                                                                                   | Página destino                                            |
+| ------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| Proveedor           | proveedor de flores preservadas Colombia, proveedor flores secas Colombia, mayorista flores preservadas | `/mayoristas-flores-preservadas`                          |
+| Compra mayorista    | flores preservadas al por mayor, flores preservadas mayorista, comprar flores preservadas por volumen   | `/mayoristas-flores-preservadas`                          |
+| Floristería         | flores preservadas para floristerías, insumos para floristerías Colombia, flores secas para floristería | `/mayoristas-flores-preservadas`                          |
+| Producto            | gypso preservado al por mayor, statis preservado por mayor, eucalipto preservado Colombia               | categoría o ficha de referencia                           |
+| Ciudad              | flores preservadas al por mayor Bogotá, Medellín, Cali, Barranquilla, Bucaramanga                       | página regional solo si existe operación o logística real |
+| Problema            | flores que duran meses para floristería, flores sin agua para arreglos, flores preservadas para reventa | guía + CTA mayorista                                      |
+| Ocasión profesional | flores preservadas para bodas, arreglos con flores preservadas, proveedores para wedding planners       | guía o landing de alianzas                                |
 
 Evitar repetir la misma página cambiando únicamente el nombre de la ciudad. Eso produce contenido débil. Crear una página regional solo cuando se pueda aportar información concreta: tiempo de despacho, cobertura, transportadoras, costos orientativos, pedidos atendidos o alianzas reales.
 
