@@ -65,6 +65,7 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <slot name="head" />
 
     <!-- Google Analytics -->
