@@ -13,12 +13,14 @@ interface Props {
   title: string;
   description?: string;
   image?: string;
+  ogImageAlt?: string;
 }
 
 const {
   title,
   description = "Velas kawaii artesanales personalizadas. Hechas a mano con amor en Colombia. ¡Dale vida a tus espacios!",
   image = "/og-image.png",
+  ogImageAlt = "Chiwi - Velas Kawaii Artesanales Colombia",
 } = Astro.props;
 
 // URLs canónicas y absolutas
@@ -52,7 +54,7 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Chiwi - Velas Kawaii Artesanales Colombia"
+      content={ogImageAlt}
     />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:site_name" content="Chiwi Colombia" />
@@ -63,6 +65,7 @@ const ogImageURL = new URL(image, Astro.site || "https://chiwicolombia.com");
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <slot name="head" />
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ1ZSKVDEL"
