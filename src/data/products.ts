@@ -131,7 +131,7 @@ export const products: Product[] = [
       "Personalización de colores según tu gatito",
       "Puedes enviar foto de referencia",
       "Detalles pintados a mano",
-      "Expresión kawaii adorable",
+      "Expresión adorable",
       "Incluye tarjeta con nombre del gatito y foto tipo Polaroid",
       "Aromas a tu elección (opcional)",
       //"Opción de collar o accesorios personalizados",

@@ -13,6 +13,12 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://chiwicolombia.com/flores/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://chiwicolombia.com/blog</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>weekly</changefreq>
